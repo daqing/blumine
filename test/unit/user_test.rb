@@ -25,5 +25,7 @@ class UserTest < ActiveSupport::TestCase
   test "create user" do
     user = User.new(:name => "daqing", :email => "daqing1986@gmail.com", :password => "love", :password_confirmation => "love")
     assert user.save
+    assert ! user.salt.blank?
+    assert ! user.encrypted_password.blank?
   end
 end

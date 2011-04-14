@@ -6,4 +6,8 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should recognize new_user_path" do
+    assert_routing new_user_path, :controller => "users", :action => "new"
+  end
+
 end

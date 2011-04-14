@@ -1,6 +1,5 @@
 #header {
   background-color: #505759;
-  padding-top: 20px;
   margin-bottom: 10px;
 }
 
@@ -12,5 +11,16 @@
   font-weight: bold;
   width: 145px;
   text-align: center;
+}
+
+#header div.links {
+  margin-top: 10px;
+}
+
+#header div.links a {
+  color: #B9BBBC;
+  text-decoration: none;
+  line-height: 1;
+  margin-right: 8px;
 }
 

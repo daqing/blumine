@@ -16,7 +16,11 @@
 <body>
   <div id="header">
     <div class="container">
-      <div id="logo">Blumine</div>
+      <div id="logo" class="span-4">Blumine</div>
+      <div class="span-6 prepend-3 links">
+        <%= link_to "首页", root_path %>
+        <%= link_to "注册", new_user_path %>
+      </div>
     </div>
   </div>
 

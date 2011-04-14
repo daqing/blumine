@@ -11,6 +11,8 @@ gem 'authlogic'
 gem 'annotate-models'
 gem 'RedCloth'
 
+gem 'dynamic_form'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

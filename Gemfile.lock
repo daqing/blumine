@@ -34,6 +34,7 @@ GEM
     authlogic (2.1.6)
       activesupport
     builder (2.1.2)
+    dynamic_form (1.1.4)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.5.0)
@@ -76,5 +77,6 @@ DEPENDENCIES
   RedCloth
   annotate-models
   authlogic
+  dynamic_form
   rails (= 3.0.6)
   sqlite3

@@ -1,0 +1,16 @@
+#header {
+  background-color: #505759;
+  padding-top: 20px;
+  margin-bottom: 10px;
+}
+
+#header #logo {
+  background-color: #A82400;
+  color: white;
+  line-height: 1;
+  font-size: 3em;
+  font-weight: bold;
+  width: 145px;
+  text-align: center;
+}
+

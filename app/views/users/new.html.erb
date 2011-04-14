@@ -1,2 +1,25 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h2>注册</h2>
+<%= form_for @user do |f| %>
+  <%= f.error_messages %>
+  <div class="row">
+    <%= f.label :name, "用户名" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="row">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="row">
+    <%= f.label :password, "密码" %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="row">
+    <%= f.label :password_confirmation, "确认密码" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <%= f.submit "注册" %>
+<% end %>

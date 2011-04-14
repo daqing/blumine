@@ -24,3 +24,16 @@
   margin-right: 8px;
 }
 
+#footer {
+  margin-top: 30px;
+}
+
+div.row {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+}
+
+

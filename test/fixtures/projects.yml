@@ -14,8 +14,8 @@
 
 one:
   user_id: 1
-  name: MyString
+  name: demo
 
 two:
   user_id: 1
-  name: MyString
+  name: foo

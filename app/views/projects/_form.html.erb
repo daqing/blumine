@@ -1,4 +1,4 @@
-<%= form_for [current_user, @project] do |f| %>
+<%= form_for @project do |f| %>
   <%= render 'shared/error_messages', :obj => @project %>
   <div class="field">
     <%= f.label :name, "项目名称" %>

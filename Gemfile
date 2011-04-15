@@ -8,11 +8,6 @@ gem 'rails', '3.0.6'
 gem 'sqlite3'
 gem 'authlogic'
 
-gem 'annotate-models'
-gem 'RedCloth'
-
-gem 'dynamic_form'
-
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -34,4 +29,6 @@ gem 'dynamic_form'
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'ruby-debug'
+  gem 'RedCloth'
+  gem 'annotate-models'
 end

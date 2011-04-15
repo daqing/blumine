@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   attr_protected :encrypted_password, :salt
 
   validates :name, :email, :presence => true
+  validates :email, :uniqueness => true
   validates :password, :presence => true, :confirmation => true
   validates :password_confirmation, :presence => true
 

@@ -19,12 +19,23 @@
       <div id="logo" class="span-4">Blumine</div>
       <div class="span-6 prepend-3 links">
         <%= link_to "首页", root_path %>
-        <%= link_to "注册", new_user_path %>
+        <% if current_user %>
+          <%= link_to current_user.name, current_user %>
+          <%= link_to "退出", logout_path %>
+        <% else %>
+          <%= link_to "注册", new_user_path %>
+          <%= link_to "登录", login_path %>
+        <% end %>
       </div>
     </div>
   </div>
 
   <div class="container">
+    <% [:notice, :error].each do |type| %>
+      <% if flash[type] %>
+        <div class="<%= type %>"><%= flash[type] %></div>
+      <% end %>
+    <% end %>
     <div class="span-16">
       <%= yield %>
     </div>

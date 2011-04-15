@@ -12,7 +12,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should create user" do
-    post :create, :user => {:name => "daqing", :email => "daqing1986@gmail.com",
+    post :create, :user => {:name => "daqing", :email => "daqing@demo.com",
       :password => "foobar", :password_confirmation => "foobar"}
 
     assert_redirected_to root_path

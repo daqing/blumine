@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @params = {:name => "daqing", :email => "daqing1986@gmail.com", :password => "foobar", :password_confirmation => "foobar"}
+    @params = {:name => "test", :email => "daqing@demo.com", :password => "foobar", :password_confirmation => "foobar"}
     @user = User.new(@params)
   end
 
@@ -15,7 +15,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should provide valid email address" do
-    #user = User.new(:name => "daqing", :email => "foobar", :password => "abc", :password_confirmation => "abc")
     @user.email = "abc"
     assert ! @user.save
   end

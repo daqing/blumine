@@ -1,0 +1,15 @@
+<%= form_for(@user_session) do |f| %>
+  <%= render 'shared/error_messages', :obj => @user_session %>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password, "密码" %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="actions">
+    <%= f.submit "登录" %>
+  </div>
+<% end %>

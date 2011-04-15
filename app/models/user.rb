@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110412132107
+# Schema version: 20110415041713
 #
 # Table name: users
 #
@@ -10,11 +10,19 @@
 #  salt               :string(255)
 #  created_at         :datetime
 #  updated_at         :datetime
+#  persistence_token  :string(255)
 #
+
 require 'digest'
 
 class User < ActiveRecord::Base
-  attr_accessor :password
+  acts_as_authentic do |c|
+    c.login_field = :email
+    c.crypted_password_field = :encrypted_password
+    c.password_salt_field = :salt
+    c.validates_length_of_password_field_options = {:minimum => 1} 
+  end
+
   attr_protected :encrypted_password, :salt
 
   validates :name, :email, :presence => true
@@ -24,17 +32,4 @@ class User < ActiveRecord::Base
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :format => { :with => email_regex }
-
-  before_save :make_salt_and_encrypt_password
-
-  private
-    def make_salt_and_encrypt_password
-      self.salt = secure_hash("#{Time.now.utc}-_-!#{password}") if new_record?
-      self.encrypted_password = secure_hash("#{salt}:-)#{password}")
-    end
-
-    def secure_hash(str)
-      Digest::SHA2.hexdigest(str)
-    end
-
 end

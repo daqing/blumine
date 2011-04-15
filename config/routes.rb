@@ -1,5 +1,8 @@
 Blumine::Application.routes.draw do
-  resources :users
+  match 'login' => "user_sessions#new"
+  match 'logout' => "user_sessions#destroy"
+
+  resources :users, :user_sessions
 
   root :to => "pages#index"
 

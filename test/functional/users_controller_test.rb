@@ -4,7 +4,7 @@ class UsersControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
-    assert assigns("user")
+    assert assigns(:user)
   end
 
   test "should recognize new_user_path" do

@@ -15,9 +15,9 @@
 </head>
 <body>
   <div id="header">
-    <div class="container">
+    <div class="container" style="background-color: #505759">
       <div id="logo" class="span-4">Blumine</div>
-      <div class="span-6 prepend-3 links">
+      <div class="span-6 links">
         <%= link_to "首页", root_path %>
         <% if current_user %>
           <%= link_to current_user.name, current_user %>

@@ -15,3 +15,10 @@
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
+daqing:
+  name: daqing
+  email: daqing@demo.com
+  salt: <%= salt = Authlogic::Random.hex_token %>
+  encrypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("foobar" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+

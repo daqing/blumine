@@ -8,6 +8,7 @@ class UserSessionsControllerTest < ActionController::TestCase
   end
 
   test "should define login and logout path" do
-    assert_equal '/login', login_path
+    assert_generates login_path, :controller => "user_sessions", :action => "new"
+    assert_generates logout_path, :controller => "user_sessions", :action => "destroy"
   end
 end

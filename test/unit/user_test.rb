@@ -2,8 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @params = {:name => "test", :email => "daqing@demo.com", :password => "foobar", :password_confirmation => "foobar"}
-    @user = User.new(@params)
+    @user = users(:daqing)
   end
 
   test "should not create user when name or email is empty" do
@@ -20,10 +19,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "emails should be unique" do
-    assert @user.save
-    clone = User.new(@params)
-
-    assert ! clone.save # because emails should be unique
+    assert ! @user.save
   end
 
   test "password should be confirmed" do
@@ -35,8 +31,9 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "create user" do
-    assert @user.save
-    assert ! @user.salt.blank?
-    assert ! @user.encrypted_password.blank?
+    user = User.new(:name => "daqing", :email => "daqing1986@gmail.com", :password => "daqing", :password_confirmation => "daqing")
+    assert user.save
+    assert ! user.salt.blank?
+    assert ! user.encrypted_password.blank?
   end
 end

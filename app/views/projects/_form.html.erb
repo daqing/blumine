@@ -1,0 +1,10 @@
+<%= form_for [current_user, @project] do |f| %>
+  <%= render 'shared/error_messages', :obj => @project %>
+  <div class="field">
+    <%= f.label :name, "项目名称" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.submit "创建" %>
+<% end %>
+

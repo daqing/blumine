@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
     c.validates_length_of_password_field_options = {:minimum => 1} 
   end
 
+  has_many :projects
+
   attr_protected :encrypted_password, :salt
 
   validates :name, :email, :presence => true

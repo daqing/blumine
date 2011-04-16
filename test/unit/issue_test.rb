@@ -12,6 +12,11 @@ class IssueTest < ActiveSupport::TestCase
     assert ! @issue.save
 
     @issue.content = "Just a test"
+    assert ! @issue.save # user_id and project_id is required
+
+    @issue.project_id = 1
+    @issue.user_id = 1
+
     assert @issue.save
   end
 

@@ -31,6 +31,8 @@ class IssuesControllerTest < ActionController::TestCase
   test "should get show" do
     get :show, :project_id => @project.id, :id => @issue.id
     assert_response :success
+
+    assert assigns(:issue)
   end
 
   test "should get destroy" do

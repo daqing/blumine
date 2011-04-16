@@ -26,4 +26,5 @@ class Issue < ActiveRecord::Base
   belongs_to :user
 
   validates :title, :content, :presence => true
+  validates :user_id, :project_id, :presence => true
 end

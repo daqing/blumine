@@ -1,22 +1,22 @@
 <h2>注册</h2>
 <%= form_for @user do |f| %>
   <%= render 'shared/error_messages', :obj => @user %>
-  <div class="row">
+  <div class="field">
     <%= f.label :name, "用户名" %>
     <%= f.text_field :name %>
   </div>
 
-  <div class="row">
+  <div class="field">
     <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
 
-  <div class="row">
+  <div class="field">
     <%= f.label :password, "密码" %>
     <%= f.password_field :password %>
   </div>
 
-  <div class="row">
+  <div class="field">
     <%= f.label :password_confirmation, "确认密码" %>
     <%= f.password_field :password_confirmation %>
   </div>

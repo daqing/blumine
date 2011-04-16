@@ -12,4 +12,9 @@ class ActiveSupport::TestCase
   include ApplicationHelper
 
   # Add more helper methods to be used by all tests here...
+
+  def ensure_logged_in
+    activate_authlogic
+    UserSession.create(users(:daqing))
+  end
 end

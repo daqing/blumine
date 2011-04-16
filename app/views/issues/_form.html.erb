@@ -1,0 +1,14 @@
+<%= form_for [@project, @issue] do |f| %>
+  <%= render 'shared/error_messages', :obj => @issue %>
+  <div class="field">
+    <%= f.label :title, "标题" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content, "内容" %>
+    <%= f.text_area :content %>
+  </div>
+
+  <%= f.submit "提交" %>
+<% end %>

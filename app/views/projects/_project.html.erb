@@ -1,2 +1,6 @@
 <div class="bar"><h2><%= link_to project.name, project %></h2></div>
-<% # display issues %>
+
+<ul>
+<%= render project.issues, :project => project %>
+</ul>
+

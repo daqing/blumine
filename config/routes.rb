@@ -2,7 +2,10 @@ Blumine::Application.routes.draw do
   match 'login' => "user_sessions#new"
   match 'logout' => "user_sessions#destroy"
 
-  resources :users, :user_sessions, :projects
+  resources :users, :user_sessions
+  resources :projects do
+    resources :issues
+  end
 
   root :to => "pages#index"
 

@@ -1,1 +1,5 @@
 <h2>Project: <%= @project.name %></h2>
+
+<% content_for :sidebar do %>
+  <%= link_to "创建issue", new_project_issue_path(@project) %>
+<% end %>

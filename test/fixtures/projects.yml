@@ -13,9 +13,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  user_id: 1
   name: demo
+  user: daqing
 
 two:
-  user_id: 1
   name: foo
+  user: daqing

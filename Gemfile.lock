@@ -75,6 +75,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.26)
+    workflow (0.8.0)
 
 PLATFORMS
   ruby
@@ -86,3 +87,4 @@ DEPENDENCIES
   rails (= 3.0.6)
   ruby-debug
   sqlite3
+  workflow

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110416030957
+# Schema version: 20110416033800
 #
 # Table name: issues
 #
@@ -10,6 +10,7 @@
 #  workflow_state :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
+#  user_id        :integer
 #
 
 class Issue < ActiveRecord::Base
@@ -22,6 +23,7 @@ class Issue < ActiveRecord::Base
   end
 
   belongs_to :project
+  belongs_to :user
 
   validates :title, :content, :presence => true
 end

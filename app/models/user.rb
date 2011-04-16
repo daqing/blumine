@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   end
 
   has_many :projects
+  has_many :issues
 
   attr_protected :encrypted_password, :salt
 

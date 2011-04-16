@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110416030957
+# Schema version: 20110416033800
 #
 # Table name: issues
 #
@@ -10,6 +10,7 @@
 #  workflow_state :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
+#  user_id        :integer
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

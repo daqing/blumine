@@ -13,12 +13,8 @@
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  issue_id: 1
-  user_id: 1
-  content: MyText
+need_fix:
+  issue: bug_report
+  user: daqing
+  content: "This needs to be fixed"
 
-two:
-  issue_id: 1
-  user_id: 1
-  content: MyText

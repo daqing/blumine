@@ -12,4 +12,8 @@
 #
 
 class Comment < ActiveRecord::Base
+  belongs_to :issue
+  belongs_to :user
+
+  validates :issue_id, :user_id, :content, :presence => true
 end

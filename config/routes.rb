@@ -7,6 +7,10 @@ Blumine::Application.routes.draw do
     resources :issues
   end
 
+  resources :issues do
+    resources :comments
+  end
+
   root :to => "pages#index"
 
   # The priority is based upon order of creation:

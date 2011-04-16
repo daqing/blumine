@@ -1,2 +1,14 @@
 <h2><%= @issue.title %></h2>
 <p><%= @issue.content %></p>
+
+<h3>评论</h3>
+<%= render @issue.comments %>
+
+<hr>
+<%= form_for [@issue, @comment] do |f| %>
+  <div class="field">
+    <%= f.text_area :content %>
+  </div>
+  <%= f.submit "发表评论" %>
+<% end %>
+

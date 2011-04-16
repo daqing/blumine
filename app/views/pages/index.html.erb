@@ -1,8 +1,6 @@
 <% if current_user %>
   <% if @projects.any? %>
-    <% @projects.each do |p| %>
-      <h2><%= p.name %></h2>
-    <% end %>
+    <%= render @projects %>
   <% else %>
     <p>还没有管理任何项目</p>
   <% end %>

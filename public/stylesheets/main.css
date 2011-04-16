@@ -35,4 +35,6 @@ label {
   display: block;
 }
 
-
+div.bar {
+  background-color: #E5ECF9;
+}

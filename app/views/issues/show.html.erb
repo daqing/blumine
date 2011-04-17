@@ -1,7 +1,7 @@
 <h2><%= @issue.title %></h2>
-<p><%= @issue.content %></p>
+<p><%=raw parse_markdown h(@issue.content) %></p>
 
-<h3>评论</h3>
+<div class="bar"><h3>评论</h3></div>
 <%= render @issue.comments %>
 
 <hr>

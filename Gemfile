@@ -8,6 +8,7 @@ gem 'rails', '3.0.6'
 gem 'sqlite3'
 gem 'authlogic'
 gem 'workflow'
+gem 'rdiscount'
 
 # Use unicorn as the web server
 # gem 'unicorn'

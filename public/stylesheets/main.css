@@ -38,3 +38,7 @@ label {
 div.bar {
   background-color: #E5ECF9;
 }
+
+div.row p {
+  text-indent: 1em;
+}

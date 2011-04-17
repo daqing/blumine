@@ -8,4 +8,8 @@ module ApplicationHelper
     return @current_session if defined?(@current_session)
     @current_session = UserSession.find
   end
+
+  def parse_markdown(text)
+    RDiscount.new(text).to_html
+  end
 end

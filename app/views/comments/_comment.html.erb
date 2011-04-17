@@ -1,1 +1,4 @@
-<p><%= comment.user.name %>: <%= comment.content %></p>
+<div class="row">
+  <span><%= comment.user.name %>:</span>
+  <%=raw parse_markdown h(comment.content) %>
+</div>

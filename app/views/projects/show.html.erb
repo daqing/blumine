@@ -1,5 +1,8 @@
 <h2>Project: <%= @project.name %></h2>
 
+<div class="bar"><h2>Issues</h2></div>
+<%= render @project.issues, :project => @project %>
+
 <% content_for :sidebar do %>
   <%= link_to "创建issue", new_project_issue_path(@project) %>
 <% end %>

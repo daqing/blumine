@@ -10,6 +10,6 @@ module ApplicationHelper
   end
 
   def parse_markdown(text)
-    RDiscount.new(text).to_html
+    RDiscount.new(h(text)).to_html
   end
 end

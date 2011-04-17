@@ -24,4 +24,11 @@ class UsersControllerTest < ActionController::TestCase
 
     assert_redirected_to root_path
   end
+
+  test "should get show" do
+    get :show, :id => users(:daqing).id
+
+    assert_response :success
+    assert assigns(:user)
+  end
 end

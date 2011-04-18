@@ -10,12 +10,14 @@
 <% end %>
 
 <div class="bar"><h3>评论</h3></div>
-<%= render @issue.comments %>
+<div id="issue_comments">
+  <%= render @issue.comments %>
+</div>
 
 <hr>
-<%= form_for [@issue, @comment] do |f| %>
+<%= form_for [@issue, @comment], :remote => true do |f| %>
   <div class="field">
-    <%= f.text_area :content %>
+    <%= f.text_area :content, :style => "height: 10em" %>
   </div>
   <%= f.submit "发表评论" %>
 <% end %>

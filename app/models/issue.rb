@@ -24,7 +24,9 @@ class Issue < ActiveRecord::Base
 
   belongs_to :project
   belongs_to :user
+
   has_many :comments
+  has_many :todo_items
 
   validates :title, :content, :presence => true
   validates :user_id, :project_id, :presence => true

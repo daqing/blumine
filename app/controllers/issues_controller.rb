@@ -18,6 +18,7 @@ class IssuesController < ApplicationController
   def show
     @issue = Issue.find(params[:id])
     @comment = @issue.comments.new
+    @todo_item = @issue.todo_items.new
   end
 
   def destroy

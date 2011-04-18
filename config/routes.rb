@@ -9,6 +9,7 @@ Blumine::Application.routes.draw do
 
   resources :issues do
     resources :comments
+    resources :todo_items
   end
 
   root :to => "pages#index"

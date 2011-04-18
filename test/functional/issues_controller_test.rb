@@ -33,6 +33,8 @@ class IssuesControllerTest < ActionController::TestCase
     assert_response :success
 
     assert assigns(:issue)
+    assert assigns(:comment)
+    assert assigns(:todo_item)
   end
 
   test "should get destroy" do

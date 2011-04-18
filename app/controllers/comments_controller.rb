@@ -7,7 +7,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @issue
     else
-      # create comment failed !
+      # TODO: create comment failed !
+      redirect_to root_path
     end
   end
 

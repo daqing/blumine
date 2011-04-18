@@ -1,6 +1,14 @@
 <h2><%= @issue.title %></h2>
 <p><%=raw parse_markdown @issue.content %></p>
 
+<div class="bar"><h3>Todo</h3></div>
+<%= render @issue.todo_items %>
+
+<%= form_for [@issue, @todo_item] do |f| %>
+  <%= f.text_area :content, :style => "height: 2em;" %>
+  <%= f.submit "添加Todo" %>
+<% end %>
+
 <div class="bar"><h3>评论</h3></div>
 <%= render @issue.comments %>
 

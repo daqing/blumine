@@ -22,3 +22,20 @@
   <%= f.submit "发表评论" %>
 <% end %>
 
+<script type="text/javascript">
+  $("input[type=checkbox]").live('change', function() {
+      var item_id = $(this).attr('data-id');
+      var input = $(this);
+      if (input.is(":checked")) {
+        // from 'unchecked' to 'checked', mark item as done
+        $.get('/todo_items/' + item_id + '/do_it', {}, function() {
+          input.next().removeClass('todo_new').addClass('todo_done');
+        });
+      } else {
+        // uncheck this item, mark as 'new'
+        $.get('/todo_items/' + item_id + '/undo', {}, function() {
+          input.next().removeClass('todo_done').addClass('todo_new');
+        });
+      }
+  });
+</script>

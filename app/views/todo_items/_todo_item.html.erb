@@ -1,3 +1,12 @@
 <div class="row">
-<input type="checkbox"><%= todo_item.content %></input>
+  <% if todo_item.done? %>
+    <input type="checkbox" checked="true" data-id="<%= todo_item.id %>">
+      <span class="todo_done"><%= todo_item.content %></span>
+    </input>
+  <% else %>
+    <input type="checkbox" data-id="<%= todo_item.id %>">
+      <span class="todo_new"><%= todo_item.content %></span>
+    </input>
+  <% end %>
 </div>
+

@@ -42,3 +42,9 @@ div.bar {
 div.row p {
   text-indent: 1em;
 }
+
+.todo_done {
+  color: #999;
+  text-decoration: line-through;
+}
+

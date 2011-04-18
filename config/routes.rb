@@ -12,6 +12,13 @@ Blumine::Application.routes.draw do
     resources :todo_items
   end
 
+  resources :todo_items do
+    member do
+      get 'do_it'
+      get 'undo'
+    end
+  end
+
   root :to => "pages#index"
 
   # The priority is based upon order of creation:

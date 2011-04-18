@@ -15,6 +15,20 @@ class TodoItemsController < ApplicationController
     end
   end
 
+  def do_it
+    @todo_item = TodoItem.find(params[:id])
+    @todo_item.do_it!
+
+    render :nothing => true
+  end
+
+  def undo
+    @todo_item = TodoItem.find(params[:id])
+    @todo_item.undo!
+
+    render :nothing => true
+  end
+
   def destroy
   end
 

@@ -1,12 +1,14 @@
 <div class="row">
   <% if todo_item.done? %>
     <input type="checkbox" checked="true" data-id="<%= todo_item.id %>">
-      <span class="todo_done"><%= todo_item.content %></span>
-    </input>
+    <span class="todo_done">
   <% else %>
     <input type="checkbox" data-id="<%= todo_item.id %>">
-      <span class="todo_new"><%= todo_item.content %></span>
-    </input>
+    <span class="todo_new">
   <% end %>
+  <%= todo_item.content %>
+  </span>
+  <%= link_to '删除', todo_item, :class => "delete_todo hide", :method => :delete, :remote => true, :confirm => '真的要删除吗?' %>
+  </input>
 </div>
 

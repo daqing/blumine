@@ -39,6 +39,10 @@ div.bar {
   background-color: #E5ECF9;
 }
 
+div.row {
+  padding: 5px 0;
+}
+
 div.row p {
   text-indent: 1em;
 }

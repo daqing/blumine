@@ -4,7 +4,7 @@
 <div class="bar"><h3>Todo</h3></div>
 <%= render @issue.todo_items %>
 
-<%= form_for [@issue, @todo_item] do |f| %>
+<%= form_for [@issue, @todo_item], :remote => true do |f| %>
   <%= f.text_area :content, :style => "height: 2em;" %>
   <%= f.submit "添加Todo" %>
 <% end %>

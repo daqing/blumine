@@ -35,12 +35,12 @@
         var input = $(this);
         if (input.is(":checked")) {
           // from 'unchecked' to 'checked', mark item as done
-          $.get('/todo_items/' + item_id + '/do_it', {}, function() {
+          $.post('/todo_items/' + item_id + '/change_state', {event: "do_it"}, function() {
             input.next().removeClass('todo_new').addClass('todo_done');
           });
         } else {
           // uncheck this item, mark as 'new'
-          $.get('/todo_items/' + item_id + '/undo', {}, function() {
+          $.post('/todo_items/' + item_id + '/change_state', {event: "undo"}, function() {
             input.next().removeClass('todo_done').addClass('todo_new');
           });
         }
@@ -57,12 +57,5 @@
     $(".delete_todo").bind('ajax:success', function() {
         $(this).parent('div').slideUp();
     });
-
-//    $("#save_state").click(function() {
-//      var action = $("#issue_state").val();
-//      $.get("/issues/<%= @issue.id %>/change_state/" + action, {}, function(result) {
-//        location.reload();
-//      });
-//    });
   });
 </script>

@@ -18,12 +18,23 @@ class TodoItemsController < ApplicationController
     end
   end
 
-  def do_it
-    workflow_action "do_it"
-  end
-
-  def undo
-    workflow_action "undo"
+  def change_state
+    event_action = params[:event] + '!'
+    respond_to do |format|
+      if @todo_item.respond_to? event_action
+        begin
+          @todo_item.send(event_action)
+          format.html { redirect_to [@todo_item.issue.project, @todo_item.issue] }
+          format.js { render :nothing => true }
+        rescue
+          format.html { redirect_to root_path }
+          format.js { render :text => "EXCEPTION", :status => 500 }
+        end
+      else
+        format.html { redirect_to root_path }
+        format.js { render :text => "ERROR", :status => 500 }
+      end
+    end
   end
 
   def destroy
@@ -41,18 +52,5 @@ class TodoItemsController < ApplicationController
   private
     def find_todo_item
       @todo_item = TodoItem.find(params[:id])
-    end
-
-    def workflow_action(action)
-      respond_to do |format|
-        begin
-          @todo_item.send(action + '!')
-          format.html { redirect_to [@todo_item.issue.project, @todo_item.issue] }
-          format.js { render :nothing => true }
-        rescue Workflow::NoTransitionAllowed => e
-          format.html { redirect_to root_path }
-          format.js { render :text => e.message, :status => 500 }
-        end
-      end
     end
 end

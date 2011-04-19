@@ -18,8 +18,7 @@ Blumine::Application.routes.draw do
 
   resources :todo_items do
     member do
-      get 'do_it'
-      get 'undo'
+      post :change_state
     end
   end
 

@@ -15,12 +15,12 @@ class TodoItem < ActiveRecord::Base
   include Workflow
 
   workflow do
-    state :new do
-      event :do_it, :transitions_to => :done
+    state :open do
+      event :finish, :transitions_to => :done
     end
 
     state :done do
-      event :undo, :transitions_to => :new
+      event :undo, :transitions_to => :open
     end
   end
 

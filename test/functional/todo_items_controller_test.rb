@@ -24,17 +24,17 @@ class TodoItemsControllerTest < ActionController::TestCase
   end
 
   test "should mark as done" do
-    xhr :post, :change_state, :event => "do_it", :id => @todo.id
+    xhr :post, :change_state, :event => "finish", :id => @todo.id
     assert_response :success
     assert_equal :done, assigns(:todo_item).current_state.name
   end
 
   test "should mark as new" do
-    @todo.do_it! if @todo.new?
+    @todo.finish! if @todo.open?
 
     xhr :post, :change_state, :event => "undo", :id => @todo.id
     assert_response :success
-    assert_equal :new, assigns(:todo_item).current_state.name
+    assert_equal :open, assigns(:todo_item).current_state.name
   end
 
   test "should destroy todo via xhr" do

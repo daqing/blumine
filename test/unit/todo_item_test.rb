@@ -16,13 +16,13 @@ class TodoItemTest < ActiveSupport::TestCase
   end
 
   test "should define workflow" do
-    assert_equal :new, @todo.current_state.name
-    assert @todo.respond_to? :do_it!
-    @todo.do_it!
+    assert_equal :open, @todo.current_state.name
+    assert @todo.respond_to? :finish!
+    @todo.finish!
     assert_equal :done, @todo.current_state.name
 
     assert @todo.respond_to? :undo!
     @todo.undo!
-    assert_equal :new, @todo.current_state.name
+    assert_equal :open, @todo.current_state.name
   end
 end

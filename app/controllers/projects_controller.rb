@@ -3,12 +3,12 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
-    breadcrumbs.add 'Projects'
+    breadcrumbs.add '所有项目'
   end
 
   def show
     @project = Project.find(params[:id])
-    breadcrumbs.add 'Projects', projects_path
+    breadcrumbs.add '所有项目', projects_path
     breadcrumbs.add @project.name
   end
 

@@ -20,6 +20,7 @@
       <div class="span-6 links">
         <%= link_to "首页", root_path %>
         <% if current_user %>
+          <%= link_to "所有项目", projects_path %>
           <%= link_to current_user.name, current_user %>
           <%= link_to "退出", logout_path %>
         <% else %>

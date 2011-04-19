@@ -1,1 +1,5 @@
 <%= render @projects %>
+
+<% content_for :sidebar do %>
+  <%= link_to "创建新项目", new_project_path %>
+<% end %>

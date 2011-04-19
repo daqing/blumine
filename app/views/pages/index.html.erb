@@ -1,14 +1,5 @@
 <% if current_user %>
-  <% if @projects.any? %>
-    <%= render @projects %>
-  <% else %>
-    <p>还没有管理任何项目</p>
-  <% end %>
-
-  <% content_for :sidebar do %>
-    <%= link_to "创建新项目", new_project_path %>
-  <% end %>
-
+  <%= render 'site_feed' %>
 <% else %>
   <h2>welcome!</h2>
 <% end %>

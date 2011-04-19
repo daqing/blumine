@@ -17,6 +17,10 @@ class IssuesController < ApplicationController
 
   def show
     @issue = Issue.find(params[:id])
+    breadcrumbs.add 'Projects', projects_path
+    breadcrumbs.add @issue.project.name, project_path(@issue.project)
+    breadcrumbs.add @issue.title
+
     @comment = @issue.comments.new
     @todo_item = @issue.todo_items.new
   end

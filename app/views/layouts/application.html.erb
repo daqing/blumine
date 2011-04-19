@@ -31,6 +31,10 @@
   </div>
 
   <div class="container">
+    <div class="span-24">
+      <%= breadcrumbs.render(:format => :inline) if breadcrumbs.items.length > 1 %>
+    </div>
+
     <% [:notice, :error].each do |type| %>
       <% if flash[type] %>
         <div class="<%= type %>"><%= flash[type] %></div>

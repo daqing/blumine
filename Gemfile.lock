@@ -33,6 +33,8 @@ GEM
     arel (2.0.9)
     authlogic (2.1.6)
       activesupport
+    breadcrumbs (0.1.6)
+      i18n
     builder (2.1.2)
     columnize (0.3.2)
     erubis (2.6.6)
@@ -88,6 +90,7 @@ DEPENDENCIES
   RedCloth
   annotate-models
   authlogic
+  breadcrumbs
   jquery-rails (>= 0.2.6)
   rails (= 3.0.6)
   rdiscount

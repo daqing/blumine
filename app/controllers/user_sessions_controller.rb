@@ -3,6 +3,7 @@ class UserSessionsController < ApplicationController
   # GET /user_sessions/new.xml
   def new
     @user_session = UserSession.new
+    breadcrumbs.add '登录'
 
     respond_to do |format|
       format.html # new.html.erb

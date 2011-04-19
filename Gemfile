@@ -10,6 +10,7 @@ gem 'authlogic'
 gem 'workflow'
 gem 'rdiscount'
 gem 'jquery-rails', '>= 0.2.6'
+gem 'breadcrumbs'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -24,4 +24,11 @@ class ProjectsControllerTest < ActionController::TestCase
     get :show, :id => projects(:one).id
     assert_response :success
   end
+
+  test "should get index" do
+    get :index
+
+    assert_response :success
+    assert assigns(:projects)
+  end
 end

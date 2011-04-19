@@ -1,6 +1,13 @@
 class ProjectsController < ApplicationController
+  def index
+    @projects = Project.all
+    breadcrumbs.add 'Projects'
+  end
+
   def show
     @project = Project.find(params[:id])
+    breadcrumbs.add 'Projects', projects_path
+    breadcrumbs.add @project.name
   end
 
   def new

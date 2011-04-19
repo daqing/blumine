@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
+    breadcrumbs.add '注册'
   end
 
   def create
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    breadcrumbs.add @user.name
   end
 
 end

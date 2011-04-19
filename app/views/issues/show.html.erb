@@ -9,9 +9,13 @@
   <%= f.submit "添加Todo" %>
 <% end %>
 
-<div class="bar"><h3>评论</h3></div>
+<div class="bar"><h3>当前讨论</h3></div>
 <div id="issue_comments">
-  <%= render @issue.comments %>
+  <% if @issue.comments.any? %>
+    <%= render @issue.comments %>
+  <% else %>
+    暂时还没有任何讨论。
+  <% end %>
 </div>
 
 <hr>
@@ -19,7 +23,7 @@
   <div class="field">
     <%= f.text_area :content, :style => "height: 10em" %>
   </div>
-  <%= f.submit "发表评论" %>
+  <%= f.submit "参与讨论" %>
 <% end %>
 
 <script type="text/javascript">
@@ -48,6 +52,6 @@
   });
 
   $(".delete_todo").bind('ajax:success', function() {
-      $(this).parent('div').remove();
+      $(this).parent('div').slideUp();
     });
 </script>

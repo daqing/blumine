@@ -63,9 +63,15 @@ a.action, a.action:active, a.action:visited {
   color: #577DE4;
   text-decoration: none;
 }
+
 a.action:hover {
   background-color: #577DE4;
   color: #FFF !important;
   text-decoration: none;
+}
+
+div.spacer {
+  border-bottom: 1px dashed #CCC;
+  clear: both;
 }
 

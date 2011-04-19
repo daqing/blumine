@@ -11,7 +11,7 @@
 
 <div class="bar"><h3>当前讨论</h3></div>
 <div id="issue_comments">
-  <%= render @issue.comments %>
+  <%= render :partial => "comments/comment", :collection => @issue.comments, :spacer_template => "shared/spacer" %>
 </div>
 
 <hr>

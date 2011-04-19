@@ -1,4 +1,5 @@
 class TodoItemsController < ApplicationController
+  before_filter :must_login_first
   before_filter :find_todo_item, :except => :create
 
   def create

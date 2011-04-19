@@ -4,16 +4,23 @@ class TodoItemsControllerTest < ActionController::TestCase
   setup do
     @issue = issues(:bug_report)
     @todo = todo_items(:first_todo)
+    ensure_logged_in
   end
 
   test "should create todo" do
     assert_difference('TodoItem.count') do
-      post :create, :issue_id => @issue.id, :todo_item => { :content => @todo.content }
+      create_todo_item
     end
 
     assert assigns(:issue)
     assert assigns(:project)
     assert_redirected_to project_issue_path(assigns(:project), assigns(:issue))
+  end
+
+  test "should not create todo if not logged in" do
+    logout
+    create_todo_item
+    assert_redirected_to login_path
   end
 
   test "should mark as done" do
@@ -45,4 +52,9 @@ class TodoItemsControllerTest < ActionController::TestCase
     assert assigns(:todo_item)
     assert_redirected_to [assigns(:todo_item).issue.project, assigns(:todo_item).issue]
   end
+
+  private
+    def create_todo_item
+      post :create, :issue_id => @issue.id, :todo_item => { :content => @todo.content }
+    end
 end

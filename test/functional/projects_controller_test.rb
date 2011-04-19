@@ -14,14 +14,14 @@ class ProjectsControllerTest < ActionController::TestCase
 
   test "should create project" do
     assert_difference('Project.count') do
-      post :create, :project => {:name => "demo project"}
+      create_project
     end
 
     assert_redirected_to project_path(assigns(:project))
   end
 
   test "should get show" do
-    get :show, :id => projects(:one).id
+    get :show, :id => projects(:blumine).id
     assert_response :success
   end
 
@@ -31,4 +31,22 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:projects)
   end
+
+  test "should redirect to login path if get index" do
+    logout
+    get :index
+
+    assert_redirected_to login_path
+  end
+
+  test "should not create project if not logged in" do
+    logout
+    create_project
+    assert_redirected_to login_path
+  end
+
+  private
+    def create_project
+      post :create, :project => {:name => "demo project"}
+    end
 end

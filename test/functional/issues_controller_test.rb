@@ -21,11 +21,24 @@ class IssuesControllerTest < ActionController::TestCase
 
   test "should create issue" do
     assert_difference('Issue.count') do
-      post :create, :project_id => @project.id, :issue => {:title => "test", :content => "foobar"}
+      create_issue
     end
 
     assert_redirected_to project_issue_path(assigns(:project), assigns(:issue))
     assert_equal assigns(:issue).user_id, current_user.id
+  end
+
+  test "should not create issue if logged out" do
+    logout
+    create_issue
+    assert_redirected_to login_path
+  end
+
+  test "should not show issue" do
+    logout
+    get :show, :project_id => @project.id, :id => @issue.id
+
+    assert_redirected_to login_path
   end
 
   test "should get show" do
@@ -39,5 +52,10 @@ class IssuesControllerTest < ActionController::TestCase
 
   test "should get destroy" do
   end
+
+  private
+    def create_issue
+      post :create, :project_id => @project.id, :issue => {:title => "test", :content => "foobar"}
+    end
 
 end

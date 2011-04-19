@@ -11,10 +11,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     get "/users/new"
     assert_response :success
 
-    post "/users", :user => {:name => "foobar",
-      :email => "foobar@demo.com", :password => "help",
-      :password_confirmation => "help"}
-
+    register_as_foobar
     assert_redirected_to root_path
     follow_redirect!
 
@@ -29,7 +26,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     get "/login"
     assert_response :success
 
-    post "/user_sessions", :user_session => {:email => "foobar@demo.com", :password => "help"}
+    auth_as_foobar
     assert_redirected_to root_path
   end
 end

@@ -16,7 +16,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 bug_report:
-  project: one
+  project: blumine
   user: daqing
   title: "This is a bug"
   content: "Please fix this as soon as possible!"

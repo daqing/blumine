@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_filter :must_login_first, :only => :show
+  before_filter :must_not_logged_in, :only => [:new, :create]
+
   def new
     @user = User.new
     breadcrumbs.add '注册'

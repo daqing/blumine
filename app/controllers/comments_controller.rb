@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_filter :must_login_first
+
   def create
     @issue = Issue.find(params[:issue_id])
     @comment = @issue.comments.new(params[:comment])
@@ -6,7 +8,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @issue }
+        format.html { redirect_to [@issue.project, @issue] }
         format.js
       else
         format.html { redirect_to root_path }

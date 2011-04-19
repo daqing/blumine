@@ -11,6 +11,12 @@ class UsersControllerTest < ActionController::TestCase
     assert assigns(:user)
   end
 
+  test "should redirect to root path if already logged in" do
+    ensure_logged_in
+    get :new
+    assert_redirected_to root_path
+  end
+
   test "should recognize new_user_path" do
     assert_routing new_user_path, :controller => "users", :action => "new"
   end
@@ -26,9 +32,16 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
+    ensure_logged_in
     get :show, :id => users(:daqing).id
 
     assert_response :success
     assert assigns(:user)
+  end
+
+  test "should redirect to login path when not logged in" do
+    get :show, :id => users(:daqing).id
+
+    assert_redirected_to login_path
   end
 end

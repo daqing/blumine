@@ -1,6 +1,7 @@
 class UserSessionsController < ApplicationController
-  # GET /user_sessions/new
-  # GET /user_sessions/new.xml
+  before_filter :must_not_logged_in, :only => [:new, :create]
+  before_filter :must_be_logged_in, :only => :destroy
+
   def new
     @user_session = UserSession.new
     breadcrumbs.add '登录'
@@ -11,14 +12,12 @@ class UserSessionsController < ApplicationController
     end
   end
 
-  # POST /user_sessions
-  # POST /user_sessions.xml
   def create
     @user_session = UserSession.new(params[:user_session])
 
     respond_to do |format|
       if @user_session.save
-        format.html { redirect_to root_path }
+        format.html { redirect_back_or root_path }
         format.xml  { render :xml => @user_session, :status => :created, :location => root_path }
       else
         format.html { render :action => "new" }
@@ -27,8 +26,6 @@ class UserSessionsController < ApplicationController
     end
   end
 
-  # DELETE /user_sessions/1
-  # DELETE /user_sessions/1.xml
   def destroy
     @user_session = UserSession.find
     @user_session.destroy

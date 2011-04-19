@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_filter :must_login_first
+
   def index
     @projects = Project.all
     breadcrumbs.add 'Projects'

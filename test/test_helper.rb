@@ -17,4 +17,20 @@ class ActiveSupport::TestCase
     activate_authlogic
     UserSession.create(users(:daqing))
   end
+
+  def logout
+    activate_authlogic
+    UserSession.find.destroy
+  end
+
+  def register_as_foobar
+    post "/users", :user => {:name => "foobar",
+      :email => "foobar@demo.com", :password => "help",
+      :password_confirmation => "help"}
+  end
+
+  def auth_as_foobar
+    post "/user_sessions", :user_session => {:email => "foobar@demo.com", :password => "help"}
+  end
+
 end

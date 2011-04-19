@@ -1,4 +1,6 @@
 class IssuesController < ApplicationController
+  before_filter :must_login_first
+
   def new
     @project = Project.find(params[:project_id])
     @issue = @project.issues.new

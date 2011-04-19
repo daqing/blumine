@@ -12,10 +12,7 @@
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: demo
+blumine:
+  name: blumine
   user: daqing
 
-two:
-  name: foo
-  user: daqing

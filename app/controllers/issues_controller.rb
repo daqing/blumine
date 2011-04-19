@@ -38,7 +38,7 @@ class IssuesController < ApplicationController
         begin
           @issue.send(event_action)
           format.html { redirect_to [@issue.project, @issue] }
-          format.js { render :nothing => true }
+          format.js { render :layout => false }
         rescue
           format.html { redirect_to root_path }
           format.js { render :text => "ERROR", :status => 500 }

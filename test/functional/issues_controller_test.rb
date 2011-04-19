@@ -51,7 +51,7 @@ class IssuesControllerTest < ActionController::TestCase
   end
 
   test "should change workflow state" do
-    xhr :get, :change_state, :event => :mark_invalid, :id => @issue.id
+    xhr :post, :change_state, :event => :mark_invalid, :id => @issue.id
     assert_response :success
     assert_equal :invalid, assigns(:issue).current_state.name
   end

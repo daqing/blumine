@@ -1,4 +1,10 @@
-<strong>当前状态</strong><span class="state state-<%= @issue.current_state.name.to_s %>"><%= @issue.state_name %></span>
-<%= select_tag :issue_state, 
-  options_for_select(@issue.current_state.events.keys.collect { |key| [@issue.event_name(key), key.to_s] }) %>
-<button id="save_state">保存</button>
+<strong>当前状态</strong><span class="state state-<%= issue.current_state.name.to_s %>"><%= issue.state_name %></span>
+<% keys = issue.current_state.events.keys %>
+<% if keys.length == 1 %>
+  <%= link_to issue.event_name(keys.first), change_state_issue_path(issue, :event => keys.first.to_s), :remote => true, :method => :post %>
+<% else %>
+  <%= form_for :issue, :url => change_state_issue_path(issue), :remote => true do |f| %>
+    <%= select_tag :event, options_for_select(keys.collect { |key| [issue.event_name(key), key.to_s] }) %>
+    <%= f.submit "执行" %>
+  <% end %>
+<% end %>

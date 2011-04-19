@@ -58,11 +58,11 @@
         $(this).parent('div').slideUp();
     });
 
-    $("#save_state").click(function() {
-      var action = $("#issue_state").val();
-      $.get("/issues/<%= @issue.id %>/change_state/" + action, {}, function(result) {
-        location.reload();
-      });
-    });
+//    $("#save_state").click(function() {
+//      var action = $("#issue_state").val();
+//      $.get("/issues/<%= @issue.id %>/change_state/" + action, {}, function(result) {
+//        location.reload();
+//      });
+//    });
   });
 </script>

@@ -12,7 +12,7 @@ Blumine::Application.routes.draw do
     resources :todo_items
 
     member do
-      match 'change_state/:event' => 'issues#change_state', :via => :get
+      post 'change_state'
     end
   end
 

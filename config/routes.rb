@@ -10,6 +10,10 @@ Blumine::Application.routes.draw do
   resources :issues do
     resources :comments
     resources :todo_items
+
+    member do
+      match 'change_state/:event' => 'issues#change_state', :via => :get
+    end
   end
 
   resources :todo_items do

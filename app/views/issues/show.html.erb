@@ -1,3 +1,9 @@
+<% content_for :sidebar do %>
+  <div class="box" id="issue_workflow_box">
+    <%= render 'shared/issue_workflow', :issue => @issue %>
+  </div>
+<% end %>
+
 <h2><%= @issue.title %></h2>
 <p><%=raw parse_markdown @issue.content %></p>
 
@@ -23,31 +29,40 @@
 <% end %>
 
 <script type="text/javascript">
-  $("input[type=checkbox]").live('change', function() {
-      var item_id = $(this).attr('data-id');
-      var input = $(this);
-      if (input.is(":checked")) {
-        // from 'unchecked' to 'checked', mark item as done
-        $.get('/todo_items/' + item_id + '/do_it', {}, function() {
-          input.next().removeClass('todo_new').addClass('todo_done');
-        });
-      } else {
-        // uncheck this item, mark as 'new'
-        $.get('/todo_items/' + item_id + '/undo', {}, function() {
-          input.next().removeClass('todo_done').addClass('todo_new');
-        });
-      }
-  });
-
-  $("div.row").live('hover', function(ev) {
-    if (ev.type == "mouseenter") {
-      $(this).children('a.delete_todo').removeClass('hide');
-    } else if (ev.type == "mouseleave") {
-      $(this).children('a.delete_todo').addClass('hide');
-    }
-  });
-
-  $(".delete_todo").bind('ajax:success', function() {
-      $(this).parent('div').slideUp();
+  $(document).ready(function() {
+    $("input[type=checkbox]").live('change', function() {
+        var item_id = $(this).attr('data-id');
+        var input = $(this);
+        if (input.is(":checked")) {
+          // from 'unchecked' to 'checked', mark item as done
+          $.get('/todo_items/' + item_id + '/do_it', {}, function() {
+            input.next().removeClass('todo_new').addClass('todo_done');
+          });
+        } else {
+          // uncheck this item, mark as 'new'
+          $.get('/todo_items/' + item_id + '/undo', {}, function() {
+            input.next().removeClass('todo_done').addClass('todo_new');
+          });
+        }
     });
+
+    $("div.row").live('hover', function(ev) {
+      if (ev.type == "mouseenter") {
+        $(this).children('a.delete_todo').removeClass('hide');
+      } else if (ev.type == "mouseleave") {
+        $(this).children('a.delete_todo').addClass('hide');
+      }
+    });
+
+    $(".delete_todo").bind('ajax:success', function() {
+        $(this).parent('div').slideUp();
+    });
+
+    $("#save_state").click(function() {
+      var action = $("#issue_state").val();
+      $.get("/issues/<%= @issue.id %>/change_state/" + action, {}, function(result) {
+        location.reload();
+      });
+    });
+  });
 </script>

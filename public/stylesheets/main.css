@@ -75,3 +75,22 @@ div.spacer {
   clear: both;
 }
 
+.state {
+  font-size: 0.8em;
+  padding: 4px 7px;
+  color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.state-open { background-color: blue; }
+.state-invalid { background-color: gray; }
+.state-reopened { background-color: red; }
+.state-working_on { background-color: #6CC644; }
+.state-done { background-color: purple; }
+.state-closed { background-color: green; }
+

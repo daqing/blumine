@@ -19,8 +19,4 @@ class IssueTest < ActiveSupport::TestCase
 
     assert @issue.save
   end
-
-  test "initial state of issue" do
-    assert @issue.new?
-  end
 end

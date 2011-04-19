@@ -1,0 +1,4 @@
+<strong>当前状态</strong><span class="state state-<%= @issue.current_state.name.to_s %>"><%= @issue.state_name %></span>
+<%= select_tag :issue_state, 
+  options_for_select(@issue.current_state.events.keys.collect { |key| [@issue.event_name(key), key.to_s] }) %>
+<button id="save_state">保存</button>

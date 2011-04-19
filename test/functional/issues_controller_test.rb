@@ -50,7 +50,10 @@ class IssuesControllerTest < ActionController::TestCase
     assert assigns(:todo_item)
   end
 
-  test "should get destroy" do
+  test "should change workflow state" do
+    xhr :get, :change_state, :event => :mark_invalid, :id => @issue.id
+    assert_response :success
+    assert_equal :invalid, assigns(:issue).current_state.name
   end
 
   private

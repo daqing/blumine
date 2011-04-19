@@ -11,11 +11,7 @@
 
 <div class="bar"><h3>当前讨论</h3></div>
 <div id="issue_comments">
-  <% if @issue.comments.any? %>
-    <%= render @issue.comments %>
-  <% else %>
-    暂时还没有任何讨论。
-  <% end %>
+  <%= render @issue.comments %>
 </div>
 
 <hr>

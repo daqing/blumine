@@ -90,7 +90,7 @@ div.spacer {
 .state-open { background-color: blue; }
 .state-invalid { background-color: gray; }
 .state-reopened { background-color: red; }
-.state-working_on { background-color: #6CC644; }
+.state-working_on { background-color: orange; }
 .state-done { background-color: purple; }
-.state-closed { background-color: green; }
+.state-ignored, .state-closed { background-color: #6CC644; }
 

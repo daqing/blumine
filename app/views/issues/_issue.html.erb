@@ -1,1 +1,1 @@
-<li><%= link_to issue.title, [project, issue] %></li>
+<li><%= link_to issue.title, [project, issue] %><span class="state state-<%= issue.current_state.name.to_s %>"><%= issue.state_name %></span></li>

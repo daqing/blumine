@@ -18,3 +18,7 @@ need_fix:
   user: daqing
   content: "This needs to be fixed"
 
+two:
+  issue: bug_report
+  user: daqing
+  content: "another comment"

@@ -21,6 +21,20 @@ class CommentsControllerTest < ActionController::TestCase
     assert_redirected_to login_path
   end
 
+  test "should edit comment" do
+    get :edit, :id => comments(:need_fix).id
+
+    assert_response :success
+  end
+
+  test "should update comment" do
+    post :update, :id => comments(:need_fix).id, :comment => {:content => comments(:two).content}
+
+    assert assigns(:comment)
+    assert_redirected_to assigns(:comment).issue
+    assert_equal comments(:two).content, assigns(:comment).content
+  end
+
   private
     def create_comment
       post :create, :issue_id => @issue.id, :comment => {:content => "foobar"}

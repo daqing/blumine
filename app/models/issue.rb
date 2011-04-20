@@ -32,6 +32,7 @@ class Issue < ActiveRecord::Base
     :ignore => "不需要解决",
     :mark_done => "标记为已解决",
     :reopen => "重新开放",
+    :continue => "继续解决",
     :close => "关闭"
   }
 
@@ -47,6 +48,7 @@ class Issue < ActiveRecord::Base
     end
 
     state :done do
+      event :continue, :transitions_to => :working_on
       event :close, :transitions_to => :closed
     end
 

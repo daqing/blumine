@@ -29,16 +29,17 @@
   </div>
 </div>
 
-
-<h1 class="silver">当前讨论</h1>
+<div class="text_large" style="color: green; text-align: center; margin-top: 15px;">当前讨论</div>
 <div id="issue_comments">
   <%= render @issue.comments %>
 </div>
 
+<div class="row">
 <%= form_for [@issue, @comment], :remote => true do |f| %>
   <%= f.text_area :content, :style => "height: 10em" %><br />
   <%= f.submit "参与讨论" %>
 <% end %>
+</div>
 
 <script type="text/javascript">
   $(document).ready(function() {

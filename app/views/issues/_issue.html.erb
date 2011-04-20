@@ -1,5 +1,5 @@
 <div class="row bg_highlight">
   <span class="span-4"><%= link_to issue.title, issue %></span>
   <span class="span-4"><%= link_to issue.user.name, issue.user %></span>
-  <span class="state state-<%= issue.current_state.name.to_s %>"><%= issue.state_name %></span>
+  <span class="radius-5 state state-<%= issue.current_state.name.to_s %>"><%= issue.state_name %></span>
 </div>

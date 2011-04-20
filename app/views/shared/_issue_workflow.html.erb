@@ -1,6 +1,6 @@
 <div class="blue_bar">
   <strong>当前状态</strong>
-  <span class="state state-<%= issue.current_state.name.to_s %>"><%= issue.state_name %></span>
+  <span class="radius-5 state state-<%= issue.current_state.name.to_s %>"><%= issue.state_name %></span>
 </div>
 <% keys = issue.current_state.events.keys %>
 <div class="row">

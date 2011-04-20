@@ -160,6 +160,7 @@ div.btn_2_i a:hover {
 .b-box {
   border: 1px solid #E0E0E0;
   padding-bottom: 5px;
+  margin: 0 15px;
 }
 
 .inline { display: inline; }

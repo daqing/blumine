@@ -24,7 +24,7 @@ class IssuesControllerTest < ActionController::TestCase
       create_issue
     end
 
-    assert_redirected_to project_issue_path(assigns(:project), assigns(:issue))
+    assert_redirected_to assigns(:issue)
     assert_equal assigns(:issue).user_id, current_user.id
   end
 
@@ -34,7 +34,7 @@ class IssuesControllerTest < ActionController::TestCase
     assert_redirected_to login_path
   end
 
-  test "should not show issue" do
+  test "should not show issue if logged out" do
     logout
     get :show, :project_id => @project.id, :id => @issue.id
 
@@ -42,7 +42,7 @@ class IssuesControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    get :show, :project_id => @project.id, :id => @issue.id
+    get :show, :id => @issue.id
     assert_response :success
 
     assert assigns(:issue)

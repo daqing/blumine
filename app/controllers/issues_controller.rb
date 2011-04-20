@@ -11,7 +11,7 @@ class IssuesController < ApplicationController
     @issue = @project.issues.new(params[:issue])
     @issue.user = current_user 
     if @issue.save
-      redirect_to [@project, @issue]
+      redirect_to @issue
     else
       render :new
     end

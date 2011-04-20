@@ -4,15 +4,14 @@ class TodoItemsController < ApplicationController
 
   def create
     @issue = Issue.find(params[:issue_id])
-    @project = @issue.project
     @todo_item = @issue.todo_items.new(params[:todo_item])
 
     respond_to do |format|
       if @todo_item.save
-        format.html { redirect_to [@project, @issue] }
+        format.html { redirect_to @issue }
         format.js
       else
-        format.html { redirect_to [@project, @issue] }
+        format.html { redirect_to @issue }
         format.js { render :nothing => true }
       end
     end
@@ -24,7 +23,7 @@ class TodoItemsController < ApplicationController
       if @todo_item.respond_to? event_action
         begin
           @todo_item.send(event_action)
-          format.html { redirect_to [@todo_item.issue.project, @todo_item.issue] }
+          format.html { redirect_to @todo_item.issue }
           format.js { render :nothing => true }
         rescue
           format.html { redirect_to root_path }
@@ -40,7 +39,7 @@ class TodoItemsController < ApplicationController
   def destroy
     respond_to do |format|
       if @todo_item.destroy
-        format.html { redirect_to [@todo_item.issue.project, @todo_item.issue] }
+        format.html { redirect_to @todo_item.issue }
         format.js { render :nothing => true }
       else
         format.html { redirect_to root_path }

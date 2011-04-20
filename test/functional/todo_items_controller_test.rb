@@ -13,8 +13,7 @@ class TodoItemsControllerTest < ActionController::TestCase
     end
 
     assert assigns(:issue)
-    assert assigns(:project)
-    assert_redirected_to project_issue_path(assigns(:project), assigns(:issue))
+    assert_redirected_to assigns(:issue)
   end
 
   test "should not create todo if not logged in" do
@@ -50,7 +49,7 @@ class TodoItemsControllerTest < ActionController::TestCase
     end
 
     assert assigns(:todo_item)
-    assert_redirected_to [assigns(:todo_item).issue.project, assigns(:todo_item).issue]
+    assert_redirected_to assigns(:todo_item).issue
   end
 
   private

@@ -12,7 +12,7 @@ class CommentsControllerTest < ActionController::TestCase
     end
 
     assert assigns(:issue)
-    assert_redirected_to project_issue_path(assigns(:issue).project, assigns(:issue))
+    assert_redirected_to assigns(:issue)
   end
 
   test "should not create comment if not logged in" do

@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to [@issue.project, @issue] }
+        format.html { redirect_to @issue }
         format.js
       else
         format.html { redirect_to root_path }

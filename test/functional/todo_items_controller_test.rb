@@ -52,6 +52,9 @@ class TodoItemsControllerTest < ActionController::TestCase
     assert_redirected_to assigns(:todo_item).issue
   end
 
+  test "should support sorting" do
+  end
+
   private
     def create_todo_item
       post :create, :issue_id => @issue.id, :todo_item => { :content => @todo.content }

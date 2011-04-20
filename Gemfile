@@ -11,6 +11,7 @@ gem 'workflow'
 gem 'rdiscount'
 gem 'jquery-rails', '>= 0.2.6'
 gem 'breadcrumbs'
+gem 'acts_as_list'
 
 # Use unicorn as the web server
 # gem 'unicorn'

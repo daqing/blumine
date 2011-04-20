@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110418131302
+# Schema version: 20110420150709
 #
 # Table name: todo_items
 #
@@ -9,6 +9,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  workflow_state :string(255)
+#  position       :integer
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
@@ -16,5 +17,4 @@
 first_todo:
   issue: bug_report
   content: "First to fix"
-  workflow_state: "new"
 

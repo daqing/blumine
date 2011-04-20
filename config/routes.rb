@@ -20,6 +20,10 @@ Blumine::Application.routes.draw do
     member do
       post :change_state
     end
+
+    collection do
+      post :sort
+    end
   end
 
   root :to => "pages#index"

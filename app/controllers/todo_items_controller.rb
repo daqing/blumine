@@ -1,6 +1,6 @@
 class TodoItemsController < ApplicationController
   before_filter :must_login_first
-  before_filter :find_todo_item, :except => :create
+  before_filter :find_todo_item, :only => [:change_state, :destroy]
 
   def create
     @issue = Issue.find(params[:issue_id])
@@ -45,6 +45,16 @@ class TodoItemsController < ApplicationController
         format.html { redirect_to root_path }
         format.js { render :text => "Error", :status => 500 }
       end
+    end
+  end
+
+  def sort
+    params[:todo].each_with_index do |id, pos|
+      TodoItem.update_all(['position=?', pos + 1], ['id=?', id])
+    end
+
+    respond_to do |format|
+      format.js { render :nothing => true }
     end
   end
 

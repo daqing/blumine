@@ -17,7 +17,7 @@
 <br /><br />
 <%=raw parse_markdown @issue.content %>
 
-<div class="b-box">
+<div class="b-box" id="todo_list_box">
   <div class="gray_bar">Todo</div>
   <%= render @issue.todo_items %>
 
@@ -70,6 +70,18 @@
 
     $(".delete_todo").bind('ajax:success', function() {
         $(this).parent('div').slideUp();
+    });
+
+    $("#todo_list_box").sortable({
+         axis: 'y',
+         dropOnEmpty: false,
+         cursor: 'crosshair',
+         items: 'div.bg_highlight',
+         opacity: 0.6,
+         scroll: true, 
+         update: function(event, ui) {
+            $.post("/todo_items/sort", $("#todo_list_box").sortable('serialize'), function(result) {}, 'script');
+         }
     });
   });
 </script>

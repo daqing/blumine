@@ -29,6 +29,7 @@ GEM
       activemodel (= 3.0.6)
       activesupport (= 3.0.6)
     activesupport (3.0.6)
+    acts_as_list (0.1.2)
     annotate-models (1.0.4)
     arel (2.0.9)
     authlogic (2.1.6)
@@ -88,6 +89,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
+  acts_as_list
   annotate-models
   authlogic
   breadcrumbs

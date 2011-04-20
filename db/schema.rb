@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110418131302) do
+ActiveRecord::Schema.define(:version => 20110420150709) do
 
   create_table "comments", :force => true do |t|
     t.integer  "issue_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20110418131302) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "workflow_state"
+    t.integer  "position"
   end
 
   create_table "users", :force => true do |t|

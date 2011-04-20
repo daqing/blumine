@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110418131302
+# Schema version: 20110420150709
 #
 # Table name: todo_items
 #
@@ -9,6 +9,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  workflow_state :string(255)
+#  position       :integer
 #
 
 class TodoItem < ActiveRecord::Base
@@ -23,6 +24,10 @@ class TodoItem < ActiveRecord::Base
       event :undo, :transitions_to => :open
     end
   end
+
+  acts_as_list
+
+  default_scope :order => 'position asc'
 
   belongs_to :issue
 

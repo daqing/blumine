@@ -85,6 +85,17 @@ class IssuesControllerTest < ActionController::TestCase
     assert_redirected_to project_path(assigns(:issue).project)
   end
 
+  test "only creator can edit, update or destroy issue" do
+    get :edit, :id => issues(:two).id
+    assert_redirected_to root_path
+
+    post :update, :id => issues(:two).id, :issue => {:content => issues(:bug_report).content}
+    assert_redirected_to root_path
+
+    delete :destroy, :id => issues(:two).id
+    assert_redirected_to root_path
+  end
+
   private
     def create_issue
       post :create, :project_id => @project.id, :issue => {:title => "test", :content => "foobar"}

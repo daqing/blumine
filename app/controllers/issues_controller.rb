@@ -1,6 +1,9 @@
 class IssuesController < ApplicationController
   before_filter :must_login_first
   before_filter :find_issue, :only => [:show, :edit, :update, :destroy, :change_state]
+  before_filter :only => [:edit, :update, :destroy] do |c|
+    c.creator_required(@issue)
+  end
 
   def show
     breadcrumbs.add 'Projects', projects_path

@@ -23,6 +23,6 @@ bug_report:
 
 two:
   project: blumine
-  user: daqing
+  user: two
   title: "This is another issue"
   content: "Please fix this! Thanks!"

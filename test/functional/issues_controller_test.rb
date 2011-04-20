@@ -65,6 +65,26 @@ class IssuesControllerTest < ActionController::TestCase
     assert_equal issue.content, issue.default_content
   end
 
+  test "should edit issue" do
+    get :edit, :id => @issue.id
+
+    assert_response :success
+  end
+
+  test "should update issue" do
+    post :update, :id => @issue.id, :issue => { :content => issues(:two).content }
+
+    assert assigns(:issue)
+    assert_redirected_to issue_path(assigns(:issue))
+    assert_equal issues(:two).content, assigns(:issue).content
+  end
+
+  test "should destroy issue" do
+    delete :destroy, :id => @issue.id
+
+    assert_redirected_to project_path(assigns(:issue).project)
+  end
+
   private
     def create_issue
       post :create, :project_id => @project.id, :issue => {:title => "test", :content => "foobar"}

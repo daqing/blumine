@@ -43,15 +43,24 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "only user who creates it can edit or destroy comment" do
-    delete :destroy, :id => comments(:two).id
+    get :edit, :id => comments(:two).id
+    assert_no_priviledge
 
-    assert_redirected_to root_path
-    assert_equal flash[:error], "您没有权限执行此操作"
+    post :update, :id => comments(:two).id, :comment => {:content => comments(:need_fix).content}
+    assert_no_priviledge
+
+    delete :destroy, :id => comments(:two).id
+    assert_no_priviledge
   end
 
   private
     def create_comment
       post :create, :issue_id => @issue.id, :comment => {:content => "foobar"}
+    end
+
+    def assert_no_priviledge
+      assert_equal flash[:error], "您没有权限执行此操作"
+      assert_redirected_to root_path
     end
 
 end

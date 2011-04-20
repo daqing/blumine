@@ -1,5 +1,15 @@
 class IssuesController < ApplicationController
   before_filter :must_login_first
+  before_filter :find_issue, :only => [:show, :edit, :update, :destroy, :change_state]
+
+  def show
+    breadcrumbs.add 'Projects', projects_path
+    breadcrumbs.add @issue.project.name, project_path(@issue.project)
+    breadcrumbs.add @issue.title
+
+    @comment = @issue.comments.new
+    @todo_item = @issue.todo_items.new
+  end
 
   def new
     @project = Project.find(params[:project_id])
@@ -17,21 +27,35 @@ class IssuesController < ApplicationController
     end
   end
 
-  def show
-    @issue = Issue.find(params[:id])
-    breadcrumbs.add 'Projects', projects_path
-    breadcrumbs.add @issue.project.name, project_path(@issue.project)
-    breadcrumbs.add @issue.title
+  def edit
+    @project = @issue.project
+  end
 
-    @comment = @issue.comments.new
-    @todo_item = @issue.todo_items.new
+  def update
+    respond_to do |format|
+      if @issue.update_attributes(params[:issue])
+        format.html { redirect_to @issue }
+        format.js { render :nothing => true }
+      else
+        format.html { redirect_to root_path }
+        format.js { render :text => "SAVE_FAILED", :status => 500 }
+      end
+    end
   end
 
   def destroy
+    respond_to do |format|
+      if @issue.destroy
+        format.html { redirect_to @issue.project }
+        format.js { render :nothing => true }
+      else
+        format.html { redirect_to root_path }
+        format.js { render :text => "DESTROY_FAILED", :status => 500 }
+      end
+    end
   end
 
   def change_state
-    @issue = Issue.find(params[:id])
     event_action = "#{params[:event]}!"
     respond_to do |format|
       if @issue.respond_to? event_action
@@ -49,5 +73,11 @@ class IssuesController < ApplicationController
       end
     end
   end
+
+  private
+    def find_issue
+      @issue = Issue.find(params[:id])
+    end
+
 end
 

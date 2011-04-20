@@ -4,27 +4,36 @@
   </div>
 <% end %>
 
-<h2><%= @issue.title %></h2>
-<p><%=raw parse_markdown @issue.content %></p>
+<h2 class="title"><%= @issue.title %></h2>
+<div class="sub quiet">
+  @<%= link_to @issue.user.name, @issue.user, :class => "quiet" %>
+  <% if creator_of?(@issue) %>
+    &nbsp;&middot;&nbsp;
+    <%= link_to "编辑", edit_issue_path(@issue), :class => :action %>
+    &nbsp;&middot;&nbsp;
+    <%= link_to "删除", @issue, :method => :delete, :class => :action, :confirm => "真的要删除吗?" %>
+  <% end %>
+</div>
+<%=raw parse_markdown @issue.content %>
 
-<div class="bar"><h3>Todo</h3></div>
-<%= render @issue.todo_items %>
+<div class="box clean">
+  <h4 class="title">Todo</h4>
+  <%= render @issue.todo_items %>
 
-<%= form_for [@issue, @todo_item], :remote => true do |f| %>
-  <%= f.text_area :content, :style => "height: 2em;" %>
-  <%= f.submit "添加Todo" %>
-<% end %>
+  <%= form_for [@issue, @todo_item], :remote => true do |f| %>
+    <%= f.text_area :content, :style => "height: 2em;" %><br />
+    <%= f.submit "添加Todo" %>
+  <% end %>
+</div>
+
 
 <div class="bar"><h3>当前讨论</h3></div>
 <div id="issue_comments">
-  <%= render :partial => "comments/comment", :collection => @issue.comments, :spacer_template => "shared/spacer" %>
+  <%= render @issue.comments %>
 </div>
 
-<hr>
 <%= form_for [@issue, @comment], :remote => true do |f| %>
-  <div class="field">
-    <%= f.text_area :content, :style => "height: 10em" %>
-  </div>
+  <%= f.text_area :content, :style => "height: 10em" %><br />
   <%= f.submit "参与讨论" %>
 <% end %>
 

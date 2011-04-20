@@ -21,3 +21,8 @@ bug_report:
   title: "This is a bug"
   content: "Please fix this as soon as possible!"
 
+two:
+  project: blumine
+  user: daqing
+  title: "This is another issue"
+  content: "Please fix this! Thanks!"

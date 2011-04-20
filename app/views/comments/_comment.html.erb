@@ -1,8 +1,6 @@
-<div class="row">
-  <span><%= link_to comment.user.name, comment.user %>:</span>
-  <%=raw parse_markdown comment.content %>
+<div class="section radius-5">
   <span class="quiet right small">
-    <% if is_creator_of(comment) %>
+    <% if creator_of?(comment) %>
       <%= link_to '编辑', edit_comment_path(comment), :class => :action %>
       &nbsp;&middot;&nbsp;
       <%= link_to '删除', comment, :method => :delete, :confirm => "真的要删除吗?", :class => :action %>
@@ -10,4 +8,6 @@
     <% end %>
     <%= comment.created_at %>
   </span>
+  <span><%= link_to comment.user.name, comment.user %>:</span>
+  <%=raw parse_markdown comment.content %>
 </div>

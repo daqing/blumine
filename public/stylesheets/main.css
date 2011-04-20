@@ -42,6 +42,8 @@ div.bar {
   padding: 5px 0 0 10px;
 }
 
+div.bar h1, div.bar h2, div.bar h3, div.bar h4 { margin: 0; }
+
 div.row {
   padding: 5px 0;
 }
@@ -55,9 +57,6 @@ div.row p {
   text-decoration: line-through;
 }
 
-h2.title {
-  margin: 0;
-}
 
 a.action, a.action:active, a.action:visited {
   color: #577DE4;
@@ -79,12 +78,15 @@ div.spacer {
   font-size: 0.8em;
   padding: 4px 7px;
   color: white;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
   text-align: center;
   font-weight: bold;
   margin-left: 5px;
+}
+
+.radius-5 {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 
 .state-open { background-color: blue; }
@@ -94,3 +96,18 @@ div.spacer {
 .state-done { background-color: purple; }
 .state-ignored, .state-closed { background-color: #6CC644; }
 
+.sub { margin-bottom: 10px; background-color: #EFEFEF; padding: 2px 5px; border-top: 1px solid #DDD; }
+
+.title { margin: 0; padding-bottom: 5px; }
+
+.clean { background: none; }
+
+.section {
+  border: 1px solid #DDD;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.section p {
+  text-indent: 1em;
+}

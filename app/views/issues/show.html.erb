@@ -1,11 +1,11 @@
 <% content_for :sidebar do %>
-  <div class="box" id="issue_workflow_box">
+  <div class="b-box" id="issue_workflow_box">
     <%= render 'shared/issue_workflow', :issue => @issue %>
   </div>
 <% end %>
 
-<h2 class="title"><%= @issue.title %></h2>
-<div class="sub quiet">
+<h2 class="title inline"><%= @issue.title %></h2>
+<span class="tip">
   @<%= link_to @issue.user.name, @issue.user, :class => "quiet" %>
   <% if creator_of?(@issue) %>
     &nbsp;&middot;&nbsp;
@@ -13,7 +13,8 @@
     &nbsp;&middot;&nbsp;
     <%= link_to "删除", @issue, :method => :delete, :class => :action, :confirm => "真的要删除吗?" %>
   <% end %>
-</div>
+</span>
+<br /><br />
 <%=raw parse_markdown @issue.content %>
 
 <div class="box clean">
@@ -27,7 +28,7 @@
 </div>
 
 
-<div class="bar"><h3>当前讨论</h3></div>
+<h1 class="silver">当前讨论</h1>
 <div id="issue_comments">
   <%= render @issue.comments %>
 </div>

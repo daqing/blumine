@@ -1,8 +1,8 @@
-<h2>Project: <%= @project.name %></h2>
+<h1 class="silver">Project: <%= @project.name %></h1>
 
-<div class="bar"><h3>所有问题</h3></div>
-<%= render @project.issues, :project => @project %>
+<span class="text_large">所有问题</span>
+<%= render_with_spacer @project.issues %>
 
 <% content_for :sidebar do %>
-  <%= link_to "创建issue", new_project_issue_path(@project), :class => :action %>
+  <%= as_button(link_to "创建issue", new_project_issue_path(@project)) %>
 <% end %>

@@ -1,6 +1,4 @@
-<div class="bar"><h3><%= link_to project.name, project %></h3></div>
+<h1 class="silver"><%= link_to project.name, project %></h1>
 
-<ul>
-<%= render project.issues %>
-</ul>
+<%= render_with_spacer project.issues %>
 

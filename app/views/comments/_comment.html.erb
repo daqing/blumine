@@ -8,6 +8,6 @@
     <% end %>
     <%= comment.created_at %>
   </span>
-  <span><%= link_to comment.user.name, comment.user %>:</span>
+  <div class="author"><%= link_to comment.user.name, comment.user %>:</div>
   <%=raw parse_markdown comment.content %>
 </div>

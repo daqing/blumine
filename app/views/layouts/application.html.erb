@@ -32,26 +32,36 @@
     </div>
   </div>
 
-  <div class="container">
-    <div>
-      <%= breadcrumbs.render(:format => :inline) if breadcrumbs.items.length > 1 %>
+  <% if breadcrumbs.items.length > 1 %>
+    <div class="container">
+      <div id="breadcrumbs">
+        <%= breadcrumbs.render(:format => :inline) %>
+      </div>
     </div>
+  <% end %>
 
+  <div class="container">
     <% [:notice, :error].each do |type| %>
       <% if flash[type] %>
         <div class="<%= type %>"><%= flash[type] %></div>
       <% end %>
     <% end %>
-    <div class="span-16">
+  </div>
+
+  <div class="container" id="main_area">
+    <div class="span-16" id="content">
       <%= yield %>
     </div>
 
-    <div class="span-8 last">
+    <div class="span-6 last" id="sidebar">
       <%= yield :sidebar %>
     </div>
-
-    <div class="span-24" id="footer">
-      <p class="quiet">&copy; <%= Time.now.year %> Project Blumine</p>
+  </div>
+  <div class="container">
+    <div class="right" id="footer">
+      <%= link_to '获取源代码', 'http://github.com/daqing/blumine' %>
+      <%= link_to '作者博客', 'http://blog.xdaqing.com' %>
+      &copy; <%= Time.now.year %> Project BluMine
     </div>
   </div>
 </body>

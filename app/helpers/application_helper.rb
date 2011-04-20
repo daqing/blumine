@@ -52,4 +52,15 @@ module ApplicationHelper
   def clear_return_to
     session[:return_to] = nil
   end
+
+  def as_button(str)
+    %(<div class="btn_2_o" align="left"><div class="btn_2_i" align="center">#{str}</div></div>).html_safe
+  end
+
+  def render_with_spacer(collection)
+    class_name = collection.name.downcase
+    render :partial => "#{class_name.pluralize}/#{class_name}", 
+        :collection => collection,
+        :spacer_template => 'shared/spacer'
+  end
 end

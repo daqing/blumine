@@ -21,15 +21,15 @@ class Issue < ActiveRecord::Base
     :working_on => "正在解决",
     :done => "已解决",
     :closed => "已关闭",
-    :invalid => "无效问题",
+    :invalid => "问题不成立",
     :ignored => "不需解决",
     :reopened => "重新开放"
   }
 
   @@event_names = {
     :work_on => "开始解决",
-    :mark_invalid => "标记为无效",
-    :ignore => "忽略此问题",
+    :mark_invalid => "无效描述",
+    :ignore => "不需要解决",
     :mark_done => "标记为已解决",
     :reopen => "重新开放",
     :close => "关闭"

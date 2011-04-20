@@ -5,6 +5,6 @@
 <% else %>
   <%= form_for :issue, :url => change_state_issue_path(issue), :remote => true do |f| %>
     <%= select_tag :event, options_for_select(keys.collect { |key| [issue.event_name(key), key.to_s] }) %>
-    <%= f.submit "执行" %>
+    <%= f.submit "切换状态" %>
   <% end %>
 <% end %>

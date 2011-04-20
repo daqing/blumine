@@ -29,6 +29,17 @@ module ApplicationHelper
     end
   end
 
+  def creator_required(obj)
+    unless is_creator_of(obj)
+      flash[:error] = "您没有权限执行此操作"
+      redirect_to root_path 
+    end
+  end
+
+  def is_creator_of(obj)
+    obj.user == current_user
+  end
+
   def store_location
     session[:return_to] = request.fullpath
   end

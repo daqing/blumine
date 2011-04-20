@@ -42,6 +42,13 @@ class CommentsControllerTest < ActionController::TestCase
     assert_redirected_to assigns(:comment).issue
   end
 
+  test "only user who creates it can edit or destroy comment" do
+    delete :destroy, :id => comments(:two).id
+
+    assert_redirected_to root_path
+    assert_equal flash[:error], "您没有权限执行此操作"
+  end
+
   private
     def create_comment
       post :create, :issue_id => @issue.id, :comment => {:content => "foobar"}

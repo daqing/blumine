@@ -1,6 +1,9 @@
 class CommentsController < ApplicationController
   before_filter :must_login_first
   before_filter :find_comment, :except => :create
+  before_filter :only => [:edit, :update, :destroy] do |c|
+    c.creator_required(@comment)
+  end
 
   def create
     @issue = Issue.find(params[:issue_id])

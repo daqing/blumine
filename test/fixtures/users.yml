@@ -22,3 +22,10 @@ daqing:
   encrypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("foobar" + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>
 
+two:
+  name: two
+  email: two@demo.com
+  salt: <%= salt = Authlogic::Random.hex_token %>
+  encrypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("foobar" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+

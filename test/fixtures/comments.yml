@@ -20,5 +20,5 @@ need_fix:
 
 two:
   issue: bug_report
-  user: daqing
+  user: two
   content: "another comment"

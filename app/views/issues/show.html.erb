@@ -21,7 +21,7 @@
   <div class="gray_bar">Todo</div>
   <%= render @issue.todo_items %>
 
-  <div class="row">
+  <div class="row <%= "hide" if @issue.closed? %>" id="add_todo_form">
     <%= form_for [@issue, @todo_item], :remote => true do |f| %>
       <%= f.text_area :content, :style => "height: 2em;" %><br />
       <%= f.submit "添加Todo" %>
@@ -34,7 +34,7 @@
   <%= render @issue.comments %>
 </div>
 
-<div class="row">
+<div class="row <%= "hide" if @issue.closed? %>" id="add_comment_form">
 <%= form_for [@issue, @comment], :remote => true do |f| %>
   <%= f.text_area :content, :style => "height: 10em" %><br />
   <%= f.submit "参与讨论" %>

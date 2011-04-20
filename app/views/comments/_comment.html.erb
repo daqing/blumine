@@ -1,5 +1,11 @@
 <div class="row">
   <span><%= link_to comment.user.name, comment.user %>:</span>
   <%=raw parse_markdown comment.content %>
-  <span class="quiet right small"><%= link_to '编辑', edit_comment_path(comment), :class => :action %>&nbsp;&middot;&nbsp;<%= comment.created_at %></span>
+  <span class="quiet right small">
+    <%= link_to '编辑', edit_comment_path(comment), :class => :action %>
+    &nbsp;&middot;&nbsp;
+    <%= link_to '删除', comment, :method => :delete, :confirm => "真的要删除吗?" %>
+    &nbsp;&middot;&nbsp;
+    <%= comment.created_at %>
+  </span>
 </div>

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :must_login_first
+  before_filter :find_comment, :except => :create
 
   def create
     @issue = Issue.find(params[:issue_id])
@@ -18,12 +19,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
   end
 
   def update
-    @comment = Comment.find(params[:id])
-
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
         format.html { redirect_to @comment.issue }
@@ -35,4 +33,20 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      if @comment.destroy
+        format.html { redirect_to @comment.issue }
+        format.js { render :nothing => true }
+      else
+        format.html { redirect_to root_path }
+        format.js { render :text => "DESTROY_ERROR", :status => 500 }
+      end
+    end
+  end
+
+  private
+    def find_comment
+      @comment = Comment.find(params[:id])
+    end
 end

@@ -35,6 +35,13 @@ class CommentsControllerTest < ActionController::TestCase
     assert_equal comments(:two).content, assigns(:comment).content
   end
 
+  test "should destroy comment" do
+    delete :destroy, :id => comments(:need_fix).id
+
+    assert assigns(:comment)
+    assert_redirected_to assigns(:comment).issue
+  end
+
   private
     def create_comment
       post :create, :issue_id => @issue.id, :comment => {:content => "foobar"}

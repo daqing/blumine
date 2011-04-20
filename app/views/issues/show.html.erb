@@ -17,14 +17,16 @@
 <br /><br />
 <%=raw parse_markdown @issue.content %>
 
-<div class="box clean">
-  <h4 class="title">Todo</h4>
+<div class="b-box">
+  <div class="gray_bar">Todo</div>
   <%= render @issue.todo_items %>
 
-  <%= form_for [@issue, @todo_item], :remote => true do |f| %>
-    <%= f.text_area :content, :style => "height: 2em;" %><br />
-    <%= f.submit "添加Todo" %>
-  <% end %>
+  <div class="row">
+    <%= form_for [@issue, @todo_item], :remote => true do |f| %>
+      <%= f.text_area :content, :style => "height: 2em;" %><br />
+      <%= f.submit "添加Todo" %>
+    <% end %>
+  </div>
 </div>
 
 

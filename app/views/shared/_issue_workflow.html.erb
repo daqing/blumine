@@ -3,6 +3,7 @@
   <span class="state state-<%= issue.current_state.name.to_s %>"><%= issue.state_name %></span>
 </div>
 <% keys = issue.current_state.events.keys %>
+<div class="row">
 <% if keys.length == 1 %>
   <%= as_button(link_to issue.event_name(keys.first), change_state_issue_path(issue, :event => keys.first.to_s), :remote => true, :method => :post) %>
 <% else %>
@@ -11,3 +12,4 @@
     <%= f.submit '更新状态' %>
   <% end %>
 <% end %>
+</div>

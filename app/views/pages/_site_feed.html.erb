@@ -10,3 +10,9 @@
   <h1 class="silver">我参与的问题</h1>
 </div>
 
+<% content_for :sidebar do %>
+<div class="b-box">
+  <div class="blue_bar">所有用户</div>
+  <%= render_with_spacer User.all %>
+</div>
+<% end %>

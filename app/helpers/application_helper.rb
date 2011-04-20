@@ -58,7 +58,7 @@ module ApplicationHelper
   end
 
   def render_with_spacer(collection)
-    class_name = collection.name.downcase
+    class_name = collection.first.class.name.downcase
     render :partial => "#{class_name.pluralize}/#{class_name}", 
         :collection => collection,
         :spacer_template => 'shared/spacer'

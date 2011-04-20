@@ -73,6 +73,8 @@ class Issue < ActiveRecord::Base
   has_many :comments
   has_many :todo_items
 
+  before_validation :set_default_content
+
   validates :title, :content, :presence => true
   validates :user_id, :project_id, :presence => true
 
@@ -83,4 +85,13 @@ class Issue < ActiveRecord::Base
   def event_name(event_sym)
     @@event_names[event_sym]
   end
+
+  def default_content
+    "记录在Todo里。"
+  end
+
+  private
+    def set_default_content
+      self.content = default_content if self.content.blank?
+    end
 end

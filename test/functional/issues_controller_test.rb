@@ -56,6 +56,15 @@ class IssuesControllerTest < ActionController::TestCase
     assert_equal :invalid, assigns(:issue).current_state.name
   end
 
+  test "should save with default content" do
+    issue = Issue.new(:title => "foobar")
+    issue.project = projects(:blumine)
+    issue.user = users(:daqing)
+
+    assert issue.save
+    assert_equal issue.content, issue.default_content
+  end
+
   private
     def create_issue
       post :create, :project_id => @project.id, :issue => {:title => "test", :content => "foobar"}

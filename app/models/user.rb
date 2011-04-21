@@ -27,6 +27,9 @@ class User < ActiveRecord::Base
   has_many :issues
   has_many :comments
 
+  has_many :issue_assignments
+  has_many :assigned_issues, :through => :issue_assignments, :source => :issue
+
   attr_protected :encrypted_password, :salt
 
   validates :name, :email, :presence => true

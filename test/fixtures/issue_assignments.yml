@@ -1,0 +1,24 @@
+# == Schema Information
+# Schema version: 20110421080032
+#
+# Table name: issue_assignments
+#
+#  id         :integer         not null, primary key
+#  issue_id   :integer
+#  user_id    :integer
+#  position   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  issue_id: 1
+  user_id: 1
+  position: 1
+
+two:
+  issue_id: 1
+  user_id: 1
+  position: 1

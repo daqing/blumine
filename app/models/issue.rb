@@ -77,6 +77,9 @@ class Issue < ActiveRecord::Base
   has_many :comments
   has_many :todo_items
 
+  has_one :issue_assignment
+  has_one :assigned_user, :through => :issue_assignment, :source => :user
+
   before_validation :set_default_content
 
   validates :title, :content, :presence => true

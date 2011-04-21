@@ -67,7 +67,7 @@ div.gray_bar {
 
 div.bar h1, div.bar h2, div.bar h3, div.bar h4 { margin: 0; }
 
-div.row { padding: 5px 0 5px 15px; }
+div.row { padding: 5px 0 5px 10px; }
 
 div.row p { text-indent: 1em; }
 
@@ -89,6 +89,15 @@ a.action:hover {
   background-color: #577DE4;
   color: #FFF !important;
   text-decoration: none;
+}
+
+a[data-method=delete]:link {
+  color: red !important;
+}
+
+a[data-method=delete]:hover {
+  background-color: red !important;
+  color: white !important;
 }
 
 div.spacer {
@@ -168,7 +177,7 @@ div.btn_2_i a:hover {
 .b-box {
   border: 1px solid #E0E0E0;
   padding-bottom: 5px;
-  margin: 10px 15px 0 15px;
+  margin: 10px 15px 20px 15px;
 }
 
 .inline { display: inline; }

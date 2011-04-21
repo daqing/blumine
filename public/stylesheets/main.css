@@ -1,5 +1,9 @@
 
-body { background-color: #E6E6E6; font-family: 'Lucida Grande', Tahoma, Verdana, arial, sans-serif, hei; }
+body { 
+  background-color: #E6E6E6;
+  font-family: 'Lucida Grande', Tahoma, Verdana, arial, sans-serif, hei;
+  font-size: 14px;
+}
 
 a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
 
@@ -15,7 +19,7 @@ a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
   line-height: 1;
   font-size: 3em;
   font-weight: bold;
-  width: 160px;
+  width: 180px;
   text-align: center;
 }
 
@@ -63,7 +67,7 @@ div.gray_bar {
 
 div.bar h1, div.bar h2, div.bar h3, div.bar h4 { margin: 0; }
 
-div.row { padding: 5px 0 5px 10px; }
+div.row { padding: 5px 0 5px 15px; }
 
 div.row p { text-indent: 1em; }
 
@@ -94,6 +98,8 @@ div.spacer {
 .state {
   padding: 2px 5px;
   color: white;
+  font-size: 10px;
+  text-align: center;
 }
 
 .radius-5 {
@@ -139,6 +145,7 @@ div.btn_2_o {
   background-color: #E0E0E0;
   padding: 0px;
   margin: 0px;
+  margin-left: 10px;
 }
 
 div.btn_2_i {

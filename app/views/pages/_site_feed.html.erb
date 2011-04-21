@@ -1,32 +1,24 @@
+<% content_for :sidebar do %>
+  <h1 class="silver">分配给我的任务</h1>
+  <div id="my_assigned_issues">
+    <%= render :partial => 'my_assigned_issue',
+      :collection => current_user.assigned_issues,
+      :spacer_template => 'shared/spacer'
+    %>
+  </div>
+
+  <h1 class="silver">我关注的问题</h1>
+
+  <h1 class="silver">我参与的问题</h1>
+
+  <div class="b-box">
+    <div class="blue_bar">所有用户</div>
+    <%= render_with_spacer 'user', User.all %>
+  </div>
+<% end %>
+
 <h1 class="silver">最近动态</h1>
 
-<h1 class="silver">分配给我的任务</h1>
-<div class="caption">
-  <span class="span-8">标题</span>
-  <span class="span-2">项目</span>
-  <span>最后更新</span>
-</div>
-<div id="my_assigned_issues">
-  <%= render :partial => 'my_assigned_issue',
-    :collection => current_user.assigned_issues,
-    :spacer_template => 'shared/spacer'
-  %>
-</div>
-
-<div class="span-8">
-  <h1 class="silver">我关注的问题</h1>
-</div>
-
-<div class="span-8 last">
-  <h1 class="silver">我参与的问题</h1>
-</div>
-
-<% content_for :sidebar do %>
-<div class="b-box">
-  <div class="blue_bar">所有用户</div>
-  <%= render_with_spacer 'user', User.all %>
-</div>
-<% end %>
 <script type="text/javascript">
   jQuery(function() {
     $.make_sortable('my_assigned_issues', 'div.assigned_issue', '/assigned_issues/sort');

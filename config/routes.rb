@@ -1,4 +1,8 @@
 Blumine::Application.routes.draw do
+  get "status_logs/create"
+
+  get "status_logs/destroy"
+
   get "issue_assignments/sort"
 
   get "issue_assignment/sort"

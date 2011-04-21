@@ -177,7 +177,7 @@ div.btn_2_i a:hover {
 .b-box {
   border: 1px solid #E0E0E0;
   padding-bottom: 5px;
-  margin: 10px 15px 20px 15px;
+  margin: 10px 0;
 }
 
 .inline { display: inline; }
@@ -185,7 +185,7 @@ div.btn_2_i a:hover {
 h1.silver {
   background-image: url("/images/silver_bg.png");
   padding: 5px 5px 5px 5px;
-  margin: 0px 0px 5px 0px;
+  margin: 10px 0px 5px 0px;
   font-size: 14px;
   color: #333;
   font-weight: bold;

@@ -1,0 +1,2 @@
+module StatusLogsHelper
+end

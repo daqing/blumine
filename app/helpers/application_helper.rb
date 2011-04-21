@@ -58,6 +58,7 @@ module ApplicationHelper
   end
 
   def render_with_spacer(collection)
+    return if collection.blank?
     class_name = collection.first.class.name.downcase
     render :partial => "#{class_name.pluralize}/#{class_name}", 
         :collection => collection,

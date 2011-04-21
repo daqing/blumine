@@ -27,7 +27,7 @@ class TodoItem < ActiveRecord::Base
 
   acts_as_list
 
-  default_scope :order => 'position asc'
+  default_scope :order => 'position ASC'
 
   belongs_to :issue
 

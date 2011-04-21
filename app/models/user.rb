@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   has_many :comments
 
   has_many :issue_assignments
-  has_many :assigned_issues, :through => :issue_assignments, :source => :issue
+  has_many :assigned_issues, :through => :issue_assignments, :source => :issue, :order => 'position ASC'
 
   attr_protected :encrypted_password, :salt
 

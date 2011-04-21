@@ -1,8 +1,10 @@
 <div class="row" id="status_log_<%= status_log.id %>">
   <span><%= link_to status_log.user.name, status_log.user %>:</span>
   <div class="inline"><%= status_log.content %></div>
-  <span class="small">
-    <%= link_to '删除', status_log, :method => :delete, :remote => true, :confirm => '真的要删除吗?' %>
-  </span>
+  <% if creator_of? status_log %>
+    <span class="small">
+      <%= link_to '删除', status_log, :method => :delete, :remote => true, :confirm => '真的要删除吗?' %>
+    </span>
+  <% end %>
 </div>
 

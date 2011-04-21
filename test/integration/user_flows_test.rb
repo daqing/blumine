@@ -28,5 +28,9 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
     auth_as_foobar
     assert_redirected_to root_path
+
+    follow_redirect!
+
+    assert_response :success
   end
 end

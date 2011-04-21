@@ -22,13 +22,13 @@
 <%=raw parse_markdown @issue.content %>
 
 <div class="b-box" id="todo_list_box">
-  <div class="gray_bar">Todo</div>
+  <div class="gray_bar">待处理事项</div>
   <%= render @issue.todo_items.where(:workflow_state => :open) %>
 
   <div class="row <%= "hide" if @issue.closed? %>" id="add_todo_form">
     <%= form_for [@issue, @todo_item], :remote => true do |f| %>
       <%= f.text_area :content, :style => "height: 2em;" %><br />
-      <%= f.submit "添加Todo" %>
+      <%= f.submit "添加" %>
     <% end %>
   </div>
   <div id="todo_done" style="border-top: 1px solid #DDD;">

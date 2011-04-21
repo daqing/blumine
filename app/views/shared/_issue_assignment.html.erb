@@ -2,7 +2,7 @@
   <% if @issue.assigned_user %>
     已分配给 <%= link_to @issue.assigned_user.name, @issue.assigned_user %>
   <% else %>
-    尚未分配
+    <span class="quiet">{ 尚未分配 }</span>
   <% end %>
 </div>
 <div class="row">

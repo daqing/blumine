@@ -6,7 +6,7 @@ class IssuesController < ApplicationController
   end
 
   def show
-    breadcrumbs.add 'Projects', projects_path
+    breadcrumbs.add '所有项目', projects_path
     breadcrumbs.add @issue.project.name, project_path(@issue.project)
     breadcrumbs.add @issue.title
 

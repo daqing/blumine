@@ -2,5 +2,5 @@
 <%= render_with_spacer 'issue', @project.issues %>
 
 <% content_for :sidebar do %>
-  <%= as_button(link_to "创建issue", new_project_issue_path(@project)) %>
+  <%= as_button(link_to "创建新任务", new_project_issue_path(@project)) %>
 <% end %>

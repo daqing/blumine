@@ -17,11 +17,11 @@ class Issue < ActiveRecord::Base
   include Workflow
 
   @@state_names = {
-    :open => "新建",
-    :working_on => "正在解决",
+    :open => "新任务",
+    :working_on => "解决中",
     :done => "已解决",
     :closed => "已关闭",
-    :invalid => "问题不成立",
+    :invalid => "描述不成立",
     :ignored => "不需解决",
     :reopened => "重新开放"
   }

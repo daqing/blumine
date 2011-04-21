@@ -1,0 +1,15 @@
+<div class="blue_bar">
+  <% if @issue.assigned_user %>
+    已分配给 <%= link_to @issue.assigned_user.name, @issue.assigned_user %>
+  <% else %>
+    尚未分配
+  <% end %>
+</div>
+<div class="row">
+  <%= form_for :issue_assignment, :url => assign_to_issue_path(@issue), :remote => true do |f| %>
+    分配给
+    <%= select_tag :user_id, options_for_select(User.all.collect { |user| [user.name, user.id] }) %>
+    <%= f.submit "保存" %>
+  <% end %>
+</div>
+

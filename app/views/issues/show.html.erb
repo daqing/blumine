@@ -2,6 +2,10 @@
   <div class="b-box" id="issue_workflow_box">
     <%= render 'shared/issue_workflow', :issue => @issue %>
   </div>
+
+  <div class="b-box" id="issue_assignment">
+    <%= render 'shared/issue_assignment', :issue => @issue %>
+  </div>
 <% end %>
 
 <h2 class="title inline"><%= @issue.title %></h2>

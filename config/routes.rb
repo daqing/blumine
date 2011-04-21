@@ -13,6 +13,7 @@ Blumine::Application.routes.draw do
 
     member do
       post 'change_state'
+      post 'assign_to'
     end
   end
 

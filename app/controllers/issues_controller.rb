@@ -1,6 +1,6 @@
 class IssuesController < ApplicationController
   before_filter :must_login_first
-  before_filter :find_issue, :only => [:show, :edit, :update, :destroy, :change_state]
+  before_filter :find_issue, :only => [:show, :edit, :update, :destroy, :change_state, :assign_to]
   before_filter :only => [:edit, :update, :destroy] do |c|
     c.creator_required(@issue)
   end
@@ -74,6 +74,16 @@ class IssuesController < ApplicationController
         format.html { redirect_to root_path }
         format.js { render :text => "ERROR", :status => 500 }
       end
+    end
+  end
+
+  def assign_to
+    user = User.find(params[:user_id])
+    @issue.assigned_user = user
+
+    respond_to do |format|
+      format.html { redirect_to @issue }
+      format.js
     end
   end
 

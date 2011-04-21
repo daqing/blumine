@@ -95,6 +95,13 @@ class IssuesControllerTest < ActionController::TestCase
     delete :destroy, :id => issues(:two).id
     assert_redirected_to root_path
   end
+  
+  test "should be assigned to an user" do
+    xhr :post, :assign_to, :id => @issue.id, :user_id => users(:daqing).id
+
+    assert_response :success
+    assert_equal assigns(:issue).assigned_user, users(:daqing)
+  end
 
   private
     def create_issue

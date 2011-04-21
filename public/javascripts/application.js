@@ -1,9 +1,7 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 $(document).ready(function() {
-  $(".bg_highlight").live('mouseenter', function() { $(this).css('backgroundColor', '#FFC'); })
-    .live('mouseleave', function() { $(this).css('backgroundColor', '#FFF'); });
-  
+
   $.make_sortable = function(id, items, url) {
     var obj = $("#" + id);
     obj.sortable({
@@ -18,4 +16,11 @@ $(document).ready(function() {
        }
     });
   }
+
+  $(".bg_highlight").live('mouseenter', function() { $(this).css('backgroundColor', '#FFC'); })
+    .live('mouseleave', function() { $(this).css('backgroundColor', '#FFF'); });
+
+  $("div[clickable]").mouseover(function() { $(this).css('cursor', 'pointer'); }).click(function() {
+    location.href = $(this).attr('clickable');
+  });
 });

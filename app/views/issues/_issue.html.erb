@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" clickable="<%= issue_path(issue) %>">
   <span class="span-9">
     <%= link_to issue.title, issue %>
     <span class="radius-5 state state-<%= issue.current_state.name.to_s %>"><%= issue.state_name %></span>

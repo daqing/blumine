@@ -19,7 +19,9 @@ class StatusLogsControllerTest < ActionController::TestCase
     assert_difference('StatusLog.count') do
       create_status_log
     end 
+
     assert_response :success
+    assert assigns(:status_log)
   end
 
   test "should destroy status log" do
@@ -28,6 +30,7 @@ class StatusLogsControllerTest < ActionController::TestCase
     end
 
     assert_response :success
+    assert assigns(:status_log)
   end
 
   private

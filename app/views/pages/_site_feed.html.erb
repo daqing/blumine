@@ -17,10 +17,16 @@
   </div>
 <% end %>
 
-<h1 class="silver">最近动态</h1>
-
 <script type="text/javascript">
   jQuery(function() {
     $.make_sortable('my_assigned_issues', 'div.assigned_issue', '/assigned_issues/sort');
   });
 </script>
+
+<div class="row">
+  <%= render 'status_logs/form' %>
+</div>
+<h1 class="silver">最近动态</h1>
+<div id="feed_box">
+  <%= render StatusLog.order('created_at DESC').limit(20) %>
+</div>

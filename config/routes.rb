@@ -1,14 +1,6 @@
 Blumine::Application.routes.draw do
-  get "status_logs/create"
-
-  get "status_logs/destroy"
-
-  get "issue_assignments/sort"
-
-  get "issue_assignment/sort"
-
-  match 'login' => "user_sessions#new"
-  match 'logout' => "user_sessions#destroy"
+  get 'login' => "user_sessions#new"
+  get 'logout' => "user_sessions#destroy"
 
   resources :users, :user_sessions, :comments
   resources :projects do
@@ -34,6 +26,8 @@ Blumine::Application.routes.draw do
       post :sort
     end
   end
+
+  resources :status_logs, :only => [:create, :destroy], :via => :post
 
   post '/assigned_issues/sort' => 'issue_assignments#sort'
 

@@ -27,7 +27,7 @@
 
   <div class="row <%= "hide" if @issue.closed? %>" id="add_todo_form">
     <%= form_for [@issue, @todo_item], :remote => true do |f| %>
-      <%= f.text_area :content, :style => "height: 2em;" %><br />
+      <%= f.text_area :content, :class => :micro %><br />
       <%= f.submit "添加" %>
     <% end %>
   </div>

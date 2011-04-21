@@ -202,3 +202,7 @@ h1.silver a:hover { border-bottom: 2px solid #577DE7; color: #577DE7; }
   border-bottom: 1px solid #CCC;
   color: #999;
 }
+
+textarea.micro {
+  height: 2em;
+}

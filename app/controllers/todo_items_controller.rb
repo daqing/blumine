@@ -40,7 +40,7 @@ class TodoItemsController < ApplicationController
     respond_to do |format|
       if @todo_item.destroy
         format.html { redirect_to @todo_item.issue }
-        format.js { render :nothing => true }
+        format.js
       else
         format.html { redirect_to root_path }
         format.js { render :text => "Error", :status => 500 }

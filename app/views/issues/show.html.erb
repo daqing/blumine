@@ -68,10 +68,6 @@
       }
     });
 
-    $(".delete_todo").bind('ajax:success', function() {
-        $(this).parent('div').slideUp();
-    });
-
     $("#todo_list_box").sortable({
          axis: 'y',
          dropOnEmpty: false,

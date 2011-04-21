@@ -17,5 +17,5 @@ one:
   content: hello, world!
 
 two:
-  user_id: two
+  user: two
   content: Rails is just cool!

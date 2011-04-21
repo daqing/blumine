@@ -33,6 +33,12 @@ class StatusLogsControllerTest < ActionController::TestCase
     assert assigns(:status_log)
   end
 
+  test "only creator can destroy status log" do
+    xhr :delete, :destroy, :id => status_logs(:two).id
+
+    assert_redirected_to root_path
+  end
+
   private
     def create_status_log
       xhr :post, :create, :status_log => {:content => "hello"}

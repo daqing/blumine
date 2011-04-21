@@ -57,10 +57,8 @@ module ApplicationHelper
     %(<div class="btn_2_o" align="left"><div class="btn_2_i" align="center">#{str}</div></div>).html_safe
   end
 
-  def render_with_spacer(collection)
-    return if collection.blank?
-    class_name = collection.first.class.name.downcase
-    render :partial => "#{class_name.pluralize}/#{class_name}", 
+  def render_with_spacer(partial, collection)
+    render :partial => "#{partial.pluralize}/#{partial}", 
         :collection => collection,
         :spacer_template => 'shared/spacer'
   end

@@ -1,5 +1,5 @@
 <h2 class="title"><%= @user.name %></h2>
 
 <span class="text_large">最近发表的Issue</span>
-<%= render_with_spacer @user.issues %>
+<%= render_with_spacer 'issue', @user.issues %>
 

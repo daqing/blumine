@@ -19,13 +19,16 @@
 
 <div class="b-box" id="todo_list_box">
   <div class="gray_bar">Todo</div>
-  <%= render @issue.todo_items %>
+  <%= render @issue.todo_items.where(:workflow_state => :open) %>
 
   <div class="row <%= "hide" if @issue.closed? %>" id="add_todo_form">
     <%= form_for [@issue, @todo_item], :remote => true do |f| %>
       <%= f.text_area :content, :style => "height: 2em;" %><br />
       <%= f.submit "添加Todo" %>
     <% end %>
+  </div>
+  <div id="todo_done" style="border-top: 1px solid #DDD;">
+    <%= render @issue.todo_items.where(:workflow_state => :done) %>
   </div>
 </div>
 
@@ -51,11 +54,19 @@
           // TODO: The event is hardcoded! should be automatically set from todo_item state
           $.post('/todo_items/' + item_id + '/change_state', {event: "finish"}, function() {
             input.next().removeClass('todo_new').addClass('todo_done');
+            var target = $("#todo_" + item_id);
+            target.hide();
+            $("#todo_done").append(target);
+            target.slideDown();
           });
         } else {
           // uncheck this item, mark as 'new'
           $.post('/todo_items/' + item_id + '/change_state', {event: "undo"}, function() {
             input.next().removeClass('todo_done').addClass('todo_new');
+            var target = $("#todo_" + item_id);
+            target.hide();
+            $("#add_todo_form").before(target);
+            target.slideDown();
           });
         }
     });

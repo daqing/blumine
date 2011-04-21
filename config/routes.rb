@@ -1,4 +1,8 @@
 Blumine::Application.routes.draw do
+  get "issue_assignments/sort"
+
+  get "issue_assignment/sort"
+
   match 'login' => "user_sessions#new"
   match 'logout' => "user_sessions#destroy"
 
@@ -26,6 +30,8 @@ Blumine::Application.routes.draw do
       post :sort
     end
   end
+
+  post '/assigned_issues/sort' => 'issue_assignments#sort'
 
   root :to => "pages#index"
 

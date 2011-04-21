@@ -1,0 +1,8 @@
+<div class="row assigned_issue" id="issue_<%= my_assigned_issue.id %>">
+  <span class="span-10">
+    <%= link_to my_assigned_issue.title, my_assigned_issue %>
+    <span class="state state-<%= my_assigned_issue.current_state.name.to_s %> radius-5"><%= my_assigned_issue.state_name %></span>
+  </span>
+  <span><%= time_ago_in_words(my_assigned_issue.updated_at) %> Ago</span>
+</div>
+

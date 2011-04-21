@@ -83,16 +83,6 @@
       }
     });
 
-    $("#todo_list_box").sortable({
-         axis: 'y',
-         dropOnEmpty: false,
-         cursor: 'crosshair',
-         items: 'div.bg_highlight',
-         opacity: 0.6,
-         scroll: true, 
-         update: function(event, ui) {
-            $.post("/todo_items/sort", $("#todo_list_box").sortable('serialize'), function(result) {}, 'script');
-         }
-    });
+    $.make_sortable('todo_list_box', 'div.bg_highlight', '/todo_items/sort');
   });
 </script>

@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def parse_markdown(text)
-    RDiscount.new(h(text)).to_html
+    Redcarpet.new(h(text)).to_html
   end
 
   def must_not_logged_in

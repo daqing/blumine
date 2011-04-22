@@ -71,7 +71,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
-    rdiscount (1.6.8)
+    redcarpet (1.10.0)
     ruby-debug (0.10.4)
       columnize (>= 0.1)
       ruby-debug-base (~> 0.10.4.0)
@@ -95,7 +95,7 @@ DEPENDENCIES
   breadcrumbs
   jquery-rails (>= 0.2.6)
   rails (= 3.0.6)
-  rdiscount
+  redcarpet
   ruby-debug
   sqlite3
   workflow

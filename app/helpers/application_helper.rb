@@ -66,4 +66,8 @@ module ApplicationHelper
   def update_status!(log)
     current_user.status_logs.create!(:content => log)
   end
+
+  def close_facebox
+    %($.facebox.close()).html_safe
+  end
 end

@@ -22,13 +22,17 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html
+      format.js { render_to_facebox }
+    end
   end
 
   def update
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
         format.html { redirect_to @comment.issue }
-        format.js { render :nothing => true }
+        format.js
       else
         format.html { redirect_to root_path }
         format.js { render :text => "SAVE_FAILED", :status => 500 }

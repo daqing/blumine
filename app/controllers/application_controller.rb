@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
+  include FaceboxRender
 
   protect_from_forgery
 

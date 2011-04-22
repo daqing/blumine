@@ -1,4 +1,4 @@
-<%= form_for @comment do |f| %>
-  <%= f.text_area :content %>
+<%= form_for @comment, :remote => true do |f| %>
+  <%= f.text_area :content, :style => "width: 500px;" %>
   <%= f.submit "更新" %>
 <% end %>

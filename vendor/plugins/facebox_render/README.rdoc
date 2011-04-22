@@ -1,0 +1,58 @@
+= Description
+
+FaceboxRender improved plugin let you use lightbox seamlessly using Facebox library.
+
+= Install
+
+* script/plugin install git://github.com/ihower/facebox_render.git (for Rails 2)
+* rails plugin install git://github.com/ihower/facebox_render.git (for Rails 3)
+
+= USAGE
+
+== Helper
+
+* facebox_link_to helper, it's will launch loading facebox first, send ajax request second)
+* link_to_remote, form_remote_tag ...etc Ajax helper. (for Rails 2)
+* link_to :remote => true, form_for :remote => true ...etc Ajax helper (for Rails 3)
+
+Don't use <a href="somelink" ref="facebox">
+
+== Controller
+  
+Add "include FaceboxRender" to your controller, 
+or simply put it at /app/controllers/application.rb
+
+Then in your action:
+
+  respond_to do |format|
+    format.html
+    format.js { render_to_facebox }
+  end
+
+By Default render the html without layout,
+otherwise you can pass options[:template], options[:layout], options[:action], options[:partial] or options[:html] string.
+Passing options[:msg] will pulsate a message.
+
+If block given, it will yield after facebox script, eg:
+  
+  render_to_facebox do |page|
+    page << "alert('test')"
+  end
+
+Besides render_facebox, we have close_facebox, redirect_from_facebox.
+
+  respond_to do |format|
+    format.html
+    format.js { close_facebox }
+  end
+
+= Authors & Contributors
+
+* Wen-Tien Chang http://ihower.tw
+* Francisco J. http://github.com/franciscoj
+* Pavel Y. http://github.com/xedin
+* Blake Chambers
+
+= License
+
+Licensed under the MIT: http://www.opensource.org/licenses/mit-license.php

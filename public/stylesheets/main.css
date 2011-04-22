@@ -210,3 +210,5 @@ textarea.micro {
 div[filtered] {
   border: 1px dashed #999;
 }
+
+textarea { padding: 10px 5px; }

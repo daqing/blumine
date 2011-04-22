@@ -106,6 +106,10 @@ div.spacer {
   color: white;
   font-size: 10px;
   text-align: center;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 
 .radius-5 {

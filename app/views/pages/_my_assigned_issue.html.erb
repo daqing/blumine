@@ -1,5 +1,5 @@
 <div class="row assigned_issue" id="issue_<%= my_assigned_issue.id %>">
-    <%= link_to my_assigned_issue.title, my_assigned_issue %>
-    <span class="state state-<%= my_assigned_issue.current_state.name.to_s %> radius-5"><%= my_assigned_issue.current_state_name %></span>
+  <%= link_to my_assigned_issue.title, my_assigned_issue %>
+  <span class="state state-<%= my_assigned_issue.current_state.name.to_s %>"><%= my_assigned_issue.current_state_name %></span>
 </div>
 

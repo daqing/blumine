@@ -1,6 +1,20 @@
 <h1 class="silver">Project: <%= @project.name %></h1>
-<%= render_with_spacer 'issue', @project.issues %>
+<% if @issue_state == :all %>
+  <%= render_with_spacer 'issue', @project.issues %>
+<% else %>
+  <%= render_with_spacer 'issue', @project.issues.send("state_#{@issue_state}") %>
+<% end %>
 
 <% content_for :sidebar do %>
   <%= as_button(link_to "创建新任务", new_project_issue_path(@project)) %>
+
+  <div class="b-box">
+    <div class="blue_bar">任务状态</div>
+    <% Issue.workflow_spec.states.keys.each do |state_sym| %>
+      <div class="row bg_highlight" <%= "filtered" if state_sym.to_s == @issue_state %> clickable="/projects/<%= @project.id %>/filter/<%= state_sym.to_s %>">
+        <span class="quiet span-2"><%= @project.issues.send("state_#{state_sym.to_s}").count %></span>
+        <span class="state state-<%= state_sym.to_s %> radius-3"><%= Issue.state_name(state_sym) %></span>
+      </div>
+    <% end %>
+  </div>
 <% end %>

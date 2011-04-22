@@ -202,3 +202,7 @@ h1.silver a:hover { border-bottom: 2px solid #577DE7; color: #577DE7; }
 textarea.micro {
   height: 2em;
 }
+
+div[filtered] {
+  border: 1px dashed #999;
+}

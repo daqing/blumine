@@ -8,7 +8,7 @@ class IssuesController < ApplicationController
   def show
     breadcrumbs.add '所有项目', projects_path
     breadcrumbs.add @issue.project.name, project_path(@issue.project)
-    breadcrumbs.add @issue.title
+    breadcrumbs.add @issue.title, issue_path(@issue)
 
     @comment = @issue.comments.new
     @todo_item = @issue.todo_items.new

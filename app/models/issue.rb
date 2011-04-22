@@ -83,16 +83,36 @@ class Issue < ActiveRecord::Base
   validates :title, :content, :presence => true
   validates :user_id, :project_id, :presence => true
 
-  def state_name
-    @@state_names[self.current_state.name]
+  def self.state_name(state_sym)
+    @@state_names[state_sym]
   end
 
-  def event_name(event_sym)
+  def self.event_name(event_sym)
     @@event_names[event_sym]
+  end
+
+  def self.valid_state?(state_sym)
+    self.workflow_spec.states.keys.member? state_sym
+  end
+
+  def current_state_name
+    Issue.state_name(self.current_state.name)
   end
 
   def default_content
     "记录在Todo里。"
+  end
+
+  class << self
+    Issue.workflow_spec.states.keys.each do |state_sym|
+      define_method("state_#{state_sym.to_s}") do
+        where(:workflow_state => state_sym)
+      end
+
+      define_method("except_#{state_sym.to_s}") do
+        where(["workflow_state != ?", state_sym.to_s])
+      end
+    end
   end
 
   private

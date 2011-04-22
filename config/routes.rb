@@ -5,6 +5,9 @@ Blumine::Application.routes.draw do
   resources :users, :user_sessions, :comments
   resources :projects do
     resources :issues
+    member do
+      get 'filter/:state', :action => 'show'
+    end
   end
 
   resources :issues do

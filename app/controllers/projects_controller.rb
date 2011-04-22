@@ -8,8 +8,13 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    if params[:state]
+      @issue_state = Issue.valid_state?(params[:state].to_sym) ? params[:state] : :all
+    else
+      @issue_state = :all
+    end
     breadcrumbs.add '所有项目', projects_path
-    breadcrumbs.add @project.name
+    breadcrumbs.add @project.name, project_path(@project)
   end
 
   def new

@@ -62,4 +62,8 @@ module ApplicationHelper
         :collection => collection,
         :spacer_template => 'shared/spacer'
   end
+
+  def update_status!(log)
+    current_user.status_logs.create!(:content => log)
+  end
 end

@@ -27,12 +27,24 @@ class CommentsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should edit comment via ajax call" do
+    xhr :get, :edit, :id => comments(:need_fix).id
+
+    assert_response :success
+  end
+
   test "should update comment" do
     post :update, :id => comments(:need_fix).id, :comment => {:content => comments(:two).content}
 
     assert assigns(:comment)
     assert_redirected_to assigns(:comment).issue
     assert_equal comments(:two).content, assigns(:comment).content
+  end
+
+  test "should update comment via ajax call" do
+    xhr :post, :update, :id => comments(:need_fix).id, :comment => {:content => comments(:two).content}
+
+    assert_response :success
   end
 
   test "should destroy comment" do

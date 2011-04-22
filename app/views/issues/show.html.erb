@@ -75,14 +75,6 @@
         }
     });
 
-    $("div.row").live('hover', function(ev) {
-      if (ev.type == "mouseenter") {
-        $(this).children('a.delete_todo').removeClass('hide');
-      } else if (ev.type == "mouseleave") {
-        $(this).children('a.delete_todo').addClass('hide');
-      }
-    });
-
     $.make_sortable('todo_list_box', 'div.bg_highlight', '/todo_items/sort');
   });
 </script>

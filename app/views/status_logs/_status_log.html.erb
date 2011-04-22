@@ -3,7 +3,7 @@
   <div class="inline"><%= status_log.content %></div>
   <% if creator_of? status_log %>
     <span class="small">
-      <%= link_to '删除', status_log, :method => :delete, :remote => true, :confirm => '真的要删除吗?' %>
+      <%= link_to '删除', status_log, :class => 'hide', :method => :delete, :remote => true, :confirm => '真的要删除吗?' %>
     </span>
   <% end %>
 </div>

@@ -91,13 +91,10 @@ a.action:hover {
   text-decoration: none;
 }
 
-a[data-method=delete]:link {
-  color: red !important;
-}
-
 a[data-method=delete]:hover {
-  background-color: red !important;
-  color: white !important;
+  color: red !important;
+  text-decoration: underline;
+  background: none !important;
 }
 
 div.spacer {
@@ -154,7 +151,6 @@ div.btn_2_o {
   background-color: #E0E0E0;
   padding: 0px;
   margin: 0px;
-  margin-left: 10px;
 }
 
 div.btn_2_i {

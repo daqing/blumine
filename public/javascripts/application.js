@@ -23,4 +23,12 @@ $(document).ready(function() {
   $("div[clickable]").mouseover(function() { $(this).css('cursor', 'pointer'); }).click(function() {
     location.href = $(this).attr('clickable');
   });
+
+  $("div.row").live('hover', function(ev) {
+    if (ev.type == "mouseenter") {
+      $(this).find('a[data-method=delete]').removeClass('hide');
+    } else if (ev.type == "mouseleave") {
+      $(this).find('a[data-method=delete]').addClass('hide');
+    }
+  });
 });

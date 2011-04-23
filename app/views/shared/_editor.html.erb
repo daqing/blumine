@@ -1,0 +1,74 @@
+<% content_for :head_hook do %>
+  <%= stylesheet_link_tag :gollum %>
+  <!--[if IE 7]>
+    <%= stylesheet_link_tag "gollum_ie7" %>
+  <![endif]-->
+  <%= javascript_include_tag :gollum %>
+<% end %>
+
+<% content_for :on_ready_hook do %>
+  $.GollumEditor();
+<% end %>
+
+<div id="gollum-editor">
+  <input type="hidden" name="page" id="gollum-editor-page-title" value="Home">
+  <div id="gollum-editor-function-bar">
+    <div id="gollum-editor-function-buttons">
+      <a href="#" id="function-bold" class="function-button">
+        <span>Bold</span></a>
+      <a href="#" id="function-italic" class="function-button">
+        <span>Italic</span></a>
+      <a href="#" id="function-code" class="function-button">
+        <span>Code</span></a>
+      <span class="function-divider">&nbsp;</span>
+      <a href="#" id="function-ul" class="function-button">
+        <span>Unordered List</span></a>
+      <a href="#" id="function-ol" class="function-button">
+        <span>Ordered List</span></a>
+      <a href="#" id="function-blockquote" class="function-button">
+        <span>Blockquote</span></a>
+
+      <a href="#" id="function-hr" class="function-button">
+        <span>Horizontal Rule</span></a>
+      <span class="function-divider">&nbsp;</span>
+      <a href="#" id="function-h1" class="function-button">
+        <span>h1</span></a>
+      <a href="#" id="function-h2" class="function-button">
+        <span>h2</span></a>
+      <a href="#" id="function-h3" class="function-button">
+        <span>h3</span></a>
+      <span class="function-divider">&nbsp;</span>
+      <a href="#" id="function-link" class="function-button">
+        <span>Link</span></a>
+      <a href="#" id="function-image" class="function-button">
+        <span>Image</span></a>
+      <span class="function-divider">&nbsp;</span>
+      <a href="#" id="function-help" class="function-button">
+        <span>Help</span></a>
+    </div>
+  </div>
+  <div id="gollum-editor-help" class="jaws">
+    <ul id="gollum-editor-help-parent">
+      <li><a href="javascript:void(0);" class="selected">Help 1</a></li>
+      <li><a href="javascript:void(0);">Help 1</a></li>
+      <li><a href="javascript:void(0);">Help 1</a></li>
+    </ul>
+    <ul id="gollum-editor-help-list">
+      <li><a href="javascript:void(0);">Help 2</a></li>
+      <li><a href="javascript:void(0);">Help 3</a></li>
+      <li><a href="javascript:void(0);">Help 4</a></li>
+      <li><a href="javascript:void(0);">Help 5</a></li>
+      <li><a href="javascript:void(0);">Help 6</a></li>
+      <li><a href="javascript:void(0);">Help 7</a></li>
+      <li><a href="javascript:void(0);">Help 8</a></li>
+    </ul>
+    <div id="gollum-editor-help-wrapper">
+      <div id="gollum-editor-help-content">
+      <p>
+      </p>
+      </div>
+    </div>
+  </div>
+  <textarea id="gollum-editor-body" data-markup-lang="markdown" name="<%= name %>"><%= content %></textarea>
+</div>
+

@@ -144,7 +144,7 @@ div.spacer {
   margin: 10px 0;
 }
 
-.section p { text-indent: 1em; }
+.section p { text-indent: 1em; margin-bottom: 0.5em; }
 .author { margin-bottom: 0.5em; }
 
 div.btn_2_o {
@@ -211,4 +211,4 @@ div[filtered] {
   border: 1px dashed #999;
 }
 
-textarea { padding: 10px 5px; }
+textarea { padding: 5px; }

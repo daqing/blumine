@@ -35,6 +35,11 @@ module Blumine
     # JavaScript files you want as :defaults (application.js is always included).
     config.action_view.javascript_expansions[:defaults] = %w(jquery.min jquery-ui.min facebox rails)
 
+    config.action_view.javascript_expansions[:gollum] = %w(gollum/dialog gollum/placeholder gollum/editor gollum/markdown)
+
+    # Stylesheet files
+    config.action_view.stylesheet_expansions[:gollum] = %w(gollum/editor gollum/dialog gollum/template)
+
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 

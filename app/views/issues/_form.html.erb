@@ -7,7 +7,7 @@
 
   <div class="field">
     <%= f.label :content, "内容" %>
-    <%= f.text_area :content %>
+    <%= render :partial => 'shared/editor', :locals => {:name => 'issue[content]', :content => @issue.content} %>
   </div>
 
   <%= f.submit "保存" %>

@@ -17,11 +17,9 @@
   </div>
 <% end %>
 
-<script type="text/javascript">
-  jQuery(function() {
-    $.make_sortable('my_assigned_issues', 'div.assigned_issue', '/assigned_issues/sort');
-  });
-</script>
+<% content_for :on_ready_hook do %>
+  $.make_sortable('my_assigned_issues', 'div.assigned_issue', '/assigned_issues/sort');
+<% end %>
 
 <div class="row">
   <%= render 'status_logs/form' %>

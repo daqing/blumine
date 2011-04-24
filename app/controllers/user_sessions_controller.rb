@@ -4,7 +4,7 @@ class UserSessionsController < ApplicationController
 
   def new
     @user_session = UserSession.new
-    breadcrumbs.add '登录'
+    breadcrumbs.add t(:log_in)
 
     respond_to do |format|
       format.html # new.html.erb

@@ -19,15 +19,15 @@
   <div id="header">
     <div class="container" style="background-color: #505759">
       <div id="logo" class="span-4">BluMine</div>
-      <div class="span-6 links">
-        <%= link_to "首页", root_path %>
+      <div class="span-10 links">
+        <%= link_to t(:home), root_path %>
         <% if current_user %>
-          <%= link_to "所有项目", projects_path %>
+          <%= link_to t(:all_projects), projects_path %>
           <%= link_to current_user.name, current_user %>
-          <%= link_to "退出", logout_path %>
+          <%= link_to t(:log_out), logout_path %>
         <% else %>
-          <%= link_to "注册", new_user_path %>
-          <%= link_to "登录", login_path %>
+          <%= link_to t(:register), new_user_path %>
+          <%= link_to t(:log_in), login_path %>
         <% end %>
       </div>
     </div>

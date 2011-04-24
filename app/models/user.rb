@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110415041713
+# Schema version: 20110424131209
 #
 # Table name: users
 #
@@ -11,6 +11,7 @@
 #  created_at         :datetime
 #  updated_at         :datetime
 #  persistence_token  :string(255)
+#  locale             :string(255)
 #
 
 require 'digest'

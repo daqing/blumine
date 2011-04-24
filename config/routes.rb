@@ -30,7 +30,8 @@ Blumine::Application.routes.draw do
     end
   end
 
-  resources :status_logs, :only => [:create, :destroy], :via => :post
+  resources :status_logs, :only => [:create, :destroy]
+  resources :images, :only => [:create, :destroy]
 
   post '/assigned_issues/sort' => 'issue_assignments#sort'
 

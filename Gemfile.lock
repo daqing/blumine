@@ -37,6 +37,8 @@ GEM
     breadcrumbs (0.1.6)
       i18n
     builder (2.1.2)
+    carrierwave (0.5.3)
+      activesupport (~> 3.0)
     columnize (0.3.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -93,6 +95,7 @@ DEPENDENCIES
   annotate-models
   authlogic
   breadcrumbs
+  carrierwave
   jquery-rails (>= 0.2.6)
   rails (= 3.0.6)
   redcarpet

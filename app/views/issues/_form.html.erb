@@ -1,11 +1,11 @@
+<% content_for :on_ready_hook do %>
+  $("#upload_file").click(function() {
+    window.uploadWindow = window.open("<%= new_image_path %>", "upload_window", "height=200, width=400, top=200, left=200, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no");
+  });
+<% end %>
 
 <% content_for :sidebar do %>
-  <div id="file_uploader">
-  </div>
-  <%= form_for Image.new, :html => {:multipart => true }, :remote => true do |f| %>
-    <%= f.file_field :file %>
-    <%= f.submit "上传图片" %>
-  <% end %>
+  <iframe name="upload_image" src="<%= new_image_path %>" style="width: 250px;height: 500px;"></iframe>
 <% end %>
 
 <%= form_for [@project, @issue] do |f| %>

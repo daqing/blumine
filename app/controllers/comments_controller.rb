@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.destroy
         format.html { redirect_to @comment.issue }
-        format.js { render :nothing => true }
+        format.js
       else
         format.html { redirect_to root_path }
         format.js { render :text => "DESTROY_ERROR", :status => 500 }

@@ -3,7 +3,7 @@
     <% if creator_of?(comment) %>
       <%= link_to '编辑', edit_comment_path(comment), :class => :action, :remote => true %>
       &nbsp;&middot;&nbsp;
-      <%= link_to '删除', comment, :method => :delete, :confirm => "真的要删除吗?", :class => :action %>
+      <%= link_to '删除', comment, :method => :delete, :remote => true, :confirm => "真的要删除吗?", :class => :action %>
       &nbsp;&middot;&nbsp;
     <% end %>
     <%= comment.created_at %>

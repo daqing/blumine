@@ -2,7 +2,7 @@
   <h1 class="silver">分配给我的任务</h1>
   <div id="my_assigned_issues">
     <%= render :partial => 'my_assigned_issue',
-      :collection => current_user.assigned_issues.except_closed,
+      :collection => current_user.assigned_issues.except_closed.except_ignored,
       :spacer_template => 'shared/spacer'
     %>
   </div>

@@ -1,0 +1,18 @@
+# == Schema Information
+# Schema version: 20110423065001
+#
+# Table name: images
+#
+#  id         :integer         not null, primary key
+#  file       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  file: MyString
+
+two:
+  file: MyString

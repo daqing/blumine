@@ -98,6 +98,8 @@
       });
 
       <%= yield :on_ready_hook %>
+
+      $(".tip").tipTip({defaultPosition: 'left'});
     });
   </script>
 </body>

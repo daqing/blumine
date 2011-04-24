@@ -41,6 +41,7 @@ class Issue < ActiveRecord::Base
       event :work_on, :transitions_to => :working_on
       event :mark_invalid, :transitions_to => :invalid
       event :ignore, :transitions_to => :ignored
+      event :close, :transitions_to => :closed
     end
 
     state :working_on do

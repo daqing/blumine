@@ -128,7 +128,7 @@ div.spacer {
 .state-invalid { background-color: gray; }
 .state-reopened { background-color: red; }
 .state-working_on { background-color: orange; }
-.state-done { background-color: purple; }
+.state-finished { background-color: purple; }
 .state-ignored, .state-closed { background-color: #6CC644; }
 
 /*.sub { margin-bottom: 10px; background-color: #AFAFAF; padding: 2px 5px; border-top: 1px solid #DDD; }*/

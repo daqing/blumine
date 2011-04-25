@@ -6,10 +6,10 @@
 <% end %>
 
 <% content_for :sidebar do %>
-  <%= as_button(link_to "创建新任务", new_project_issue_path(@project)) %>
+  <%= as_button(link_to t(:new_issue), new_project_issue_path(@project)) %>
 
-  <div class="b-box" title="点击可过滤任务">
-    <div class="blue_bar">任务状态</div>
+  <div class="b-box" title="<%= t(:click_to_filter_issues) %>">
+    <div class="blue_bar"><%= t(:issue_state) %></div>
     <% Issue.workflow_spec.states.keys.each do |state_sym| %>
       <div class="row bg_highlight" <%= "filtered" if state_sym.to_s == @issue_state %> clickable="/projects/<%= @project.id %>/filter/<%= state_sym.to_s %>">
         <span class="quiet span-2"><%= @project.issues.send("state_#{state_sym.to_s}").count %></span>

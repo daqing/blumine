@@ -1,4 +1,4 @@
-# Sample localization file for English. Add more files in this directory for other locales.
+# Sample localization file for Chinese. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 zh:
@@ -21,3 +21,26 @@ zh:
   new_project: 创建新项目
   create_project: 创建新项目
   project_name: 项目名称
+  new_issue: 创建新任务
+  issue_state: 任务状态
+  click_to_view: 点击查看
+  click_to_filter_issues: 点击可过滤任务
+
+  issue:
+    state:
+      open: 新任务
+      working_on: 解决中
+      finished: 已解决
+      closed: 已关闭
+      invalid: 描述不成立
+      ignored: 不需解决
+      reopened: 重新开放
+    event:
+      work_on: 开始解决
+      mark_invalid: 无效描述
+      ignore: 不需要解决
+      mark_finished: 标记为已解决
+      reopen: 重新开放
+      continue: 继续解决
+      close: 关闭
+

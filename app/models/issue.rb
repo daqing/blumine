@@ -17,23 +17,23 @@ class Issue < ActiveRecord::Base
   include Workflow
 
   @@state_names = {
-    :open => "新任务",
-    :working_on => "解决中",
-    :done => "已解决",
-    :closed => "已关闭",
-    :invalid => "描述不成立",
-    :ignored => "不需解决",
-    :reopened => "重新开放"
+    :open => I18n.t('issue.state.open'),
+    :working_on => I18n.t('issue.state.working_on'),
+    :finished => I18n.t('issue.state.finished'),
+    :closed => I18n.t('issue.state.closed'),
+    :invalid => I18n.t('issue.state.invalid'),
+    :ignored => I18n.t('issue.state.ignored'),
+    :reopened => I18n.t('issue.state.reopened')
   }
 
   @@event_names = {
-    :work_on => "开始解决",
-    :mark_invalid => "无效描述",
-    :ignore => "不需要解决",
-    :mark_done => "标记为已解决",
-    :reopen => "重新开放",
-    :continue => "继续解决",
-    :close => "关闭"
+    :work_on => I18n.t('issue.event.work_on'),
+    :mark_invalid => I18n.t('issue.event.mark_invalid'),
+    :ignore => I18n.t('issue.event.ignore'),
+    :mark_finished =>I18n.t('issue.event.mark_finished'),
+    :reopen => I18n.t('issue.event.reopen'),
+    :continue => I18n.t('issue.event.continue'),
+    :close => I18n.t('issue.event.close'),
   }
 
   workflow do
@@ -45,10 +45,10 @@ class Issue < ActiveRecord::Base
     end
 
     state :working_on do
-      event :mark_done, :transitions_to => :done
+      event :mark_finished, :transitions_to => :finished
     end
 
-    state :done do
+    state :finished do
       event :continue, :transitions_to => :working_on
       event :close, :transitions_to => :closed
     end

@@ -2,20 +2,41 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
-  home: "Home"
-  log_in: "Log In"
-  all_projects: "All Projects"
-  my_assigned_issues: "My Assigned Issues"
-  feed: "Site Feed"
-  what_are_you_doing: "What are you doing"
-  save: "Save"
-  publish: "Publish"
-  issues_i_follow: "Issues I follow"
-  issues_i_commented: "Issues I commented"
-  drag_issue_to_sort_priority: "Drag an issue to sort priority"
-  all_users: "All Users"
-  get_source_code: "Source Code"
+  hello: Hello world
+  home: Home
+  log_in: Log In
+  all_projects: All Projects
+  my_assigned_issues: My Assigned Issues
+  feed: Site Feed
+  what_are_you_doing: What are you doing
+  save: Save
+  publish: Publish
+  issues_i_follow: Issues I follow
+  issues_i_commented: Issues I commented
+  drag_issue_to_sort_priority: Drag an issue to sort priority
+  all_users: All Users
+  get_source_code: Source Code
   blog: Blog
   new_project: New Project
-  create_project: "Create Project"
+  create_project: Create Project
+  new_issue: New Issue
+  issue_state: Issue State
+  click_to_view: Click to view this issue
+  click_to_filter_issues: Click to filter issues
+  issue:
+    state:
+      open: Open
+      working_on: Working On
+      finished: Finished
+      closed: Closed
+      invalid: Invalid
+      ignored: Ignored
+      reopened: Re-opened
+    event:
+      work_on: Start working on
+      mark_invalid: Mark as invalid
+      ignore: Ignore
+      mark_finished: Mark as finished
+      reopen: Re-open
+      continue: Continue working on
+      close: Close

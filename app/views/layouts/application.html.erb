@@ -18,7 +18,6 @@
 <body>
   <div id="header">
     <div class="container" style="background-color: #505759">
-      <div id="logo" class="span-4">BluMine</div>
       <div class="links" id="top_right">
         <%= link_to t(:home), root_path %>
         <% if current_user %>
@@ -30,6 +29,7 @@
           <%= link_to t(:log_in), login_path %>
         <% end %>
       </div>
+      <div id="logo" class="span-4"><%= link_to 'BluMine', root_path, :title => t(:home) %></div>
     </div>
   </div>
 

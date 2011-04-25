@@ -19,7 +19,10 @@ a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
   font-weight: bold;
   width: 180px;
   text-align: center;
+  z-index: 1;
 }
+
+#logo a:link, #logo a:hover, #logo a:visited { color: white; z-index: 2;}
 
 #header #top_right {
   position: absolute;
@@ -27,8 +30,8 @@ a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
   padding-left: 450px;
   z-index: 0;
   width: 495px;
-  height: 40px;
   text-align: right;
+  height: 0;
 }
 
 #header div.links a {

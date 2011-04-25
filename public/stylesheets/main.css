@@ -9,9 +9,7 @@ a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
 
 #main_area { background-color: white; }
 
-#header {
-  margin-bottom: 10px;
-}
+#header { margin-bottom: 10px; }
 
 #header #logo {
   background-color: #A82400;
@@ -23,8 +21,14 @@ a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
   text-align: center;
 }
 
-#header div.links {
-  margin-top: 10px;
+#header #top_right {
+  position: absolute;
+  top: 8px;
+  padding-left: 450px;
+  z-index: 0;
+  width: 495px;
+  height: 40px;
+  text-align: right;
 }
 
 #header div.links a {
@@ -34,7 +38,11 @@ a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
   margin-right: 8px;
 }
 
-#breadcrumbs { padding: 5px 0 5px 20px; background-color: white; margin-bottom: 20px; }
+#breadcrumbs { padding: 5px 0 0 20px; background-color: white; }
+.separator { color: #667; }
+#breadcrumbs a:link, #breadcrumbs a:visited { color: #636A86; }
+#breadcrumbs a:hover { text-decoration: underline; }
+
 #content, #sidebar { padding: 10px 20px; }
 #footer { margin: 10px 0; padding-bottom: 30px; }
 

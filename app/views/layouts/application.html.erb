@@ -19,7 +19,7 @@
   <div id="header">
     <div class="container" style="background-color: #505759">
       <div id="logo" class="span-4">BluMine</div>
-      <div class="span-10 links">
+      <div class="links" id="top_right">
         <%= link_to t(:home), root_path %>
         <% if current_user %>
           <%= link_to t(:all_projects), projects_path %>
@@ -33,14 +33,6 @@
     </div>
   </div>
 
-  <% if breadcrumbs.items.length > 1 %>
-    <div class="container">
-      <div id="breadcrumbs">
-        <%= breadcrumbs.render(:format => :inline) %>
-      </div>
-    </div>
-  <% end %>
-
   <div class="container">
     <% [:notice, :error].each do |type| %>
       <% if flash[type] %>
@@ -50,6 +42,12 @@
   </div>
 
   <div class="container" id="main_area">
+    <% if breadcrumbs.items.length > 1 %>
+      <div id="breadcrumbs">
+        <%= breadcrumbs.render(:format => :inline) %>
+      </div>
+    <% end %>
+
     <div class="span-16" id="content">
       <%= yield %>
     </div>

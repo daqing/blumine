@@ -142,8 +142,8 @@ zh:
     errors:
       template: # ~ 2.3.5 backward compatible
         header:
-          one: "有 1 个错误发生导致「%{model}」无法被保存。"
-          other: "有 %{count} 个错误发生导致「%{model}」无法被保存。"
+          one: "有 1 个错误需要修正。"
+          other: "有 %{count} 个错误需要修正。"
         body: "如下字段出现错误："
       full_messages:
         format: "%{attribute} %{message}"

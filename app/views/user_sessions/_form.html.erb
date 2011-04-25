@@ -6,10 +6,10 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password, "密码" %>
+    <%= f.label :password, t(:password) %>
     <%= f.password_field :password %>
   </div>
   <div class="actions">
-    <%= f.submit "登录" %>
+    <%= f.submit t(:log_in) %>
   </div>
 <% end %>

@@ -1,5 +1,5 @@
 <h2 class="title"><%= @user.name %></h2>
 
-<span class="text_large">最近发表的Issue</span>
+<h1 class="silver"><%= t(:recent_issues) %></h1>
 <%= render_with_spacer 'issue', @user.issues %>
 

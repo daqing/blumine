@@ -1,4 +1,4 @@
-<div class="row" clickable="<%= issue_path(issue) %>" title="点击查看">
+<div class="row" clickable="<%= issue_path(issue) %>" title="<%= t(:click_to_view) %>">
   <span class="span-9">
     <%= link_to issue.title, issue %>
     <span class="state state-<%= issue.current_state.name.to_s %>"><%= issue.current_state_name %></span>

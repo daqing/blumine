@@ -1,4 +1,5 @@
 Blumine::Application.routes.draw do
+  get 'register' => 'users#new'
   get 'login' => "user_sessions#new"
   get 'logout' => "user_sessions#destroy"
 

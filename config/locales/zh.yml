@@ -32,6 +32,12 @@ zh:
   delete: 删除
   delete_confirm: 真的要删除吗?
 
+  upload: 上传
+
+  rencent_issues: 最近创建的任务
+
+  add_to_content: 添加到内容
+
   todo: 待处理事项
 
   issue:
@@ -59,4 +65,14 @@ zh:
       current_state: 当前状态
     discussions: 当前讨论
     create_comment: 参与讨论
+    create: 创建新任务
+    edit: 更新任务
 
+  image:
+    upload: 上传图片
+
+  register: 注册新用户
+  username: 用户名
+  password: 密码
+  create_user: 创建
+  password_confirmation: 确认密码

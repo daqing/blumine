@@ -1,6 +1,6 @@
-<h2>上传图片</h2>
+<h2><%= t('image.upload') %></h2>
 <%= form_for @image, :html => { :multipart => true } do |f| %>
   <%= f.file_field :file %><br />
-  <%= f.submit "上传图片" %>
+  <%= f.submit t(:upload) %>
 <% end %>
 

@@ -13,5 +13,5 @@
 <%= render :template => 'images/new' %>
 
 <%= image_tag @image.file.url, :width => 64, :height => 64 %>
-<%= link_to '添加到内容', 'javascript:;', :class => "add_to_editor", "data-url" => @image.file.url %>
+<%= link_to t(:add_to_content), 'javascript:;', :class => "add_to_editor", "data-url" => @image.file.url %>
 

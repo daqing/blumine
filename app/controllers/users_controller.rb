@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    breadcrumbs.add '注册'
+    breadcrumbs.add t(:register), register_path
   end
 
   def create

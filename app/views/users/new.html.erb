@@ -1,8 +1,8 @@
-<h2>注册</h2>
+<h2><%= t(:register) %></h2>
 <%= form_for @user do |f| %>
   <%= render 'shared/error_messages', :obj => @user %>
   <div class="field">
-    <%= f.label :name, "用户名" %>
+    <%= f.label :name, t(:username) %>
     <%= f.text_field :name %>
   </div>
 
@@ -12,14 +12,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :password, "密码" %>
+    <%= f.label :password, t(:password) %>
     <%= f.password_field :password %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, "确认密码" %>
+    <%= f.label :password_confirmation, t(:password_confirmation) %>
     <%= f.password_field :password_confirmation %>
   </div>
 
-  <%= f.submit "注册" %>
+  <%= f.submit t(:create_user) %>
 <% end %>

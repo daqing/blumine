@@ -26,7 +26,7 @@
           <%= link_to current_user.name, current_user %>
           <%= link_to t(:log_out), logout_path %>
         <% else %>
-          <%= link_to t(:register), new_user_path %>
+          <%= link_to t(:register), register_path %>
           <%= link_to t(:log_in), login_path %>
         <% end %>
       </div>

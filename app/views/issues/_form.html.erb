@@ -11,14 +11,14 @@
 <%= form_for [@project, @issue] do |f| %>
   <%= render 'shared/error_messages', :obj => @issue %>
   <div class="field">
-    <%= f.label :title, "标题" %>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= f.label :content, "内容" %>
+    <%= f.label :content %>
     <%= render :partial => 'shared/editor', :locals => {:name => 'issue[content]', :content => @issue.content} %>
   </div>
 
-  <%= f.submit "保存" %>
+  <%= f.submit t(:save) %>
 <% end %>

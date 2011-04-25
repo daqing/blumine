@@ -30,6 +30,12 @@ en:
   delete: Delete
   delete_confirm: Really?
 
+  upload: Upload
+
+  recent_issues: Recently Created Issues
+
+  add_to_content: Add to Content
+
   todo: TODO
 
   issue:
@@ -42,19 +48,29 @@ en:
       ignored: Ignored
       reopened: Re-opened
     event:
-      work_on: Start working on
-      mark_invalid: Mark as invalid
+      work_on: Start Working On
+      mark_invalid: Mark as Invalid
       ignore: Ignore
-      mark_finished: Mark as finished
-      reopen: Re-open
-      continue: Continue working on
+      mark_finished: Mark as Finished
+      reopen: Re-Open
+      continue: Continue Working
       close: Close
     assignment:
-      assigned_to: Assigned to
-      not_assigned: Not assigned yet
-      assign_to: Assign to
+      assigned_to: Assigned To
+      not_assigned: No One Assigned
+      assign_to: Assign To
     workflow:
       current_state: Current
     discussions: Discussions
     create_comment: Add Comment
-      
+    create: Create a New Issue
+    edit: Edit Issue
+
+  image:
+    upload: Upload Images
+
+  register: Register
+  username: User Name
+  password: Password
+  password_confirmation: Confirm Password
+  create_user: Create User

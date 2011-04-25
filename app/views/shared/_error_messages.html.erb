@@ -1,6 +1,8 @@
 <% if obj.errors.any? %>
   <div class="error">
-    <h2><%= pluralize(obj.errors.count, "error") %> prohibited this record from being saved:</h2>
+    <h2>
+      <%= t('activerecord.errors.template.header.other', :count => obj.errors.count) %>
+      </h2>
     <ul>
     <% obj.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>  

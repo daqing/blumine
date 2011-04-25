@@ -40,7 +40,7 @@ a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
 
 #footer a:active, #footer a:link, #footer a:hover {
   text-decoration: none;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 div.field {
@@ -212,3 +212,5 @@ div[filtered] {
 }
 
 textarea { padding: 5px; }
+
+.current { font-weight: bold; }

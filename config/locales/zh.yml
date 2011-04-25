@@ -214,3 +214,14 @@ zh:
   log_out: 退出
   register: 注册
   log_in: 登录
+  my_assigned_issues: 分配给我的任务
+  feed: 最近动态
+  what_are_you_doing: 你在做什么
+  save: 保存
+  publish: 发布
+  issues_i_follow: 我关注的任务
+  issues_i_commented: 我评论的任务
+  drag_issue_to_sort_priority: 拖动任务可修改其优先级
+  all_users: 所有用户
+  get_source_code: 获取源代码
+  blog: 作者博客

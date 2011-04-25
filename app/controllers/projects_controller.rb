@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
-    breadcrumbs.add '所有项目'
+    breadcrumbs.add t(:all_projects), projects_path
   end
 
   def show
@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
     else
       @issue_state = :all
     end
-    breadcrumbs.add '所有项目', projects_path
+    breadcrumbs.add t(:all_projects), projects_path
     breadcrumbs.add @project.name, project_path(@project)
   end
 

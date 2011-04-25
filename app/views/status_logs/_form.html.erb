@@ -1,5 +1,5 @@
 <%= form_for current_user.status_logs.new, :remote => true do |f| %>
-  你想说什么?<br/>
+  <%= t(:what_are_you_doing)%>?<br/>
   <%= f.text_area :content, :class => :micro %><br />
-  <%= f.submit "发布" %>
+  <%= f.submit t(:publish) %>
 <% end %>

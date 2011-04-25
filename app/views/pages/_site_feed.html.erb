@@ -1,30 +1,30 @@
 <% content_for :sidebar do %>
-  <h1 class="silver">分配给我的任务</h1>
-  <div id="my_assigned_issues" title="拖动任务可修改其优先级">
+  <h1 class="silver"><%= t(:my_assigned_issues) %></h1>
+  <div id="my_assigned_issues" title="<%= t(:drag_issue_to_sort_priority) %>">
     <%= render :partial => 'my_assigned_issue',
       :collection => current_user.assigned_issues.except_closed.except_ignored,
       :spacer_template => 'shared/spacer'
     %>
   </div>
 
-  <h1 class="silver">我关注的任务</h1>
+  <h1 class="silver"><%= t(:issues_i_follow) %></h1>
 
-  <h1 class="silver">我评论的任务</h1>
+  <h1 class="silver"><%= t(:issues_i_commented) %></h1>
 
   <div class="b-box">
-    <div class="blue_bar">所有用户</div>
+    <div class="blue_bar"><%= t(:all_users) %></div>
     <%= render_with_spacer 'user', User.all %>
   </div>
 <% end %>
 
 <% content_for :on_ready_hook do %>
-  $.make_sortable('my_assigned_issues', 'div.assigned_issue', '/assigned_issues/sort');
+  $.make_sortable('my_assigned_issues', 'div.assigned_issue', '<%= assigned_issues_sort_path %>');
 <% end %>
 
 <div class="row">
   <%= render 'status_logs/form' %>
 </div>
-<h1 class="silver">最近动态</h1>
+<h1 class="silver"><%= t(:feed) %></h1>
 <div id="feed_box">
   <%= render StatusLog.order('created_at DESC').limit(20) %>
 </div>

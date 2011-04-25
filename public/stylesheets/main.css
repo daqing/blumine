@@ -36,7 +36,7 @@ a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
 
 #breadcrumbs { padding: 5px 0 5px 20px; background-color: white; margin-bottom: 20px; }
 #content, #sidebar { padding: 10px 20px; }
-#footer { margin-top: 10px; }
+#footer { margin: 10px 0; padding-bottom: 30px; }
 
 #footer a:active, #footer a:link, #footer a:hover {
   text-decoration: none;

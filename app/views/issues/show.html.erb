@@ -42,22 +42,22 @@
   @<%= link_to @issue.user.name, @issue.user, :class => "quiet" %>
   <% if creator_of?(@issue) %>
     &nbsp;&middot;&nbsp;
-    <%= link_to "编辑", edit_issue_path(@issue), :class => :action %>
+    <%= link_to t(:edit), edit_issue_path(@issue), :class => :action %>
     &nbsp;&middot;&nbsp;
-    <%= link_to "删除", @issue, :method => :delete, :class => :action, :confirm => "真的要删除吗?" %>
+    <%= link_to t(:delete), @issue, :method => :delete, :class => :action, :confirm => t(:delete_confirm) %>
   <% end %>
 </span>
 <br /><br />
 <%=raw parse_markdown @issue.content %>
 
 <div class="b-box" id="todo_list_box">
-  <div class="gray_bar">待处理事项</div>
+  <div class="gray_bar"><%= t(:todo) %></div>
   <%= render @issue.todo_items.where(:workflow_state => :open) %>
 
   <div class="row <%= "hide" if @issue.closed? %>" id="add_todo_form">
     <%= form_for [@issue, @todo_item], :remote => true do |f| %>
       <%= f.text_area :content, :class => :micro %><br />
-      <%= f.submit "添加" %>
+      <%= f.submit t(:add) %>
     <% end %>
   </div>
   <div id="todo_done" style="border-top: 1px solid #DDD;">
@@ -65,7 +65,7 @@
   </div>
 </div>
 
-<div class="text_large" style="color: green; text-align: center; margin-top: 15px;">当前讨论</div>
+<div class="text_large" style="color: green; text-align: center; margin-top: 15px;"><%= t('issue.discussions') %></div>
 <div id="issue_comments">
   <%= render @issue.comments %>
 </div>
@@ -73,7 +73,7 @@
 <div class="row <%= "hide" if @issue.closed? %>" id="add_comment_form">
 <%= form_for [@issue, @comment], :remote => true do |f| %>
   <%= f.text_area :content, :style => "height: 10em" %><br />
-  <%= f.submit "参与讨论" %>
+  <%= f.submit t('issue.create_comment') %>
 <% end %>
 </div>
 

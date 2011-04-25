@@ -26,6 +26,14 @@ zh:
   click_to_view: 点击查看
   click_to_filter_issues: 点击可过滤任务
 
+  add: 添加
+  edit: 编辑
+  update: 更新
+  delete: 删除
+  delete_confirm: 真的要删除吗?
+
+  todo: 待处理事项
+
   issue:
     state:
       open: 新任务
@@ -43,4 +51,12 @@ zh:
       reopen: 重新开放
       continue: 继续解决
       close: 关闭
+    assignment:
+      assigned_to: 已分配给
+      not_assigned: 尚未分配
+      assign_to: 分配给
+    workflow:
+      current_state: 当前状态
+    discussions: 当前讨论
+    create_comment: 参与讨论
 

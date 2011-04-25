@@ -1,5 +1,5 @@
 <div class="blue_bar">
-  <strong>当前状态</strong>
+  <strong><%= t('issue.workflow.current_state') %></strong>
   <span class="radius-5 state state-<%= issue.current_state.name.to_s %>"><%= issue.current_state_name %></span>
 </div>
 <% keys = issue.current_state.events.keys %>
@@ -9,7 +9,7 @@
 <% else %>
   <%= form_for :issue, :url => change_state_issue_path(issue), :remote => true do |f| %>
     <%= select_tag :event, options_for_select(keys.collect { |key| [Issue.event_name(key), key.to_s] }) %>
-    <%= f.submit '更新状态' %>
+    <%= f.submit t(:update) %>
   <% end %>
 <% end %>
 </div>

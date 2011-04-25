@@ -8,6 +8,6 @@
   <% end %>
   <%= todo_item.content %>
   </span>
-  <%= link_to '删除', todo_item, :class => "hide", :method => :delete, :remote => true, :confirm => '真的要删除吗?' %>
+  <%= link_to t(:delete), todo_item, :class => "hide", :method => :delete, :remote => true, :confirm => t(:delete_confirm) %>
 </div>
 

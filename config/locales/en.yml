@@ -23,6 +23,15 @@ en:
   issue_state: Issue State
   click_to_view: Click to view this issue
   click_to_filter_issues: Click to filter issues
+
+  add: Add
+  edit: Edit
+  update: Update
+  delete: Delete
+  delete_confirm: Really?
+
+  todo: TODO
+
   issue:
     state:
       open: Open
@@ -40,3 +49,12 @@ en:
       reopen: Re-open
       continue: Continue working on
       close: Close
+    assignment:
+      assigned_to: Assigned to
+      not_assigned: Not assigned yet
+      assign_to: Assign to
+    workflow:
+      current_state: Current
+    discussions: Discussions
+    create_comment: Add Comment
+      

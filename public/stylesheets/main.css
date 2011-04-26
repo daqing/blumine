@@ -7,6 +7,8 @@ body {
 
 h1, h2 { font-size: 20px; }
 
+ul { list-style: none; }
+
 a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
 
 #main_area { background-color: white; }
@@ -51,6 +53,48 @@ a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
   background-color: white;
   border: 1px solid white;
 }
+
+#shortcut {
+  position: absolute;
+  top: 8px;
+  left: 500px;
+}
+
+li.headlink {
+  float: left;
+  width: 100px;
+}
+
+li.headlink a.top { 
+  padding: 3px 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+li.headlink:hover a.top {
+  background: #333;
+  color: white !important;
+}
+
+li.headlink ul { 
+  display: none;
+  padding: 5px 0;
+  margin: 0;
+  opacity: 0.9;
+  width: 180px;
+  text-align: center;
+}
+
+li.headlink div.sep {
+  background-image: url("/images/mid.gif");
+  height: 11px;
+  display: block;
+  width: 14em;
+}
+
+li.headlink ul li:hover { background-color: #666; }
+li.headlink ul li:hover a { color: #DDD !important; }
+li.headlink:hover ul { display: block; background-color: #333; }
 
 
 #breadcrumbs { padding: 5px 0 0 20px; background-color: white; }

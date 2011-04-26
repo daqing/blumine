@@ -17,6 +17,7 @@ class IssuesControllerTest < ActionController::TestCase
 
     assert assigns(:project)
     assert assigns(:issue)
+    assert assigns(:title)
   end
 
   test "should create issue" do
@@ -48,6 +49,7 @@ class IssuesControllerTest < ActionController::TestCase
     assert assigns(:issue)
     assert assigns(:comment)
     assert assigns(:todo_item)
+    assert assigns(:title)
   end
 
   test "should change workflow state" do
@@ -69,6 +71,7 @@ class IssuesControllerTest < ActionController::TestCase
     get :edit, :id => @issue.id
 
     assert_response :success
+    assert assigns(:title)
   end
 
   test "should update issue" do

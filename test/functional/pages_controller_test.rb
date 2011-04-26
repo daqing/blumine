@@ -4,6 +4,8 @@ class PagesControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
+
+    assert assigns(:title)
   end
 
   test "root path should be routed to index action" do

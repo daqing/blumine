@@ -10,6 +10,7 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_response :success
 
     assert assigns(:project)
+    assert assigns(:title)
   end
 
   test "should create project" do
@@ -23,6 +24,8 @@ class ProjectsControllerTest < ActionController::TestCase
   test "should get show" do
     get :show, :id => projects(:blumine).id
     assert_response :success
+
+    assert assigns(:title)
   end
 
   test "should get index" do
@@ -30,6 +33,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert assigns(:projects)
+    assert assigns(:title)
   end
 
   test "should redirect to login path if get index" do

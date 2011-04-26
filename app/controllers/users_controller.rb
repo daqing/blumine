@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @title = t(:register)
     breadcrumbs.add t(:register), register_path
   end
 
@@ -18,6 +19,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @title = @user.name
+
     breadcrumbs.add @user.name
   end
 

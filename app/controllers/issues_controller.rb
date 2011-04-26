@@ -12,11 +12,13 @@ class IssuesController < ApplicationController
 
     @comment = @issue.comments.new
     @todo_item = @issue.todo_items.new
+    @title = @issue.title
   end
 
   def new
     @project = Project.find(params[:project_id])
     @issue = @project.issues.new
+    @title = t('issue.create')
   end
 
   def create
@@ -32,6 +34,7 @@ class IssuesController < ApplicationController
 
   def edit
     @project = @issue.project
+    @title = t('issue.edit')
   end
 
   def update

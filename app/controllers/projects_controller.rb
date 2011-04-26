@@ -3,6 +3,8 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    @title = t(:all_projects)
+
     breadcrumbs.add t(:all_projects), projects_path
   end
 
@@ -13,12 +15,16 @@ class ProjectsController < ApplicationController
     else
       @issue_state = :all
     end
+
+    @title = @project.name
+
     breadcrumbs.add t(:all_projects), projects_path
     breadcrumbs.add @project.name, project_path(@project)
   end
 
   def new
     @project = current_user.projects.new
+    @title = t(:new_project)
   end
 
   def create
@@ -31,6 +37,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @title = t(:edit_project)
   end
 
   def update

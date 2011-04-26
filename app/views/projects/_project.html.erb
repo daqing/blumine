@@ -1,4 +1,4 @@
 <h1 class="silver"><%= link_to project.name, project %></h1>
 
-<%= render_with_spacer 'issue', project.issues %>
+<%= render_with_spacer 'issue', project.issues.order('created_at DESC').limit(5) %>
 

@@ -39,7 +39,7 @@
             <%= link_to t(:all_projects), projects_path, :class => :top %>
             <ul>
               <% Project.all.each do |p| %>
-                <li><%= link_to p.name, p %></li>
+                <li clickable="<%= project_path(p) %>"><%= link_to p.name, p %></li>
               <% end %>
               <div class="sep">&nbsp;</div>
               <li><%= link_to(t(:new_project), new_project_path) %></li>
@@ -112,7 +112,7 @@
       $(".bg_highlight").live('mouseenter', function() { $(this).css('backgroundColor', '#FFC'); })
         .live('mouseleave', function() { $(this).css('backgroundColor', '#FFF'); });
 
-      $("div[clickable]").mouseover(function() { $(this).css('cursor', 'pointer'); }).click(function() {
+      $("div[clickable], li[clickable]").mouseover(function() { $(this).css('cursor', 'pointer'); }).click(function() {
         location.href = $(this).attr('clickable');
       });
 

@@ -43,6 +43,16 @@ a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
   margin-right: 8px;
 }
 
+#search {
+  height: 20px;
+  width: 150px;
+  padding: 1px 3px;
+  color: #333;
+  background-color: white;
+  border: 1px solid white;
+}
+
+
 #breadcrumbs { padding: 5px 0 0 20px; background-color: white; }
 .separator { color: #667; }
 #breadcrumbs a:link, #breadcrumbs a:visited { color: #636A86; }
@@ -136,6 +146,12 @@ div.spacer {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+}
+
+.radius-7 {
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
 }
 
 .state-open { background-color: #0091C0; }

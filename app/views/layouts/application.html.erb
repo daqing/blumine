@@ -30,6 +30,9 @@
         <% end %>
       </div>
       <div id="logo" class="span-4"><%= link_to 'BluMine', root_path, :title => t(:home) %></div>
+      <div style="margin: 3px 0 0 10px;" class="span-4">
+        <%= text_field_tag 'search', 'Search Issues', :class => 'radius-3' %>
+      </div>
     </div>
   </div>
 

@@ -1,6 +1,11 @@
 <div class="blue_bar">
   <% if @issue.assigned_user %>
-    <strong><%= t('issue.assignment.assigned_to') %></strong>&nbsp;<%= link_to @issue.assigned_user.name, @issue.assigned_user %>
+    <strong><%= t('issue.assignment.assigned_to') %></strong>
+    <% if @issue.assigned_user == current_user %>
+      <%= link_to t(:me), current_user %>
+    <% else %>
+      <%= link_to @issue.assigned_user.name, @issue.assigned_user %>
+    <% end %>
   <% else %>
     <span class="quiet">{ <%= t('issue.assignment.not_assigned') %> }</span>
   <% end %>
@@ -8,7 +13,7 @@
 <div class="row">
   <%= form_for :issue_assignment, :url => assign_to_issue_path(@issue), :remote => true do |f| %>
     <%= t('issue.assignment.assign_to') %>
-    <%= select_tag :user_id, options_for_select(User.all.collect { |user| [user.name, user.id] }) %>
+    <%= select_tag :user_id, options_for_select(User.all.collect { |user| (user == current_user) ? [t(:me), user.id] : [user.name, user.id] }) %>
     <%= f.submit t(:save) %>
   <% end %>
 </div>

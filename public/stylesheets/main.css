@@ -5,6 +5,8 @@ body {
   font-size: 14px;
 }
 
+h1, h2 { font-size: 20px; }
+
 a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
 
 #main_area { background-color: white; }
@@ -117,6 +119,7 @@ div.spacer {
   color: white;
   font-size: 10px;
   text-align: center;
+  margin-left: 5px;
 
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -144,7 +147,7 @@ div.spacer {
 
 /*.sub { margin-bottom: 10px; background-color: #AFAFAF; padding: 2px 5px; border-top: 1px solid #DDD; }*/
 
-.tip { color: #AFAFAF; text-shadow: none; }
+.tip { color: #AFAFAF; text-shadow: none; font-size: 11px; }
 .title { margin: 0; padding-bottom: 5px; }
 
 .clean { background: none; }

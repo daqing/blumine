@@ -40,20 +40,20 @@ zh:
         one: "一分钟"
         other: "%{count} 分钟"
       about_x_hours:
-        one: "大约一小时"
-        other: "大约 %{count} 小时"
+        one: "约一小时"
+        other: "约 %{count} 小时"
       x_days:
         one: "一天"
         other: "%{count} 天"
       about_x_months:
-        one: "大约一个月"
-        other: "大约 %{count} 个月"
+        one: "约一个月"
+        other: "约 %{count} 个月"
       x_months:
         one: "一个月"
         other: "%{count} 个月"
       about_x_years:
-        one: "大约一年"
-        other: "大约 %{count} 年"
+        one: "约一年"
+        other: "约 %{count} 年"
       over_x_years:
         one: "一年多"
         other: "%{count} 年多"

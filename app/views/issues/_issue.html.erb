@@ -1,8 +1,7 @@
 <div class="row" clickable="<%= issue_path(issue) %>" title="<%= t(:click_to_view) %>">
-  <span class="span-9">
+  <span class="span-13">
     <%= link_to issue.title, issue %>
     <span class="state state-<%= issue.current_state.name.to_s %>"><%= issue.current_state_name %></span>
   </span>
-  <span class="span-2 append-1"><%= link_to issue.user.name, issue.user %></span>
-  <span class="quiet small"><%= time_ago_in_words(issue.created_at) %> Ago</span>
+  <span class="quiet small"><%= time_ago_in_words(issue.created_at) + t(:ago) %></span>
 </div>

@@ -37,9 +37,11 @@
     $.make_sortable('todo_list_box', 'div.bg_highlight', '/todo_items/sort');
 <% end %>
 
-<h2 class="title inline"><%= @issue.title %></h2>
+<h2 class="title"><%= @issue.title %></h2>
 <span class="tip">
-  @<%= link_to @issue.user.name, @issue.user, :class => "quiet" %>
+  By <%= link_to @issue.user.name, @issue.user, :class => "quiet" %>
+  &nbsp;&middot;&nbsp;
+  <%= time_ago_in_words(@issue.created_at) + t(:ago) %>
   <% if creator_of?(@issue) %>
     &nbsp;&middot;&nbsp;
     <%= link_to t(:edit), edit_issue_path(@issue), :class => :action %>

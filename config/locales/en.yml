@@ -2,7 +2,7 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: Hello world
+  ago: Ago
   home: Home
   log_in: Log In
   all_projects: All Projects

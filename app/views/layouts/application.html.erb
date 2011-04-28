@@ -29,24 +29,26 @@
         <% end %>
       </div>
       <div id="logo" class="span-4"><%= link_to 'BluMine', root_path, :title => t(:home) %></div>
-      <div style="margin: 3px 0 0 10px;" class="span-4">
-        <%= text_field_tag 'search', t(:search_issues), :class => 'radius-3' %>
-      </div>
+      <% if current_user %>
+        <div style="margin: 3px 0 0 10px;" class="span-4">
+          <%= text_field_tag 'search', t(:search_issues), :class => 'radius-3' %>
+        </div>
 
-      <div id="shortcut" class="links">
-        <ul>
-          <li class="headlink">
-            <%= link_to t(:all_projects), projects_path, :class => :top %>
-            <ul>
-              <% Project.all.each do |p| %>
-                <li clickable="<%= project_path(p) %>"><%= link_to p.name, p %></li>
-              <% end %>
-              <div class="sep">&nbsp;</div>
-              <li><%= link_to(t(:new_project), new_project_path) %></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+        <div id="shortcut" class="links">
+          <ul>
+            <li class="headlink">
+              <%= link_to t(:all_projects), projects_path, :class => :top %>
+              <ul>
+                <% Project.all.each do |p| %>
+                  <li clickable="<%= project_path(p) %>"><%= link_to p.name, p %></li>
+                <% end %>
+                <div class="sep">&nbsp;</div>
+                <li><%= link_to(t(:new_project), new_project_path) %></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      <% end %>
     </div>
   </div>
 

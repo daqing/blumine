@@ -13,6 +13,7 @@ gem 'jquery-rails', '>= 0.2.6'
 gem 'breadcrumbs'
 gem 'acts_as_list'
 gem 'carrierwave'
+gem 'mysql2'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -38,3 +39,4 @@ group :development, :test do
   gem 'RedCloth'
   gem 'annotate-models'
 end
+gem "rubber", "1.13.0"

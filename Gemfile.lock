@@ -30,18 +30,32 @@ GEM
       activesupport (= 3.0.6)
     activesupport (3.0.6)
     acts_as_list (0.1.2)
+    amazon-ec2 (0.9.17)
+      xml-simple (>= 1.0.12)
     annotate-models (1.0.4)
     arel (2.0.9)
     authlogic (2.1.6)
       activesupport
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
     breadcrumbs (0.1.6)
       i18n
     builder (2.1.2)
+    capistrano (2.5.21)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.0.0)
     carrierwave (0.5.3)
       activesupport (~> 3.0)
     columnize (0.3.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    highline (1.6.1)
+    httpclient (2.2.0.2)
     i18n (0.5.0)
     jquery-rails (0.2.7)
       rails (~> 3.0)
@@ -53,6 +67,18 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mumboe-soap4r (1.5.8.3)
+      httpclient (>= 2.1.1)
+    mysql2 (0.2.3)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.1.4)
+    net-ssh-gateway (1.0.1)
+      net-ssh (>= 1.99.1)
+    nettica (0.4.0)
+      mumboe-soap4r
     polyglot (0.3.1)
     rack (1.2.2)
     rack-mount (0.6.14)
@@ -74,6 +100,11 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     redcarpet (1.10.0)
+    rubber (1.13.0)
+      amazon-ec2 (>= 0.9.17)
+      aws-s3
+      capistrano (>= 2.4.0)
+      nettica
     ruby-debug (0.10.4)
       columnize (>= 0.1)
       ruby-debug-base (~> 0.10.4.0)
@@ -85,6 +116,7 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (0.3.26)
     workflow (0.8.0)
+    xml-simple (1.0.15)
 
 PLATFORMS
   ruby
@@ -97,8 +129,10 @@ DEPENDENCIES
   breadcrumbs
   carrierwave
   jquery-rails (>= 0.2.6)
+  mysql2
   rails (= 3.0.6)
   redcarpet
+  rubber (= 1.13.0)
   ruby-debug
   sqlite3
   workflow

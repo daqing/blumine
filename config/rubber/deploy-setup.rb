@@ -55,7 +55,7 @@ namespace :rubber do
     task :install_rvm_ruby do
       opts = get_host_options('rvm_ruby')
       install_rvm_ruby_script = <<-ENDSCRIPT
-        rvm_ver=$1
+        rvm_ver=1.8.7
         if [[ ! `rvm list default 2> /dev/null` =~ "$rvm_ver" ]]; then
           echo "RVM is compiling/installing ruby $rvm_ver, this may take a while"
 

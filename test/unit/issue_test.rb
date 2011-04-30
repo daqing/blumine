@@ -3,6 +3,9 @@ require 'test_helper'
 class IssueTest < ActiveSupport::TestCase
   setup do
     @issue = Issue.new
+
+    # delete indexes
+    FileUtils.rm_r Issue.get_index_dir
   end
 
   test "title and content are required" do
@@ -18,5 +21,20 @@ class IssueTest < ActiveSupport::TestCase
     @issue.user_id = 1
 
     assert @issue.save
+  end
+
+  test "search issues" do
+    build_search_index
+    Issue.search_with_ferret(%(title:"bug")) do |index, id, score|
+      assert_equal index[id][:id], issues(:bug_report).id.to_s
+    end
+  end
+
+  def build_search_index
+    index = Issue.get_index
+    [:bug_report, :two].each do |key|
+      item = issues(key)
+      index << {:id => item.id, :title => item.title, :content => item.content}
+    end
   end
 end

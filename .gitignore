@@ -4,3 +4,4 @@ log/*.log
 tmp/
 doc
 public/uploads/
+index/

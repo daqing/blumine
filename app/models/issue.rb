@@ -13,6 +13,9 @@
 #  user_id        :integer
 #
 
+require 'rmmseg'
+require 'rmmseg/ferret'
+
 class Issue < ActiveRecord::Base
   include Workflow
 
@@ -96,6 +99,25 @@ class Issue < ActiveRecord::Base
     self.workflow_spec.states.keys.member? state_sym
   end
 
+  def self.get_index_dir
+    File.join(Rails.root, 'index', Rails.env, self.to_s.downcase)
+  end
+
+  def self.search_with_ferret(query, &block)
+    index = get_index
+    index.search_each(query) { |id, score| block.call(index, id, score) if block_given? }
+  end
+
+  def self.rebuild_index!
+    FileUtils.rm_r get_index_dir
+
+    index = get_index
+    all.each do |issue|
+      index << issue.to_index_hash
+    end
+    index.commit
+  end
+
   def current_state_name
     Issue.state_name(self.current_state.name)
   end
@@ -116,8 +138,20 @@ class Issue < ActiveRecord::Base
     end
   end
 
+  def to_index_hash
+    {:id => self.id, :title => self.title, :content => self.content}
+  end
+
   private
     def set_default_content
       self.content = default_content if self.content.blank?
+    end
+
+    def self.get_index
+      index_dir = Issue.get_index_dir
+      FileUtils.mkdir_p(index_dir) unless File.exists?(index_dir)
+
+      analyzer = RMMSeg::Ferret::Analyzer.new { |tok| Ferret::Analysis::LowerCaseFilter.new(tok) }
+      Ferret::Index::Index.new(:path => index_dir, :analyzer => analyzer, :key => :id)
     end
 end

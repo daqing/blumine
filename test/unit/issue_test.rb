@@ -5,7 +5,7 @@ class IssueTest < ActiveSupport::TestCase
     @issue = Issue.new
 
     # delete indexes
-    FileUtils.rm_r Issue.get_index_dir
+    Issue.rm_index_dir
   end
 
   test "title and content are required" do

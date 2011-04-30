@@ -41,4 +41,8 @@ class User < ActiveRecord::Base
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :format => { :with => email_regex }
+
+  def root?
+    self.id == 1
+  end
 end

@@ -108,9 +108,13 @@ class Issue < ActiveRecord::Base
     index.search_each(query) { |id, score| block.call(index, id, score) if block_given? }
   end
 
-  def self.rebuild_index!
-    FileUtils.rm_r get_index_dir
+  def self.rm_index_dir
+    index_dir = get_index_dir
+    FileUtils.rm_r index_dir if File.exists? index_dir
+  end
 
+  def self.rebuild_index!
+    rm_index_dir
     index = get_index
     all.each do |issue|
       index << issue.to_index_hash

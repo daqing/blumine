@@ -106,6 +106,12 @@ class IssuesControllerTest < ActionController::TestCase
     assert_equal assigns(:issue).assigned_user, users(:daqing)
   end
 
+  test "only root can rebuild indexes" do
+    get :rebuild_index
+
+    assert_redirected_to root_path
+  end
+
   private
     def create_issue
       post :create, :project_id => @project.id, :issue => {:title => "test", :content => "foobar"}

@@ -37,6 +37,7 @@ Blumine::Application.routes.draw do
   post '/assigned_issues/sort' => 'issue_assignments#sort'
 
   get '/search/:keyword' => 'issues#search'
+  get 'rebuild_index' => 'issues#rebuild_index'
 
   root :to => "pages#index"
 

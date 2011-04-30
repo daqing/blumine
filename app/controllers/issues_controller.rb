@@ -97,6 +97,13 @@ class IssuesController < ApplicationController
     end
   end
 
+  def rebuild_index
+    redirect_to root_path and return unless current_user.root?
+    Issue.rebuild_index!
+
+    head :ok
+  end
+
   private
     def find_issue
       @issue = Issue.find(params[:id])

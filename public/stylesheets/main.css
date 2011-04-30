@@ -114,6 +114,8 @@ div.field {
   margin-bottom: 10px;
 }
 
+div.content p { margin: 0; }
+
 label {
   display: block;
 }
@@ -138,8 +140,8 @@ div.row { padding: 5px 0 5px 10px; }
 
 div.row p { text-indent: 1em; }
 
-div.row a:link, div.row a:visited { color: #333; }
-div.row a:hover { color: #577DE7; text-decoration: underline; }
+a.plain:link, a.plain:visited { color: #333; }
+a.plain:hover { color: #577DE7; text-decoration: underline; }
 
 .todo_done {
   color: #999;

@@ -26,5 +26,5 @@
 </div>
 <h1 class="silver"><%= t(:feed) %></h1>
 <div id="feed_box">
-  <%= render StatusLog.order('created_at DESC').limit(20) %>
+  <%= render :partial => 'status_logs/status_log', :collection => StatusLog.order('created_at DESC').limit(20), :spacer_template => 'shared/line_spacer' %>
 </div>

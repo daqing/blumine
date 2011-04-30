@@ -1,9 +1,8 @@
-<div class="section" id="status_log_<%= status_log.id %>">
-  <span class="quiet right small"><%= time_ago_in_words(status_log.created_at) + t(:ago) %></span>
-  <div class="author"><%= link_to status_log.user.name, status_log.user %></div>
-  <div class="content"><%= status_log.content %></div>
+<div class="row" id="status_log_<%= status_log.id %>">
+  <span class="author"><%= link_to status_log.user.name, status_log.user %>:</span>
+  <%= status_log.content %>
   <% if creator_of? status_log %>
-    <span class="small">
+    <span class="right">
       <%= link_to '删除', status_log, :class => 'hide', :method => :delete, :remote => true, :confirm => '真的要删除吗?' %>
     </span>
   <% end %>

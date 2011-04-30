@@ -1,2 +1,3 @@
 $("#feed_box").prepend("<%= escape_javascript render(@status_log) %>")
+$("#feed_box div:first").after("<%= escape_javascript render('shared/line_spacer') %>")
 $("#status_log_content").val('').focus();

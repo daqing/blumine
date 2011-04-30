@@ -15,6 +15,7 @@ gem 'acts_as_list'
 gem 'carrierwave'
 gem 'rmmseg-cpp'
 gem 'ferret'
+gem 'capistrano'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -128,6 +128,21 @@
 
       <%= yield :on_ready_hook %>
 
+      var default_search_tip = "<%= t(:search_issues) %>";
+      $("#search").click(function() {
+          if ($(this).val() == default_search_tip) {
+              $(this).val('').focus();
+          }
+        }).blur(function() {
+          if ($(this).val().length == 0) {
+              $(this).val(default_search_tip);
+          }
+        }).keydown(function(event) {
+          if (event.keyCode == '13') {
+            location.href = '/search/' + $(this).val();
+          }
+      });
+
       $(".tip").tipTip({defaultPosition: 'left'});
     });
   </script>

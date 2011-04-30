@@ -90,6 +90,13 @@ class IssuesController < ApplicationController
     end
   end
 
+  def search
+    @result = []
+    Issue.search_with_ferret(%(title|content:'#{params[:keyword]}')) do |index, id, score|
+      @result << Issue.find(index[id][:id])
+    end
+  end
+
   private
     def find_issue
       @issue = Issue.find(params[:id])

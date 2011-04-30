@@ -79,3 +79,6 @@ zh:
   password: 密码
   create_user: 创建
   password_confirmation: 确认密码
+  search:
+    results: 搜索结果
+    no_issue_found: 没有任何记录

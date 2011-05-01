@@ -45,8 +45,25 @@ namespace :blumine do
   task :restart_nginx do
     run "sudo /usr/local/nginx/sbin/nginx -s reload"
   end
+
+  desc "tail production logs"
+  task :rails_logs do
+    run "tail ~/repo/blumine/log/production.log"
+  end
+
+  desc "tail nginx error logs"
+  task :nginx_error_logs do
+    run "tail /usr/local/nginx/logs/error.log"
+  end
+
+  desc "tail thin logs"
+  task :thin_logs do
+    run <<-CMD
+      cd ~/repo/blumine/log/ &&
+      for log in `ls thin.*.log`; do echo $log && tail $log; done
+    CMD
+  end
 end
 
 after "blumine:update_code", "blumine:restart_thin", "blumine:restart_nginx"
-
 

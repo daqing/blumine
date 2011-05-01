@@ -4,7 +4,8 @@
 en:
   ago: Ago
   home: Home
-  log_in: Log In
+  log_in: Sign In
+  log_out: Log Out
   all_projects: All Projects
   my_assigned_issues: My Assigned Issues
   feed: Site Feed
@@ -19,6 +20,7 @@ en:
   blog: Blog
   new_project: New Project
   create_project: Create Project
+  project_name: Project Name
   new_issue: New Issue
   issue_state: Issue State
   click_to_view: Click to view this issue

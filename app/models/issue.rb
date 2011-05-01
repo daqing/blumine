@@ -19,26 +19,6 @@ require 'rmmseg/ferret'
 class Issue < ActiveRecord::Base
   include Workflow
 
-  @@state_names = {
-    :open => I18n.t('issue.state.open'),
-    :working_on => I18n.t('issue.state.working_on'),
-    :finished => I18n.t('issue.state.finished'),
-    :closed => I18n.t('issue.state.closed'),
-    :invalid => I18n.t('issue.state.invalid'),
-    :ignored => I18n.t('issue.state.ignored'),
-    :reopened => I18n.t('issue.state.reopened')
-  }
-
-  @@event_names = {
-    :work_on => I18n.t('issue.event.work_on'),
-    :mark_invalid => I18n.t('issue.event.mark_invalid'),
-    :ignore => I18n.t('issue.event.ignore'),
-    :mark_finished =>I18n.t('issue.event.mark_finished'),
-    :reopen => I18n.t('issue.event.reopen'),
-    :continue => I18n.t('issue.event.continue'),
-    :close => I18n.t('issue.event.close'),
-  }
-
   workflow do
     state :open do
       event :work_on, :transitions_to => :working_on
@@ -88,11 +68,11 @@ class Issue < ActiveRecord::Base
   validates :user_id, :project_id, :presence => true
 
   def self.state_name(state_sym)
-    @@state_names[state_sym]
+    I18n.t("issue.state.#{state_sym.to_s}")
   end
 
   def self.event_name(event_sym)
-    @@event_names[event_sym]
+    I18n.t("issue.event.#{event_sym.to_s}")
   end
 
   def self.valid_state?(state_sym)

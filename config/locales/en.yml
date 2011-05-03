@@ -2,8 +2,9 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  ago: Ago
   home: Home
+  dashboard: Dashboard
+  statistics: Statistics
   log_in: Sign In
   log_out: Log Out
   all_projects: All Projects
@@ -21,11 +22,16 @@ en:
   new_project: New Project
   create_project: Create Project
   project_name: Project Name
+  projects: Projects
+  people: People
   new_issue: New Issue
+  issues: Issues
   issue_state: Issue State
   click_to_view: Click to view this issue
   click_to_filter_issues: Click to filter issues
   search_issues: Search Issues
+  ago: " ago"
+  me: Me
 
   add: Add
   edit: Edit
@@ -59,7 +65,7 @@ en:
       continue: Continue Working
       close: Close
     assignment:
-      assigned_to: Assigned To
+      assigned_to: Assigned
       not_assigned: No One Assigned
       assign_to: Assign To
     workflow:
@@ -68,6 +74,9 @@ en:
     create_comment: Add Comment
     create: Create a New Issue
     edit: Edit Issue
+    no_issues_working_on: "%{username} has no issues working on "
+    user_is_working_on: "%{username} is working on "
+    user_is_working_on_the_following: "%{username} is working on the following issues:"
 
   image:
     upload: Upload Images

@@ -19,11 +19,12 @@
   <div id="header">
     <div class="container" style="background-color: #505759">
       <div class="links" id="top_right">
-        <%= link_to t(:home), root_path %>
         <% if current_user %>
+          <%= link_to t(:dashboard), root_path %>
           <%= link_to current_user.name, current_user %>
           <%= link_to t(:log_out), logout_path %>
         <% else %>
+          <%= link_to t(:home), root_path %>
           <%= link_to t(:register), register_path %>
           <%= link_to t(:log_in), login_path %>
         <% end %>

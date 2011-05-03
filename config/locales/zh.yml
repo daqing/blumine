@@ -3,6 +3,8 @@
 
 zh:
   home: 首页
+  dashboard: 控制中心
+  statistics: 数据统计
   all_projects: 所有项目
   log_out: 退出
   register: 注册
@@ -21,7 +23,10 @@ zh:
   new_project: 创建新项目
   create_project: 创建新项目
   project_name: 项目名称
+  projects: 项目
+  people: 人员
   new_issue: 创建新任务
+  issues: 任务
   issue_state: 任务状态
   click_to_view: 点击查看
   click_to_filter_issues: 点击可过滤任务
@@ -70,6 +75,9 @@ zh:
     create_comment: 参与讨论
     create: 创建新任务
     edit: 更新任务
+    no_issues_working_on: %{username} 暂时没有任务需要解决
+    user_is_working_on: %{username} 正在处理
+    user_is_working_on_the_following: "%{username} 正在处理下列任务:"
 
   image:
     upload: 上传图片

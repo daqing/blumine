@@ -11,6 +11,9 @@ ul { list-style: none; }
 
 a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
 
+tbody tr:nth-child(even) td, tbody tr.even td {background:none !important;}
+
+
 #main_area { background-color: white; }
 
 #header { margin-bottom: 10px; }
@@ -120,19 +123,14 @@ label {
   display: block;
 }
 
-div.blue_bar {
-  background-color: #E5ECF9;
+div.bar {
   height: 2em;
   padding: 5px 0 0 10px;
   margin-bottom: 5px;
 }
 
-div.gray_bar {
-  background-color: #EEE;
-  height: 2em;
-  padding: 5px 0 0 10px;
-  margin-bottom: 5px;
-}
+.bg-blue { background-color: #E5ECF9; }
+.bg-gray { background-color: #EEE; }
 
 div.bar h1, div.bar h2, div.bar h3, div.bar h4 { margin: 0; }
 
@@ -253,8 +251,28 @@ div.btn_2_i a:hover {
 .b-box {
   border: 1px solid #E0E0E0;
   padding-bottom: 5px;
-  margin: 10px 0;
+  margin: 10px 5px;
 }
+
+a.percent_bar {
+  display:block;
+  color:#fff;
+  text-decoration:none;
+  padding:3px;
+  min-width:20px;
+  border-top-right-radius:4px;
+  border-bottom-right-radius:4px;
+  -moz-border-radius-topright:4px;
+  -moz-border-radius-bottomright:4px;
+  -webkit-border-top-right-radius:8px;
+  -webkit-border-bottom-right-radius:8px;
+  font-weight: bold;
+}
+
+a.percent_bar:hover {
+  color: #fff;
+}
+
 
 .inline { display: inline; }
 

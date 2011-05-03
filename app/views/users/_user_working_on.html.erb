@@ -1,0 +1,14 @@
+<% user = user_working_on %>
+<div class="row">
+    <% issues_working_on = user.issues.state_working_on %>
+    <% count = issues_working_on.count %>
+    <% if count == 0 %>
+      <%= t('issue.no_issues_working_on', :username => user.name) %>
+    <% elsif count == 1 %>
+      <%= t('issue.user_is_working_on', :username => user.name) %>
+      <%= link_to issues_working_on.first.title, issues_working_on.first %>
+    <% else %>
+      <%= t('issue.user_is_working_on_the_following', :username => user.name) %>
+      <%= render issues_working_on %>
+    <% end %>
+</div>

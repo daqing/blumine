@@ -53,7 +53,7 @@
 <%=raw parse_markdown @issue.content %>
 
 <div class="b-box" id="todo_list_box">
-  <div class="gray_bar"><%= t(:todo) %></div>
+  <div class="bar bg-gray"><%= t(:todo) %></div>
   <%= render @issue.todo_items.where(:workflow_state => :open) %>
 
   <div class="row <%= "hide" if @issue.closed? %>" id="add_todo_form">

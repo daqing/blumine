@@ -24,7 +24,7 @@
 <h1 class="silver"><%= t(:projects) %></h1>
 <% Project.all.each do |p| %>
   <div class="span-7 b-box">
-    <div class="bar bg-gray"><strong><%= p.name %></strong></div>
+    <div class="bar bg-gray"><%= link_to p.name, p %></div>
     <table with="300">
       <% total = p.issues.count %>
       <% ['open', 'working_on', 'closed'].each do |state| %>
@@ -32,7 +32,12 @@
         <% percent = total > 0 ? state_count * 100 / total : 0; %>
         <tr>
           <td width="50"><%= t("issue.state.#{state}") %></td>
-          <td><a href="#" style="width: <%= percent < 50 ? percent * 2.5 : percent %>%" class="percent_bar state-<%= state %>"><%= percent %>%</a></td>
+          <td>
+            <%= link_to "#{percent}%", "/projects/#{p.id}/filter/#{state}",
+                  :class => "percent_bar state-#{state}",
+                  :style => "width: #{percent < 50 ? percent * 2.5 : percent}%"
+            %>
+          </td>
         </tr>
       <% end %>
     </table>

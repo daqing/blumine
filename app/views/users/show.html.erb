@@ -1,5 +1,3 @@
-<h2 class="title"><%= @user.name %></h2>
-
 <% content_for :sidebar do %>
   <h1 class="silver"><%= t(:my_assigned_issues) %></h1>
   <div id="my_assigned_issues" title="<%= t(:drag_issue_to_sort_priority) %>">
@@ -9,10 +7,9 @@
     %>
   </div>
 
-  <div class="b-box">
-    <div class="blue_bar"><%= t(:all_users) %></div>
-    <%= render_with_spacer 'user', User.all %>
-  </div>
+  <h1 class="silver"><%= t(:recently_created_issues) %></h1>
+  <%= render :partial => 'my_assigned_issue', :collection => @user.issues.order('created_at DESC').limit(5), :spacer_template => 'shared/spacer' %>
+
 <% end %>
 
 
@@ -25,9 +22,7 @@
 </div>
 <h1 class="silver"><%= t(:feed) %></h1>
 <div id="feed_box">
-  <%= render :partial => 'status_logs/status_log', :collection => StatusLog.order('created_at DESC').limit(20), :spacer_template => 'shared/line_spacer' %>
+  <%= render :partial => 'status_logs/status_log', :collection => StatusLog.order('created_at DESC').limit(30), :spacer_template => 'shared/line_spacer' %>
 </div>
 
-<h1 class="silver"><%= t(:recent_issues) %></h1>
-<%= render_with_spacer 'issue', @user.issues.limit(5) %>
 

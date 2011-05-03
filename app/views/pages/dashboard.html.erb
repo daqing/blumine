@@ -56,6 +56,6 @@
 
 <h1 class="silver"><%= t(:feed) %></h1>
 <div id="feed_box">
-  <%= render :partial => 'status_logs/status_log', :collection => StatusLog.order('created_at DESC').limit(30), :spacer_template => 'shared/line_spacer' %>
+  <%= render :partial => 'status_logs/status_log', :collection => StatusLog.limit(30), :spacer_template => 'shared/line_spacer' %>
 </div>
 

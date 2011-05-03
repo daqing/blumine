@@ -1,3 +1,6 @@
 <div class="row">
   <%= link_to user.name, user %>
+  <% if user.role %>
+    <span class="state bg-silver"><%= t("role.#{user.role}") %></span>
+  <% end %>
 </div>

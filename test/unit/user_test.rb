@@ -19,7 +19,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "emails should be unique" do
-    assert ! @user.save
+    another_user = User.new({:name => "another", :email => @user.email, :password => "another_user", :password_confirmation => "another_user"})
+    assert ! another_user.save
   end
 
   test "password should be confirmed" do

@@ -39,6 +39,7 @@ zh:
   add: 添加
   edit: 编辑
   update: 更新
+  updated: 更新
   delete: 删除
   delete_confirm: 真的要删除吗?
 
@@ -93,3 +94,19 @@ zh:
   search:
     results: 搜索结果
     no_issue_found: 没有任何记录
+
+  account: 账户设置
+  default_locale: 默认语言
+
+  role:
+    name: 角色
+    ProjectManager: 项目主管
+    Developer: 开发工程师
+    Designer: 设计师
+    SystemAdministrator: 系统工程师
+    Marketer: 市场营销人员
+
+  action:
+    successfully: 成功
+    failed: 失败
+

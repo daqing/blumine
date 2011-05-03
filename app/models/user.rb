@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110424131209
+# Schema version: 20110503080934
 #
 # Table name: users
 #
@@ -12,6 +12,7 @@
 #  updated_at         :datetime
 #  persistence_token  :string(255)
 #  locale             :string(255)
+#  role               :string(255)
 #
 
 require 'digest'
@@ -21,8 +22,12 @@ class User < ActiveRecord::Base
     c.login_field = :email
     c.crypted_password_field = :encrypted_password
     c.password_salt_field = :salt
-    c.validates_length_of_password_field_options = {:minimum => 1} 
+    c.validate_password_field = false
+    c.ignore_blank_passwords = true
   end
+
+  ROLES = %w(ProjectManager Developer Designer SystemAdministrator Marketer)
+  AVAILABLE_LANGUAGES = {:zh => '中文', :en => 'English'}
 
   has_many :projects
   has_many :issues
@@ -36,8 +41,11 @@ class User < ActiveRecord::Base
 
   validates :name, :email, :presence => true
   validates :email, :uniqueness => true
-  validates :password, :presence => true, :confirmation => true
-  validates :password_confirmation, :presence => true
+  validates :password, :presence => true, :confirmation => true, :on => :create
+  validates :password_confirmation, :presence => true, :on => :create
+
+  validates :password, :presence => true, :confirmation => true, :on => :update, :unless => "self.password.blank?"
+  validates :password_confirmation, :presence => true, :on => :update, :unless => "self.password_confirmation.blank?"
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :format => { :with => email_regex }

@@ -1,4 +1,8 @@
 Blumine::Application.routes.draw do
+  get "accounts/show"
+
+  get "accounts/update"
+
   get 'register' => 'users#new'
   get 'login' => "user_sessions#new"
   get 'logout' => "user_sessions#destroy"
@@ -30,6 +34,8 @@ Blumine::Application.routes.draw do
       post :sort
     end
   end
+
+  resource :account
 
   resources :status_logs, :only => [:create, :destroy]
   resources :images, :only => [:new, :create, :destroy]

@@ -31,9 +31,13 @@ end
 
 namespace :blumine do
   desc "update code from git repo"
-  after :update_code, :restart_thin, :restart_nginx
   task :update_code do
     run "cd ~/repo/blumine && git pull"
+  end
+
+  desc "run migrations in production environment"
+  task :db_migrate do
+    run "cd ~/repo/blumine && rake RAILS_ENV=production db:migrate"
   end
 
   desc "restart thin"
@@ -65,5 +69,5 @@ namespace :blumine do
   end
 end
 
-after "blumine:update_code", "blumine:restart_thin", "blumine:restart_nginx"
+after "blumine:update_code", "blumine:db_migrate", "blumine:restart_thin", "blumine:restart_nginx"
 

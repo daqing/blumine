@@ -7,7 +7,7 @@ en:
   statistics: Statistics
   log_in: Sign In
   log_out: Log Out
-  all_projects: All Projects
+  all_projects: Projects
   my_assigned_issues: My Assigned Issues
   feed: Site Feed
   what_are_you_doing: What are you doing
@@ -38,6 +38,7 @@ en:
   add: Add
   edit: Edit
   update: Update
+  updated: Updated
   delete: Delete
   delete_confirm: Really?
 
@@ -92,3 +93,18 @@ en:
   search:
     results: Search Results
     no_issue_found: Nothing found
+
+  account: Account
+  default_locale: Default Locale
+
+  role:
+    name: Role
+    ProjectManager: PM
+    Developer: Developer
+    Designer: Designer
+    SystemAdministrator: SA
+    Marketer: Marketer
+
+  action:
+    successfully: " successfully"
+    failed: " failed"

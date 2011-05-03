@@ -22,6 +22,7 @@
         <% if current_user %>
           <%= link_to t(:dashboard), root_path %>
           <%= link_to current_user.name, current_user %>
+          <%= link_to t(:account), account_path, :class => :top %>
           <%= link_to t(:log_out), logout_path %>
         <% else %>
           <%= link_to t(:home), root_path %>
@@ -54,7 +55,7 @@
   </div>
 
   <div class="container">
-    <% [:notice, :error].each do |type| %>
+    <% [:success, :notice, :error].each do |type| %>
       <% if flash[type] %>
         <div class="<%= type %>"><%= flash[type] %></div>
       <% end %>
@@ -79,12 +80,11 @@
   <div class="container">
     <div id="footer">
       <span class="" style="background: url(/images/locales.png) no-repeat 0 50%; padding-left: 20px; float: left; font-size: 12px; line-height: 1.5em;">
-        <% supported_locales = {:en => 'English', :zh => '中文'} %>
-        <% supported_locales.keys.each do |key| %>
+        <% User::AVAILABLE_LANGUAGES.keys.each do |key| %>
           <% if I18n.locale == key %>
-            <span class="current"><%= supported_locales[key] %></span>
+            <span class="current"><%= User::AVAILABLE_LANGUAGES[key] %></span>
           <% else %>
-            <%= link_to supported_locales[key], "?locale=#{key.to_s}", :class => :action %>
+            <%= link_to User::AVAILABLE_LANGUAGES[key], "?locale=#{key.to_s}", :class => :action %>
           <% end %>
         <% end %>
       </span>

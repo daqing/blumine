@@ -70,4 +70,12 @@ module ApplicationHelper
   def close_facebox
     %($.facebox.close()).html_safe
   end
+
+  def success_do(action_sym)
+    I18n.t(action_sym) + I18n.t('action.successfully')
+  end
+
+  def failed_do(action_sym)
+    I18n.t(action_sym) + I18n.t('action.failed')
+  end
 end

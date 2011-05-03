@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110424131209) do
+ActiveRecord::Schema.define(:version => 20110503080934) do
 
   create_table "comments", :force => true do |t|
     t.integer  "issue_id"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20110424131209) do
     t.datetime "updated_at"
     t.string   "persistence_token"
     t.string   "locale"
+    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -65,7 +65,7 @@ tbody tr:nth-child(even) td, tbody tr.even td {background:none !important;}
 
 li.headlink {
   float: left;
-  width: 100px;
+  width: 80px;
 }
 
 li.headlink a.top { 
@@ -129,8 +129,6 @@ div.bar {
   margin-bottom: 5px;
 }
 
-.bg-blue { background-color: #E5ECF9; }
-.bg-gray { background-color: #EEE; }
 
 div.bar h1, div.bar h2, div.bar h3, div.bar h4 { margin: 0; }
 
@@ -167,6 +165,18 @@ a[data-method=delete]:hover {
 div.spacer {
   border-bottom: 1px dotted #E0E0E0;
 }
+
+.bg-red { background-color:#df0000; }
+.bg-green { background-color:#4BA508; }
+.bg-blue { background-color: #E5ECF9; }
+.bg-darkblue { background-color:#505860; }
+.bg-purple { background-color:#6E0A9E; }
+.bg-gray { background-color: #EEE; }
+.bg-gold { background-color:#b90; }
+.bg-silver { background-color:#ccc; }
+.bg-yellow { background-color:#FFC806; }
+.bg-black { background-color:#111; }
+
 
 .state {
   padding: 2px 5px;

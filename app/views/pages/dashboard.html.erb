@@ -20,6 +20,11 @@
       </tr>
     </table>
   </div>
+
+  <div class="b-box">
+    <div class="bar bg-blue"><%= t(:all_users) %></div>
+    <%= render_with_spacer 'user', User.all %>
+  </div>
 <% end %>
 <h1 class="silver"><%= t(:projects) %></h1>
 <% Project.all.each do |p| %>

@@ -98,10 +98,23 @@ class IssuesController < ApplicationController
   end
 
   def rebuild_index
-    redirect_to root_path and return unless current_user.root?
-    Issue.rebuild_index!
+    respond_to do |format|
+      format.html {
+        redirect_to root_path and return unless current_user.root?
 
-    head :ok
+        Issue.rebuild_index!
+        redirect_to root_path
+      }
+
+      format.js {
+        render :text => "ERROR", :status => 403 and return unless current_user.root?
+
+        Issue.rebuild_index!
+        head :ok
+      }
+
+    end
+
   end
 
   private

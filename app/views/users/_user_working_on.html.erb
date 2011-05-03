@@ -2,13 +2,14 @@
 <div class="row">
     <% issues_working_on = user.issues.state_working_on %>
     <% count = issues_working_on.count %>
+    <%= link_to user.name, user %>
     <% if count == 0 %>
-      <%= t('issue.no_issues_working_on', :username => user.name) %>
+      <%= t('issue.no_issues_working_on') %>
     <% elsif count == 1 %>
-      <%= t('issue.user_is_working_on', :username => user.name) %>
+      <%= t('issue.user_is_working_on') %>
       <%= link_to issues_working_on.first.title, issues_working_on.first %>
     <% else %>
-      <%= t('issue.user_is_working_on_the_following', :username => user.name) %>
+      <%= t('issue.user_is_working_on_the_following') %>
       <%= render issues_working_on %>
     <% end %>
 </div>

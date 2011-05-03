@@ -33,6 +33,8 @@ en:
   ago: " ago"
   me: Me
 
+  my_profile: My Profile
+
   add: Add
   edit: Edit
   update: Update
@@ -74,9 +76,10 @@ en:
     create_comment: Add Comment
     create: Create a New Issue
     edit: Edit Issue
-    no_issues_working_on: "%{username} has no issues working on "
-    user_is_working_on: "%{username} is working on "
-    user_is_working_on_the_following: "%{username} is working on the following issues:"
+    no_issues_working_on: " has no issues working on "
+    user_is_working_on: " is working on "
+    user_is_working_on_the_following: " is working on the following issues:"
+    issues_assigned_to: "Issues Assigned to %{username}"
 
   image:
     upload: Upload Images

@@ -19,9 +19,15 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @title = @user.name
-
-    breadcrumbs.add @user.name
+    @my_profile = false
+    if @user == current_user
+      @title = t(:my_profile)
+      @my_profile = true
+      breadcrumbs.add t(:my_profile)
+    else
+      @title = @user.name
+      breadcrumbs.add @user.name
+    end
   end
 
 end

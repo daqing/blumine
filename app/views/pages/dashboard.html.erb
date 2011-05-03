@@ -26,6 +26,7 @@
     <%= render_with_spacer 'user', User.all %>
   </div>
 <% end %>
+
 <h1 class="silver"><%= t(:projects) %></h1>
 <% Project.all.each do |p| %>
   <div class="span-7 b-box">
@@ -49,5 +50,12 @@
   </div>
 <% end %>
 <div class="clear"></div>
+
 <h1 class="silver"><%= t(:people) %></h1>
 <%= render :partial => 'users/user_working_on', :collection => User.all, :spacer_template => 'shared/line_spacer' %>
+
+<h1 class="silver"><%= t(:feed) %></h1>
+<div id="feed_box">
+  <%= render :partial => 'status_logs/status_log', :collection => StatusLog.order('created_at DESC').limit(30), :spacer_template => 'shared/line_spacer' %>
+</div>
+

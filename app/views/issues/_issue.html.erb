@@ -2,7 +2,7 @@
   <span class="span-13">
     <%= link_to issue.title, issue, :class => "plain" %>
     <% if issue.assigned_user %>
-      <span class="tiptip state bg-dark" title="<%= t('issue.assignment.assigned_to') + issue.assigned_user.name %>"><%= issue.assigned_user.name %></span>
+      <span class="tiptip tag bg-dark" title="<%= t('issue.assignment.assigned_to') + issue.assigned_user.name %>"><%= issue.assigned_user.name %></span>
     <% end %>
     <span class="state state-<%= issue.current_state.name.to_s %>"><%= issue.current_state_name %></span>
   </span>

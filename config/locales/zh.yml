@@ -55,6 +55,7 @@ zh:
     state:
       open: 新任务
       working_on: 解决中
+      paused: 已暂停
       finished: 已解决
       closed: 已关闭
       invalid: 描述不成立
@@ -62,11 +63,12 @@ zh:
       reopened: 重新开放
     event:
       work_on: 开始解决
+      pause: 暂停解决
+      continue: 继续解决
       mark_invalid: 无效描述
       ignore: 不需要解决
       mark_finished: 标记为已解决
       reopen: 重新开放
-      continue: 继续解决
       close: 关闭
     assignment:
       assigned_to: 已分配给

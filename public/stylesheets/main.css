@@ -193,6 +193,14 @@ div.spacer {
   border-radius: 5px;
 }
 
+.tag {
+  padding: 2px 3px;
+  color: white;
+  font-size: 10px;
+  text-align: center;
+  margin-left: 5px;
+}
+
 .radius-5 {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -212,7 +220,7 @@ div.spacer {
 }
 
 .state-open { background-color: #0091C0; }
-.state-invalid { background-color: gray; }
+.state-paused, .state-invalid { background-color: gray; }
 .state-reopened { background-color: red; }
 .state-working_on { background-color: orange; }
 .state-finished { background-color: purple; }

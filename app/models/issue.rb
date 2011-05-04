@@ -28,7 +28,16 @@ class Issue < ActiveRecord::Base
     end
 
     state :working_on do
+      event :pause, :transitions_to => :paused
       event :mark_finished, :transitions_to => :finished
+      event :mark_invalid, :transitions_to => :invalid
+      event :ignore, :transitions_to => :ignored
+    end
+
+    state :paused do
+      event :continue, :transitions_to => :working_on
+      event :close, :transitions_to => :closed
+      event :ignore, :transitions_to => :ignored
     end
 
     state :finished do

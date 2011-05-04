@@ -54,6 +54,7 @@ en:
     state:
       open: Open
       working_on: Working On
+      paused: Paused
       finished: Finished
       closed: Closed
       invalid: Invalid
@@ -61,11 +62,12 @@ en:
       reopened: Re-opened
     event:
       work_on: Start Working On
+      pause: Pause
+      continue: Continue
       mark_invalid: Mark as Invalid
       ignore: Ignore
       mark_finished: Mark as Finished
       reopen: Re-Open
-      continue: Continue Working
       close: Close
     assignment:
       assigned_to: 'Issue Assigned to '

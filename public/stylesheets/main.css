@@ -133,7 +133,7 @@ div.bar {
 
 div.bar h1, div.bar h2, div.bar h3, div.bar h4 { margin: 0; }
 
-div.row { padding: 5px 0 5px 10px; }
+div.row { padding: 5px 0 5px 10px; line-height: 22px; }
 
 div.row p { text-indent: 1em; }
 
@@ -319,3 +319,6 @@ div[filtered] {
 textarea { padding: 5px; }
 
 .current { font-weight: bold; }
+
+.drag_handle { float: left; position: relative; height: 16px; width: 20px; cursor: pointer; display: none; }
+.sortable:hover .drag_handle { display: inline; }

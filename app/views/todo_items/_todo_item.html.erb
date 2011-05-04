@@ -1,4 +1,5 @@
-<div class="row bg_highlight" id="todo_<%= todo_item.id %>">
+<div class="row bg_highlight sortable" id="todo_<%= todo_item.id %>">
+  <%= render 'shared/drag_handle' %>
   <% if todo_item.done? %>
     <input type="checkbox" checked="true" data-id="<%= todo_item.id %>" />
     <span class="todo_done">

@@ -14,7 +14,7 @@
 
 <% if @my_profile %>
   <% content_for :on_ready_hook do %>
-    $.make_sortable('my_assigned_issues', 'div.assigned_issue', '<%= assigned_issues_sort_path %>');
+    $.make_sortable('my_assigned_issues', '<%= assigned_issues_sort_path %>');
   <% end %>
 <% end %>
 

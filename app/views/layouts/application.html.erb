@@ -97,15 +97,16 @@
   </div>
   <script type="text/javascript">
     $(function() {
-      $.make_sortable = function(id, items, url) {
+      $.make_sortable = function(id, url) {
         var obj = $("#" + id);
         obj.sortable({
            axis: 'y',
            dropOnEmpty: false,
            cursor: 'crosshair',
-           items: items,
+           items: '.sortable',
            opacity: 0.6,
            scroll: true, 
+           handle: '.drag_handle',
            update: function(event, ui) {
               $.post(url, $("#" + id).sortable('serialize'), function(result) {}, 'script');
            }

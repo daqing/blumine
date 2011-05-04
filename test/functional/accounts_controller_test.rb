@@ -2,11 +2,11 @@ require 'test_helper'
 
 class AccountsControllerTest < ActionController::TestCase
   setup do
-    ensure_logged_in
+    log_in(:daqing)
   end
 
   test "must login first to view account" do
-    logout
+    log_out
 
     get :show
     assert_redirected_to login_path

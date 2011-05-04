@@ -9,12 +9,12 @@ class UserSessionsControllerTest < ActionController::TestCase
   end
 
   test "should redirect to root path if already logged in" do
-    ensure_logged_in
+    log_in(:daqing)
     get :new
     assert_redirected_to root_path
   end
 
-  test "should define login and logout path" do
+  test "should define login and log_out path" do
     assert_generates login_path, :controller => "user_sessions", :action => "new"
     assert_generates logout_path, :controller => "user_sessions", :action => "destroy"
   end

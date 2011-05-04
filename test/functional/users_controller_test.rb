@@ -13,7 +13,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should redirect to root path if already logged in" do
-    ensure_logged_in
+    log_in(:daqing)
     get :new
     assert_redirected_to root_path
   end
@@ -33,7 +33,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    ensure_logged_in
+    log_in(:daqing)
     get :show, :id => users(:daqing).id
 
     assert_response :success

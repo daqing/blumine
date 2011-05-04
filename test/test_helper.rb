@@ -13,12 +13,12 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 
-  def ensure_logged_in
+  def log_in(user_sym)
     activate_authlogic
-    UserSession.create(users(:daqing))
+    UserSession.create(users(user_sym))
   end
 
-  def logout
+  def log_out
     activate_authlogic
     UserSession.find.destroy
   end

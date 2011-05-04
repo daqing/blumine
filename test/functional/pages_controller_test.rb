@@ -13,7 +13,7 @@ class PagesControllerTest < ActionController::TestCase
   end
 
   test "only user who has logged in can see the search & shortcut bar" do
-    ensure_logged_in
+    log_in(:daqing)
     get :index
     assert_equal 1, css_select('input#search').size
     assert_equal 1, css_select('div#shortcut').size

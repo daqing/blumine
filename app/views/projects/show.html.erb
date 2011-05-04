@@ -2,7 +2,7 @@
 <% if @issue_state == :all %>
   <%= render_with_spacer 'issue', @project.issues.except_closed.order("created_at DESC") %>
 <% else %>
-  <%= render_with_spacer 'issue', @project.issues.send("state_#{@issue_state}").order("created_at DESC") %>
+  <%= render_with_spacer 'issue', @project.issues.send("only_#{@issue_state}").order("created_at DESC") %>
 <% end %>
 
 <% content_for :sidebar do %>
@@ -12,7 +12,7 @@
     <div class="bar bg-blue"><%= t(:issue_state) %></div>
     <% [:open, :working_on, :finished, :closed, :reopened, :ignored, :invalid].each do |state_sym| %>
       <div class="row bg_highlight" <%= "filtered" if state_sym.to_s == @issue_state %> clickable="/projects/<%= @project.id %>/filter/<%= state_sym.to_s %>">
-        <span class="quiet span-2"><%= @project.issues.send("state_#{state_sym.to_s}").count %></span>
+        <span class="quiet span-2"><%= @project.issues.send("only_#{state_sym.to_s}").count %></span>
         <span class="state state-<%= state_sym.to_s %>"><%= Issue.state_name(state_sym) %></span>
       </div>
     <% end %>

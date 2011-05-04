@@ -4,7 +4,7 @@ class TodoItemsControllerTest < ActionController::TestCase
   setup do
     @issue = issues(:bug_report)
     @todo = todo_items(:first_todo)
-    ensure_logged_in
+    log_in(:daqing)
     @issue.assigned_user = users(:daqing)
   end
 
@@ -18,7 +18,7 @@ class TodoItemsControllerTest < ActionController::TestCase
   end
 
   test "should not create todo if not logged in" do
-    logout
+    log_out
     create_todo_item
     assert_redirected_to login_path
   end

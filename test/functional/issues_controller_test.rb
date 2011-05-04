@@ -4,7 +4,7 @@ class IssuesControllerTest < ActionController::TestCase
   setup do
     @issue = issues(:bug_report)
     @project = @issue.project
-    ensure_logged_in
+    log_in(:daqing)
   end
 
   test "project issue routing" do
@@ -30,13 +30,13 @@ class IssuesControllerTest < ActionController::TestCase
   end
 
   test "should not create issue if logged out" do
-    logout
+    log_out
     create_issue
     assert_redirected_to login_path
   end
 
   test "should not show issue if logged out" do
-    logout
+    log_out
     get :show, :project_id => @project.id, :id => @issue.id
 
     assert_redirected_to login_path

@@ -2,11 +2,11 @@ require 'test_helper'
 
 class StatusLogsControllerTest < ActionController::TestCase
   setup do
-    ensure_logged_in
+    log_in(:daqing)
   end
 
   test "only logged-in users can create or destroy status log" do
-    logout
+    log_out
 
     create_status_log
     assert_redirected_to root_path

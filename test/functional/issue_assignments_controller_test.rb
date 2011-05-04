@@ -2,12 +2,12 @@ require 'test_helper'
 
 class IssueAssignmentsControllerTest < ActionController::TestCase
   setup do
-    ensure_logged_in
+    log_in(:daqing)
     issues(:bug_report).assigned_user = current_user
   end
 
   test "only logged-in users can sort" do
-    logout
+    log_out
     post :sort, :issue => [issues(:bug_report).id, issues(:two).id]
     assert_redirected_to root_path
   end

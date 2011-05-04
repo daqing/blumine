@@ -34,7 +34,7 @@
     <table with="300">
       <% total = p.issues.count %>
       <% ['open', 'working_on', 'closed'].each do |state| %>
-        <% state_count = p.issues.send("state_#{state}").count %>
+        <% state_count = p.issues.send("only_#{state}").count %>
         <% percent = total > 0 ? state_count * 100 / total : 0; %>
         <tr>
           <td width="50"><%= t("issue.state.#{state}") %></td>

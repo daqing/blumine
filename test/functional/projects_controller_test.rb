@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
   setup do
-    ensure_logged_in
+    log_in(:daqing)
   end
   
   test "should get new" do
@@ -37,14 +37,14 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should redirect to login path if get index" do
-    logout
+    log_out
     get :index
 
     assert_redirected_to login_path
   end
 
   test "should not create project if not logged in" do
-    logout
+    log_out
     create_project
     assert_redirected_to login_path
   end

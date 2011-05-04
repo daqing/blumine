@@ -3,7 +3,7 @@ require 'test_helper'
 class CommentsControllerTest < ActionController::TestCase
   setup do
     @issue = issues(:bug_report)
-    ensure_logged_in
+    log_in(:daqing)
   end
 
   test "should create comment" do
@@ -16,7 +16,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should not create comment if not logged in" do
-    logout
+    log_out
     create_comment
     assert_redirected_to login_path
   end

@@ -112,7 +112,7 @@ class Issue < ActiveRecord::Base
 
   class << self
     Issue.workflow_spec.states.keys.each do |state_sym|
-      define_method("state_#{state_sym.to_s}") do
+      define_method("only_#{state_sym.to_s}") do
         where(:workflow_state => state_sym)
       end
 

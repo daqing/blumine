@@ -176,6 +176,8 @@ div.spacer {
 .bg-gold { background-color:#b90; }
 .bg-silver { background-color:#ccc; }
 .bg-yellow { background-color:#FFC806; }
+.bg-dark { background-color: #666; }
+.bg-999 { background-color: #999; }
 .bg-black { background-color:#111; }
 
 
@@ -244,7 +246,6 @@ div.btn_2_o {
 
 div.btn_2_i {
   text-align: center;
-  padding-top: 3px;
   color: #FFF;
   font-size: 12px;
 }

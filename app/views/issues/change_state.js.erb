@@ -1,9 +1,5 @@
 $("#issue_workflow_box").html("<%= escape_javascript(render('shared/issue_workflow', :issue => @issue)) %>")
-<% if @issue.closed? %>
-  $("div#todo_list_box").addClass('hide');
-  $("div#add_comment_form").addClass('hide');
-<% elsif @issue.reopened? %>
-  $("div#todo_list_box").removeClass('hide');
-  $("div#add_comment_form").removeClass('hide');
+<% if @issue.closed? or @issue.reopened? %>
+  location.reload()
 <% end %>
 

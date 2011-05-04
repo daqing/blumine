@@ -1,0 +1,6 @@
+  <div class="bar bg-gray"><%= t(:todo) %></div>
+  <%= render issue.todo_items.where(:workflow_state => :open), :manage => false %>
+
+  <div id="todo_done" style="border-top: 1px solid #DDD;">
+    <%= render issue.todo_items.where(:workflow_state => :done), :manage => false %>
+  </div>

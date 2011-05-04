@@ -8,6 +8,7 @@
   </div>
 <% end %>
 
+<% if current_user.can_manage_todo? @issue %>
 <% content_for :on_ready_hook do %>
     $("input[type=checkbox]").live('change', function() {
         var item_id = $(this).attr('data-id');
@@ -36,6 +37,7 @@
 
     $.make_sortable('todo_list_box', '/todo_items/sort');
 <% end %>
+<% end %>
 
 <h2 class="title"><%= @issue.title %></h2>
 <span class="tip">
@@ -52,19 +54,12 @@
 <br /><br />
 <%=raw parse_markdown @issue.content %>
 
-<div class="b-box <%= 'hide' unless current_user.can_manage_todo? @issue %>" id="todo_list_box">
-  <div class="bar bg-gray"><%= t(:todo) %></div>
-  <%= render @issue.todo_items.where(:workflow_state => :open) %>
-
-  <div class="row <%= "hide" if @issue.closed? %>" id="add_todo_form">
-    <%= form_for [@issue, @todo_item], :remote => true do |f| %>
-      <%= f.text_area :content, :class => :micro %><br />
-      <%= f.submit t(:add) %>
-    <% end %>
-  </div>
-  <div id="todo_done" style="border-top: 1px solid #DDD;">
-    <%= render @issue.todo_items.where(:workflow_state => :done) %>
-  </div>
+<div class="b-box" id="todo_list_box">
+<% if current_user.can_manage_todo? @issue %>
+  <%= render 'manage_todo_list', :issue => @issue, :todo_item => @todo_item %>
+<% else %>
+  <%= render 'view_todo_list', :issue => @issue %>
+<% end %>
 </div>
 
 <div class="text_large" style="color: green; text-align: center; margin-top: 15px;"><%= t('issue.discussions') %></div>

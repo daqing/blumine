@@ -39,6 +39,12 @@ task :echo, :roles => :web do
 end
 
 namespace :blumine do
+  desc "deploy blumine"
+  task :deploy do
+    puts '** Pushing code to GitHub...'
+    `git push`
+  end
+
   desc "update code from git repo"
   task :update_code do
     run "cd ~/repo/blumine && git pull"
@@ -78,5 +84,5 @@ namespace :blumine do
   end
 end
 
-after "blumine:update_code", "blumine:db_migrate", "blumine:restart_thin", "blumine:restart_nginx"
+after "blumine:deploy", "blumine:update_code", "blumine:db_migrate", "blumine:restart_thin", "blumine:restart_nginx"
 

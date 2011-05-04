@@ -1,1 +1,7 @@
 $("#issue_assignment").html("<%= escape_javascript render('shared/issue_assignment', :issue => @issue) %>")
+
+<% if current_user.can_manage_todo? @issue %>
+  $("div#todo_list_box").removeClass('hide');
+<% else %>
+  $("div#todo_list_box").addClass('hide');
+<% end %>

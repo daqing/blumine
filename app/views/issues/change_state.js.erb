@@ -1,9 +1,9 @@
 $("#issue_workflow_box").html("<%= escape_javascript(render('shared/issue_workflow', :issue => @issue)) %>")
 <% if @issue.closed? %>
-  $("#add_todo_form").slideUp('slow');
-  $("#add_comment_form").slideUp('slow');
+  $("div#todo_list_box").addClass('hide');
+  $("div#add_comment_form").addClass('hide');
 <% elsif @issue.reopened? %>
-  $("#add_todo_form").slideDown('slow');
-  $("#add_comment_form").slideDown('slow');
+  $("div#todo_list_box").removeClass('hide');
+  $("div#add_comment_form").removeClass('hide');
 <% end %>
 

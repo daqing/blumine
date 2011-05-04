@@ -4,12 +4,16 @@
 </div>
 <% keys = issue.current_state.events.keys %>
 <div class="row">
-<% if keys.length == 1 %>
-  <%= as_button(link_to Issue.event_name(keys.first), change_state_issue_path(issue, :event => keys.first.to_s), :remote => true, :method => :post) %>
-<% else %>
-  <%= form_for :issue, :url => change_state_issue_path(issue), :remote => true do |f| %>
-    <%= select_tag :event, options_for_select(keys.collect { |key| [Issue.event_name(key), key.to_s] }) %>
-    <%= f.submit t(:update) %>
+  <% if current_user.can_change_state? issue %>
+    <% if keys.length == 1 %>
+      <%= as_button(link_to Issue.event_name(keys.first), change_state_issue_path(issue, :event => keys.first.to_s), :remote => true, :method => :post) %>
+    <% else %>
+      <%= form_for :issue, :url => change_state_issue_path(issue), :remote => true do |f| %>
+        <%= select_tag :event, options_for_select(keys.collect { |key| [Issue.event_name(key), key.to_s] }) %>
+        <%= f.submit t(:update) %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <span class="quiet"><%= t('permission.cannot_update_workflow') %></span>
   <% end %>
-<% end %>
 </div>

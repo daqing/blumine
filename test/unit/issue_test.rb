@@ -3,9 +3,6 @@ require 'test_helper'
 class IssueTest < ActiveSupport::TestCase
   setup do
     @issue = Issue.new
-
-    # delete indexes
-    Issue.rm_index_dir
   end
 
   test "title and content are required" do

@@ -88,7 +88,7 @@ class IssuesControllerTest < ActionController::TestCase
     assert_redirected_to project_path(assigns(:issue).project)
   end
 
-  test "only creator can edit, update or destroy issue" do
+  test "only creator can edit, update or destroy issue when issue is not closed" do
     get :edit, :id => issues(:two).id
     assert_redirected_to root_path
 
@@ -97,8 +97,13 @@ class IssuesControllerTest < ActionController::TestCase
 
     delete :destroy, :id => issues(:two).id
     assert_redirected_to root_path
+
+    @issue.close!
+    get :edit, :id => @issue.id
+    assert flash[:error]
+    assert_redirected_to root_path
   end
-  
+
   test "should be assigned to an user" do
     xhr :post, :assign_to, :id => @issue.id, :user_id => users(:daqing).id
 

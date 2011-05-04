@@ -2,7 +2,7 @@ class IssuesController < ApplicationController
   before_filter :must_login_first
   before_filter :find_issue, :only => [:show, :edit, :update, :destroy, :change_state, :assign_to]
   before_filter :only => [:edit, :update, :destroy] do |c|
-    c.creator_required(@issue)
+    redirect_to_root_when_no_permission unless current_user.can_manage_issue? @issue
   end
 
   def show

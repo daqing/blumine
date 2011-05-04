@@ -30,10 +30,12 @@ module ApplicationHelper
   end
 
   def creator_required(obj)
-    unless creator_of?(obj)
-      flash[:error] = "您没有权限执行此操作"
-      redirect_to root_path 
-    end
+    redirect_to_root_when_no_permission unless creator_of? obj
+  end
+
+  def redirect_to_root_when_no_permission
+    flash[:error] = t('permission.no_permission')
+    redirect_to root_path 
   end
 
   def creator_of?(obj)

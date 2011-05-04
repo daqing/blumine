@@ -52,7 +52,7 @@
 <br /><br />
 <%=raw parse_markdown @issue.content %>
 
-<div class="b-box" id="todo_list_box">
+<div class="b-box <%= 'hide' unless current_user.can_manage_todo? @issue %>" id="todo_list_box">
   <div class="bar bg-gray"><%= t(:todo) %></div>
   <%= render @issue.todo_items.where(:workflow_state => :open) %>
 

@@ -71,7 +71,7 @@ class CommentsControllerTest < ActionController::TestCase
     end
 
     def assert_no_priviledge
-      assert_equal flash[:error], "您没有权限执行此操作"
+      assert flash[:error]
       assert_redirected_to root_path
     end
 

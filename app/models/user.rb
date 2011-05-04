@@ -50,7 +50,33 @@ class User < ActiveRecord::Base
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :format => { :with => email_regex }
 
+  # role and permissions
+  
+  ROLES.each do |role|
+    define_method("is_#{role.underscore}?") { self.role == role }
+  end
+
   def root?
     self.id == 1
+  end
+
+  def can_assign_issue?(issue)
+    self.is_project_manager? || issue.user == self
+  end
+
+  def can_change_state?(issue)
+    self.is_project_manager? || issue.user == self || issue.assigned_user == self
+  end
+
+  def can_manage_todo?(issue)
+    (not issue.closed?) and issue.assigned_user == self
+  end
+
+  def can_manage_issue?(issue)
+    (not issue.closed?) and issue.user == self
+  end
+
+  def can_manage_comment?(comment)
+    (not comment.issue.closed?) and comment.user == self
   end
 end

@@ -5,6 +5,7 @@ class TodoItemsControllerTest < ActionController::TestCase
     @issue = issues(:bug_report)
     @todo = todo_items(:first_todo)
     ensure_logged_in
+    @issue.assigned_user = users(:daqing)
   end
 
   test "should create todo" do
@@ -52,7 +53,10 @@ class TodoItemsControllerTest < ActionController::TestCase
     assert_redirected_to assigns(:todo_item).issue
   end
 
-  test "should support sorting" do
+  test "test todo item permissions" do
+    @issue.assigned_user = users(:two)
+    create_todo_item
+    assert_response 403
   end
 
   private

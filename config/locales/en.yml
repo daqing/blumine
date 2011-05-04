@@ -108,3 +108,8 @@ en:
   action:
     successfully: " successfully"
     failed: " failed"
+
+  permission:
+    cannot_assign_issue: "You have *NO* permission to assign this issue"
+    cannot_update_workflow: "You don't have permission to udpate this issue's state"
+    no_permission: "You don't have permission to carry out this operation"

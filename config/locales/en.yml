@@ -68,11 +68,11 @@ en:
       continue: Continue Working
       close: Close
     assignment:
-      assigned_to: Assigned
+      assigned_to: 'Issue Assigned to '
       not_assigned: No One Assigned
       assign_to: Assign To
     workflow:
-      current_state: Current
+      current_state: Currently
     discussions: Discussions
     create_comment: Add Comment
     create: Create a New Issue

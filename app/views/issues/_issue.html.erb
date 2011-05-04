@@ -1,6 +1,9 @@
-<div class="row" clickable="<%= issue_path(issue) %>" title="<%= t(:click_to_view) %>">
+<div class="row" clickable="<%= issue_path(issue) %>">
   <span class="span-13">
     <%= link_to issue.title, issue, :class => "plain" %>
+    <% if issue.assigned_user %>
+      <span class="tiptip state bg-black" title="<%= t('issue.assignment.assigned_to') + issue.assigned_user.name %>"><%= issue.assigned_user.name %></span>
+    <% end %>
     <span class="state state-<%= issue.current_state.name.to_s %>"><%= issue.current_state_name %></span>
   </span>
   <span class="quiet small"><%= time_ago_in_words(issue.created_at) + t(:ago) %></span>

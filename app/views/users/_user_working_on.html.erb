@@ -5,7 +5,9 @@
   <% count = issues_working_on.count %>
   <%= link_to user.name, user %>
   <% if count == 0 %>
-    <%= t('issue.no_issues_working_on') %>
+    <span class="tiptip" title="<%= t('issue.no_issues_working_on') %>">
+      <%= image_tag 'check_green.gif', :align => :absmiddle %>
+    </span>
   <% elsif count == 1 %>
     <%= t('issue.user_is_working_on') %>
     <%= link_to issues_working_on.first.title, issues_working_on.first %>

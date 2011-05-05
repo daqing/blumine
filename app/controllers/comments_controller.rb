@@ -23,8 +23,7 @@ class CommentsController < ApplicationController
 
   def edit
     respond_to do |format|
-      format.html
-      format.js { render_to_facebox }
+      format.html { render 'edit', :layout => false }
     end
   end
 

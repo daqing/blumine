@@ -1,7 +1,7 @@
 <div class="section radius-5" id="comment_<%= comment.id %>">
   <span class="quiet right small">
     <% if current_user.can_manage_comment? comment %>
-      <%= link_to t(:edit), edit_comment_path(comment), :class => :action, :remote => true %>
+      <%= link_to t(:edit), edit_comment_path(comment), :class => 'action facebox' %>
       &nbsp;&middot;&nbsp;
       <%= link_to t(:delete), comment, :method => :delete, :remote => true, :confirm => t(:delete_confirm), :class => :action %>
       &nbsp;&middot;&nbsp;

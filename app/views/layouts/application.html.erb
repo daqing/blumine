@@ -152,6 +152,7 @@
 
       <%= yield :on_ready_hook %>
 
+      $("a.facebox").facebox();
       $(".tiptip").tipTip({defaultPosition: 'bottom'});
     });
   </script>

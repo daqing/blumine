@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
-  include FaceboxRender
 
   before_filter :set_locale
 

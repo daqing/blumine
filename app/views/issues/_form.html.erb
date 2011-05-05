@@ -11,12 +11,12 @@
 <%= form_for [@project, @issue] do |f| %>
   <%= render 'shared/error_messages', :obj => @issue %>
   <div class="field">
-    <%= f.label :title %>
+    <%= f.label :title, t(:title) %>
     <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= f.label :content %>
+    <%= f.label :content, t(:content) %>
     <%= render :partial => 'shared/editor', :locals => {:name => 'issue[content]', :content => @issue.content} %>
   </div>
 

@@ -35,6 +35,8 @@ en:
 
   my_profile: My Profile
 
+  title: Title
+  content: Content
   add: Add
   edit: Edit
   update: Update

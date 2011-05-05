@@ -26,4 +26,8 @@ class StatusLogsController < ApplicationController
     end
   end
 
+  def teamtalk
+    render :text => 'teamtalk!'
+  end
+
 end

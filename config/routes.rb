@@ -1,8 +1,4 @@
 Blumine::Application.routes.draw do
-  get "accounts/show"
-
-  get "accounts/update"
-
   get 'register' => 'users#new'
   get 'login' => "user_sessions#new"
   get 'logout' => "user_sessions#destroy"
@@ -44,6 +40,8 @@ Blumine::Application.routes.draw do
 
   get '/search/:keyword' => 'issues#search'
   get 'rebuild_index' => 'issues#rebuild_index'
+
+  get '/teamtalk' => "status_logs#teamtalk"
 
   root :to => "pages#index"
 

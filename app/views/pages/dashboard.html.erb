@@ -30,7 +30,9 @@
 <h1 class="silver"><%= t(:projects) %></h1>
 <% Project.all.each do |p| %>
   <div class="span-7 b-box">
-    <div class="bar bg-gray"><%= link_to p.name, p %></div>
+    <div class="bar bg-gray">
+      <%= image_tag 'smile.png', :align => :absmiddle, :height => 16, :with => 16 %>
+      <%= link_to p.name, p %></div>
     <table with="300">
       <% total = p.issues.count %>
       <% ['open', 'working_on', 'closed'].each do |state| %>

@@ -13,7 +13,7 @@ a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
 
 tbody tr:nth-child(even) td, tbody tr.even td {background:none !important;}
 
-img[align=absmiddle] { vertical-align: middle; }
+img[align=absmiddle] { vertical-align: middle; position: relative; top: -2px; }
 
 #main_area { background-color: white; }
 

@@ -1,4 +1,5 @@
 <div class="row" id="status_log_<%= status_log.id %>">
+  <%= image_tag 'chat.png', :align => :absmiddle, :height => 16, :width => 16 %>
   <span class="author"><%= link_to status_log.user.name, status_log.user %>:</span>
   <%= status_log.content %>
   <span class="quiet small" style="margin-left: 10px;"><%= time_ago_in_words(status_log.created_at) + t(:ago) %></span>

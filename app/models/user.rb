@@ -69,8 +69,7 @@ class User < ActiveRecord::Base
   end
 
   def can_change_state?(issue)
-    #(not issue.assigned_user.nil?) and (self.is_project_manager? || issue.assigned_user == self)
-    self.is_project_manager? || issue.user == self || issue.assigned_user == self
+    (not issue.assigned_user.nil?) and (self.is_project_manager? || issue.assigned_user == self)
   end
 
   def can_manage_todo?(issue)

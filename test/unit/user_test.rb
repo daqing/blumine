@@ -50,8 +50,16 @@ class UserTest < ActiveSupport::TestCase
     assert ! another.can_assign_issue?(@issue)
   end
 
-  test "only creator of an issue, PM or assigned user can change issue state" do
-    assert @user.can_change_state?(@issue)
+  test "should not change state before the issue is assigned" do
+    @issue.assigned_user = nil
+    assert ! @user.can_change_state?(@issue)
+
+    @user.role = 'ProjectManager'
+    assert ! @user.can_change_state?(@issue)
+  end
+
+  test "only creator of an issue, PM or assigned user can change issue state after the issue is assigned" do
+    @issue.assigned_user = users(:daqing)
 
     another = users(:two)
     another.role = 'ProjectManager'

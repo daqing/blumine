@@ -4,7 +4,9 @@
 </div>
 <% keys = issue.current_state.events.keys %>
 <div class="row">
-  <% if current_user.can_change_state? issue %>
+  <% if @issue.assigned_user.nil? %>
+    <span class="quiet"><%= t(:assign_to_an_user_first) %></span>
+  <% elsif current_user.can_change_state? issue %>
     <% if keys.length == 1 %>
       <%= as_button(link_to Issue.event_name(keys.first), change_state_issue_path(issue, :event => keys.first.to_s), :remote => true, :method => :post) %>
     <% else %>

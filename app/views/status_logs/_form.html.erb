@@ -1,5 +1,4 @@
 <%= form_for current_user.status_logs.new, :remote => true do |f| %>
-  <%= t(:what_are_you_doing)%>?<br/>
   <%= f.text_area :content, :class => :micro %><br />
   <%= f.submit t(:publish) %>
 <% end %>

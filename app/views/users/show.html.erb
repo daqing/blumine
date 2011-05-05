@@ -1,15 +1,4 @@
 <% content_for :sidebar do %>
-  <h1 class="silver"><%= @my_profile ? t(:my_assigned_issues) : t('issue.issues_assigned_to', :username => @user.name) %></h1>
-  <div id="my_assigned_issues" title="<%= t(:drag_issue_to_sort_priority) %>">
-    <%= render :partial => 'my_assigned_issue',
-      :collection => @user.assigned_issues.except_closed.except_ignored,
-      :spacer_template => 'shared/spacer'
-    %>
-  </div>
-
-  <h1 class="silver"><%= t(:recently_created_issues) %></h1>
-  <%= render :partial => 'issues/simple_style', :collection => @user.issues.order('created_at DESC').limit(5), :as => :issue, :spacer_template => 'shared/spacer' %>
-
   <div class="b-box">
     <div class="bar bg-gray"><%= t(:account_details) %></div>
     <div class="row">
@@ -31,7 +20,6 @@
       </table>
     </div>
   </div>
-
 <% end %>
 
 <% if @my_profile %>
@@ -40,15 +28,12 @@
   <% end %>
 <% end %>
 
-<% if @my_profile %>
-<div class="row">
-  <%= render 'status_logs/form' %>
+<h1 class="silver"><%= @my_profile ? t(:my_assigned_issues) : t('issue.issues_assigned_to', :username => @user.name) %></h1>
+<div id="my_assigned_issues" title="<%= t(:drag_issue_to_sort_priority) %>">
+  <%= render :partial => 'my_assigned_issue',
+    :collection => @user.assigned_issues.except_closed.except_ignored,
+    :spacer_template => 'shared/spacer'
+  %>
 </div>
-<% end %>
-
-<h1 class="silver"><%= t(:feed) %></h1>
-<div id="feed_box">
-  <%= render :partial => 'status_logs/status_log', :collection => @user.status_logs.limit(30), :spacer_template => 'shared/line_spacer' %>
-</div>
-
-
+<h1 class="silver"><%= t(:recently_created_issues) %></h1>
+<%= render :partial => 'issues/issue', :collection => @user.issues.order('created_at DESC').limit(5), :as => :issue, :spacer_template => 'shared/spacer' %>

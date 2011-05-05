@@ -1,0 +1,8 @@
+<% content_for :sidebar do %>
+  <%= render 'shared/all_users' %>
+<% end %>
+<div id="feed_box">
+  <div class="bar bg-blue"><%= t(:teamtalk) %></div>
+  <%= render 'status_logs/form' %>
+  <%= render :partial => 'status_logs/status_log', :collection => StatusLog.limit(10), :spacer_template => 'shared/line_spacer' %>
+</div>

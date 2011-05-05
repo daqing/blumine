@@ -27,7 +27,7 @@ class StatusLogsController < ApplicationController
   end
 
   def teamtalk
-    render :text => 'teamtalk!'
+    render :layout => false
   end
 
 end

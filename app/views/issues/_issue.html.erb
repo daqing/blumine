@@ -1,11 +1,6 @@
 <div class="row">
   <span class="span-13">
-    <% title = issue.title %>
-    <% if title.mb_chars.length > 20 %>
-      <%= link_to "#{title.mb_chars[0..20].to_s}...", issue, :class => "plain", :title => issue.title %>
-    <% else %>
-      <%= link_to title, issue, :class => :plain %>
-    <% end %>
+    <%= issue_title_link(issue) %>
     <% if issue.assigned_user %>
       <span class="tiptip tag bg-dark" title="<%= t('issue.assignment.assigned_to') + issue.assigned_user.name %>"><%= issue.assigned_user.name %></span>
     <% end %>

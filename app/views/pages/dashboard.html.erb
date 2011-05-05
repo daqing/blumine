@@ -43,7 +43,7 @@
           <td>
             <%= link_to "#{percent}%", "/projects/#{p.id}/filter/#{state}",
                   :class => "percent_bar state-#{state}",
-                  :style => "width: #{percent < 50 ? percent * 2.5 : percent}%"
+                  :style => "width: #{percent < 20 ? percent + 10 : percent}%"
             %>
           </td>
         </tr>

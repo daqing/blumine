@@ -21,7 +21,10 @@
     </table>
   </div>
 
-  <%= render 'shared/all_users' %>
+  <div class="b-box">
+    <div class="bar bg-blue"><%= t(:people) %></div>
+    <%= render :partial => 'users/user_working_on', :collection => User.all, :as => :user, :spacer_template => 'shared/line_spacer' %>
+  </div>
 <% end %>
 
 <h1 class="silver"><%= t(:projects) %></h1>
@@ -50,6 +53,4 @@
 <% end %>
 <div class="clear"></div>
 
-<h1 class="silver"><%= t(:people) %></h1>
-<%= render :partial => 'users/user_working_on', :collection => User.all, :spacer_template => 'shared/line_spacer' %>
 

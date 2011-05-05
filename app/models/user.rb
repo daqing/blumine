@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     define_method("is_#{role.underscore}?") { self.role == role }
   end
 
+  def role_name
+    I18n.t("role.#{self.role}") if self.role
+  end
+
   def root?
     self.id == 1
   end
@@ -65,6 +69,7 @@ class User < ActiveRecord::Base
   end
 
   def can_change_state?(issue)
+    #(not issue.assigned_user.nil?) and (self.is_project_manager? || issue.assigned_user == self)
     self.is_project_manager? || issue.user == self || issue.assigned_user == self
   end
 

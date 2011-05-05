@@ -1,4 +1,4 @@
 <div class="row">
   <%= link_to user.name, user %>
-  <%= render 'shared/role', :role => user.role if user.role %>
+  <%= render 'shared/role', :role => user.role_name if user.role %>
 </div>

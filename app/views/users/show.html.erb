@@ -14,7 +14,7 @@
         <% if @user.role %>
         <tr>
           <td><%= t('role.name') %></td>
-          <td><%= render 'shared/role', :role => @user.role %></td>
+          <td><%= render 'shared/role', :role => @user.role_name %></td>
         </tr>
         <% end %>
       </table>

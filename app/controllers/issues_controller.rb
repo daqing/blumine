@@ -85,8 +85,8 @@ class IssuesController < ApplicationController
     @issue.assigned_user = user
 
     respond_to do |format|
-      format.html { redirect_to @issue }
-      format.js
+        format.html { redirect_to @issue }
+        format.js
     end
   end
 

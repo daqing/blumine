@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
   end
 
   def can_manage_todo?(issue)
-    (not issue.closed?) and issue.assigned_user == self
+    (not issue.closed?) and (issue.assigned_user == self || issue.user == self)
   end
 
   def can_manage_issue?(issue)

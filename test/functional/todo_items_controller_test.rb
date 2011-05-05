@@ -54,9 +54,22 @@ class TodoItemsControllerTest < ActionController::TestCase
   end
 
   test "test todo item permissions" do
+    @issue.user = users(:two)
     @issue.assigned_user = users(:two)
+    @issue.save
     create_todo_item
     assert_response 403
+
+    @issue.user = users(:daqing)
+    @issue.save
+    create_todo_item
+    assert_response :redirect
+
+    @issue.user = users(:two)
+    @issue.assigned_user = users(:daqing)
+    @issue.save
+    create_todo_item
+    assert_response :redirect
   end
 
   private

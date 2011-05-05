@@ -80,4 +80,13 @@ module ApplicationHelper
   def failed_do(action_sym)
     I18n.t(action_sym) + I18n.t('action.failed')
   end
+
+  def issue_title_link(issue)
+    title = issue.title 
+    if title.mb_chars.length > 20 
+      link_to "#{title.mb_chars[0..20].to_s}...", issue, :class => :plain, :title => title
+    else 
+      link_to title, issue, :class => :plain 
+    end 
+  end
 end

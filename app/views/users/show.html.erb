@@ -10,6 +10,28 @@
   <h1 class="silver"><%= t(:recently_created_issues) %></h1>
   <%= render :partial => 'issues/simple_style', :collection => @user.issues.order('created_at DESC').limit(5), :as => :issue, :spacer_template => 'shared/spacer' %>
 
+  <div class="b-box">
+    <div class="bar bg-gray"><%= t(:account_details) %></div>
+    <div class="row">
+      <table>
+        <tr>
+          <td><%= t(:date_joined) %></td>
+          <td><%= time_ago_in_words(@user.created_at) + t(:ago) %></td>
+        </tr>
+        <tr>
+          <td><%= t(:default_locale) %></td>
+          <td><%= User::AVAILABLE_LANGUAGES[@user.locale ? @user.locale.to_sym : I18n.locale] %></td>
+        </tr>
+        <% if @user.role %>
+        <tr>
+          <td><%= t('role.name') %></td>
+          <td><%= render 'shared/role', :role => @user.role %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
 <% end %>
 
 <% if @my_profile %>

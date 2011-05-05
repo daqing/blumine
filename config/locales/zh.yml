@@ -116,3 +116,6 @@ zh:
     cannot_assign_issue: 您没有权限来分配此任务
     cannot_update_workflow: 您没有权限来更新此任务的状态
     no_permission: 您没有权限来执行此操作
+
+  account_details: 个人资料
+  date_joined: 注册于

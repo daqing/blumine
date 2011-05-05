@@ -1,6 +1,4 @@
 <div class="row">
   <%= link_to user.name, user %>
-  <% if user.role %>
-    <span class="state bg-999"><%= t("role.#{user.role}") %></span>
-  <% end %>
+  <%= render 'shared/role', :role => user.role if user.role %>
 </div>

@@ -97,7 +97,7 @@ en:
     no_issue_found: Nothing found
 
   account: Account
-  default_locale: Default Locale
+  default_locale: Locale
 
   role:
     name: Role
@@ -115,3 +115,6 @@ en:
     cannot_assign_issue: "You have *NO* permission to assign this issue"
     cannot_update_workflow: "You don't have permission to udpate this issue's state"
     no_permission: "You don't have permission to carry out this operation"
+
+  account_details: Account Details
+  date_joined: Joined

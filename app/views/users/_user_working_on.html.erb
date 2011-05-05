@@ -1,6 +1,6 @@
 <% user = user_working_on %>
 <div class="row">
-  <%= image_tag 'user_gray.png', :align => :absmiddle %>
+  <%= image_tag 'user_gray.png', :align => :absmiddle, :height => 16, :width => 16 %>
   <% issues_working_on = user.issues.only_working_on %>
   <% count = issues_working_on.count %>
   <%= link_to user.name, user %>

@@ -1,10 +1,23 @@
-<div class="row" clickable="<%= issue_path(issue) %>">
+<div class="row">
   <span class="span-13">
-    <%= link_to issue.title, issue, :class => "plain" %>
+    <% title = issue.title %>
+    <% if title.mb_chars.length > 20 %>
+      <%= link_to "#{title.mb_chars[0..20].to_s}...", issue, :class => "plain", :title => issue.title %>
+    <% else %>
+      <%= link_to title, issue, :class => :plain %>
+    <% end %>
     <% if issue.assigned_user %>
       <span class="tiptip tag bg-dark" title="<%= t('issue.assignment.assigned_to') + issue.assigned_user.name %>"><%= issue.assigned_user.name %></span>
     <% end %>
     <span class="state state-<%= issue.current_state.name.to_s %>"><%= issue.current_state_name %></span>
+    <% comment_count = issue.comments.count %>
+    <% if comment_count > 0 %>
+      <span class="small quiet" style="margin-left: 5px;">
+        <%= image_tag 'comment.png', :align => :absmiddle, :width => 16, :height => 16 %>
+        <%= comment_count %>
+      </span>
+    <% end %>
+
   </span>
   <span class="quiet small"><%= time_ago_in_words(issue.created_at) + t(:ago) %></span>
 </div>

@@ -5,3 +5,4 @@ tmp/
 doc
 public/uploads/
 index/
+.DS_STORE

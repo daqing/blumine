@@ -9,7 +9,7 @@
         </tr>
         <tr>
           <td><%= t(:default_locale) %></td>
-          <td><%= User::AVAILABLE_LANGUAGES[@user.locale ? @user.locale.to_sym : I18n.locale] %></td>
+          <td><%= User::AVAILABLE_LANGUAGES[@user.locale ? @user.locale.to_sym : I18n.default_locale] %></td>
         </tr>
         <% if @user.role %>
         <tr>

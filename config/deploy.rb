@@ -82,6 +82,30 @@ namespace :blumine do
       for log in `ls thin.*.log`; do echo $log && tail $log; done
     CMD
   end
+
+  desc "count all users"
+  task :count_all do
+    run <<-CMD
+      cd ~/repo/blumine/log/ &&
+      RAILS_ENV=production rails runner "puts User.count"
+    CMD
+  end
+
+  desc "count today's users"
+  task :count_todays do
+    run <<-CMD
+      cd ~/repo/blumine/log/ &&
+      RAILS_ENV=production rails runner "puts User.where(['created_at >= ?', Date.today]).size"
+    CMD
+  end
+
+  desc "run a piece of code in production environment"
+  task :runner do
+    run <<-CMD
+      cd ~/repo/blumine/log/ &&
+      RAILS_ENV=production rails runner "#{ENV['cmd']}"
+    CMD
+  end
 end
 
 after "blumine:deploy", "blumine:update_code", "blumine:db_migrate", "blumine:restart_thin", "blumine:restart_nginx"

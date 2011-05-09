@@ -12,6 +12,7 @@ ul { list-style: none; }
 a:link, a:active, a:hover, a:visited { text-decoration: none; border: none; }
 
 tbody tr:nth-child(even) td, tbody tr.even td {background:none !important;}
+th, td, caption { padding: 4px 10px; }
 
 img[align=absmiddle] { vertical-align: middle; position: relative; top: -2px; }
 
@@ -61,7 +62,7 @@ img[align=absmiddle] { vertical-align: middle; position: relative; top: -2px; }
 #shortcut {
   position: absolute;
   top: 8px;
-  left: 500px;
+  left: 420px;
 }
 
 li.headlink {

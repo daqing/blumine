@@ -129,3 +129,7 @@ zh:
   created_at: 创建时间
   updated_at: 最后更新
   operations: 操作
+
+  activity:
+    create_project: 创建了新项目
+

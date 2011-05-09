@@ -40,4 +40,5 @@ group :development, :test do
   gem 'ruby-debug'
   gem 'RedCloth'
   gem 'annotate-models'
+  gem 'thin'
 end

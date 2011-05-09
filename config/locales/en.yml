@@ -128,3 +128,6 @@ en:
   created_at: Created At
   updated_at: Updated At
   operations: Operations
+
+  activity:
+    create_project: created a new project

@@ -33,4 +33,12 @@ class ActiveSupport::TestCase
     post "/user_sessions", :user_session => {:email => "foobar@demo.com", :password => "help"}
   end
 
+  def should_format_feed(klass)
+    assert_nothing_raised(NoMethodError, ArgumentError) do
+      User::AVAILABLE_LANGUAGES.keys.each do |key|
+        klass.send("format_feed_#{key}", nil, nil, nil)
+      end
+    end
+  end
+
 end

@@ -52,5 +52,5 @@
   </div>
 <% end %>
 <div class="clear"></div>
-
-
+<h1 class="silver"><%= t(:feed) %></h1>
+<%= render :partial => 'activities/activity', :collection => Activity.limit(10), :spacer_template => 'shared/spacer' %>

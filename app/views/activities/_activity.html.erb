@@ -1,0 +1,5 @@
+<div class="row">
+  <span class="author"><%= link_to activity.user.name, activity.user %></span>
+  <%=raw format_activity(activity) %>
+  <span class="small quiet"><%= time_ago_in_words(activity.created_at) + t(:ago) %></span>
+</div>

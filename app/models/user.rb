@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   has_many :issues
   has_many :comments
   has_many :status_logs
+  has_many :activities
 
   has_many :issue_assignments
   has_many :assigned_issues, :through => :issue_assignments, :source => :issue, :order => 'position ASC'

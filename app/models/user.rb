@@ -29,13 +29,13 @@ class User < ActiveRecord::Base
   ROLES = %w(ProjectManager Developer Designer SystemAdministrator Marketer)
   AVAILABLE_LANGUAGES = {:zh => '中文', :en => 'English'}
 
-  has_many :projects
-  has_many :issues
-  has_many :comments
-  has_many :status_logs
-  has_many :activities
+  has_many :projects, :dependent => :destroy
+  has_many :issues, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+  has_many :status_logs, :dependent => :destroy
+  has_many :activities, :dependent => :destroy
 
-  has_many :issue_assignments
+  has_many :issue_assignments, :dependent => :destroy
   has_many :assigned_issues, :through => :issue_assignments, :source => :issue, :order => 'position ASC'
 
   attr_protected :encrypted_password, :salt

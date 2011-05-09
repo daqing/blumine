@@ -134,5 +134,6 @@ en:
     create_project: created a project
     create_issue: created an issue
     in_project: in project %{url}
+    assigned_issue_to: assigned the issue %{issue_url} to %{user_url}
 
 

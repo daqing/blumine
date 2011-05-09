@@ -105,7 +105,7 @@ class IssuesControllerTest < ActionController::TestCase
   end
 
   test "should be assigned to an user" do
-    xhr :post, :assign_to, :id => @issue.id, :user_id => users(:daqing).id
+    assign_issue
 
     assert_response :success
     assert_equal assigns(:issue).assigned_user, users(:daqing)
@@ -123,9 +123,19 @@ class IssuesControllerTest < ActionController::TestCase
     end
   end
 
+  test "should create activity after an issue is (re)assigned" do
+    assert_difference('Activity.count') do
+      assign_issue
+    end
+  end
+
   private
     def create_issue
       post :create, :project_id => @project.id, :issue => {:title => "test", :content => "foobar"}
+    end
+
+    def assign_issue
+      xhr :post, :assign_to, :id => @issue.id, :user_id => users(:daqing).id
     end
 
 end

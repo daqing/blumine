@@ -91,6 +91,14 @@ class IssuesController < ApplicationController
   def assign_to
     user = User.find(params[:user_id])
     @issue.assigned_user = user
+    Activity.create!(:user_id => current_user.id,
+                     :event_name => 'assign_issue',
+                     :target_id => @issue.id,
+                     :target_type => 'Issue',
+                     :related_id => params[:user_id],
+                     :related_type => 'User', 
+                     :data => {:issue_title => @issue.title, :related_name => user.name}
+                    )
 
     respond_to do |format|
         format.html { redirect_to @issue }

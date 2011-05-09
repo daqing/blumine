@@ -20,5 +20,4 @@ class IssueAssignmentsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal 1, IssueAssignment.where(:issue_id => issues(:bug_report).id, :user_id => current_user.id).first.position
   end
-
 end

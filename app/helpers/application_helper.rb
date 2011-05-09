@@ -101,6 +101,10 @@ module ApplicationHelper
         else
           "#{t('activity.create_issue')} #{issue_url} #{project_url}"
         end
+      when 'assign_issue'
+        issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
+        user_url = link_to activity.data['related_name'], url_for(:controller => :users, :action => :show, :id => activity.related_id)
+        t('activity.assigned_issue_to', {:issue_url => issue_url, :user_url => user_url})
     end
   end
 end

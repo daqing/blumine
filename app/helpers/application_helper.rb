@@ -105,6 +105,10 @@ module ApplicationHelper
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         user_url = link_to activity.data['related_name'], url_for(:controller => :users, :action => :show, :id => activity.related_id)
         t('activity.assigned_issue_to', {:issue_url => issue_url, :user_url => user_url})
+      when 'change_issue_state'
+        issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
+        current_state = activity.data['current_state']
+        t('activity.changed_issue_state_as', {:issue_url => issue_url, :state => %(<span class="state state-#{current_state}">#{Issue.state_name(current_state)}</span>)})
     end
   end
 end

@@ -75,6 +75,12 @@ class IssuesController < ApplicationController
       if @issue.respond_to? event_action
         begin
           @issue.send(event_action)
+          Activity.create!(:user_id => current_user.id,
+                           :event_name => 'change_issue_state',
+                           :target_id => @issue.id,
+                           :target_type => 'Issue',
+                           :data => {:current_state => @issue.current_state.name, :issue_title => @issue.title}
+                          )
           format.html { redirect_to [@issue.project, @issue] }
           format.js { render :layout => false }
         rescue

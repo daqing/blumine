@@ -53,7 +53,7 @@ class IssuesControllerTest < ActionController::TestCase
   end
 
   test "should change workflow state" do
-    xhr :post, :change_state, :event => :mark_invalid, :id => @issue.id
+    change_state
     assert_response :success
     assert_equal :invalid, assigns(:issue).current_state.name
   end
@@ -129,6 +129,13 @@ class IssuesControllerTest < ActionController::TestCase
     end
   end
 
+  test "should create activity after issue workflow's changed" do
+    assert_difference('Activity.count') do
+      change_state
+    end
+
+  end
+
   private
     def create_issue
       post :create, :project_id => @project.id, :issue => {:title => "test", :content => "foobar"}
@@ -136,6 +143,10 @@ class IssuesControllerTest < ActionController::TestCase
 
     def assign_issue
       xhr :post, :assign_to, :id => @issue.id, :user_id => users(:daqing).id
+    end
+
+    def change_state
+      xhr :post, :change_state, :event => :mark_invalid, :id => @issue.id
     end
 
 end

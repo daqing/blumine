@@ -1,17 +1,12 @@
 <div class="row">
   <%= image_tag 'user_gray.png', :align => :absmiddle, :height => 16, :width => 16 %>
-  <% issues_working_on = user.assigned_issues.only_working_on %>
-  <% count = issues_working_on.count %>
   <%= link_to user.name, user, :class => :tiptip, :title => user.role_name %>
-  <% if count == 0 %>
-    <span class="tiptip" title="<%= t('issue.no_issues_working_on') %>">
-      <%= image_tag 'check_green.gif', :align => :absmiddle %>
-    </span>
-  <% elsif count == 1 %>
+  <% count = @users_working_on[user].size %>
+  <% if count == 1 %>
     <%= t('issue.user_is_working_on') %>
-    <%= issue_title_link(issues_working_on.first) %>
+    <%= issue_title_link(@users_working_on[user].first) %>
   <% else %>
     <%= t('issue.user_is_working_on_the_following') %>
-    <%= render :partial => 'issues/simple_style', :collection => issues_working_on, :as => :issue, :spacer_template => 'shared/spacer' %>
+    <%= render :partial => 'issues/simple_style', :collection => @users_working_on[user], :as => :issue, :spacer_template => 'shared/spacer' %>
   <% end %>
 </div>

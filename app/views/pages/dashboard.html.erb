@@ -23,7 +23,7 @@
 
   <div class="b-box">
     <div class="bar bg-blue"><%= t(:people) %></div>
-    <%= render :partial => 'users/user_working_on', :collection => User.all, :as => :user, :spacer_template => 'shared/line_spacer' %>
+    <%= render :partial => 'users/user_working_on', :collection => @users_working_on.keys, :as => :user, :spacer_template => 'shared/line_spacer' %>
   </div>
 <% end %>
 

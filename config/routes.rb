@@ -43,6 +43,10 @@ Blumine::Application.routes.draw do
 
   get '/teamtalk' => "status_logs#teamtalk"
 
+  namespace 'sudo' do
+    resources :users
+  end
+
   root :to => "pages#index"
 
   # The priority is based upon order of creation:

@@ -1,0 +1,2 @@
+module Sudo::UsersHelper
+end

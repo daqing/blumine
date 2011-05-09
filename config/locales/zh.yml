@@ -5,6 +5,7 @@ zh:
   home: 首页
   dashboard: 控制面板
   statistics: 数据统计
+  sudo: 全站管理
   all_projects: 所有项目
   log_out: 退出
   register: 注册
@@ -124,3 +125,7 @@ zh:
 
   teamtalk: 团队交流
   assign_to_an_user_first: 任务分配之后，才可以更新状态
+
+  created_at: 创建时间
+  updated_at: 最后更新
+  operations: 操作

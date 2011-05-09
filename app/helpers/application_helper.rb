@@ -34,7 +34,7 @@ module ApplicationHelper
   end
 
   def redirect_to_root_when_no_permission
-    flash[:error] = t('permission.no_permission')
+    flash[:notice] = t('permission.no_permission')
     redirect_to root_path 
   end
 

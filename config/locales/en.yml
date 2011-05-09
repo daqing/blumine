@@ -4,6 +4,7 @@
 en:
   home: Home
   dashboard: Dashboard
+  sudo: SuperUser
   statistics: Statistics
   log_in: Sign In
   log_out: Log Out
@@ -123,3 +124,7 @@ en:
 
   teamtalk: Team Talk
   assign_to_an_user_first: To update workflow state, assign to someone first
+  
+  created_at: Created At
+  updated_at: Updated At
+  operations: Operations

@@ -65,6 +65,12 @@ class CommentsControllerTest < ActionController::TestCase
     assert_no_priviledge
   end
 
+  test "should create activity after a comment is created" do
+    assert_difference('Activity.count') do
+      create_comment
+    end
+  end
+
   private
     def create_comment
       post :create, :issue_id => @issue.id, :comment => {:content => "foobar"}

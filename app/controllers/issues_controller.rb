@@ -26,6 +26,14 @@ class IssuesController < ApplicationController
     @issue = @project.issues.new(params[:issue])
     @issue.user = current_user 
     if @issue.save
+      Activity.create!(:user_id => current_user.id,
+                       :event_name => 'create_issue',
+                       :target_type => 'Issue',
+                       :target_id => @issue.id,
+                       :related_id => @project.id,
+                       :related_type => 'Project',
+                       :data => {:title => @issue.title, :related_name => @project.name}
+                      )
       redirect_to @issue
     else
       render :new

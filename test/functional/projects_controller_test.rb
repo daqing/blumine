@@ -49,6 +49,12 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_redirected_to login_path
   end
 
+  test "should create activity after a project is created" do
+    assert_difference('Activity.count') do
+      create_project
+    end
+  end
+
   private
     def create_project
       post :create, :project => {:name => "demo project"}

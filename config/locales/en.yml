@@ -131,4 +131,8 @@ en:
   operations: Operations
 
   activity:
-    create_project: created a new project
+    create_project: created a project
+    create_issue: created an issue
+    in_project: in project %{url}
+
+

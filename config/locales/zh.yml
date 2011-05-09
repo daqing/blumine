@@ -133,4 +133,6 @@ zh:
 
   activity:
     create_project: 创建了新项目
+    create_issue: 创建了新任务
+    in_project: 在项目 %{url} 中
 

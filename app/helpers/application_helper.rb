@@ -93,6 +93,14 @@ module ApplicationHelper
   def format_activity(activity)
     case activity.event_name
       when 'create_project': "#{t('activity.create_project')} #{link_to activity.data['name'], url_for(:controller => :projects, :action => :show, :id => activity.target_id)}"
+      when 'create_issue'
+        issue_url = link_to activity.data['title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
+        project_url = t('activity.in_project', :url => link_to(activity.data['related_name'], url_for(:controller => :projects, :action => :show, :id => activity.related_id)))
+        if I18n.locale == :zh
+          "#{project_url}#{t('activity.create_issue')} #{issue_url}"
+        else
+          "#{t('activity.create_issue')} #{issue_url} #{project_url}"
+        end
     end
   end
 end

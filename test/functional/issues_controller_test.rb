@@ -117,6 +117,12 @@ class IssuesControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
+  test "should create activity after an issue created" do
+    assert_difference('Activity.count') do
+      create_issue
+    end
+  end
+
   private
     def create_issue
       post :create, :project_id => @project.id, :issue => {:title => "test", :content => "foobar"}

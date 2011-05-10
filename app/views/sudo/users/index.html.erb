@@ -1,5 +1,6 @@
 <table>
   <tr>
+    <td width="20">ID</td>
     <th width="80"><%= t(:username) %></th>
     <th width="50">E-mail</th>
     <th width="100"><%= t(:created_at) %></th>
@@ -8,3 +9,4 @@
   </tr>
 <%= render @users %>
 </table>
+<%= will_paginate @users %>

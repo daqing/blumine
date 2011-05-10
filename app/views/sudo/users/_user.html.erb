@@ -1,7 +1,8 @@
-<tr>
+<tr id="user_<%= user.id %>">
+  <td class="quiet"><%= user.id %></td>
   <td class="author"><%= link_to user.name, user %></td>
   <td class="email"><%= user.email %></td>
   <td><%= l(user.created_at, :format => :short) %></td>
   <td><%= l(user.updated_at, :format => :short) %></td>
-  <td><%= link_to t(:delete), user, :method => :delete, :confirm => t(:delete_confirm) %></td>
+  <td><%= link_to t(:delete), sudo_user_path(user), :method => :delete, :remote => true, :confirm => t(:delete_confirm) %></td>
 </tr>

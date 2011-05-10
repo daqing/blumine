@@ -107,6 +107,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.27)
+    will_paginate (3.0.pre)
     workflow (0.8.0)
 
 PLATFORMS
@@ -128,4 +129,5 @@ DEPENDENCIES
   ruby-debug
   sqlite3
   thin
+  will_paginate
   workflow

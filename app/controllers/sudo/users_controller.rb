@@ -8,15 +8,19 @@ class Sudo::UsersController < ApplicationController
 
 
   def index
-    @users = User.all
+    @users = User.all.paginate(:page => params[:page])
   end
 
   def destroy
     @user = User.find(params[:id])
-    if @user.destroy
-      redirect_to sudo_path, :success => success_do(:delete_user)
-    else
-      redirect_to sudo_path, :notice => failed(:delete_user)
+    respond_to do |format|
+      if @user.destroy
+        format.html { redirect_to sudo_path, :success => success_do(:delete_user) }
+        format.js
+      else
+        format.html { redirect_to sudo_path, :notice => failed(:delete_user) }
+        format.js { render :text => :error, :status => 500 }
+      end
     end
   end
 

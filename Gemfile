@@ -16,6 +16,7 @@ gem 'carrierwave'
 gem 'rmmseg-cpp'
 gem 'ferret'
 gem 'capistrano'
+gem 'will_paginate'
 
 # Use unicorn as the web server
 # gem 'unicorn'

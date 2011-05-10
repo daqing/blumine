@@ -134,8 +134,8 @@ en:
     create_project: created a project
     create_issue: created an issue
     in_project: in project %{url}
-    assigned_issue_to: assigned issue %{issue_url} to %{user_url}
-    changed_issue_state_as: changed issue %{issue_url}'s state to %{state}
-    commented_on_issue: "commented on <span class='quiet'>(%{project_url})</span> %{issue_url}: <blockquote>%{comment_body}</blockquote>"
+    assigned_issue_to: assigned %{issue_url} to %{user_url}
+    changed_issue_state_as: changed %{issue_url}'s state to %{state}
+    commented_on_issue: "commented on %{issue_url}: <blockquote>%{comment_body}</blockquote>"
 
 

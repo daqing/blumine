@@ -59,7 +59,7 @@ zh:
     state:
       open: 新任务
       working_on: 解决中
-      paused: 已暂停
+      paused: 暂停解决
       finished: 已解决
       closed: 已关闭
       invalid: 描述不成立
@@ -135,7 +135,7 @@ zh:
     create_project: 创建了新项目
     create_issue: 创建了新任务
     in_project: 在项目 %{url} 中
-    assigned_issue_to: 把任务 %{issue_url} 分配给了 %{user_url}
-    changed_issue_state_as: 把任务 %{issue_url} 的状态修改为 %{state}
-    commented_on_issue: "评论了 <span class='quiet'>(%{project_url})</span> %{issue_url}: <blockquote>%{comment_body}</blockquote>"
+    assigned_issue_to: 把 %{issue_url} 分配给了 %{user_url}
+    changed_issue_state_as: 把 %{issue_url} 的状态修改为 %{state}
+    commented_on_issue: "评论了 %{issue_url}: <blockquote>%{comment_body}</blockquote>"
 

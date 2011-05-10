@@ -83,8 +83,8 @@ module ApplicationHelper
 
   def issue_title_link(issue)
     title = issue.title 
-    if title.mb_chars.length > 20 
-      link_to "#{title.mb_chars[0..20].to_s}...", issue, :title => title
+    if title.mb_chars.length > 15
+      link_to "#{title.mb_chars[0..15].to_s}...", issue, :title => title
     else 
       link_to title, issue 
     end 
@@ -110,9 +110,8 @@ module ApplicationHelper
         current_state = activity.data['current_state']
         t('activity.changed_issue_state_as', {:issue_url => issue_url, :state => %(<span class="state state-#{current_state}">#{Issue.state_name(current_state)}</span>)})
       when 'create_comment'
-        project_url = link_to activity.data['project_name'], url_for(:controller => :projects, :action => :show, :id => activity.related_id)
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
-        t('activity.commented_on_issue', {:project_url => project_url, :issue_url => issue_url, :comment_body => activity.data['comment_body']})
+        t('activity.commented_on_issue', {:issue_url => issue_url, :comment_body => activity.data['comment_body']})
     end
   end
 end

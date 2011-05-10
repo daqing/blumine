@@ -1,14 +1,16 @@
 <div class="row">
   <span class="span-11">
+    <span class="tiptip" title="<%= Issue.state_name(issue.current_state.name) %>">
+      <%= image_tag "state_#{issue.current_state.name.to_s}.png", :align => :absmiddle, :height => 16, :width => 16 %>
+    </span>
     <%= issue_title_link(issue) %>
     <% if issue.assigned_user %>
-      <span class="tiptip tag bg-dark" title="<%= t('issue.assignment.assigned_to') + issue.assigned_user.name %>"><%= issue.assigned_user.name %></span>
+      <span class="tiptip state bg-999" title="<%= t('issue.assignment.assigned_to') + issue.assigned_user.name %>"><%= issue.assigned_user.name %></span>
     <% end %>
-    <span class="state state-<%= issue.current_state.name.to_s %>"><%= issue.current_state_name %></span>
     <% comment_count = issue.comments.count %>
     <% if comment_count > 0 %>
       <span class="small quiet" style="margin-left: 5px;">
-        <%= image_tag 'comment.png', :align => :absmiddle, :width => 16, :height => 16 %>
+        <%= image_tag 'comments.png', :align => :absmiddle, :width => 16, :height => 16 %>
         <%= comment_count %>
       </span>
     <% end %>

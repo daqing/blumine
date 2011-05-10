@@ -10,4 +10,14 @@ class Sudo::UsersController < ApplicationController
   def index
     @users = User.all
   end
+
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      redirect_to sudo_path, :success => success_do(:delete_user)
+    else
+      redirect_to sudo_path, :notice => failed(:delete_user)
+    end
+  end
+
 end

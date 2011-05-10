@@ -47,10 +47,9 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to login_path
   end
 
-  test "should destroy user" do
-    assert_difference('User.count', -1) do
+  test "should not destroy user" do
+    assert_raise(AbstractController::ActionNotFound) do
       delete :destroy, :id => users(:daqing).id
     end
-    assert_redirected_to root_path
   end
 end

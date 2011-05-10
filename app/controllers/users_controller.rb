@@ -29,14 +29,4 @@ class UsersController < ApplicationController
       breadcrumbs.add @user.name
     end
   end
-
-  def destroy
-    @user = User.find(params[:id])
-    if @user.destroy
-      redirect_to root_path, :success => success_do(:delete_user)
-    else
-      redirect_to root_path, :notice => failed(:delete_user)
-    end
-  end
-
 end

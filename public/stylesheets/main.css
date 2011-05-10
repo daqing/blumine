@@ -141,8 +141,10 @@ div.row p { text-indent: 1em; }
 a.plain:link, a.plain:visited { color: #333; }
 a.plain:hover { color: #577DE7; text-decoration: underline; }
 
-a.bold:link, a.bold:visited { color: #666; font-weight: bold; }
+a.bold:link, a.bold:visited { color: #888; font-weight: bold; }
 a.bold:hover { color: #577DE7; text-decoration: underline; }
+
+a.micky:link, a.micky:visited { color: #636A86; }
 
 .todo_done {
   color: #999;
@@ -334,3 +336,4 @@ textarea { padding: 5px; }
 
 .drag_handle { float: left; position: relative; height: 16px; width: 20px; cursor: pointer; display: none; }
 .sortable:hover .drag_handle { display: inline; }
+.quiet { color: #999; }

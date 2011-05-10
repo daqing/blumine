@@ -27,6 +27,7 @@ class StatusLogsController < ApplicationController
   end
 
   def teamtalk
+    cookies[:teamtalk_last_open] = Time.now
     render :layout => false
   end
 

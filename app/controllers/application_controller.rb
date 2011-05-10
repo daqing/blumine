@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   before_filter :set_locale
+  before_filter :count_unread_teamtalk
 
   protect_from_forgery
 
@@ -24,6 +25,16 @@ class ApplicationController < ActionController::Base
       end
 
       I18n.locale = session[:locale]
+    end
+
+    def count_unread_teamtalk
+      if cookies[:teamtalk_last_open]
+        @teamtalk_unread_count = StatusLog.where(['created_at >= ? and user_id != ?',
+                                                 DateTime.parse(cookies[:teamtalk_last_open]),
+                                                 current_user.id]).limit(10).size
+      else
+        @teamtalk_unread_count = 0
+      end
     end
 end
 

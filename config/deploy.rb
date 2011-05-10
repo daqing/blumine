@@ -50,6 +50,11 @@ namespace :blumine do
     run "cd ~/repo/blumine && git pull"
   end
 
+  desc "install gems"
+  task :install_gems do
+    run "cd ~/repo/blumine && RAILS_ENV=production bundle install"
+  end
+
   desc "run migrations in production environment"
   task :db_migrate do
     run "cd ~/repo/blumine && rake RAILS_ENV=production db:migrate"
@@ -108,5 +113,5 @@ namespace :blumine do
   end
 end
 
-after "blumine:deploy", "blumine:update_code", "blumine:db_migrate", "blumine:restart_thin", "blumine:restart_nginx"
+after "blumine:deploy", "blumine:update_code", "blumine:install_gems", "blumine:db_migrate", "blumine:restart_thin"
 

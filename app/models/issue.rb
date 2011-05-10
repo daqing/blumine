@@ -65,10 +65,10 @@ class Issue < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
 
-  has_many :comments
-  has_many :todo_items
+  has_many :comments, :dependent => :destroy
+  has_many :todo_items, :dependent => :destroy
 
-  has_one :issue_assignment
+  has_one :issue_assignment, :dependent => :destroy
   has_one :assigned_user, :through => :issue_assignment, :source => :user
 
   before_validation :set_default_content

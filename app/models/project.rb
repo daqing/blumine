@@ -12,7 +12,7 @@
 
 class Project < ActiveRecord::Base
   belongs_to :user
-  has_many :issues
+  has_many :issues, :dependent => :destroy
 
   validates :name, :user_id, :presence => true
 end

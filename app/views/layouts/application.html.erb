@@ -52,7 +52,7 @@
               <%= link_to 'javascript:void(0);', :id => :teamtalk  do %>
                 <%= t(:teamtalk) %>
                 <% if @teamtalk_unread_count > 0 %>
-                  <span class="radius-3" style="background-color: #333; color: red;padding: 2px 5px;font-weight: bold; font-size: 10px;"><%= @teamtalk_unread_count %></span>
+                  <span id="teamtalk_unread_count" class="radius-3" style="background-color: #333; color: red;padding: 2px 5px;font-weight: bold; font-size: 10px;"><%= @teamtalk_unread_count %></span>
                 <% end %>
               <% end %>
             </li>

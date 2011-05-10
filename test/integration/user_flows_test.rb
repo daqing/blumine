@@ -20,6 +20,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
 
     follow_redirect!
+    assert_response :success
     assert_equal "您已经成功退出。", flash[:notice]
 
     # login again
@@ -30,7 +31,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
 
     follow_redirect!
-
     assert_response :success
   end
 end

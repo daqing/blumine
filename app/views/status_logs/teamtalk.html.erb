@@ -6,3 +6,6 @@
   <%= render 'status_logs/form' %>
   <%= render :partial => 'status_logs/status_log', :collection => StatusLog.limit(10), :spacer_template => 'shared/line_spacer' %>
 </div>
+<script type="text/javascript">
+  $("#teamtalk_unread_count").remove();
+</script>

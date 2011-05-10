@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
     end
 
     def count_unread_teamtalk
+      return unless current_user
       if cookies[:teamtalk_last_open]
         @teamtalk_unread_count = StatusLog.where(['created_at >= ? and user_id != ?',
                                                  DateTime.parse(cookies[:teamtalk_last_open]),

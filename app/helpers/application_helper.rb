@@ -81,12 +81,12 @@ module ApplicationHelper
     I18n.t(action_sym) + I18n.t('action.failed')
   end
 
-  def issue_title_link(issue)
+  def issue_title_link(issue, *css_class)
     title = issue.title 
     if title.mb_chars.length > 15
-      link_to "#{title.mb_chars[0..15].to_s}...", issue, :title => title
+      link_to "#{title.mb_chars[0..15].to_s}...", issue, :title => title, :class => css_class
     else 
-      link_to title, issue 
+      link_to title, issue, :class => css_class
     end 
   end
 
@@ -95,7 +95,12 @@ module ApplicationHelper
       when 'create_project': "#{t('activity.create_project')} #{link_to activity.data['name'], url_for(:controller => :projects, :action => :show, :id => activity.target_id)}"
       when 'create_issue'
         issue_url = link_to activity.data['title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
-        project_url = t('activity.in_project', :url => link_to(activity.data['related_name'], url_for(:controller => :projects, :action => :show, :id => activity.related_id)))
+        project_url = t('activity.in_project', :url => 
+                        link_to(activity.data['related_name'],
+                                url_for(:controller => :projects, :action => :show, :id => activity.related_id),
+                                :class => :bold
+                               )
+                       )
         if I18n.locale == :zh
           "#{project_url}#{t('activity.create_issue')} #{issue_url}"
         else

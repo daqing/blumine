@@ -141,6 +141,9 @@ div.row p { text-indent: 1em; }
 a.plain:link, a.plain:visited { color: #333; }
 a.plain:hover { color: #577DE7; text-decoration: underline; }
 
+a.bold:link, a.bold:visited { color: #666; font-weight: bold; }
+a.bold:hover { color: #577DE7; text-decoration: underline; }
+
 .todo_done {
   color: #999;
   text-decoration: line-through;

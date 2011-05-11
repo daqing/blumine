@@ -1,2 +1,2 @@
-<%= close_facebox %>
+$.facebox.close()
 $("#comment_<%= @comment.id %> .content").html("<%=raw escape_javascript(parse_markdown(@comment.content)) %>")

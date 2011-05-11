@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def parse_markdown(text)
-    Redcarpet.new(h(text)).to_html.html_safe
+    Redcarpet.new(h(text)).to_html
   end
 
   def must_not_logged_in
@@ -69,10 +69,6 @@ module ApplicationHelper
     current_user.status_logs.create!(:content => log)
   end
 
-  def close_facebox
-    %($.facebox.close()).html_safe
-  end
-
   def success_do(action_sym)
     I18n.t(action_sym) + I18n.t('action.successfully')
   end
@@ -118,6 +114,6 @@ module ApplicationHelper
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         t('activity.commented_on_issue', {:issue_url => issue_url, :comment_body => activity.data['comment_body']})
     end
-    result.html_safe if result
+    h(result) if result
   end
 end

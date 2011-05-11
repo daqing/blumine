@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def parse_markdown(text)
-    Redcarpet.new(h(text)).to_html
+    Redcarpet.new(h(text)).to_html.html_safe
   end
 
   def must_not_logged_in
@@ -91,7 +91,7 @@ module ApplicationHelper
   end
 
   def format_activity(activity)
-    case activity.event_name
+    result = case activity.event_name
       when 'create_project': "#{t('activity.create_project')} #{link_to activity.data['name'], url_for(:controller => :projects, :action => :show, :id => activity.target_id)}"
       when 'create_issue'
         issue_url = link_to activity.data['title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
@@ -118,5 +118,6 @@ module ApplicationHelper
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         t('activity.commented_on_issue', {:issue_url => issue_url, :comment_body => activity.data['comment_body']})
     end
+    result.html_safe if result
   end
 end

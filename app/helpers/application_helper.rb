@@ -87,7 +87,7 @@ module ApplicationHelper
   end
 
   def format_activity(activity)
-    result = case activity.event_name
+    case activity.event_name
       when 'create_project': "#{t('activity.create_project')} #{link_to activity.data['name'], url_for(:controller => :projects, :action => :show, :id => activity.target_id)}"
       when 'create_issue'
         issue_url = link_to activity.data['title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
@@ -112,8 +112,7 @@ module ApplicationHelper
         t('activity.changed_issue_state_as', {:issue_url => issue_url, :state => %(<span class="state state-#{current_state}">#{Issue.state_name(current_state)}</span>)})
       when 'create_comment'
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
-        t('activity.commented_on_issue', {:issue_url => issue_url, :comment_body => activity.data['comment_body']})
+        t('activity.commented_on_issue', {:issue_url => issue_url, :comment_body => h(activity.data['comment_body'])})
     end
-    h(result) if result
   end
 end

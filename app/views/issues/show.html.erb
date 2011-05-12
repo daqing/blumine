@@ -39,6 +39,7 @@
 <% end %>
 <% end %>
 
+<% content_for :content do %>
 <h2 class="title"><%= @issue.title %></h2>
 <span class="tip">
   By <%= link_to @issue.user.name, @issue.user, :class => "quiet" %>
@@ -75,3 +76,6 @@
 <% end %>
 </div>
 
+<% end %>
+
+<%= render 'layouts/backend_common' %>

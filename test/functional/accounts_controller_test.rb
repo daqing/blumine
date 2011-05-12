@@ -28,5 +28,4 @@ class AccountsControllerTest < ActionController::TestCase
 
     assert_equal new_locale, current_user.locale
   end
-
 end

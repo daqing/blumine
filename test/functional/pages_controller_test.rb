@@ -6,6 +6,15 @@ class PagesControllerTest < ActionController::TestCase
     assert_response :success
 
     assert assigns(:title)
+    assert_select "div.span-16 h2"
+  end
+
+  test "user logged in should see dashboard" do
+    log_in(:daqing)
+    get :index
+    assert_response :success
+    assert_select "h1.silver"
+    assert_select "#sidebar div.bar"
   end
 
   test "root path should be routed to index action" do

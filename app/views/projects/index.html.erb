@@ -1,5 +1,9 @@
-<%= render @projects %>
-
 <% content_for :sidebar do %>
   <%= as_button link_to(t(:new_project), new_project_path) %>
 <% end %>
+
+<% content_for :content do %>
+  <%= render @projects %>
+<% end %>
+
+<%= render 'layouts/backend_common' %>

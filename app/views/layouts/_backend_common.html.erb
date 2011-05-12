@@ -1,0 +1,152 @@
+<% content_for :base do %>
+  <div id="header">
+    <div class="container" style="background-color: #505759">
+      <div class="links" id="top_right">
+        <% if current_user %>
+          <%= link_to t(:dashboard), root_path %>
+          <%= link_to current_user.name, current_user %>
+          <%= link_to t(:account), account_path, :class => :top %>
+          <%= link_to t(:log_out), logout_path %>
+        <% else %>
+          <%= link_to t(:home), root_path %>
+          <%= link_to t(:register), register_path %>
+          <%= link_to t(:log_in), login_path %>
+        <% end %>
+      </div>
+      <div id="logo" class="span-4"><%= link_to 'BluMine', root_path, :title => t(:home) %></div>
+      <% if current_user %>
+        <div style="margin: 3px 0 0 10px;" class="span-4">
+          <%= text_field_tag 'search', t(:search_issues), :class => 'radius-3' %>
+        </div>
+
+        <div id="shortcut" class="links">
+          <ul>
+            <li class="headlink">
+              <%= link_to t(:all_projects), projects_path, :class => :top %>
+              <ul>
+                <% Project.all.each do |p| %>
+                  <li clickable="<%= project_path(p) %>"><%= link_to p.name, p %></li>
+                <% end %>
+                <div class="sep">&nbsp;</div>
+                <li><%= link_to(t(:new_project), new_project_path) %></li>
+              </ul>
+            </li>
+            <li class="headlink">
+              <%= link_to 'javascript:void(0);', :id => :teamtalk  do %>
+                <%= t(:teamtalk) %>
+                <% if @teamtalk_unread_count > 0 %>
+                  <span id="teamtalk_unread_count" class="radius-3" style="background-color: #333; color: red;padding: 2px 5px;font-weight: bold; font-size: 10px;"><%= @teamtalk_unread_count %></span>
+                <% end %>
+              <% end %>
+            </li>
+            <% if current_user.root? %>
+            <li class="headlink">
+              <%= link_to t(:sudo), sudo_users_path %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container">
+    <% [:success, :notice, :error].each do |type| %>
+      <% if flash[type] %>
+        <div class="<%= type %>"><%= flash[type] %></div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="container" id="main_area">
+    <% if breadcrumbs.items.length > 1 %>
+      <div id="breadcrumbs">
+        <%= breadcrumbs.render(:format => :inline) %>
+      </div>
+    <% end %>
+
+    <div class="span-16" id="content">
+      <%= yield :content %>
+    </div>
+
+    <div class="span-6 last" id="sidebar">
+      <%= yield :sidebar %>
+    </div>
+  </div>
+  <div class="container">
+    <div id="footer">
+      <span class="" style="background: url(/images/locales.png) no-repeat 0 50%; padding-left: 20px; float: left; font-size: 12px; line-height: 1.5em;">
+        <% User::AVAILABLE_LANGUAGES.keys.each do |key| %>
+          <% if I18n.locale == key %>
+            <span class="current"><%= User::AVAILABLE_LANGUAGES[key] %></span>
+          <% else %>
+            <%= link_to User::AVAILABLE_LANGUAGES[key], "?locale=#{key.to_s}", :class => :action %>
+          <% end %>
+        <% end %>
+      </span>
+      <span class="right">
+        <%= link_to t(:get_source_code), 'http://github.com/daqing/blumine/' %>
+        <%= link_to t(:blog), 'http://blog.xdaqing.com' %>
+        &copy; <%= Time.now.year %> Project BluMine
+      </span>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(function() {
+      $.make_sortable = function(id, url) {
+        var obj = $("#" + id);
+        obj.sortable({
+           axis: 'y',
+           dropOnEmpty: false,
+           cursor: 'crosshair',
+           items: '.sortable',
+           opacity: 0.6,
+           scroll: true, 
+           handle: '.drag_handle',
+           update: function(event, ui) {
+              $.post(url, $("#" + id).sortable('serialize'), function(result) {}, 'script');
+           }
+        });
+      }
+
+      var default_search_tip = "<%= t(:search_issues) %>";
+      $("#search").click(function() {
+          if ($(this).val() == default_search_tip) {
+              $(this).val('').focus();
+          }
+        }).blur(function() {
+          if ($(this).val().length == 0) {
+              $(this).val(default_search_tip);
+          }
+        }).keydown(function(event) {
+          if (event.keyCode == '13') {
+            location.href = '/search/' + $(this).val();
+          }
+      });
+
+      $("#teamtalk").click(function() {
+          $.facebox({ajax: '<%= teamtalk_path %>'});
+      });
+
+      $(".bg_highlight").live('mouseenter', function() { $(this).css('backgroundColor', '#FFC'); })
+        .live('mouseleave', function() { $(this).css('backgroundColor', '#FFF'); });
+
+      $("div[clickable], li[clickable]").mouseover(function() { $(this).css('cursor', 'pointer'); }).click(function() {
+        location.href = $(this).attr('clickable');
+      });
+
+      $("div.row").live('hover', function(ev) {
+        if (ev.type == "mouseenter") {
+          $(this).find('a[data-method=delete]').removeClass('hide');
+        } else if (ev.type == "mouseleave") {
+          $(this).find('a[data-method=delete]').addClass('hide');
+        }
+      });
+
+      <%= yield :on_ready_hook %>
+
+      $("a.facebox").facebox();
+      $(".tiptip").tipTip({defaultPosition: 'bottom'});
+    });
+  </script>
+<% end %>

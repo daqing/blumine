@@ -11,6 +11,8 @@ class ProjectsControllerTest < ActionController::TestCase
 
     assert assigns(:project)
     assert assigns(:title)
+
+    assert_select 'form.new_project'
   end
 
   test "should create project" do
@@ -26,6 +28,11 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_response :success
 
     assert assigns(:title)
+
+    assert_select "h1.silver"
+    assert_select "div.row"
+    assert_select "div.btn_2_i"
+    assert_select "div.bg_highlight"
   end
 
   test "should get index" do
@@ -34,6 +41,8 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:projects)
     assert assigns(:title)
+
+    assert_select "h1.silver"
   end
 
   test "should redirect to login path if get index" do

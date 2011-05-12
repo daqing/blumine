@@ -39,6 +39,15 @@ class StatusLogsControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
+  test "should get teamtalk" do
+    xhr :get, :teamtalk
+
+    assert_response :success
+    assert_select "#feed_box"
+    assert_select "form#new_status_log"
+    assert_select "div.row"
+  end
+
   private
     def create_status_log
       xhr :post, :create, :status_log => {:content => "hello"}

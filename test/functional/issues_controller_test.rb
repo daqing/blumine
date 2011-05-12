@@ -50,6 +50,14 @@ class IssuesControllerTest < ActionController::TestCase
     assert assigns(:comment)
     assert assigns(:todo_item)
     assert assigns(:title)
+
+    assert_select "h2.title"
+    assert_select "span.tip"
+    assert_select "#todo_list_box"
+    assert_select "div#issue_comments"
+    assert_select "div#add_comment_form"
+    assert_select "div#issue_workflow_box"
+    assert_select "div#issue_assignment"
   end
 
   test "should change workflow state" do
@@ -72,6 +80,8 @@ class IssuesControllerTest < ActionController::TestCase
 
     assert_response :success
     assert assigns(:title)
+
+    assert_select 'form.edit_issue'
   end
 
   test "should update issue" do

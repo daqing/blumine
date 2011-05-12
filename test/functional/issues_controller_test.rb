@@ -143,7 +143,13 @@ class IssuesControllerTest < ActionController::TestCase
     assert_difference('Activity.count') do
       change_state
     end
+  end
 
+  test "should search issues" do
+    get :search, :keyword => 'foo'
+
+    assert_response :success
+    assert_select 'h1.silver'
   end
 
   private

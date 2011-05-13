@@ -152,6 +152,11 @@ class IssuesControllerTest < ActionController::TestCase
     assert_select 'h1.silver'
   end
 
+  test "should get autocomplete" do
+    xhr :get, :autocomplete
+    assert_response :success
+  end
+
   private
     def create_issue
       post :create, :project_id => @project.id, :issue => {:title => "test", :content => "foobar"}

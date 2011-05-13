@@ -356,3 +356,7 @@ textarea { padding: 5px; }
 }
 
 .margin-10 { height: 10px; }
+
+ul.ui-autocomplete {
+  width: 200px;
+}

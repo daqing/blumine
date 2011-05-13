@@ -139,6 +139,22 @@ class IssuesController < ApplicationController
 
   end
 
+  def autocomplete
+    respond_to do |format|
+      format.js { 
+        result = []
+        term = h(params[:term])
+        render :json => result and return if term.index('#')
+
+        Issue.search_with_ferret(%(title:'#{term}')) do |index, id, score|
+          issue = Issue.find(index[id][:id])
+          result << {:label => issue.title, :value => "issue-#{issue.id}"}
+        end
+        render :json => result
+      }
+    end
+  end
+
   private
     def find_issue
       @issue = Issue.find(params[:id])

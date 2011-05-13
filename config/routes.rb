@@ -26,6 +26,10 @@ Blumine::Application.routes.draw do
       post 'change_state'
       post 'assign_to'
     end
+
+    collection do
+      get 'autocomplete'
+    end
   end
 
   resources :todo_items do

@@ -2,7 +2,22 @@
 <html>
   <%= render 'layouts/head' %>
 <body>
-  <%= yield :base %>
+  <%= render 'layouts/nav_header' %>
+
+  <div class="container" id="main_area">
+    <%= render 'layouts/breadcrumbs', :breadcrumbs => breadcrumbs %>
+
+    <div class="span-16" id="content">
+      <%= yield %>
+    </div>
+
+    <div class="span-6 last" id="sidebar">
+      <%= yield :sidebar %>
+    </div>
+  </div>
+
+  <%= render 'layouts/footer' %>
+  <%= render 'layouts/main_javascripts' %>
 </body>
 </html>
 

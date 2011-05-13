@@ -1,4 +1,3 @@
-
 <% content_for :sidebar do %>
   <div class="b-box">
     <div class="bar bg-blue"><%= t(:statistics) %></div>
@@ -28,34 +27,30 @@
   </div>
 <% end %>
 
-<% content_for :content do %>
-  <h1 class="silver"><%= t(:projects) %></h1>
-  <% Project.all.each do |p| %>
-    <div class="span-7 b-box">
-      <div class="bar bg-gray">
-        <%= image_tag 'folder.png', :align => :absmiddle, :height => 16, :with => 16 %>
-        <%= link_to p.name, p %></div>
-      <table with="300">
-        <% total = p.issues.count %>
-        <% ['open', 'working_on', 'closed'].each do |state| %>
-          <% state_count = p.issues.send("only_#{state}").count %>
-          <% percent = total > 0 ? state_count * 100 / total : 0; %>
-          <tr>
-            <td width="50"><%= t("issue.state.#{state}") %></td>
-            <td>
-              <%= link_to "#{percent}%", "/projects/#{p.id}/filter/#{state}",
-                    :class => "percent_bar state-#{state}",
-                    :style => "width: #{percent < 20 ? percent + 10 : percent}%"
-              %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-  <% end %>
-  <div class="clear"></div>
-  <h1 class="silver"><%= t(:feed) %></h1>
-  <%= render :partial => 'activities/activity', :collection => Activity.limit(10), :spacer_template => 'shared/spacer' %>
+<h1 class="silver"><%= t(:projects) %></h1>
+<% Project.all.each do |p| %>
+  <div class="span-7 b-box">
+    <div class="bar bg-gray">
+      <%= image_tag 'folder.png', :align => :absmiddle, :height => 16, :with => 16 %>
+      <%= link_to p.name, p %></div>
+    <table with="300">
+      <% total = p.issues.count %>
+      <% ['open', 'working_on', 'closed'].each do |state| %>
+        <% state_count = p.issues.send("only_#{state}").count %>
+        <% percent = total > 0 ? state_count * 100 / total : 0; %>
+        <tr>
+          <td width="50"><%= t("issue.state.#{state}") %></td>
+          <td>
+            <%= link_to "#{percent}%", "/projects/#{p.id}/filter/#{state}",
+                  :class => "percent_bar state-#{state}",
+                  :style => "width: #{percent < 20 ? percent + 10 : percent}%"
+            %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 <% end %>
-
-<%= render 'layouts/backend_common' %>
+<div class="clear"></div>
+<h1 class="silver"><%= t(:feed) %></h1>
+<%= render :partial => 'activities/activity', :collection => Activity.limit(10), :spacer_template => 'shared/spacer' %>

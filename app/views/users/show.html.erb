@@ -28,7 +28,6 @@
   <% end %>
 <% end %>
 
-<% content_for :content do %>
 <h1 class="silver"><%= @my_profile ? t(:my_assigned_issues) : t('issue.issues_assigned_to', :username => @user.name) %></h1>
 <div id="my_assigned_issues" title="<%= t(:drag_issue_to_sort_priority) %>">
   <%= render :partial => 'my_assigned_issue',
@@ -38,6 +37,3 @@
 </div>
 <h1 class="silver"><%= t(:recently_created_issues) %></h1>
 <%= render :partial => 'issues/issue', :collection => @user.issues.order('created_at DESC').limit(5), :as => :issue, :spacer_template => 'shared/spacer' %>
-<% end %>
-
-<%= render 'layouts/backend_common' %>

@@ -1,10 +1,6 @@
-<% content_for :content do %>
 <h1 class="silver"><%= t('search.results') %></h1>
 <% if @result.any? %>
 <%= render :partial => 'issues/issue', :collection => @result, :spacer_template => 'shared/spacer' %>
 <% else %>
   <div class="row"><%= t('search.no_issue_found') %></div>
 <% end %>
-<% end %>
-
-<%= render 'layouts/backend_common' %>

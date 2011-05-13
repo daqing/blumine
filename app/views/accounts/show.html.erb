@@ -1,4 +1,3 @@
-<% content_for :content do %>
 <h1 class="silver"><%= t(:account) %></h1>
 <%= form_for current_user, :url => account_path do |f| %>
   <%= render 'shared/error_messages', :obj => f.object %>
@@ -22,6 +21,3 @@
     <%= f.submit t(:save) %>
   </div>
 <% end %>
-<% end %>
-
-<%= render 'layouts/backend_common' %>

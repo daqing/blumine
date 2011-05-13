@@ -1,4 +1,3 @@
-<% content_for :content do %>
 <h2><%= t(:register) %></h2>
 <%= form_for @user do |f| %>
   <%= render 'shared/error_messages', :obj => @user %>
@@ -24,6 +23,3 @@
 
   <%= f.submit t(:create_user) %>
 <% end %>
-<% end %>
-
-<%= render 'layouts/backend_common' %>

@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= @title + ' - ' if @title %>BluMine</title>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-
-  <% # use 'blueprint' css framework %>
-  <%= stylesheet_link_tag "bp/screen", :media => "screen, projection" %>
-  <%= stylesheet_link_tag "bp/print", :media => "print" %>
-  <!--[if lt IE 8]>
-    <%= stylesheet_link_tag "bp/ie", :media => "screen, projection" %>
-  <![endif]-->
-
-  <%= stylesheet_link_tag :all %>
-  <%= yield :head_hook %>
-</head>
+  <%= render 'layouts/head' %>
 <body>
   <%= yield :base %>
 </body>

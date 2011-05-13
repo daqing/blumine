@@ -1,0 +1,58 @@
+<script type="text/javascript">
+  $(function() {
+    $.make_sortable = function(id, url) {
+      var obj = $("#" + id);
+      obj.sortable({
+         axis: 'y',
+         dropOnEmpty: false,
+         cursor: 'crosshair',
+         items: '.sortable',
+         opacity: 0.6,
+         scroll: true, 
+         handle: '.drag_handle',
+         update: function(event, ui) {
+            $.post(url, $("#" + id).sortable('serialize'), function(result) {}, 'script');
+         }
+      });
+    }
+
+    var default_search_tip = "<%= t(:search_issues) %>";
+    $("#search").click(function() {
+        if ($(this).val() == default_search_tip) {
+            $(this).val('').focus();
+        }
+      }).blur(function() {
+        if ($(this).val().length == 0) {
+            $(this).val(default_search_tip);
+        }
+      }).keydown(function(event) {
+        if (event.keyCode == '13') {
+          location.href = '/search/' + $(this).val();
+        }
+    });
+
+    $("#teamtalk").click(function() {
+        $.facebox({ajax: '<%= teamtalk_path %>'});
+    });
+
+    $(".bg_highlight").live('mouseenter', function() { $(this).css('backgroundColor', '#FFC'); })
+      .live('mouseleave', function() { $(this).css('backgroundColor', '#FFF'); });
+
+    $("div[clickable], li[clickable]").mouseover(function() { $(this).css('cursor', 'pointer'); }).click(function() {
+      location.href = $(this).attr('clickable');
+    });
+
+    $("div.row").live('hover', function(ev) {
+      if (ev.type == "mouseenter") {
+        $(this).find('a[data-method=delete]').removeClass('hide');
+      } else if (ev.type == "mouseleave") {
+        $(this).find('a[data-method=delete]').addClass('hide');
+      }
+    });
+
+    <%= yield :on_ready_hook %>
+
+    $("a.facebox").facebox();
+    $(".tiptip").tipTip({defaultPosition: 'bottom'});
+  });
+</script>

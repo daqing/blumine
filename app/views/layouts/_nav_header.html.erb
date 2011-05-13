@@ -1,0 +1,58 @@
+  <div id="header">
+    <div class="container" style="background-color: #505759">
+      <div class="links" id="top_right">
+        <% if current_user %>
+          <%= link_to t(:dashboard), root_path %>
+          <%= link_to current_user.name, current_user %>
+          <%= link_to t(:account), account_path, :class => :top %>
+          <%= link_to t(:log_out), logout_path %>
+        <% else %>
+          <%= link_to t(:home), root_path %>
+          <%= link_to t(:register), register_path %>
+          <%= link_to t(:log_in), login_path %>
+        <% end %>
+      </div>
+      <div id="logo" class="span-4"><%= link_to 'BluMine', root_path, :title => t(:home) %></div>
+      <% if current_user %>
+        <div style="margin: 3px 0 0 10px;" class="span-4">
+          <%= text_field_tag 'search', t(:search_issues), :class => 'radius-3' %>
+        </div>
+
+        <div id="shortcut" class="links">
+          <ul>
+            <li class="headlink">
+              <%= link_to t(:all_projects), projects_path, :class => :top %>
+              <ul>
+                <% Project.all.each do |p| %>
+                  <li clickable="<%= project_path(p) %>"><%= link_to p.name, p %></li>
+                <% end %>
+                <div class="sep">&nbsp;</div>
+                <li><%= link_to(t(:new_project), new_project_path) %></li>
+              </ul>
+            </li>
+            <li class="headlink">
+              <%= link_to 'javascript:void(0);', :id => :teamtalk  do %>
+                <%= t(:teamtalk) %>
+                <% if @teamtalk_unread_count > 0 %>
+                  <span id="teamtalk_unread_count" class="radius-3" style="background-color: #333; color: red;padding: 2px 5px;font-weight: bold; font-size: 10px;"><%= @teamtalk_unread_count %></span>
+                <% end %>
+              <% end %>
+            </li>
+            <% if current_user.root? %>
+            <li class="headlink">
+              <%= link_to t(:sudo), sudo_users_path %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container">
+    <% [:success, :notice, :error].each do |type| %>
+      <% if flash[type] %>
+        <div class="<%= type %>"><%= flash[type] %></div>
+      <% end %>
+    <% end %>
+  </div>

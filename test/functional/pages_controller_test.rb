@@ -35,4 +35,16 @@ class PagesControllerTest < ActionController::TestCase
     assert_equal 0, css_select('#search').size
     assert_equal 0, css_select('#shortcut').size
   end
+
+  test "only logged-in users can view stats page" do
+    get :stats
+    assert_response :redirect
+  end
+
+  test "should get stats page" do
+    log_in(:daqing)
+    get :stats
+    assert_response :success
+    assert_select 'h1.silver'
+  end
 end

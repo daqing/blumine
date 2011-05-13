@@ -1,0 +1,53 @@
+<% content_for :sidebar do %>
+  <div class="b-box">
+    <div class="bar bg-blue"><%= t(:stats) %></div>
+    <table>
+      <tr>
+        <td><%= t(:projects) %></td>
+        <td><%= Project.count %></td>
+      </tr>
+      <tr>
+        <td><%= t(:people) %></td>
+        <td><%= User.count %></td>
+      </tr>
+      <tr>
+        <td><%= t(:issues) %></td>
+        <td><%= Issue.count %></td>
+      </tr>
+      <tr>
+        <td><%= t(:todo) %></td>
+        <td><%= TodoItem.count %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="b-box">
+    <div class="bar bg-blue"><%= t(:people) %></div>
+    <%= render :partial => 'users/user_working_on', :collection => @users_working_on.keys, :as => :user, :spacer_template => 'shared/line_spacer' %>
+  </div>
+<% end %>
+
+<h1 class="silver"><%= t(:projects) %></h1>
+<% Project.all.each do |p| %>
+  <div style="margin: 10px 0 0 10px;">
+    <div class="bar bg-gray">
+      <%= image_tag 'folder.png', :align => :absmiddle, :height => 16, :with => 16 %>
+      <%= link_to p.name, p %></div>
+    <table with="300">
+      <% total = p.issues.count %>
+      <% ['open', 'working_on', 'closed'].each do |state| %>
+        <% state_count = p.issues.send("only_#{state}").count %>
+        <% percent = total > 0 ? state_count * 100 / total : 0; %>
+        <tr>
+          <td width="50"><%= t("issue.state.#{state}") %></td>
+          <td>
+            <%= link_to "#{percent}%", "/projects/#{p.id}/filter/#{state}",
+                  :class => "percent_bar state-#{state}",
+                  :style => "width: #{percent < 20 ? percent + 10 : percent}%"
+            %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>

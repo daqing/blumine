@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
   before_filter :must_login_first
 
   def show
-    breadcrumbs.add t(:account)
+    breadcrumbs.add t(:account_settings)
   end
 
   def update

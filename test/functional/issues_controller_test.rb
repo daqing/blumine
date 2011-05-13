@@ -32,14 +32,14 @@ class IssuesControllerTest < ActionController::TestCase
   test "should not create issue if logged out" do
     log_out
     create_issue
-    assert_redirected_to login_path
+    assert_redirected_to root_path
   end
 
   test "should not show issue if logged out" do
     log_out
     get :show, :project_id => @project.id, :id => @issue.id
 
-    assert_redirected_to login_path
+    assert_redirected_to root_path
   end
 
   test "should get show" do

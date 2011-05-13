@@ -18,7 +18,7 @@ class CommentsControllerTest < ActionController::TestCase
   test "should not create comment if not logged in" do
     log_out
     create_comment
-    assert_redirected_to login_path
+    assert_redirected_to root_path
   end
 
   test "should edit comment" do

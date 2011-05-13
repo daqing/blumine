@@ -9,10 +9,10 @@ class AccountsControllerTest < ActionController::TestCase
     log_out
 
     get :show
-    assert_redirected_to login_path
+    assert_redirected_to root_path
 
     post :update
-    assert_redirected_to login_path
+    assert_redirected_to root_path 
   end
 
   test "should get show" do

@@ -49,13 +49,13 @@ class ProjectsControllerTest < ActionController::TestCase
     log_out
     get :index
 
-    assert_redirected_to login_path
+    assert_redirected_to root_path
   end
 
   test "should not create project if not logged in" do
     log_out
     create_project
-    assert_redirected_to login_path
+    assert_redirected_to root_path
   end
 
   test "should create activity after a project is created" do

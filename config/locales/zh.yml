@@ -4,8 +4,9 @@
 zh:
   home: 首页
   welcome: 欢迎访问BluMine
+  welcome_user: 欢迎你, %{username}
   dashboard: 控制面板
-  statistics: 数据统计
+  stats: 数据统计
   sudo: 全站管理
   all_projects: 所有项目
   log_out: 退出
@@ -102,7 +103,8 @@ zh:
     results: 搜索结果
     no_issue_found: 没有任何记录
 
-  account: 账户设置
+  account: %{username}的账号
+  account_settings: 账号设置
   default_locale: 默认语言
 
   role:
@@ -140,3 +142,4 @@ zh:
     changed_issue_state_as: 把 %{issue_url} 的状态修改为 %{state}
     commented_on_issue: "评论了 %{issue_url}: <blockquote>%{comment_body}</blockquote>"
 
+  no_items_right_now: 暂时没有任何数据

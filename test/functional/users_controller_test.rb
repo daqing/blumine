@@ -48,7 +48,7 @@ class UsersControllerTest < ActionController::TestCase
   test "should redirect to login path when not logged in" do
     get :show, :id => users(:daqing).id
 
-    assert_redirected_to login_path
+    assert_redirected_to root_path
   end
 
   test "should not destroy user" do

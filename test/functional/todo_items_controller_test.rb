@@ -20,7 +20,7 @@ class TodoItemsControllerTest < ActionController::TestCase
   test "should not create todo if not logged in" do
     log_out
     create_todo_item
-    assert_redirected_to login_path
+    assert_redirected_to root_path
   end
 
   test "should mark as done" do

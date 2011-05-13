@@ -25,7 +25,7 @@ module ApplicationHelper
     if not current_user
       store_location
       flash[:notice] = "请先登录再继续操作"
-      redirect_to login_path
+      redirect_to root_path
     end
   end
 

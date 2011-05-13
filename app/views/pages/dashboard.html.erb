@@ -1,56 +1,37 @@
+<% content_for :on_ready_hook do %>
+  $.make_sortable('my_assigned_issues', '<%= assigned_issues_sort_path %>');
+<% end %>
+
 <% content_for :sidebar do %>
+  <% assigned_issues = @user.assigned_issues.except_closed.except_ignored %>
   <div class="b-box">
-    <div class="bar bg-blue"><%= t(:statistics) %></div>
-    <table>
-      <tr>
-        <td><%= t(:projects) %></td>
-        <td><%= Project.count %></td>
-      </tr>
-      <tr>
-        <td><%= t(:people) %></td>
-        <td><%= User.count %></td>
-      </tr>
-      <tr>
-        <td><%= t(:issues) %></td>
-        <td><%= Issue.count %></td>
-      </tr>
-      <tr>
-        <td><%= t(:todo) %></td>
-        <td><%= TodoItem.count %></td>
-      </tr>
-    </table>
+    <div class="bar bg-blue"><%= t(:my_assigned_issues) %></div>
+    <% if assigned_issues.any? %>
+      <div id="my_assigned_issues" title="<%= t(:drag_issue_to_sort_priority) %>">
+        <%= render :partial => 'users/my_assigned_issue', :collection => assigned_issues %>
+      </div>
+    <% else %>
+      <%= render 'shared/no_items' %>
+    <% end %>
   </div>
 
+  <% created_issues = @user.issues.order('created_at DESC').limit(5) %>
   <div class="b-box">
-    <div class="bar bg-blue"><%= t(:people) %></div>
-    <%= render :partial => 'users/user_working_on', :collection => @users_working_on.keys, :as => :user, :spacer_template => 'shared/line_spacer' %>
+    <div class="bar bg-blue"><%= t(:recently_created_issues) %></div>
+    <% if created_issues.any? %>
+      <%= render :partial => 'issues/simple_style', :collection => created_issues, :as => :issue %>
+    <% else %>
+      <%= render 'shared/no_items' %>
+    <% end %>
   </div>
 <% end %>
+<div class=""><%= t(:welcome_user, :username => @user.name) %></div>
+<div id="feed_box">
+  <%= render 'status_logs/form' %>
+  <h1 class="silver"><%= t(:teamtalk) %></h1>
+  <%= render :partial => 'status_logs/status_log', :collection => StatusLog.limit(10), :spacer_template => 'shared/line_spacer' %>
+</div>
 
-<h1 class="silver"><%= t(:projects) %></h1>
-<% Project.all.each do |p| %>
-  <div class="span-7 b-box">
-    <div class="bar bg-gray">
-      <%= image_tag 'folder.png', :align => :absmiddle, :height => 16, :with => 16 %>
-      <%= link_to p.name, p %></div>
-    <table with="300">
-      <% total = p.issues.count %>
-      <% ['open', 'working_on', 'closed'].each do |state| %>
-        <% state_count = p.issues.send("only_#{state}").count %>
-        <% percent = total > 0 ? state_count * 100 / total : 0; %>
-        <tr>
-          <td width="50"><%= t("issue.state.#{state}") %></td>
-          <td>
-            <%= link_to "#{percent}%", "/projects/#{p.id}/filter/#{state}",
-                  :class => "percent_bar state-#{state}",
-                  :style => "width: #{percent < 20 ? percent + 10 : percent}%"
-            %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-<% end %>
 <div class="clear"></div>
 <h1 class="silver"><%= t(:feed) %></h1>
 <%= render :partial => 'activities/activity', :collection => Activity.limit(10), :spacer_template => 'shared/spacer' %>

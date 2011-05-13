@@ -64,7 +64,7 @@ input { padding: 2px 3px; }
 #shortcut {
   position: absolute;
   top: 8px;
-  left: 470px;
+  left: 500px;
 }
 
 li.headlink {
@@ -276,7 +276,6 @@ div.btn_2_i a:hover {
 }
 
 .b-box {
-  border: 1px solid #E0E0E0;
   padding-bottom: 5px;
   margin: 10px 5px;
 }

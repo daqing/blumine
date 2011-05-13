@@ -5,8 +5,9 @@ en:
   home: Home
   dashboard: Dashboard
   welcome: Welcome to BluMine!
+  welcome_user: Welcome, %{username}
   sudo: SuperUser
-  statistics: Statistics
+  stats: Statistics
   log_in: Sign In
   log_out: Log Out
   all_projects: Projects
@@ -139,4 +140,4 @@ en:
     changed_issue_state_as: changed %{issue_url}'s state to %{state}
     commented_on_issue: "commented on %{issue_url}: <blockquote>%{comment_body}</blockquote>"
 
-
+  no_items_right_now: No data to display

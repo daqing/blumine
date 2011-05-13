@@ -1,16 +1,6 @@
 class UserSessionsController < ApplicationController
-  before_filter :must_not_logged_in, :only => [:new, :create]
+  before_filter :must_not_logged_in, :only => :create
   before_filter :must_be_logged_in, :only => :destroy
-
-  def new
-    @title = t(:log_in)
-    breadcrumbs.add t(:log_in)
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @user_session }
-    end
-  end
 
   def create
     @user_session = UserSession.new(params[:user_session])

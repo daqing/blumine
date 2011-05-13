@@ -23,10 +23,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal "您已经成功退出。", flash[:notice]
 
-    # login again
-    get "/login"
-    assert_response :success
-
     auth_as_foobar
     assert_redirected_to root_path
 

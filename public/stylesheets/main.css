@@ -146,8 +146,6 @@ a.plain:hover { color: #577DE7; text-decoration: underline; }
 a.bold:link, a.bold:visited { color: #888; font-weight: bold; }
 a.bold:hover { color: #577DE7; text-decoration: underline; }
 
-a.micky:link, a.micky:visited { color: #636A86; }
-
 .todo_done {
   color: #999;
   text-decoration: line-through;

@@ -30,7 +30,7 @@
         return;
       }
 
-      var tag = str.substring(sharp_start + 1);
+      var tag = str.substring(sharp_start + 1).trim();
       if (tag.length == 0 || search_tag == tag || tag.indexOf("'") > -1) {
         return;
       }

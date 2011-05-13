@@ -143,7 +143,7 @@ class IssuesController < ApplicationController
     respond_to do |format|
       format.js { 
         result = []
-        term = h(params[:term])
+        term = params[:term].strip
         render :json => result and return if term.index('#')
 
         Issue.search_with_ferret(%(title:'#{term}')) do |index, id, score|

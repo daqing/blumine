@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <%= render 'layouts/head' %>
+<body>
+  <div id="focus_area">
+    <div id="main" class="radius-5 shadow">
+      <%= render 'layouts/flash_messages' %>
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>

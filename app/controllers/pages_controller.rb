@@ -14,7 +14,7 @@ class PagesController < ApplicationController
       render 'dashboard'
     else
       @title = t(:home)
-      render 'index'
+      render 'index', :layout => 'focus'
     end
   end
 end

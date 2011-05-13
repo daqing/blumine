@@ -49,10 +49,3 @@
     </div>
   </div>
 
-  <div class="container">
-    <% [:success, :notice, :error].each do |type| %>
-      <% if flash[type] %>
-        <div class="<%= type %>"><%= flash[type] %></div>
-      <% end %>
-    <% end %>
-  </div>

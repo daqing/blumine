@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     @user = User.new
     @title = t(:register)
     breadcrumbs.add t(:register), register_path
+    
+    render :layout => 'focus'
   end
 
   def create
@@ -13,7 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_path
     else
-      render :new
+      render :new, :layout => 'focus'
     end
   end
 

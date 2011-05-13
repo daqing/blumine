@@ -3,7 +3,6 @@ class UserSessionsController < ApplicationController
   before_filter :must_be_logged_in, :only => :destroy
 
   def new
-    @user_session = UserSession.new
     @title = t(:log_in)
     breadcrumbs.add t(:log_in)
 

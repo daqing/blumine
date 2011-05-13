@@ -16,6 +16,8 @@ th, td, caption { padding: 4px 10px; }
 
 img[align=absmiddle] { vertical-align: middle; position: relative; top: -2px; }
 
+input { padding: 2px 3px; }
+
 #main_area { background-color: white; }
 
 #header { margin-bottom: 10px; }
@@ -337,3 +339,23 @@ textarea { padding: 5px; }
 .drag_handle { float: left; position: relative; height: 16px; width: 20px; cursor: pointer; display: none; }
 .sortable:hover .drag_handle { display: inline; }
 .quiet { color: #999; }
+
+#focus_area {
+  width: 500px;
+  padding: 50px 0 20px;
+  margin: 0 auto;
+}
+
+#focus_area #main {
+  background-color: white;
+  padding: 20px;
+  width: 460px;
+}
+
+.shadow {
+  -moz-box-shadow: 3px 3px 4px #CCC;
+  -webkit-box-shadow: 3px 3px 4px #CCC;
+  box-shadow: 3px 3px 4px #CCC;
+}
+
+.margin-10 { height: 10px; }

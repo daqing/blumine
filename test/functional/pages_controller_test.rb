@@ -6,7 +6,8 @@ class PagesControllerTest < ActionController::TestCase
     assert_response :success
 
     assert assigns(:title)
-    assert_select "div.span-16 h2"
+
+    assert_select "form.new_user_session"
   end
 
   test "user logged in should see dashboard" do

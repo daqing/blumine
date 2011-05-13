@@ -3,6 +3,9 @@
   <%= render 'layouts/head' %>
 <body>
   <%= render 'layouts/nav_header' %>
+  <div class="container">
+    <%= render 'layouts/flash_messages' %>
+  </div>
 
   <div class="container" id="main_area">
     <%= render 'layouts/breadcrumbs', :breadcrumbs => breadcrumbs %>

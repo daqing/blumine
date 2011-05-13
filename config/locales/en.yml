@@ -4,6 +4,7 @@
 en:
   home: Home
   dashboard: Dashboard
+  welcome: Welcome to BluMine!
   sudo: SuperUser
   statistics: Statistics
   log_in: Sign In

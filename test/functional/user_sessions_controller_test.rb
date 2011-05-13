@@ -4,7 +4,6 @@ class UserSessionsControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
-    assert assigns(:user_session)
     assert assigns(:title)
   end
 

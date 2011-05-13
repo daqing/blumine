@@ -14,7 +14,8 @@ class PagesController < ApplicationController
       render 'dashboard'
     else
       @title = t(:home)
-      render 'index', :layout => 'focus'
+      @user_session = UserSession.new
+      render 'user_sessions/new', :layout => 'focus'
     end
   end
 end

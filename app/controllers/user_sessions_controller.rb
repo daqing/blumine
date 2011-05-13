@@ -20,7 +20,7 @@ class UserSessionsController < ApplicationController
         format.html { redirect_back_or root_path }
         format.xml  { render :xml => @user_session, :status => :created, :location => root_path }
       else
-        format.html { render :action => "new" }
+        format.html { render :new, :layout => 'focus' }
         format.xml  { render :xml => @user_session.errors, :status => :unprocessable_entity }
       end
     end

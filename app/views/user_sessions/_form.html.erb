@@ -1,6 +1,5 @@
-<% session = UserSession.new %>
-<%= form_for session do |f| %>
-  <%= render 'shared/error_messages', :obj => session %>
+<%= form_for @user_session do |f| %>
+  <%= render 'shared/error_messages', :obj => @user_session %>
 
   <div class="field">
     <%= f.label :email %>

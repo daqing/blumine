@@ -5,6 +5,7 @@ class UserSessionsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
     assert assigns(:title)
+    assert assigns(:user_session)
   end
 
   test "should redirect to root path if already logged in" do

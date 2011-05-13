@@ -6,6 +6,7 @@ class PagesControllerTest < ActionController::TestCase
     assert_response :success
 
     assert assigns(:title)
+    assert assigns(:user_session)
 
     assert_select "form.new_user_session"
   end

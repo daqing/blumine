@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110509132345) do
+ActiveRecord::Schema.define(:version => 20110514032858) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(:version => 20110509132345) do
     t.integer  "issue_id"
     t.integer  "user_id"
     t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "issue_status_logs", :force => true do |t|
+    t.integer  "issue_id"
+    t.integer  "status_log_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

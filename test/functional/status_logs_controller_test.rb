@@ -48,6 +48,13 @@ class StatusLogsControllerTest < ActionController::TestCase
     assert_select "div.row"
   end
 
+  test "should create related issues" do
+    issue = issues(:bug_report)
+    xhr :post, :create, :status_log => {:content => "foobar #issue-#{issue.id}"}
+
+    assert issue.related_status_logs.member? assigns(:status_log)
+  end
+
   private
     def create_status_log
       xhr :post, :create, :status_log => {:content => "hello"}

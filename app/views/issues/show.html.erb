@@ -54,13 +54,20 @@
 <br /><br />
 <%=raw parse_markdown @issue.content %>
 
-<div class="b-box" id="todo_list_box">
 <% if current_user.can_manage_todo? @issue %>
+<div class="ibox" id="todo_list_box">
   <%= render 'manage_todo_list', :issue => @issue, :todo_item => @todo_item %>
+</div>
 <% else %>
   <%= render 'view_todo_list', :issue => @issue %>
 <% end %>
+
+<% if @issue.related_status_logs.any? %>
+<div class="ibox">
+  <div class="bar bg-gray"><%= t(:teamtalk) %></div>
+  <%= render @issue.related_status_logs %>
 </div>
+<% end %>
 
 <a name="comments" href=""></a>
 <div class="text_large" style="color: green; text-align: center; margin-top: 15px;"><%= t('issue.discussions') %></div>

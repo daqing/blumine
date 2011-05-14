@@ -1,16 +1,18 @@
 # == Schema Information
-# Schema version: 20110509082744
+# Schema version: 20110514032858
 #
 # Table name: activities
 #
-#  id          :integer         not null, primary key
-#  user_id     :integer
-#  event_name  :string(255)
-#  target_type :string(255)
-#  target_id   :integer
-#  data        :text
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id           :integer         not null, primary key
+#  user_id      :integer
+#  event_name   :string(255)
+#  target_type  :string(255)
+#  target_id    :integer
+#  data         :text
+#  created_at   :datetime
+#  updated_at   :datetime
+#  related_id   :integer
+#  related_type :string(255)
 #
 
 class Activity < ActiveRecord::Base

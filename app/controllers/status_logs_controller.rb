@@ -1,6 +1,7 @@
 class StatusLogsController < ApplicationController
   before_filter :must_be_logged_in
 
+
   def create
     @status_log = current_user.status_logs.new(params[:status_log])
 

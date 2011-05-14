@@ -71,6 +71,9 @@ class Issue < ActiveRecord::Base
   has_one :issue_assignment, :dependent => :destroy
   has_one :assigned_user, :through => :issue_assignment, :source => :user
 
+  has_many :issue_status_logs, :dependent => :destroy
+  has_many :related_status_logs, :through => :issue_status_logs, :source => :status_log
+
   before_validation :set_default_content
 
   validates :title, :content, :presence => true

@@ -278,6 +278,12 @@ div.btn_2_i a:hover {
   margin: 10px 5px;
 }
 
+.ibox {
+  margin-top: 10px;
+  padding-bottom: 5px;
+  border: 1px solid #EEE;
+}
+
 a.percent_bar {
   display:block;
   color:#fff;

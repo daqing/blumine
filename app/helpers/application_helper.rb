@@ -13,6 +13,14 @@ module ApplicationHelper
     Redcarpet.new(h(text)).to_html
   end
 
+  def parse_status_log(content)
+    links = h(content).gsub(/(http[s]?:\/\/[a-zA-Z?=.]+)/) { %(<a href="#{$1}">#{$1}</a>) }
+    links.gsub(/#issue-(\d+)/) do
+      issue = Issue.select('title').find($1)
+      %(<a href="/issues/#{$1}/" title="#{h(issue.title)}" class="tiptip">#issue-#{$1}</a>)
+    end
+  end
+
   def must_not_logged_in
     redirect_to root_path if current_user
   end

@@ -15,6 +15,7 @@ class PagesController < ApplicationController
 
   def stats
     breadcrumbs.add t(:stats)
+    @title = t(:stats)
     @users_working_on = {}
     Issue.only_working_on.each do |issue|
       user = issue.assigned_user

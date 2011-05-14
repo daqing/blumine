@@ -1,10 +1,14 @@
 <% if issue.todo_items.any? %>
 <div class="ibox" id="todo_list_box">
   <div class="bar bg-gray"><%= t(:todo) %></div>
-  <%= render issue.todo_items.where(:workflow_state => :open), :manage => false %>
+  <% open_todos = issue.todo_items.where(:workflow_state => :open) %>
+  <%= render open_todos, :manage => false %>
 
-  <div id="todo_done" style="border-top: 1px solid #DDD;">
-    <%= render issue.todo_items.where(:workflow_state => :done), :manage => false %>
-  </div>
+  <% todos_done = issue.todo_items.where(:workflow_state => :done) %>
+  <% if todos_done.any? %>
+    <div id="todo_done" style="<%= %(border-top: 1px solid #DDD;) if open_todos.any? %>">
+      <%= render todos_done, :manage => false %>
+    </div>
+  <% end %>
 </div>
 <% end %>

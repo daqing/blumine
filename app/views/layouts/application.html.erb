@@ -10,13 +10,14 @@
   <div class="container" id="main_area">
     <%= render 'layouts/breadcrumbs', :breadcrumbs => breadcrumbs %>
 
-    <div class="span-16" id="content">
+    <div class="span-6" id="sidebar">
+      <%= yield :sidebar %>
+    </div>
+
+    <div class="span-16 pull-1 last" id="content">
       <%= yield %>
     </div>
 
-    <div class="span-6 last" id="sidebar">
-      <%= yield :sidebar %>
-    </div>
   </div>
 
   <%= render 'layouts/footer' %>

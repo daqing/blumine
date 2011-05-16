@@ -20,14 +20,14 @@ class IssuesController < ApplicationController
       @issues = @project.issues.send("only_#{@issue_state}").order('created_at DESC')
     end
 
-    @title = t(:project_feedback) + ' - ' + h(@project.name)
+    @title = t(:project_feedback) + ' - ' + @project.name
 
-    breadcrumbs.add h(@project.name), project_path(@project)
+    breadcrumbs.add @project.name, project_path(@project)
   end
 
   def show
-    breadcrumbs.add h(@issue.project.name), project_path(@issue.project)
-    breadcrumbs.add h(@issue.title), issue_path(@issue), :i18n => false
+    breadcrumbs.add @issue.project.name, project_path(@issue.project)
+    breadcrumbs.add @issue.title, issue_path(@issue), :i18n => false
 
     @comment = @issue.comments.new
     @todo_item = @issue.todo_items.new

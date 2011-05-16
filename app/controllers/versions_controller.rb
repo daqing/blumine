@@ -5,7 +5,7 @@ class VersionsController < ApplicationController
   def index
     @versions = @project.versions
 
-    breadcrumbs.add h(@project.name), project_path(@project)
+    breadcrumbs.add @project.name, project_path(@project)
   end
 
   def new

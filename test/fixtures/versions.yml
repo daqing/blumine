@@ -1,0 +1,25 @@
+# == Schema Information
+# Schema version: 20110516042343
+#
+# Table name: versions
+#
+#  id           :integer         not null, primary key
+#  project_id   :integer
+#  user_id      :integer
+#  name         :string(255)
+#  release_date :date
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project_id: 1
+  name: MyString
+  release_date: 2011-05-16
+
+two:
+  project_id: 1
+  name: MyString
+  release_date: 2011-05-16

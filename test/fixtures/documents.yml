@@ -1,0 +1,25 @@
+# == Schema Information
+# Schema version: 20110516042343
+#
+# Table name: documents
+#
+#  id         :integer         not null, primary key
+#  project_id :integer
+#  user_id    :integer
+#  title      :string(255)
+#  content    :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project_id: 1
+  title: MyString
+  content: MyText
+
+two:
+  project_id: 1
+  title: MyString
+  content: MyText

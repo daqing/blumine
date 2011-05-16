@@ -1,0 +1,27 @@
+# == Schema Information
+# Schema version: 20110516041751
+#
+# Table name: features
+#
+#  id         :integer         not null, primary key
+#  version_id :integer
+#  user_id    :integer
+#  title      :string(255)
+#  content    :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  version_id: 1
+  user_id: 1
+  title: MyString
+  content: MyText
+
+two:
+  version_id: 1
+  user_id: 1
+  title: MyString
+  content: MyText

@@ -1,20 +1,5 @@
 <% content_for :sidebar do %>
-  <%= as_button(link_to t(:new_issue), new_project_issue_path(@project)) %>
-
-  <div class="b-box" title="<%= t(:click_to_filter_issues) %>">
-    <div class="bar bg-blue"><%= t(:issue_state) %></div>
-    <% [:open, :working_on, :paused, :finished, :closed, :reopened, :ignored, :invalid].each do |state_sym| %>
-      <div class="row bg_highlight" <%= "filtered" if state_sym.to_s == @issue_state %> clickable="/projects/<%= @project.id %>/filter/<%= state_sym.to_s %>">
-        <span class="quiet span-2"><%= @project.issues.send("only_#{state_sym.to_s}").count %></span>
-        <span class="state state-<%= state_sym.to_s %>"><%= Issue.state_name(state_sym) %></span>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'shared/project_nav', :current_url => '' %>
 <% end %>
 
-<h1 class="silver">Project: <%= @project.name %></h1>
-<% if @issue_state == :all %>
-  <%= render_with_spacer 'issue', @project.issues.except_closed.order("created_at DESC") %>
-<% else %>
-  <%= render_with_spacer 'issue', @project.issues.send("only_#{@issue_state}").order("created_at DESC") %>
-<% end %>
+<h1><%= @project.name %></h1>

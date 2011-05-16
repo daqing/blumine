@@ -12,10 +12,13 @@ Blumine::Application.routes.draw do
   
   resources :users, :comments
   resources :projects do
-    resources :issues
-    member do
-      get 'filter/:state', :action => 'show'
+    resources :issues do
+      collection do
+        get 'state/:state', :action => 'index'
+      end
     end
+    resources :documents, :as => :docs
+    resources :versions
   end
 
   resources :issues do

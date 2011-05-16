@@ -10,15 +10,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    if params[:state]
-      @issue_state = Issue.valid_state?(params[:state].to_sym) ? params[:state] : :all
-    else
-      @issue_state = :all
-    end
-
     @title = @project.name
 
-    breadcrumbs.add t(:all_projects), projects_path
     breadcrumbs.add @project.name, project_path(@project)
   end
 

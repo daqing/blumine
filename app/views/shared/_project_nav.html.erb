@@ -1,0 +1,14 @@
+<div class="margin-10">&nbsp;</div>
+<div class="ibox width-80">
+  <% links = [] %>
+  <% [{:title => t(:version_management), :url => project_versions_path(@project)},
+    {:title => t(:project_feedback), :url => project_issues_path(@project)},
+    {:title => t(:document_center), :url => project_docs_path(@project)}].each do |nav| %>
+      <% if current_url == nav[:url] || current_url.start_with?(nav[:url]) %>
+        <% links << %(<div class="row current_item"><span class="quiet">&gt;&nbsp;</span>#{link_to nav[:title], nav[:url]}</div>) %>
+      <% else %>
+        <% links << %(<div class="row">#{link_to nav[:title], nav[:url]}</div>) %>
+      <% end %>
+  <% end %>
+  <%=raw links.join(render('shared/line_spacer')) %>
+</div>

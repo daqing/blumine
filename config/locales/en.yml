@@ -145,3 +145,11 @@ en:
   version_management: Versions
   project_feedback: Issues
   document_center: Documents
+
+  version: Version
+  version_name: Version Name
+  create_version: Create a New Version
+  new_version: New Version
+  release_date: Release Date
+
+  back_to: Back to

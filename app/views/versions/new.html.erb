@@ -1,0 +1,22 @@
+<% content_for :on_ready_hook do %>
+  $("#version_release_date").datepicker();
+<% end %>
+
+<% content_for :sidebar do %>
+  <span class="quiet">&lt;&nbsp;<%= t(:back_to) %>&nbsp;<%= link_to @project.name, @project %></span>
+<% end %>
+<h1><%= t(:create_version) %></h1>
+<%= form_for [@project, @version] do |f| %>
+  <%= render 'shared/error_messages', :obj => @version %>
+  <div class="field">
+    <%= f.label :name, t(:version_name) %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :release_date, t(:release_date) %>
+    <%= f.text_field :release_date %>
+  </div>
+
+  <%= f.submit t(:create_version) %>
+<% end %>

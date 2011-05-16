@@ -147,3 +147,11 @@ zh:
   version_management: 版本规划
   project_feedback: 问题反馈
   document_center: 文档中心
+
+  version: 版本
+  version_name: 版本名称
+  create_version: 添加新版本
+  new_version: 添加新版本
+  release_date: 发布日期
+
+  back_to: 返回

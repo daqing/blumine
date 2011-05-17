@@ -5,36 +5,10 @@ class IssuesController < ApplicationController
     redirect_to_root_when_no_permission unless current_user.can_manage_issue? @issue
   end
 
-<<<<<<< HEAD
-  def index
-    @project = Project.find(params[:project_id])
-
-    if params[:state]
-      @issue_state = Issue.valid_state?(params[:state].to_sym) ? params[:state] : :all
-    else
-      @issue_state = :all
-    end
-
-    if @issue_state == :all
-      @issues = @project.issues.except_closed.except_ignored.order('created_at DESC')
-    else
-      @issues = @project.issues.send("only_#{@issue_state}").order('created_at DESC')
-    end
-
-    @title = t(:project_feedback) + ' - ' + @project.name
-
-    breadcrumbs.add @project.name, project_path(@project)
-  end
-
-  def show
-    breadcrumbs.add @issue.project.name, project_path(@issue.project)
-    breadcrumbs.add @issue.title, issue_path(@issue), :i18n => false
-=======
   def show
     breadcrumbs.add t(:all_projects), projects_path
     breadcrumbs.add @issue.project.name, project_path(@issue.project)
     breadcrumbs.add @issue.title, issue_path(@issue)
->>>>>>> parent of 2b148bf... refactoring project feedback
 
     @comment = @issue.comments.new
     @todo_item = @issue.todo_items.new

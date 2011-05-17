@@ -13,8 +13,4 @@
 <% end %>
 
 <h1 class="silver">Project: <%= @project.name %></h1>
-<% if @issue_state == :all %>
-  <%= render_with_spacer 'issue', @project.issues.except_closed.order("created_at DESC") %>
-<% else %>
-  <%= render_with_spacer 'issue', @project.issues.send("only_#{@issue_state}").order("created_at DESC") %>
-<% end %>
+<%= render_with_spacer 'issue', @issues.order('created_at DESC') %>

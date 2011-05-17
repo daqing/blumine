@@ -157,11 +157,6 @@ class IssuesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get index" do
-    get :index, :project_id => projects(:blumine).id
-    assert_response :success
-  end
-
   private
     def create_issue
       post :create, :project_id => @project.id, :issue => {:title => "test", :content => "foobar"}

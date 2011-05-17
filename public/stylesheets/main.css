@@ -137,8 +137,8 @@ div.bar {
 div.bar h1, div.bar h2, div.bar h3, div.bar h4 { margin: 0; }
 
 div.row { padding: 5px 0 5px 10px; line-height: 22px; }
+
 div.row p { text-indent: 1em; }
-div.current_item a { color: black; font-weight: bold; }
 
 a.plain:link, a.plain:visited { color: #333; }
 a.plain:hover { color: #577DE7; text-decoration: underline; }
@@ -279,7 +279,7 @@ div.btn_2_i a:hover {
 }
 
 .ibox {
-  margin: 10px 0;
+  margin-top: 10px;
   padding-bottom: 5px;
   border: 1px solid #EEE;
 }
@@ -366,5 +366,3 @@ textarea { padding: 5px; }
 ul.ui-autocomplete {
   width: 200px;
 }
-
-.width-80 { width: 80%; }

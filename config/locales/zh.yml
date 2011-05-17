@@ -12,14 +12,14 @@ zh:
   log_out: 退出
   register: 注册
   log_in: 登录
-  my_assigned_issues: 分配给我的问题
+  my_assigned_issues: 分配给我的任务
   feed: 最近动态
   what_are_you_doing: 你在做什么
   save: 保存
   publish: 发布
-  issues_i_follow: 我关注的问题
-  issues_i_commented: 我评论的问题
-  drag_issue_to_sort_priority: 拖动问题可修改其优先级
+  issues_i_follow: 我关注的任务
+  issues_i_commented: 我评论的任务
+  drag_issue_to_sort_priority: 拖动任务可修改其优先级
   all_users: 所有用户
   get_source_code: 获取源代码
   blog: 作者博客
@@ -28,12 +28,12 @@ zh:
   project_name: 项目名称
   projects: 项目
   people: 人员
-  new_issue: 创建新问题
-  issues: 问题
-  issue_state: 问题状态
+  new_issue: 创建新任务
+  issues: 任务
+  issue_state: 任务状态
   click_to_view: 点击查看
-  click_to_filter_issues: 点击可过滤问题
-  search_issues: 搜索问题...
+  click_to_filter_issues: 点击可过滤任务
+  search_issues: 搜索任务...
   ago: 前
   me: 我
 
@@ -51,7 +51,7 @@ zh:
 
   upload: 上传
 
-  recently_created_issues: 最近创建的问题
+  recently_created_issues: 最近创建的任务
 
   add_to_content: 添加到内容
 
@@ -59,7 +59,7 @@ zh:
 
   issue:
     state:
-      open: 新问题
+      open: 新任务
       working_on: 解决中
       paused: 暂停解决
       finished: 已解决
@@ -84,12 +84,12 @@ zh:
       current_state: 当前状态
     discussions: 当前讨论
     create_comment: 参与讨论
-    create: 创建新问题
-    edit: 更新问题
-    no_issues_working_on: 暂时没有问题需要解决
+    create: 创建新任务
+    edit: 更新任务
+    no_issues_working_on: 暂时没有任务需要解决
     user_is_working_on: 正在处理
-    user_is_working_on_the_following: "正在处理下列问题:"
-    issues_assigned_to: 分配给%{username}的问题
+    user_is_working_on_the_following: "正在处理下列任务:"
+    issues_assigned_to: 分配给%{username}的任务
 
   image:
     upload: 上传图片
@@ -120,15 +120,15 @@ zh:
     failed: 失败
 
   permission:
-    cannot_assign_issue: 您没有权限来分配此问题
-    cannot_update_workflow: 您没有权限来更新此问题的状态
+    cannot_assign_issue: 您没有权限来分配此任务
+    cannot_update_workflow: 您没有权限来更新此任务的状态
     no_permission: 您没有权限来执行此操作
 
   account_details: 个人资料
   date_joined: 注册于
 
   teamtalk: 团队交流
-  assign_to_an_user_first: 问题分配之后，才可以更新状态
+  assign_to_an_user_first: 任务分配之后，才可以更新状态
 
   created_at: 创建时间
   updated_at: 最后更新
@@ -136,13 +136,14 @@ zh:
 
   activity:
     create_project: 创建了新项目
-    create_issue: 反馈了新问题
+    create_issue: 创建了新任务
     in_project: 在项目 %{url} 中
     assigned_issue_to: 把 %{issue_url} 分配给了 %{user_url}
     changed_issue_state_as: 把 %{issue_url} 的状态修改为 %{state}
     commented_on_issue: "评论了 %{issue_url}: <blockquote>%{comment_body}</blockquote>"
 
   no_items_right_now: 暂时没有任何数据
+<<<<<<< HEAD
 
   version_management: 版本规划
   project_feedback: 问题反馈
@@ -155,3 +156,5 @@ zh:
   release_date: 发布日期
 
   back_to: 返回
+=======
+>>>>>>> parent of 2b148bf... refactoring project feedback

@@ -143,18 +143,3 @@ zh:
     commented_on_issue: "评论了 %{issue_url}: <blockquote>%{comment_body}</blockquote>"
 
   no_items_right_now: 暂时没有任何数据
-<<<<<<< HEAD
-
-  version_management: 版本规划
-  project_feedback: 问题反馈
-  document_center: 文档中心
-
-  version: 版本
-  version_name: 版本名称
-  create_version: 添加新版本
-  new_version: 添加新版本
-  release_date: 发布日期
-
-  back_to: 返回
-=======
->>>>>>> parent of 2b148bf... refactoring project feedback

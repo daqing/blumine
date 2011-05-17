@@ -1,8 +1,0 @@
-<% content_for :sidebar do %>
-  <%= render 'shared/project_nav', :current_url => request.fullpath %>
-<% end %>
-
-<span class="right"><%= as_button(link_to t(:new_version), new_project_version_path(@project)) %></span>
-<h1><%= @project.name %>&nbsp;/&nbsp;<%= t(:version_management) %></h1>
-<%= render 'shared/line_spacer' %>
-<%= render @versions %>

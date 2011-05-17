@@ -28,7 +28,11 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_response :success
 
     assert assigns(:title)
-    assert_select "div.ibox"
+
+    assert_select "h1.silver"
+    assert_select "div.row"
+    assert_select "div.btn_2_i"
+    assert_select "div.bg_highlight"
   end
 
   test "should get index" do

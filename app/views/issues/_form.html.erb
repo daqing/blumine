@@ -19,6 +19,7 @@
     <%= f.label :content, t(:content) %>
     <%= render :partial => 'shared/editor', :locals => {:name => 'issue[content]', :content => @issue.content} %>
   </div>
+  <%= f.hidden_field :label, :value => @label %>
 
   <%= f.submit t(:save) %>
 <% end %>

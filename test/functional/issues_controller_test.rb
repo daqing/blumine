@@ -12,12 +12,14 @@ class IssuesControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new, :project_id => @project.id
+    get :new, :project_id => @project.id, :label => 'task'
     assert_response :success
 
     assert assigns(:project)
     assert assigns(:issue)
     assert assigns(:title)
+    assert assigns(:label)
+    assert_select ".span-16 h2", I18n.t("new_task")
   end
 
   test "should create issue" do

@@ -27,6 +27,17 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def view_by_label
+    @label = params[:label]
+    @issues = Issue.where(['label = ?', @label])
+    @project = Project.find(params[:id])
+    @title = @project.name
+    breadcrumbs.add t(:all_projects), projects_path
+    breadcrumbs.add @project.name, project_path(@project)
+    
+    render :show
+  end
+
   def new
     @project = current_user.projects.new
     @title = t(:new_project)

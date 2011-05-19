@@ -29,8 +29,8 @@ zh:
   projects: 项目
   people: 人员
   new_issue: 创建新任务
-  issues: 任务
-  issue_state: 任务状态
+  issues: Issue
+  issue_state: 状态
   click_to_view: 点击查看
   click_to_filter_issues: 点击可过滤任务
   search_issues: 搜索任务...
@@ -59,7 +59,7 @@ zh:
 
   issue:
     state:
-      open: 新任务
+      open: 未处理
       working_on: 解决中
       paused: 暂停解决
       finished: 已解决
@@ -90,6 +90,10 @@ zh:
     user_is_working_on: 正在处理
     user_is_working_on_the_following: "正在处理下列任务:"
     issues_assigned_to: 分配给%{username}的任务
+    label:
+      task: 任务
+      bug: 错误 
+      suggestion: 建议
 
   image:
     upload: 上传图片
@@ -143,3 +147,8 @@ zh:
     commented_on_issue: "评论了 %{issue_url}: <blockquote>%{comment_body}</blockquote>"
 
   no_items_right_now: 暂时没有任何数据
+  new_task: 创建任务
+  new_bug: 报告错误
+  new_suggestion: 提交建议
+
+  issue_label: 类型

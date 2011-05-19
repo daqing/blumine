@@ -86,7 +86,11 @@ module ApplicationHelper
   end
 
   def issue_title_link(issue, *css_class)
-    title = issue.title 
+    if issue.label.blank?
+      title = issue.title 
+    else
+      title = "[#{t("issue.label.#{issue.label}")}] #{issue.title}"
+    end
     if title.mb_chars.length > 15
       link_to "#{title.mb_chars[0..15].to_s}...", issue, :title => title, :class => css_class
     else 

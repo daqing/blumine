@@ -12,9 +12,15 @@ Blumine::Application.routes.draw do
   
   resources :users, :comments
   resources :projects do
-    resources :issues
+    resources :issues do
+      collection do
+        get 'new/:label' => 'issues#new'
+      end
+    end
+
     member do
       get 'filter/:state', :action => 'show'
+      get 'label/:label', :action => 'view_by_label'
     end
   end
 

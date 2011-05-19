@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110416033800
+# Schema version: 20110518052731
 #
 # Table name: issues
 #
@@ -11,6 +11,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  user_id        :integer
+#  label          :string(255)
 #
 
 require 'rmmseg'

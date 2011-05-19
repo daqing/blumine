@@ -29,9 +29,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
     assert assigns(:title)
 
-    assert_select "h1.silver"
     assert_select "div.row"
-    assert_select "div.btn_2_i"
     assert_select "div.bg_highlight"
   end
 

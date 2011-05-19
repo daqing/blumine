@@ -19,6 +19,7 @@ class IssuesController < ApplicationController
     @project = Project.find(params[:project_id])
     @issue = @project.issues.new
     @title = t('issue.create')
+    @label = params[:label]
   end
 
   def create

@@ -2,7 +2,6 @@ Blumine::Application.routes.draw do
   get 'register' => 'users#new'
   get '/search/:keyword' => 'issues#search'
   get 'rebuild_index' => 'issues#rebuild_index'
-  get '/teamtalk' => "status_logs#teamtalk"
   get '/stats' => "pages#stats"
 
   post '/user_sessions' => "user_sessions#create"
@@ -10,6 +9,7 @@ Blumine::Application.routes.draw do
 
   post '/assigned_issues/sort' => 'issue_assignments#sort'
   
+  resources :activities, :only => :create
   resources :users, :comments
   resources :projects do
     resources :issues do
@@ -49,7 +49,6 @@ Blumine::Application.routes.draw do
   end
 
   resource :account
-  resources :status_logs, :only => [:create, :destroy]
   resources :images, :only => [:new, :create, :destroy]
 
   namespace 'sudo' do

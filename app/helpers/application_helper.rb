@@ -125,6 +125,8 @@ module ApplicationHelper
       when 'create_comment'
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         t('activity.commented_on_issue', {:issue_url => issue_url, :comment_body => h(activity.data['comment_body'])})
+      when 'chat'
+        ": #{h(activity.data)}"
     end
   end
 end

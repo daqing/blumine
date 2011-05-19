@@ -31,10 +31,6 @@
         }
     });
 
-    $("#teamtalk").click(function() {
-        $.facebox({ajax: '<%= teamtalk_path %>'});
-    });
-
     $(".bg_highlight").live('mouseenter', function() { $(this).css('backgroundColor', '#FFC'); })
       .live('mouseleave', function() { $(this).css('backgroundColor', '#FFF'); });
 

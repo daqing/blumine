@@ -32,7 +32,6 @@ class User < ActiveRecord::Base
   has_many :projects, :dependent => :destroy
   has_many :issues, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-  has_many :status_logs, :dependent => :destroy
   has_many :activities, :dependent => :destroy
 
   has_many :issue_assignments, :dependent => :destroy

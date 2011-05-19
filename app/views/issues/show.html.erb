@@ -62,13 +62,6 @@
   <%= render 'view_todo_list', :issue => @issue %>
 <% end %>
 
-<% if @issue.related_status_logs.any? %>
-<div class="ibox">
-  <div class="bar bg-gray"><%= t(:teamtalk) %></div>
-  <%= render @issue.related_status_logs %>
-</div>
-<% end %>
-
 <a name="comments" href=""></a>
 <% unless @issue.closed? and @issue.comments.empty? %>
 <div class="text_large" style="color: green; text-align: center; margin-top: 15px;"><%= t('issue.discussions') %></div>

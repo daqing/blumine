@@ -46,13 +46,6 @@ ActiveRecord::Schema.define(:version => 20110518052731) do
     t.datetime "updated_at"
   end
 
-  create_table "issue_status_logs", :force => true do |t|
-    t.integer  "issue_id"
-    t.integer  "status_log_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "issues", :force => true do |t|
     t.integer  "project_id"
     t.string   "title"
@@ -67,13 +60,6 @@ ActiveRecord::Schema.define(:version => 20110518052731) do
   create_table "projects", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "status_logs", :force => true do |t|
-    t.integer  "user_id"
-    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

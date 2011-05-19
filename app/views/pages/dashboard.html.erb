@@ -5,6 +5,7 @@
 <% content_for :on_ready_hook do %>
   $.make_sortable('my_assigned_issues', '<%= assigned_issues_sort_path %>');
 
+  /*
   var status_log_input = $("#status_log_content");
   status_log_input.autocomplete({source: "<%= autocomplete_issues_path %>" });
   status_log_input.autocomplete('disable');
@@ -40,8 +41,7 @@
       status_log_input.autocomplete('search', tag);
     }, 500);
   });
-
-
+  */
 <% end %>
 
 <% content_for :sidebar do %>
@@ -68,12 +68,10 @@
   </div>
 <% end %>
 <div class=""><%= t(:welcome_user, :username => @user.name) %></div>
-<div id="feed_box">
-  <%= render 'status_logs/form' %>
-  <h1 class="silver"><%= t(:teamtalk) %></h1>
-  <%= render :partial => 'status_logs/status_log', :collection => StatusLog.limit(10), :spacer_template => 'shared/line_spacer' %>
-</div>
 
 <div class="clear"></div>
 <h1 class="silver"><%= t(:feed) %></h1>
-<%= render :partial => 'activities/activity', :collection => Activity.limit(10), :spacer_template => 'shared/spacer' %>
+<div id="feed_box">
+  <%= render 'activities/form' %>
+  <%= render :partial => 'activities/activity', :collection => Activity.limit(10), :spacer_template => 'shared/spacer' %>
+</div>

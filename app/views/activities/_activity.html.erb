@@ -14,5 +14,5 @@
     <%= image_tag 'chat.png', :align => :absmiddle, :width => 16, :height => 16 %>
   <% end %>
   <span class="author"><%= link_to activity.user.name, activity.user, :class => :plain %></span><%=raw format_activity(activity) %>
-  <span class="small quiet" style="margin-left: 10px;"><%= time_ago_in_words(activity.created_at) + t(:ago) %></span>
+  <span class="smaller quiet"><%= time_ago_in_words(activity.created_at) + t(:ago) %></span>
 </div>

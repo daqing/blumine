@@ -6,8 +6,7 @@ body {
 }
 
 .container {
-  width: 96%;
-  min-width: 1024px;
+  width: 1024px;
 }
 
 
@@ -118,7 +117,7 @@ li.headlink:hover ul { display: block; background-color: #333; }
 
 #leftmenu {
   float: left;
-  width: 210px;
+  width: 255px;
   padding: 10px 20px;
 }
 
@@ -130,7 +129,7 @@ li.headlink:hover ul { display: block; background-color: #333; }
 
 #sidebar {
   float: right;
-  width: 200px;
+  width: 180px;
   padding: 10px 20px;
 }
 
@@ -391,4 +390,8 @@ textarea { padding: 5px; }
 
 ul.ui-autocomplete {
   width: 200px;
+}
+
+.smaller {
+  font-size: 9px;
 }

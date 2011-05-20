@@ -19,7 +19,6 @@ class IssuesControllerTest < ActionController::TestCase
     assert assigns(:issue)
     assert assigns(:title)
     assert assigns(:label)
-    assert_select ".span-16 h2", I18n.t("new_task")
   end
 
   test "should create issue" do

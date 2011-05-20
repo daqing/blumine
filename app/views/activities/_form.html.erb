@@ -1,4 +1,4 @@
 <%= form_for Activity.new, :remote => true do |f| %>
   <%= f.text_area :data, :class => :micro %>
-  <%= f.submit t(:publish) %>
+  <%= f.submit t(:publish), :style => 'position: relative; top: -18px;' %>
 <% end %>

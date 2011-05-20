@@ -115,20 +115,18 @@ li.headlink:hover ul { display: block; background-color: #333; }
 
 #footer { margin: 10px 0; padding-bottom: 30px; }
 
-#leftmenu {
-  float: left;
+#menu {
+  float: right;
   width: 255px;
   padding: 10px 20px;
 }
 
 #content {
-  margin-top: 18px;
   padding-bottom: 30px;
-  margin-left: 20px;
 }
 
 #sidebar {
-  float: right;
+  float: left;
   width: 180px;
   padding: 10px 20px;
 }

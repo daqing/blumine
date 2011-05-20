@@ -6,9 +6,8 @@ class IssuesController < ApplicationController
   end
 
   def show
-    breadcrumbs.add t(:all_projects), projects_path
     breadcrumbs.add @issue.project.name, project_path(@issue.project)
-    breadcrumbs.add @issue.title, issue_path(@issue)
+    breadcrumbs.add "#issue-#{@issue.id}", issue_path(@issue)
 
     @comment = @issue.comments.new
     @todo_item = @issue.todo_items.new

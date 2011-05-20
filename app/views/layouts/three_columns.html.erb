@@ -10,16 +10,16 @@
   <div class="container" id="main_area">
     <%= render 'layouts/breadcrumbs', :breadcrumbs => breadcrumbs %>
 
-    <div id="leftmenu">
-      <%= yield :leftmenu %>
+    <div id="sidebar">
+      <%= yield :sidebar %>
     </div>
 
-    <div class="span-12" id="content">
+    <div class="span-12" style="margin-top:18px;" id="content">
       <%= yield %>
     </div>
 
-    <div class="span-5 last" id="sidebar">
-      <%= yield :sidebar %>
+    <div id="menu">
+      <%= yield :leftmenu %>
     </div>
   </div>
 

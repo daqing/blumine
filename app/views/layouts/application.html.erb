@@ -9,13 +9,14 @@
 
   <div class="container" id="main_area">
     <%= render 'layouts/breadcrumbs', :breadcrumbs => breadcrumbs %>
-
-    <div class="span-19" id="content">
-      <%= yield %>
-    </div>
+    <div class="margin-10">&nbsp;</div>
 
     <div id="sidebar">
       <%= yield :sidebar %>
+    </div>
+
+    <div class="span-19" id="content">
+      <%= yield %>
     </div>
   </div>
 

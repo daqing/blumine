@@ -17,7 +17,6 @@ class ProjectsController < ApplicationController
     end
 
     @title = @project.name
-    breadcrumbs.add t(:all_projects), projects_path
     breadcrumbs.add @project.name, project_path(@project)
 
     if @issue_state == :all

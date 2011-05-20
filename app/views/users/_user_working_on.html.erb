@@ -7,6 +7,9 @@
     <%= issue_title_link(@users_working_on[user].first) %>
   <% else %>
     <%= t('issue.user_is_working_on_the_following') %>
-    <%= render :partial => 'issues/simple_style', :collection => @users_working_on[user], :as => :issue, :spacer_template => 'shared/spacer' %>
+    <%= render :partial => 'issues/simple_style',
+      :collection => @users_working_on[user],
+      :as => :issue,
+      :spacer_template => 'shared/spacer' %>
   <% end %>
 </div>

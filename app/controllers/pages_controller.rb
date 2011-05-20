@@ -5,7 +5,8 @@ class PagesController < ApplicationController
     if current_user 
       @title = t(:dashboard)
       @user = current_user
-      render 'dashboard'
+      users_working_on
+      render 'dashboard', :layout => 'three_columns'
     else
       @title = t(:home)
       @user_session = UserSession.new
@@ -16,14 +17,20 @@ class PagesController < ApplicationController
   def stats
     breadcrumbs.add t(:stats)
     @title = t(:stats)
-    @users_working_on = {}
-    Issue.only_working_on.each do |issue|
-      user = issue.assigned_user
-      if @users_working_on[user]
-        @users_working_on[user] << issue
-      else
-        @users_working_on[user] = [issue]
+
+    users_working_on
+  end
+
+  private
+    def users_working_on
+      @users_working_on = {}
+      Issue.only_working_on.each do |issue|
+        user = issue.assigned_user
+        if @users_working_on[user]
+          @users_working_on[user] << issue
+        else
+          @users_working_on[user] = [issue]
+        end
       end
     end
-  end
 end

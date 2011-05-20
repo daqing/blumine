@@ -91,8 +91,10 @@ module ApplicationHelper
     else
       title = "[#{t("issue.label.#{issue.label}")}] #{issue.title}"
     end
-    if title.mb_chars.length > 15
-      link_to "#{title.mb_chars[0..15].to_s}...", issue, :title => title, :class => css_class
+
+    max_length = 15
+    if title.mb_chars.length > max_length
+      link_to "#{title.mb_chars[0..max_length].to_s}...", issue, :title => title, :class => css_class
     else 
       link_to title, issue, :class => css_class
     end 

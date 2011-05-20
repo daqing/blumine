@@ -89,6 +89,10 @@ en:
     user_is_working_on: " is working on "
     user_is_working_on_the_following: " is working on the following issues:"
     issues_assigned_to: "Issues Assigned to %{username}"
+    label:
+      task: Task
+      bug: Bug
+      suggestion: Suggestion
 
   image:
     upload: Upload Images

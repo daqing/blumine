@@ -44,27 +44,21 @@
   */
 <% end %>
 
-<% content_for :sidebar do %>
-  <% assigned_issues = @user.assigned_issues.except_closed.except_ignored %>
-  <div class="b-box">
-    <div class="bar bg-blue"><%= t(:my_assigned_issues) %></div>
-    <% if assigned_issues.any? %>
-      <div id="my_assigned_issues" title="<%= t(:drag_issue_to_sort_priority) %>">
-        <%= render :partial => 'users/my_assigned_issue', :collection => assigned_issues %>
-      </div>
-    <% else %>
-      <%= render 'shared/no_items' %>
-    <% end %>
+<% content_for :leftmenu do %>
+  <div class="ibox">
+    <div class="row heading"><%= t(:people) %></div>
+    <%= render :partial => 'users/user_working_on', :collection => @users_working_on.keys, :as => :user, :spacer_template => 'shared/line_spacer' %>
   </div>
+<% end %>
 
-  <% created_issues = @user.issues.order('created_at DESC').limit(5) %>
-  <div class="b-box">
-    <div class="bar bg-blue"><%= t(:recently_created_issues) %></div>
-    <% if created_issues.any? %>
-      <%= render :partial => 'issues/simple_style', :collection => created_issues, :as => :issue %>
-    <% else %>
-      <%= render 'shared/no_items' %>
-    <% end %>
+<% content_for :sidebar do %>
+  <div class="ibox">
+    <div class="bar heading"><%= t(:projects) %></div>
+    <%= render :partial => 'projects/simple_style',
+      :collection => Project.all,
+      :as => :project,
+      :spacer_template => 'shared/spacer'
+    %>
   </div>
 <% end %>
 <div class=""><%= t(:welcome_user, :username => @user.name) %></div>

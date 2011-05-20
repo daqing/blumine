@@ -5,6 +5,12 @@ body {
   font-size: 14px;
 }
 
+.container {
+  width: 96%;
+  min-width: 1024px;
+}
+
+
 h1, h2 { font-size: 20px; }
 
 ul { list-style: none; }
@@ -36,9 +42,8 @@ input { padding: 2px 3px; }
 #logo a:link, #logo a:hover, #logo a:visited { color: white; z-index: 2;}
 
 #header #top_right {
-  position: absolute;
-  top: 8px;
-  padding-left: 450px;
+  float: right;
+  margin: 8px 15px 0 0;
   z-index: 0;
   width: 495px;
   text-align: right;
@@ -109,8 +114,25 @@ li.headlink:hover ul { display: block; background-color: #333; }
 #breadcrumbs a:link, #breadcrumbs a:visited { color: #636A86; }
 #breadcrumbs a:hover { text-decoration: underline; }
 
-#content, #sidebar { padding: 10px 20px; }
 #footer { margin: 10px 0; padding-bottom: 30px; }
+
+#leftmenu {
+  float: left;
+  width: 210px;
+  padding: 10px 20px;
+}
+
+#content {
+  margin-top: 18px;
+  padding-bottom: 30px;
+  margin-left: 20px;
+}
+
+#sidebar {
+  float: right;
+  width: 200px;
+  padding: 10px 20px;
+}
 
 #footer a:active, #footer a:link, #footer a:hover {
   text-decoration: none;
@@ -275,13 +297,17 @@ div.btn_2_i a:hover {
 
 .b-box {
   padding-bottom: 5px;
-  margin: 10px 5px;
 }
 
 .ibox {
   margin-top: 10px;
   padding-bottom: 5px;
   border: 1px solid #EEE;
+}
+
+.ibox .heading {
+  border-bottom: 1px solid #EEE;
+  font-weight: bold;
 }
 
 a.percent_bar {

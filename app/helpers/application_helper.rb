@@ -108,7 +108,7 @@ module ApplicationHelper
         project_url = t('activity.in_project', :url => 
                         link_to(activity.data['related_name'],
                                 url_for(:controller => :projects, :action => :show, :id => activity.related_id),
-                                :class => :bold
+                                :class => 'plain'
                                )
                        )
         if I18n.locale == :zh
@@ -126,9 +126,9 @@ module ApplicationHelper
         t('activity.changed_issue_state_as', {:issue_url => issue_url, :state => %(<span class="state state-#{current_state}">#{Issue.state_name(current_state)}</span>)})
       when 'create_comment'
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
-        t('activity.commented_on_issue', {:issue_url => issue_url, :comment_body => h(activity.data['comment_body'])})
+        t('activity.commented_on_issue', :issue_url => issue_url) + "<blockquote>&gt;&nbsp;#{h(activity.data['comment_body'])}</blockquote>"
       when 'chat'
-        %(: <span style="color: #666; font-style: italic;">#{h(activity.data)}</span>)
+        %(: <span style="color: green;">#{h(activity.data)}</span>)
     end
   end
 end

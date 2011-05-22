@@ -22,7 +22,7 @@ img[align=absmiddle] { vertical-align: middle; position: relative; top: -2px; }
 
 input { padding: 2px 3px; }
 
-blockquote { margin: 10px; }
+blockquote { margin: 10px; font-style: normal; }
 
 #main_area { background-color: white; }
 

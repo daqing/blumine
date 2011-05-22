@@ -128,7 +128,7 @@ module ApplicationHelper
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         t('activity.commented_on_issue', {:issue_url => issue_url, :comment_body => h(activity.data['comment_body'])})
       when 'chat'
-        ": #{h(activity.data)}"
+        %(: <span style="color: #666; font-style: italic;">#{h(activity.data)}</span>)
     end
   end
 end

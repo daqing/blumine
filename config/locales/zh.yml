@@ -59,6 +59,7 @@ zh:
 
   issue:
     state:
+      total: 全部
       open: 未处理
       working_on: 解决中
       paused: 暂停解决
@@ -152,3 +153,13 @@ zh:
   new_suggestion: 提交建议
 
   issue_label: 类型
+
+  project_progress: 项目进度
+  project_feed: 项目动态
+
+  milestones: 里程碑
+  new_milestone: 添加里程碑
+  name: 名称
+  due_date: 发布日期
+  create_milestone: 创建新的里程碑
+  view_all_issues: 查看全部

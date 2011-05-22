@@ -10,31 +10,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    if params[:state]
-      @issue_state = Issue.valid_state?(params[:state].to_sym) ? params[:state] : :all
-    else
-      @issue_state = :all
-    end
-
     @title = @project.name
     breadcrumbs.add @project.name, project_path(@project)
-
-    if @issue_state == :all
-      @issues = @project.issues.except_closed.except_ignored
-    else
-      @issues = @project.issues.send("only_#{@issue_state}")
-    end
-  end
-
-  def view_by_label
-    @label = params[:label]
-    @issues = Issue.where(['label = ?', @label])
-    @project = Project.find(params[:id])
-    @title = @project.name
-    breadcrumbs.add t(:all_projects), projects_path
-    breadcrumbs.add @project.name, project_path(@project)
-    
-    render :show
   end
 
   def new

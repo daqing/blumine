@@ -1,4 +1,8 @@
 Blumine::Application.routes.draw do
+  get "milestones/new"
+
+  get "milestones/create"
+
   get 'register' => 'users#new'
   get '/search/:keyword' => 'issues#search'
   get 'rebuild_index' => 'issues#rebuild_index'
@@ -15,13 +19,11 @@ Blumine::Application.routes.draw do
     resources :issues do
       collection do
         get 'new/:label' => 'issues#new'
+        get 'filter/:state', :action => 'index'
+        get 'label/:label', :action => 'view_by_label'
       end
     end
-
-    member do
-      get 'filter/:state', :action => 'show'
-      get 'label/:label', :action => 'view_by_label'
-    end
+    resources :milestones
   end
 
   resources :issues do

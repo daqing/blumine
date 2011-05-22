@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  $(function() {
+  $(document).ready(function() {
     $.make_sortable = function(id, url) {
       var obj = $("#" + id);
       obj.sortable({
@@ -48,7 +48,9 @@
 
     <%= yield :on_ready_hook %>
 
-    $("a.facebox").facebox();
+    $("a.facebox").live('click', function() {
+        $(this).facebox()
+        });
     $(".tiptip").tipTip({defaultPosition: 'bottom'});
   });
 </script>

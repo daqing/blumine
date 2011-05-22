@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110518052731
+# Schema version: 20110520083521
 #
 # Table name: issues
 #
@@ -12,6 +12,7 @@
 #  updated_at     :datetime
 #  user_id        :integer
 #  label          :string(255)
+#  milestone_id   :integer
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

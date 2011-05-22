@@ -62,9 +62,9 @@ class IssuesControllerTest < ActionController::TestCase
   end
 
   test "should change workflow state" do
-    change_state
+    close_issue 
     assert_response :success
-    assert_equal :invalid, assigns(:issue).current_state.name
+    assert_equal :closed, assigns(:issue).current_state.name
   end
 
   test "should save with default content" do
@@ -142,7 +142,7 @@ class IssuesControllerTest < ActionController::TestCase
 
   test "should create activity after issue workflow's changed" do
     assert_difference('Activity.count') do
-      change_state
+      close_issue 
     end
   end
 
@@ -167,8 +167,8 @@ class IssuesControllerTest < ActionController::TestCase
       xhr :post, :assign_to, :id => @issue.id, :user_id => users(:daqing).id
     end
 
-    def change_state
-      xhr :post, :change_state, :event => :mark_invalid, :id => @issue.id
+    def close_issue 
+      xhr :post, :change_state, :event => :close, :id => @issue.id
     end
 
 end

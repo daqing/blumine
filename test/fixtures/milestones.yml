@@ -1,0 +1,24 @@
+# == Schema Information
+# Schema version: 20110520082002
+#
+# Table name: milestones
+#
+#  id         :integer         not null, primary key
+#  project_id :integer
+#  name       :string(255)
+#  due_date   :date
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project_id: 1
+  name: MyString
+  due_date: 2011-05-20
+
+two:
+  project_id: 1
+  name: MyString
+  due_date: 2011-05-20

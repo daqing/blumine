@@ -3,7 +3,7 @@
     <span class="tiptip" title="<%= Issue.state_name(issue.current_state.name) %>">
       <%= image_tag "state_#{issue.current_state.name.to_s}.png", :align => :absmiddle, :height => 16, :width => 16 %>
     </span>
-    <%= issue_title_link(issue) %>
+    <%= issue_title_link(issue, 'plain') %>
   </span>
   <span class="quiet small span-2"><%= link_to issue.user.name, issue.user, :class => :plain %></span>
   <span class="small span-3">

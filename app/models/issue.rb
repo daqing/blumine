@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110518052731
+# Schema version: 20110520083521
 #
 # Table name: issues
 #
@@ -12,6 +12,7 @@
 #  updated_at     :datetime
 #  user_id        :integer
 #  label          :string(255)
+#  milestone_id   :integer
 #
 
 require 'rmmseg'
@@ -23,22 +24,17 @@ class Issue < ActiveRecord::Base
   workflow do
     state :open do
       event :work_on, :transitions_to => :working_on
-      event :mark_invalid, :transitions_to => :invalid
-      event :ignore, :transitions_to => :ignored
       event :close, :transitions_to => :closed
     end
 
     state :working_on do
       event :pause, :transitions_to => :paused
       event :mark_finished, :transitions_to => :finished
-      event :mark_invalid, :transitions_to => :invalid
-      event :ignore, :transitions_to => :ignored
     end
 
     state :paused do
       event :continue, :transitions_to => :working_on
       event :close, :transitions_to => :closed
-      event :ignore, :transitions_to => :ignored
     end
 
     state :finished do
@@ -46,15 +42,7 @@ class Issue < ActiveRecord::Base
       event :close, :transitions_to => :closed
     end
 
-    state :invalid do
-      event :reopen, :transitions_to => :reopened
-    end
-
     state :closed do
-      event :reopen, :transitions_to => :reopened
-    end
-
-    state :ignored do
       event :reopen, :transitions_to => :reopened
     end
 
@@ -65,6 +53,7 @@ class Issue < ActiveRecord::Base
 
   belongs_to :project
   belongs_to :user
+  belongs_to :milestone
 
   has_many :comments, :dependent => :destroy
   has_many :todo_items, :dependent => :destroy
@@ -76,6 +65,10 @@ class Issue < ActiveRecord::Base
 
   validates :title, :content, :presence => true
   validates :user_id, :project_id, :presence => true
+
+  def self.all_states
+    [:open, :working_on, :paused, :finished, :closed, :reopened]
+  end
 
   def self.state_name(state_sym)
     I18n.t("issue.state.#{state_sym.to_s}")

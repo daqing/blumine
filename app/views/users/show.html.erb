@@ -31,7 +31,7 @@
 <h1 class="silver"><%= @my_profile ? t(:my_assigned_issues) : t('issue.issues_assigned_to', :username => @user.name) %></h1>
 <div id="my_assigned_issues" title="<%= t(:drag_issue_to_sort_priority) %>">
   <%= render :partial => 'my_assigned_issue',
-    :collection => @user.assigned_issues.except_closed.except_ignored,
+    :collection => @user.assigned_issues.except_closed,
     :spacer_template => 'shared/spacer'
   %>
 </div>

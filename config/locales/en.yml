@@ -58,6 +58,7 @@ en:
 
   issue:
     state:
+      total: Total
       open: Open
       working_on: Working On
       paused: Paused
@@ -150,3 +151,12 @@ en:
   new_suggestion: New Suggestion
 
   issue_label: Labels
+
+  project_progress: Progress
+  project_feed: Project Feed
+
+  milestones: Milestones
+  new_milestone: New Milestone
+  due_date: Due Date
+  create_milestone: Create a New Milestone
+  view_all_issues: View All Issues

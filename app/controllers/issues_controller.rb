@@ -35,8 +35,8 @@ class IssuesController < ApplicationController
 
   def view_by_label
     @label = params[:label]
-    @issues = Issue.where(['label = ?', @label])
     @project = Project.find(params[:project_id])
+    @issues = @project.issues.where(['label = ?', @label])
     @title = @project.name
     breadcrumbs.add t(:all_projects), projects_path
     breadcrumbs.add @project.name, project_path(@project)

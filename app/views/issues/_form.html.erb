@@ -3,22 +3,22 @@
     window.uploadWindow = window.open("<%= new_image_path %>", "upload_window", "height=200, width=400, top=200, left=200, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no");
   });
 <% end %>
-
-<% content_for :sidebar do %>
-  <iframe name="upload_image" src="<%= new_image_path %>" style="width: 250px;height: 500px;"></iframe>
-<% end %>
+              
 
 <%= form_for [@project, @issue] do |f| %>
   <%= render 'shared/error_messages', :obj => @issue %>
-  <div class="field">
-    <%= f.label :title, t(:title) %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
+	
+  	<fieldset>
+		<%= f.label :title, t(:title) %>
+	    <%= f.text_field :title %>
+	</fieldset> 
+	
+  	<fieldset>
+		<iframe name="upload_image" src="<%= new_image_path %>"></iframe>
+	</fieldset>   
+	
     <%= f.label :content, t(:content) %>
     <%= render :partial => 'shared/editor', :locals => {:name => 'issue[content]', :content => @issue.content} %>
-  </div>
   <%= f.hidden_field :label, :value => @label %>
 
   <%= f.submit t(:save) %>

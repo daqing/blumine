@@ -1,4 +1,3 @@
-<% content_for :sidebar do %>
   <div class="b-box" id="issue_workflow_box">
     <%= render 'shared/issue_workflow', :issue => @issue %>
   </div>
@@ -6,7 +5,6 @@
   <div class="b-box" id="issue_assignment">
     <%= render 'shared/issue_assignment', :issue => @issue %>
   </div>
-<% end %>
 
 <% if current_user.can_manage_todo? @issue %>
 <% content_for :on_ready_hook do %>

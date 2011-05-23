@@ -1,7 +1,4 @@
-<% content_for :sidebar do %>
-  <div class="b-box">
-    <div class="bar bg-gray"><%= t(:account_details) %></div>
-    <div class="row">
+    <%= t(:account_details) %>
       <table>
         <tr>
           <td><%= t(:date_joined) %></td>
@@ -18,9 +15,6 @@
         </tr>
         <% end %>
       </table>
-    </div>
-  </div>
-<% end %>
 
 <% if @my_profile %>
   <% content_for :on_ready_hook do %>

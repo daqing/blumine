@@ -1,4 +1,16 @@
 <%= form_for Activity.new, :remote => true do |f| %>
-  <%= f.text_area :data, :class => :micro %>
-  <%= f.submit t(:publish), :style => 'position: relative; top: -18px;' %>
+  
+	<fieldset>    
+		
+		<label><%= t(:feed) %></label>  
+		
+		<%= f.text_area :data, :class => :micro %>
+		
+		<div class="submit_link">
+			<%= f.submit t(:publish), :class => :alt_btn %>
+		</div>
+			
+	</fieldset>
+
 <% end %>
+

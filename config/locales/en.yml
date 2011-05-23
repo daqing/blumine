@@ -102,11 +102,13 @@ en:
   password: Password
   password_confirmation: Confirm Password
   create_user: Create User
+  
   search:
     results: Search Results
     no_issue_found: Nothing found
 
   account: Account
+  account_settings: Account setting
   default_locale: Locale
 
   role:

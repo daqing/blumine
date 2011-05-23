@@ -1,71 +1,32 @@
-<% content_for :head_hook do %>
-  <%= stylesheet_link_tag 'jquery-ui' %>
-<% end %>
 
-<% content_for :on_ready_hook do %>
-  $.make_sortable('my_assigned_issues', '<%= assigned_issues_sort_path %>');
+<h4 class="alert_info"><%= t(:welcome_user, :username => @user.name) %></h4>
 
-  /*
-  var status_log_input = $("#status_log_content");
-  status_log_input.autocomplete({source: "<%= autocomplete_issues_path %>" });
-  status_log_input.autocomplete('disable');
+<article class="activities_box module width_3_quarter">
 
-  var custom_assign = function(event, ui) {
-    var str = status_log_input.val();
-    status_log_input.val(str.substring(0, str.lastIndexOf('#') + 1) + ui.item.value);
-    status_log_input[0].selectionStart = status_log_input.val().length;
-    return false;
-  }
+	<div class="module_content">      
 
-  status_log_input.autocomplete('option', 'select', custom_assign);
-  status_log_input.autocomplete('option', 'focus', custom_assign);
+  		<%= render 'activities/form' %>
 
-  search_tag = "";
+		<%= render :partial => 'activities/activity', :collection => Activity.limit(10) %> 
 
-  status_log_input.keydown(function(event) {
-    setTimeout(function() {
-      var str = status_log_input.val();
-      var sharp_start = str.lastIndexOf('#');
-      if (sharp_start == -1) {
-        status_log_input.autocomplete('disable');
-        return;
-      }
+	</div>
 
-      var tag = str.substring(sharp_start + 1).trim();
-      if (tag.length == 0 || search_tag == tag || tag.indexOf("'") > -1) {
-        return;
-      }
+</article>
+<!-- end of post stutas-->
 
-      search_tag = tag;
-      status_log_input.autocomplete('enable');
-      status_log_input.autocomplete('search', tag);
-    }, 500);
-  });
-  */
-<% end %>
+<article class="module width_quarter">
 
-<% content_for :leftmenu do %>
-  <div class="ibox">
-    <div class="row heading"><%= t(:people) %></div>
-    <%= render :partial => 'users/user_working_on', :collection => @users_working_on.keys, :as => :user, :spacer_template => 'shared/line_spacer' %>
-  </div>
-<% end %>
+	<header><h3><%= t(:people) %></h3></header>
 
-<% content_for :sidebar do %>
-  <div class="ibox">
-    <div class="bar heading"><%= t(:projects) %></div>
-    <%= render :partial => 'projects/simple_style',
-      :collection => Project.all,
-      :as => :project,
-      :spacer_template => 'shared/spacer'
-    %>
-  </div>
-<% end %>
-<div class=""><%= t(:welcome_user, :username => @user.name) %></div>
+	<div class="module_content">
+
+		<%= render :partial => 'users/user_working_on', :collection => @users_working_on.keys, :as => :user%>
+
+	</div>
+
+</article>
+<!-- end of stats article -->     
 
 <div class="clear"></div>
-<h1 class="silver"><%= t(:feed) %></h1>
-<div id="feed_box">
-  <%= render 'activities/form' %>
-  <%= render :partial => 'activities/activity', :collection => Activity.limit(10), :spacer_template => 'shared/spacer' %>
-</div>
+
+<div class="spacer"></div>

@@ -6,7 +6,7 @@ class PagesController < ApplicationController
       @title = t(:dashboard)
       @user = current_user
       users_working_on
-      render 'dashboard', :layout => 'three_columns'
+      render 'dashboard', :layout => 'application'
     else
       @title = t(:home)
       @user_session = UserSession.new

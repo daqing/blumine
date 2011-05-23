@@ -1,3 +1,15 @@
-<h2><%= t("new_#{@label}") %></h2>
 
-<%= render 'form' %>
+
+
+<article class="module width_full">
+	<header><h3><%= t("new_#{@label}") %></h3></header>
+		<div class="module_content">
+				<%= render 'form' %>
+		</div>
+	<footer>
+		<div class="submit_link">
+			<input type="submit" value="Publish" class="alt_btn">
+		</div>
+	</footer>
+</article>
+<!-- end of post new article -->

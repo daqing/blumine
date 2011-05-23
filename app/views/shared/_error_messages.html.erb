@@ -1,16 +1,13 @@
 <% if obj.errors.any? %>
-  <div class="error">
-    <h2>
-      <% if obj.errors.count > 1 %>
-        <%= t('activerecord.errors.template.header.other', :count => obj.errors.count, :model => obj.class.to_s.downcase) %>
-      <% else %>
-        <%= t('activerecord.errors.template.header.one', :model => obj.class.to_s.downcase) %>
-      <% end %>
-      </h2>
-    <ul>
-    <% obj.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>  
-    <% end %>
-    </ul>
-  </div>
+  	<h4 class="alert_error">
+	   <% if obj.errors.count > 1 %>
+	     <%= t('activerecord.errors.template.header.other', :count => obj.errors.count, :model => obj.class.to_s.downcase) %>
+	   <% else %>
+	     <%= t('activerecord.errors.template.header.one', :model => obj.class.to_s.downcase) %>
+	   <% end %>
+	   <ul>
+	    <% obj.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>  
+	    <% end %>
+	   </ul>
 <% end %>

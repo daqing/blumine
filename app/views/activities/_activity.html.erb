@@ -1,4 +1,4 @@
-<div class="row">
+<div class="activity-item">
   <% case activity.event_name %>
   <% when 'create_project' %>
     <%= image_tag 'folder.png', :align => :absmiddle, :width => 16, :height => 16 %>
@@ -13,6 +13,12 @@
   <% when 'chat' %>
     <%= image_tag 'chat.png', :align => :absmiddle, :width => 16, :height => 16 %>
   <% end %>
-  <span class="author"><%= link_to activity.user.name, activity.user, :class => :plain %></span><%=raw format_activity(activity) %>
-  <span class="smaller quiet"><%= time_ago_in_words(activity.created_at) + t(:ago) %></span>
+	
+  <%=raw format_activity(activity) %>
+
+<p>
+	Update by <span class="author"><%= link_to activity.user.name, activity.user, :class => :plain %></span>
+  
+   <span class="date"><%= time_ago_in_words(activity.created_at) + t(:ago) %></span>
+</p>
 </div>

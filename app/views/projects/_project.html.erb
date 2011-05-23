@@ -1,4 +1,7 @@
-<h1 class="silver"><%= link_to project.name, project %></h1>
 
-<%= render_with_spacer 'issue', project.issues.order('created_at DESC').limit(5) %>
-
+<article class="module width_full">
+	<header><h3><%= link_to project.name, project %></h3></header>
+		<div class="module_content">
+			<%= render_with_spacer 'issue', project.issues.order('created_at DESC').limit(5) %>
+		</div>
+</article>

@@ -1,0 +1,59 @@
+<aside id="sidebar" class="column">
+	
+	<form class="quick_search">
+		<%= text_field_tag 'search', t(:search_issues), :class => 'radius-3' %>
+	</form>
+	<hr/>
+  
+
+	<h3>Content</h3>
+	<ul class="toggle">
+		<li class="icn_new_article"><a href="#">New Article</a></li>
+		<li class="icn_edit_article"><a href="#">Edit Articles</a></li>
+		<li class="icn_categories"><a href="#">Categories</a></li>
+		<li class="icn_tags"><a href="#">Tags</a></li>
+	</ul>
+   
+ 	<h3>Users</h3>
+	<ul class="toggle">
+		<li class="icn_add_user"><a href="#">Add New User</a></li>
+		<li class="icn_view_users"><a href="#">View Users</a></li>
+		<li class="icn_profile"><a href="#">Your Profile</a></li>
+	</ul>
+
+	<h3><%= link_to t(:all_projects), projects_path, :class => :top %></h3>
+	<ul class="toggle">
+		<% Project.all.each do |p| %>
+			<li class="icn_tags" clickable="<%= project_path(p) %>"><%= link_to p.name, p %></li>
+      	<% end %>
+	</ul>
+	
+	<h3>Media</h3>
+	<ul class="toggle">
+		<li class="icn_folder"><a href="#">File Manager</a></li>
+		<li class="icn_photo"><a href="#">Gallery</a></li>
+		<li class="icn_audio"><a href="#">Audio</a></li>
+		<li class="icn_video"><a href="#">Video</a></li>
+	</ul>
+	
+
+	<h3>
+		<% if current_user.root? %>
+  			<%= link_to t(:sudo), sudo_users_path %>
+		<% end %>
+	</h3>
+	<ul class="toggle">
+		<li class="icn_settings"><%= link_to t(:account_settings) %></li>
+		<li class="icn_security"><%= link_to t(:stats), stats_path %></li>
+		<li class="icn_jump_back"><%= link_to t(:log_out), logout_path %></li>
+	</ul> 
+	
+	<%= render 'layouts/footer' %>
+
+</aside>
+<!-- end of sidebar -->
+
+
+
+	      
+	

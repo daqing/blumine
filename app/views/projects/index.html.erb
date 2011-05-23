@@ -1,5 +1,3 @@
-<% content_for :sidebar do %>
-  <%= as_button link_to(t(:new_project), new_project_path) %>
-<% end %>
+<%= as_button link_to(t(:new_project), new_project_path) %>
 
 <%= render @projects %>

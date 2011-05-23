@@ -7,6 +7,4 @@
       <%= f.submit t(:add) %>
     <% end %>
   </div>
-  <div id="todo_done" style="border-top: 1px solid #DDD;">
     <%= render issue.todo_items.where(:workflow_state => :done), :manage => true %>
-  </div>

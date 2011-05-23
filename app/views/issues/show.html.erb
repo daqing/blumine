@@ -1,11 +1,18 @@
 <% content_for :sidebar do %>
-  <div class="b-box" id="issue_workflow_box">
+  <div class="ibox" id="issue_workflow_box">
     <%= render 'shared/issue_workflow', :issue => @issue %>
   </div>
 
-  <div class="b-box" id="issue_assignment">
+  <div class="ibox" id="issue_assignment">
     <%= render 'shared/issue_assignment', :issue => @issue %>
   </div>
+
+  <% if @issue.milestone %>
+  <div class="ibox" id="issue_milestone">
+    <div class="bar heading"><%= t(:milestone) %></div>
+    <div class="row"><%= link_to @issue.milestone.name, project_path(@issue.project) %></div>
+  </div>
+  <% end %>
 <% end %>
 
 <% if current_user.can_manage_todo? @issue %>

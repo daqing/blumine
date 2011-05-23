@@ -16,6 +16,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :milestone, t(:milestone) %>
+    <%= f.select :milestone_id,
+      options_for_select(
+        @project.milestones.collect { |milestone| [milestone.name, milestone.id] }.unshift([t(:empty_option), 0]),
+        @issue.milestone.nil? ? 0 : @issue.milestone.id
+      )
+  %>
+  </div>
+
+  <div class="field">
     <%= f.label :content, t(:content) %>
     <%= render :partial => 'shared/editor', :locals => {:name => 'issue[content]', :content => @issue.content} %>
   </div>

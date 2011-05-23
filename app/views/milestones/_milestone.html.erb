@@ -1,5 +1,9 @@
 <div class="row">
-  <h3>
-  <%= image_tag 'rocket.gif', :align => :absmiddle, :width => 16, :height => 16 %>
-  <%= milestone.name %><span class="quiet small">(<%= milestone.due_date %>)</span></h3>
+  <div class="ibox">
+    <div class="bar bg-blue">
+      <%= image_tag 'rocket.gif', :align => :absmiddle, :width => 16, :height => 16 %>
+      <%= milestone.name %><span class="quiet small">(<%= milestone.due_date %>)</span>
+    </div>
+    <%= render milestone.issues %>
+  </div>
 </div>

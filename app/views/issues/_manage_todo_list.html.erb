@@ -1,4 +1,4 @@
-  <div class="bar bg-gray"><%= t(:todo) %></div>
+  <div class="bar bg-blue"><%= t(:todo) %></div>
   <%= render issue.todo_items.where(:workflow_state => :open), :manage => true %>
 
   <div class="row <%= "hide" if issue.closed? %>" id="add_todo_form">

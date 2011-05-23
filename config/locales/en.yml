@@ -155,8 +155,10 @@ en:
   project_progress: Progress
   project_feed: Project Feed
 
+  milestone: Milestone
   milestones: Milestones
   new_milestone: New Milestone
   due_date: Due Date
   create_milestone: Create a New Milestone
   view_all_issues: View All Issues
+  empty_option: '<None>'

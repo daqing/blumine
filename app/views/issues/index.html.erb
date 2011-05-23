@@ -1,13 +1,13 @@
 <% content_for :sidebar do %>
   <div class="b-box">
-    <div class="bar bg-blue"><%= t(:issue_label) %></div>
+    <div class="bar bg-gray"><%= t(:issue_label) %></div>
     <% ['task', 'bug', 'suggestion'].each do |label| %>
       <div class="row bg_highlight quiet" <%= 'filtered' if label == @label %> clickable="<%= project_issues_path(@project) %>/label/<%= label %>"><%= t("issue.label.#{label}") %></div>
     <% end %>
   </div>
 
   <div class="b-box" title="<%= t(:click_to_filter_issues) %>">
-    <div class="bar bg-blue"><%= t(:issue_state) %></div>
+    <div class="bar bg-gray"><%= t(:issue_state) %></div>
     <% Issue.all_states.each do |state_sym| %>
       <div class="row bg_highlight" <%= "filtered" if state_sym.to_s == @issue_state %> clickable="<%= project_issues_path(@project) %>/filter/<%= state_sym.to_s %>">
         <span class="quiet span-2"><%= @project.issues.send("only_#{state_sym.to_s}").count %></span>

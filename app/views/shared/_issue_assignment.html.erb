@@ -1,4 +1,4 @@
-<div class="bar bg-blue">
+<div class="bar heading">
   <% if @issue.assigned_user %>
     <strong><%= t('issue.assignment.assigned_to') %></strong>
     <% if @issue.assigned_user == current_user %>
@@ -14,7 +14,7 @@
 <% if current_user.can_assign_issue?(@issue) %>
   <%= form_for :issue_assignment, :url => assign_to_issue_path(@issue), :remote => true do |f| %>
     <%= t('issue.assignment.assign_to') %>
-    <%= select_tag :user_id, options_for_select(User.all.collect { |user| (user == current_user) ? [t(:me), user.id] : [user.name, user.id] }) %>
+    <%= f.select :user_id, options_for_select(User.all.collect { |user| (user == current_user) ? [t(:me), user.id] : [user.name, user.id] }) %>
     <%= f.submit t(:save) %>
   <% end %>
 <% else %>

@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   has_many :issue_assignments, :dependent => :destroy
   has_many :assigned_issues, :through => :issue_assignments, :source => :issue, :order => 'position ASC'
 
-  attr_protected :encrypted_password, :salt
+  attr_protected :encrypted_password, :salt, :persistence_token
 
   validates :name, :email, :presence => true
   validates :email, :uniqueness => true
@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, :presence => true, :on => :create
 
   validates :password, :presence => true, :confirmation => true, :on => :update, :unless => "self.password.blank?"
-  validates :password_confirmation, :presence => true, :on => :update, :unless => "self.password_confirmation.blank?"
+  validates :password_confirmation, :presence => true, :on => :update, :unless => "self.password.blank?"
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :format => { :with => email_regex }

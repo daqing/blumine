@@ -1,15 +1,32 @@
-<%= form_for @user_session do |f| %>
-  <%= render 'shared/error_messages', :obj => @user_session %>
+ 
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password, t(:password) %>
-    <%= f.password_field :password %>
-  </div>
-  <div class="actions">
-    <%= f.submit t(:log_in) %>
-  </div>
-<% end %>
+<%= form_for @user_session do |f| %>
+
+	<div class="module_content">
+
+  		<%= render 'shared/error_messages', :obj => @user_session %>
+
+			<fieldset>
+				<%= f.label :email %>
+				<%= f.text_field :email %>
+			</fieldset>   
+
+			<fieldset>
+				<%= f.label :password, t(:password) %>
+				<%= f.password_field :password %>
+			</fieldset>
+
+	</div>
+
+	<footer>
+	
+		<div class="submit_link">
+			<%= link_to t(:register), register_path %> 
+			<%= f.submit t(:log_in) %>
+		</div>
+    
+  	</footer>     
+
+<% end %>    
+	
+

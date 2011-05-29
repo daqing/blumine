@@ -1,12 +1,14 @@
-  <div class="bar bg-blue"><%= t(:todo) %></div>
-  <%= render issue.todo_items.where(:workflow_state => :open), :manage => true %>
+<h4><%= t(:todo) %></h4>
 
-  <div class="row <%= "hide" if issue.closed? %>" id="add_todo_form">
-    <%= form_for [issue, todo_item], :remote => true do |f| %>
-      <%= f.text_area :content, :class => :micro %><br />
-      <%= f.submit t(:add) %>
-    <% end %>
-  </div>
-  <div id="todo_done" style="border-top: 1px solid #DDD;">
-    <%= render issue.todo_items.where(:workflow_state => :done), :manage => true %>
-  </div>
+<%= render issue.todo_items.where(:workflow_state => :open), :manage => true %>
+
+<div class="<%= "hide" if issue.closed? %>" id="add_todo_form">
+	<%= form_for [issue, todo_item], :remote => true do |f| %>
+	<fieldset>
+		<%= f.text_area :content, :class => :micro %><br />
+	</fieldset>
+	<%= f.submit t(:add) %>
+  <% end %>
+</div>
+    
+<%= render issue.todo_items.where(:workflow_state => :done), :manage => true %>

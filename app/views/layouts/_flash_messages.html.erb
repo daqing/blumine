@@ -1,5 +1,7 @@
-<% [:success, :notice, :error].each do |type| %>
+<% [:alert_success, :alert_warning, :alert_error].each do |type| %>
   <% if flash[type] %>
-    <div class="<%= type %>"><%= flash[type] %></div>
+    <h4 class="<%= type %>"><%= flash[type] %></h4>
   <% end %>
-<% end %>
+<% end %>  
+
+

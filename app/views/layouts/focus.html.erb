@@ -2,12 +2,20 @@
 <html>
   <%= render 'layouts/head' %>
 <body>
-  <div id="focus_area">
-    <div id="main" class="radius-5 shadow">
-      <%= render 'layouts/flash_messages' %>
-      <%= yield %>
-    </div>
-  </div>
-  <%= render 'shared/ga' %>
+	
+	<section id="main" class="focus_wrap">
+		
+		<%= render 'layouts/flash_messages' %>  
+		
+		<article class="module width_half">
+
+			<%= yield %>
+
+		</article>
+		
+	</section>    
+
+	<%= render 'shared/ga' %>
+
 </body>
 </html>

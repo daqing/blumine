@@ -1,46 +1,36 @@
-<% content_for :sidebar do %>
-  <div class="ibox">
-    <div class="bar heading"><%= t(:project_progress) %></div>
-    <% total_issues = @project.issues.count %>
-    <% finished_issues = @project.issues.only_finished.count %>
-    <% closed_issues = @project.issues.only_closed.count %>
-    <% percent = closed_issues > 0 ? (closed_issues * 100.0 / total_issues) : 0 %>
-    <table>
-      <tr class="bg_highlight">
-        <td class="quiet"><%= t('issue.state.total') %></td>
-        <td><%= total_issues %>
-        <%= link_to project_issues_path(@project) do %>
-          <%= image_tag 'ext.png', :align => :absmiddle, :height => 10, :width => 10, :class => 'tiptip', :title => t(:view_all_issues) %>
-        <% end %>
-        </td>
-      </tr>
-      <tr class="bg_highlight">
-        <td class="quiet"><%= t('issue.state.finished') %></td>
-        <td><%= finished_issues %></td>
-      </tr>
-      <tr class="bg_highlight">
-        <td class="quiet"><%= t('issue.state.closed') %></td>
-        <td><%= closed_issues %></td>
-      </tr>
-    </table>
-    <div class="progress_bar radius-8">
-      <div class="state-closed" style="width: <%= percent %>%">
-        <% if percent < 85 %>
-          <span class="progress_text" style="margin-left: <%= 150 * percent / 100 + 5 %>px; color: #999;"><%= percent %>%</span>
-        <% else %>
-          <span class="progress_text" style="margin-left: 5px; color: white;"><%= percent %>%</span>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% end %>
+<article class="module width_full">
+	<header>
+		<h3 class="tabs_involved"><%= @project.name %></h3>
+	</header>
 
-<h1><%= @project.name %></h1>
+	<div class="module_content">
+		<% [:open, :working_on, :paused, :finished, :closed, :reopened].each do |state_sym| %>
+	      <div style="display:inline-block; padding:0 0 15px 0" <%= "filtered" if state_sym.to_s == @issue_state %>">
+	        <span class="state state-<%= state_sym.to_s %>"><%= Issue.state_name(state_sym) %> <span><%= @project.issues.send("only_#{state_sym.to_s}").count %></span></span>
+	      </div> 
+	  <% end %>
 
-<span class="right"><%= as_button(link_to(t(:new_milestone), new_project_milestone_path(@project))) %></span>
-<h1 class="silver"><%= t(:milestones) %></h1>
-<%= render @project.milestones %>
+		<%= render @project.issues.order('created_at DESC') %>
+	</div>
+	
+	<footer>
+		<ul class="actions">
+ 			<li><%= link_to t(:new_task), new_project_issue_path(@project) + '/task',:class => :btn  %></li> 
+ 			<li><%= link_to t(:new_bug), new_project_issue_path(@project) + '/bug',:class => :btn  %></li>
+ 			<li><%= link_to t(:new_suggestion), new_project_issue_path(@project) + '/suggestion',:class => :btn  %></li>
+		</ul>
+	</footer>
+</article> 
 
-<h1 class="silver"><%= t(:project_feed) %></h1>
-<%= render Activity.where(['related_id = ? AND related_type = ?', @project.id, 'Project']) %>
+<!--
+<article class="module width_full">
+	<header><h3><%= t(:issue_label) %></h3></header>
+		<div class="module_content">
+			<% ['task', 'bug', 'suggestion'].each do |label| %>
+		      <div style="display:inline-block; padding:0 0 15px 0" <%= 'filtered' if label == @label %> clickable="<%= project_path(@project) %>/label/<%= label %>"><%= t("issue.label.#{label}") %></div>
+		  <% end %>
+		</div>
+</article> 
+-->
 
+<div class="clear"></div>

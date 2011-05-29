@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def gravatar_for(email, options = {})
+    options = {:alt => 'avatar', :class => 'avatar', :size => 80}.merge! options
+    id = Digest::MD5::hexdigest email.strip.downcase
+    url = 'http://www.gravatar.com/avatar/' + id + '.jpg?s=' + options[:size].to_s
+    options.delete :size
+    image_tag url, options
+  end
+
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_session && current_session.record
@@ -43,7 +51,7 @@ module ApplicationHelper
 
   def redirect_to_root_when_no_permission
     flash[:notice] = t('permission.no_permission')
-    redirect_to root_path 
+    redirect_to root_path
   end
 
   def creator_of?(obj)
@@ -68,7 +76,7 @@ module ApplicationHelper
   end
 
   def render_with_spacer(partial, collection)
-    render :partial => "#{partial.pluralize}/#{partial}", 
+    render :partial => "#{partial.pluralize}/#{partial}",
         :collection => collection,
         :spacer_template => 'shared/spacer'
   end
@@ -87,7 +95,7 @@ module ApplicationHelper
 
   def issue_title_link(issue, *css_class)
     if issue.label.blank?
-      title = issue.title 
+      title = issue.title
     else
       title = "[#{t("issue.label.#{issue.label}")}] #{issue.title}"
     end
@@ -95,9 +103,9 @@ module ApplicationHelper
     max_length = 15
     if title.mb_chars.length > max_length
       link_to "#{title.mb_chars[0..max_length].to_s}...", issue, :title => title, :class => css_class
-    else 
+    else
       link_to title, issue, :class => css_class
-    end 
+    end
   end
 
   def format_activity(activity)
@@ -105,7 +113,7 @@ module ApplicationHelper
       when 'create_project': "#{t('activity.create_project')} #{link_to activity.data['name'], url_for(:controller => :projects, :action => :show, :id => activity.target_id)}"
       when 'create_issue'
         issue_url = link_to activity.data['title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
-        project_url = t('activity.in_project', :url => 
+        project_url = t('activity.in_project', :url =>
                         link_to(activity.data['related_name'],
                                 url_for(:controller => :projects, :action => :show, :id => activity.related_id),
                                 :class => 'plain'
@@ -128,7 +136,7 @@ module ApplicationHelper
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         t('activity.commented_on_issue', :issue_url => issue_url) + "<blockquote>&gt;&nbsp;#{h(activity.data['comment_body'])}</blockquote>"
       when 'chat'
-        %(: <span style="color: green;">#{h(activity.data)}</span>)
+        %(<span style="color: green;">#{h(activity.data)}</span>)
     end
   end
 end

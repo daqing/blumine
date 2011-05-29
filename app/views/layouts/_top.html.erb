@@ -1,0 +1,25 @@
+<header id="header">
+  <hgroup>
+    <h1 class="site_title"><%= link_to 'BluMine', root_path, :title => t(:home) %></h1>
+    <h2 class="section_title"></h2>
+    <div class="btn_view_site">
+      <%= link_to(t(:new_project), new_project_path) %>
+    </div>
+  </hgroup>
+</header>
+<!-- end of header bar -->
+
+<section id="secondary_bar">
+  <div class="user">
+    <p><%= link_to current_user.name, current_user %> <!--(<a href="#">3 Messages</a>)--></p>
+    <!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
+  </div>	
+
+  <% if breadcrumbs.items.length > 0 %>
+    <div class="breadcrumbs_container">
+    <article class="breadcrumbs"><%= breadcrumbs.render(:format => :inline) %></article>
+    </div>
+  <% end %>
+</section>
+<!-- end of secondary bar -->
+

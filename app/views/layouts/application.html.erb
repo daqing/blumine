@@ -2,25 +2,17 @@
 <html>
   <%= render 'layouts/head' %>
 <body>
-  <%= render 'layouts/nav_header' %>
-  <div class="container">
-    <%= render 'layouts/flash_messages' %>
-  </div>
+  	<%= render 'layouts/top' %>
+   	
+	<%= render 'layouts/sidebar' %>
+  	
+	<section id="main" class="column">
+		<%= render 'layouts/flash_messages' %>
+		
+		<%= yield %>
+		
+	</section>    
 
-  <div class="container" id="main_area">
-    <%= render 'layouts/breadcrumbs', :breadcrumbs => breadcrumbs %>
-    <div class="margin-10">&nbsp;</div>
-
-    <div id="sidebar">
-      <%= yield :sidebar %>
-    </div>
-
-    <div class="span-19" id="content">
-      <%= yield %>
-    </div>
-  </div>
-
-  <%= render 'layouts/footer' %>
   <%= render 'layouts/main_javascripts' %>
   <%= render 'shared/ga' if Rails.env.production? %>
 </body>

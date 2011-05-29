@@ -104,6 +104,7 @@ zh:
   password: 密码
   create_user: 创建
   password_confirmation: 确认密码
+  
   search:
     results: 搜索结果
     no_issue_found: 没有任何记录
@@ -165,3 +166,6 @@ zh:
   create_milestone: 创建新的里程碑
   view_all_issues: 查看全部
   empty_option: '<未选择>'
+
+  team: 团队
+  profile: 账号

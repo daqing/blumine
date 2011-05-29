@@ -1,18 +1,17 @@
-<div class="container">
-  <div id="footer">
-    <span class="" style="background: url(/images/locales.png) no-repeat 0 50%; padding-left: 20px; float: left; font-size: 12px; line-height: 1.5em;">
-      <% User::AVAILABLE_LANGUAGES.keys.each do |key| %>
-        <% if I18n.locale == key %>
-          <span class="current"><%= User::AVAILABLE_LANGUAGES[key] %></span>
-        <% else %>
-          <%= link_to User::AVAILABLE_LANGUAGES[key], "?locale=#{key.to_s}", :class => :action %>
-        <% end %>
-      <% end %>
-    </span>
-    <span class="right">
-      <%= link_to t(:get_source_code), 'http://github.com/daqing/blumine/' %>
-      <%= link_to t(:blog), 'http://blog.xdaqing.com' %>
-      &copy; <%= Time.now.year %> Project BluMine
-    </span>
-  </div>
-</div>
+<footer>
+	<hr />
+	<p><strong>Copyright &copy; <%= Time.now.year %> Project Blumine</strong></p>
+	<p>
+		<%= link_to t(:get_source_code), 'http://github.com/daqing/blumine/' %> | <%= link_to t(:blog), 'http://blog.xdaqing.com' %> | 
+		<% User::AVAILABLE_LANGUAGES.keys.each do |key| %>
+	      <% if I18n.locale == key %>
+	        <span class="current"><%= User::AVAILABLE_LANGUAGES[key] %></span>
+	      <% else %>
+	        <%= link_to User::AVAILABLE_LANGUAGES[key], "?locale=#{key.to_s}", :class => :action %>
+	      <% end %>
+	    <% end %>
+	</p>				
+	<!--
+	<p>Theme by <a href="http://www.medialoot.com">MediaLoot</a></p>
+  -->
+</footer>

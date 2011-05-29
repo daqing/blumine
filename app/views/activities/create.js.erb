@@ -1,5 +1,3 @@
-if ($("#feed_box div.row").size() > 0) {
-  $("form#new_activity").after("<%= escape_javascript render('shared/line_spacer') %>");
-}
-$("form#new_activity").after("<%= escape_javascript render(@activity) %>");
-$("form#new_activity textarea").val('').focus();
+$("form#new_activity").after("<%= escape_javascript render(@activity) %>");  
+
+$("form#new_activity textarea.micro").val('').focus();

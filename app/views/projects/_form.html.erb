@@ -1,10 +1,11 @@
 <%= form_for @project do |f| %>
+
   <%= render 'shared/error_messages', :obj => @project %>
-  <div class="field">
+<fieldset>
     <%= f.label :name, t(:project_name) %>
     <%= f.text_field :name %>
-  </div>
 
-  <%= f.submit t(:create_project) %>
+</fieldset>  <%= f.submit t(:create_project) %>
+
 <% end %>
 

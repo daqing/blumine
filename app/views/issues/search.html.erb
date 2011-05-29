@@ -1,6 +1,12 @@
-<h1 class="silver"><%= t('search.results') %></h1>
-<% if @result.any? %>
-<%= render :partial => 'issues/issue', :collection => @result, :spacer_template => 'shared/spacer' %>
-<% else %>
-  <div class="row"><%= t('search.no_issue_found') %></div>
-<% end %>
+<article class="module width_full">
+  <header>
+    <h3 class="tabs_involved"><%= t('search.results') %></h3>
+  </header>
+  <div class="module_content">
+    <% if @result.any? %>
+    <%= render :partial => 'issues/issue', :collection => @result %>
+    <% else %>
+      <div class="row"><%= t('search.no_issue_found') %></div>
+    <% end %>
+  </div>
+</article>

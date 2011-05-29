@@ -1,28 +1,34 @@
-<h2><%= t(:register) %></h2>
+<header><h3><%= t(:register) %></h3></header>
+
 <%= form_for @user do |f| %>
-  <%= render 'shared/error_messages', :obj => @user %>
-  <div class="field">
-    <%= f.label :name, t(:username) %>
-    <%= f.text_field :name %>
-  </div>
+  <div class="module_content"> 
+    <%= render 'shared/error_messages', :obj => @user %>  
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
+    <fieldset>
+      <%= f.label :name, t(:username) %>
+      <%= f.text_field :name %>
+    </fieldset>
 
-  <div class="field">
-    <%= f.label :password, t(:password) %>
-    <%= f.password_field :password %>
-  </div>
+    <fieldset>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </fieldset>
 
-  <div class="field">
-    <%= f.label :password_confirmation, t(:password_confirmation) %>
-    <%= f.password_field :password_confirmation %>
-  </div>
+    <fieldset>
+      <%= f.label :password, t(:password) %>
+      <%= f.password_field :password %>
+    </fieldset>
 
-  <%= f.submit t(:create_user) %>
+    <fieldset>
+      <%= f.label :password_confirmation, t(:password_confirmation) %>
+      <%= f.password_field :password_confirmation %>
+    </fieldset>
+  </div>
+  <footer>
+    <div class="submit_link">
+      <span class="quiet">&lt;&lt;</span>
+      <%= link_to t(:log_in), root_path %>
+      <%= f.submit t(:create_user), :class=>:alt_btn %> 
+    </div>
+  </footer>	
 <% end %>
-<%= render 'shared/line_spacer' %>
-<div class="margin-10">&nbsp;</div>
-<span class="quiet">&lt;&nbsp;</span><%= link_to t(:home), root_path, :class => :action %>

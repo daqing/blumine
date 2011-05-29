@@ -1,3 +1,7 @@
-<h2><%= t("new_#{@label}") %></h2>
+<article class="module width_full">
+	<header><h3><%= t("new_#{@label}") %></h3></header>
+		<%= render 'form' %>
+</article>
 
-<%= render 'form' %>
+<div class="spacer"></div>   
+<!-- end of post new article -->

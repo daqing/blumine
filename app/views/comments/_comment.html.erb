@@ -1,15 +1,20 @@
-<div class="section radius-5" id="comment_<%= comment.id %>">
-  <span class="quiet right small">
+<div id="comment_<%= comment.id %>"> 
+	
+  <div class="comment_item">     
+	
+	<span class="author"><%= link_to comment.user.name, comment.user %></span>
+	<span class="date"><%= time_ago_in_words(comment.created_at) + t(:ago) %></span>
     <% if current_user.can_manage_comment? comment %>
       <%= link_to t(:edit), edit_comment_path(comment), :class => 'action facebox' %>
       &nbsp;&middot;&nbsp;
       <%= link_to t(:delete), comment, :method => :delete, :remote => true, :confirm => t(:delete_confirm), :class => :action %>
       &nbsp;&middot;&nbsp;
-    <% end %>
-    <%= time_ago_in_words(comment.created_at) + t(:ago) %>
-  </span>
-  <div class="author"><%= link_to comment.user.name, comment.user %>:</div>
+    <% end %> 
+
+  </div>
+  
   <div class="content">
     <%=raw parse_markdown comment.content %>
   </div>
 </div>
+

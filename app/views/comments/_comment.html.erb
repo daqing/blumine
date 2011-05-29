@@ -1,34 +1,20 @@
-<div class="section radius-5" id="comment_<%= comment.id %>">
-  <span class="quiet right small">
+<div id="comment_<%= comment.id %>"> 
+	
+  <div class="comment_item">     
+	
+	<span class="author"><%= link_to comment.user.name, comment.user %></span>
+	<span class="date"><%= time_ago_in_words(comment.created_at) + t(:ago) %></span>
     <% if current_user.can_manage_comment? comment %>
       <%= link_to t(:edit), edit_comment_path(comment), :class => 'action facebox' %>
       &nbsp;&middot;&nbsp;
       <%= link_to t(:delete), comment, :method => :delete, :remote => true, :confirm => t(:delete_confirm), :class => :action %>
       &nbsp;&middot;&nbsp;
-    <% end %>
-    <%= time_ago_in_words(comment.created_at) + t(:ago) %>
-  </span>
-  <div class="author"><%= link_to comment.user.name, comment.user %>:</div>
+    <% end %> 
+
+  </div>
+  
   <div class="content">
     <%=raw parse_markdown comment.content %>
   </div>
 </div>
 
-
-<article class="module width_full">
-	<header><h3>Messages</h3></header>
-	<div class="message_list">
-		<div class="module_content">
-			<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
-			<p><strong>John Doe</strong></p></div>
-
-		</div>
-	</div>
-	<footer>
-		<form class="post_message">
-			<input type="text" value="Message" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
-			<input type="submit" class="btn_post_message" value=""/>
-		</form>
-	</footer>
-</article>
-<!-- end of messages article -->

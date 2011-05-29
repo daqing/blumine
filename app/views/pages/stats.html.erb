@@ -30,14 +30,12 @@
 
 		<article class="stats_overview">
 			<div class="overview_today">
-				<p class="overview_day">today</p>
 				<p class="overview_count"><%= Project.count %></p>
 				<p class="overview_type"><%= t(:projects) %></p>
 				<p class="overview_count"><%= User.count %></p>
 				<p class="overview_type"><%= t(:people)%></p>
 			</div>
 			<div class="overview_previous">
-				<p class="overview_day">Yesterday</p>
 				<p class="overview_count"><%= Issue.count %></p>
 				<p class="overview_type"><%= t(:issues) %></p>
 				<p class="overview_count"><%= TodoItem.count %></p>

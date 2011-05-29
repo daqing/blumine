@@ -6,19 +6,19 @@
 	<hr/>
   
 
-	<h3>Content</h3>
+	<h3>Task</h3>
 	<ul class="toggle">
-		<li class="icn_new_article"><a href="#">New Article</a></li>
-		<li class="icn_edit_article"><a href="#">Edit Articles</a></li>
-		<li class="icn_categories"><a href="#">Categories</a></li>
-		<li class="icn_tags"><a href="#">Tags</a></li>
-	</ul>
+		<li class="icn_new_article"><a href="#">New Todo</a></li>
+		<!-- <li class="icn_edit_article"><a href="#">Edit Articles</a></li> -->
+		<li class="icn_categories"><a href="#">All Task</a></li>
+		<li class="icn_tags"><a href="#">Task Label</a></li>
+	</ul>   
+	
    
- 	<h3>Users</h3>
+ 	<h3>Team mennber</h3>
 	<ul class="toggle">
-		<li class="icn_add_user"><a href="#">Add New User</a></li>
-		<li class="icn_view_users"><a href="#">View Users</a></li>
-		<li class="icn_profile"><a href="#">Your Profile</a></li>
+		<li class="icn_add_user"><a href="#">Add New menber</a></li>
+		<li class="icn_view_users"><a href="#">View team menber</a></li>
 	</ul>
 
 	<h3><%= link_to t(:all_projects), projects_path, :class => :top %></h3>
@@ -38,17 +38,21 @@
 	
 
 	<h3>
-		<% if current_user.root? %>
-  			<%= link_to t(:sudo), sudo_users_path %>
-		<% end %>
+		Profile
 	</h3>
 	<ul class="toggle">
 		<li class="icn_settings"><%= link_to t(:account_settings) %></li>
-		<li class="icn_security"><%= link_to t(:stats), stats_path %></li>
+		<li class="icn_security"><%= link_to t(:stats), stats_path %></li> 
+		<li class="icn_security"><% if current_user.root? %>
+  			<%= link_to t(:sudo), sudo_users_path %>
+		<% end %>
+		</li>
 		<li class="icn_jump_back"><%= link_to t(:log_out), logout_path %></li>
 	</ul> 
 	
 	<%= render 'layouts/footer' %>
+	
+	<div class="spacer"></div>
 
 </aside>
 <!-- end of sidebar -->

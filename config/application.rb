@@ -35,7 +35,7 @@ module Blumine
     # JavaScript files you want as :defaults (application.js is always included).
     config.action_view.javascript_expansions[:defaults] = %w(jquery.min jquery-ui.min facebox rails tiptip.min.js)
 
-    config.action_view.javascript_expansions[:gollum] = %w(gollum/dialog gollum/placeholder gollum/editor gollum/markdown)
+    config.action_view.javascript_expansions[:gollum] = %w(gollum/dialog gollum/placeholder gollum/editor gollum/markdown) 
 
     # Stylesheet files
     config.action_view.stylesheet_expansions[:gollum] = %w(gollum/editor gollum/dialog gollum/template)

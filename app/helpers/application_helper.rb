@@ -1,4 +1,12 @@
+require "digest/md5"
+
 module ApplicationHelper
+  
+  def url_for_gravatar(email)
+    gravatar_id = Digest::MD5.hexdigest ( email )
+    "http://www.gravatar.com/avatar.php?gravatar_id= #{ gravatar_id }"
+  end
+  
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_session && current_session.record

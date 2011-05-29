@@ -1,41 +1,57 @@
 <article class="module width_full">
-	<header><h3><%= t(:issue_label) %></h3></header>
-		<div class="module_content">
-			<% ['task', 'bug', 'suggestion'].each do |label| %>
-		      <div class="row bg_highlight quiet" <%= 'filtered' if label == @label %> clickable="<%= project_path(@project) %>/label/<%= label %>"><%= t("issue.label.#{label}") %></div>
-		    <% end %>
 
-		</div>
+	<header>
+
+		<h3 class="tabs_involved"><%= @project.name %></h3>
+
+	</header>
+
+	<div class="module_content">
+		<% [:open, :working_on, :paused, :finished, :closed, :reopened, :ignored, :invalid].each do |state_sym| %>
+
+	      <div style="display:inline-block; padding:0 0 15px 0" <%= "filtered" if state_sym.to_s == @issue_state %> clickable="<%= project_path(@project) %>/filter/<%= state_sym.to_s %>">
+	        
+	        <span class="state state-<%= state_sym.to_s %>"><%= Issue.state_name(state_sym) %> <span><%= @project.issues.send("only_#{state_sym.to_s}").count %></span></span>
+	      </div> 
+	
+	    <% end %>
+
+		<%= render @issues.order('created_at DESC') %>
+
+	</div>
+	
+	<footer>
+		<ul class="actions">
+ 			<li><%= link_to t(:new_task), new_project_issue_path(@project) + '/task',:class => :btn  %></li> 
+ 			<li><%= link_to t(:new_bug), new_project_issue_path(@project) + '/bug',:class => :btn  %></li>
+ 			<li><%= link_to t(:new_suggestion), new_project_issue_path(@project) + '/suggestion',:class => :btn  %></li>
+		</ul>
+	</footer>
+
 </article> 
 
 <article class="module width_full">
-	<header><h3><%= t(:issue_state) %></h3></header>
+
+	<header><h3><%= t(:issue_label) %></h3></header>
+		
 		<div class="module_content">
-		    <% [:open, :working_on, :paused, :finished, :closed, :reopened, :ignored, :invalid].each do |state_sym| %>
-		      <div class="row bg_highlight" <%= "filtered" if state_sym.to_s == @issue_state %> clickable="<%= project_path(@project) %>/filter/<%= state_sym.to_s %>">
-		        <span class="quiet span-2"><%= @project.issues.send("only_#{state_sym.to_s}").count %></span>
-		        <span class="state state-<%= state_sym.to_s %>"><%= Issue.state_name(state_sym) %></span>
-		      </div>
+			
+			<% ['task', 'bug', 'suggestion'].each do |label| %>
+		      <div style="display:inline-block; padding:0 0 15px 0" <%= 'filtered' if label == @label %> clickable="<%= project_path(@project) %>/label/<%= label %>"><%= t("issue.label.#{label}") %></div>
 		    <% end %>
 
 		</div>
-</article>       
 
- <article class="module width_full">
-	<header><h3></h3><%= link_to t(:new_task), new_project_issue_path(@project) + '/task' %>
-  &nbsp;&nbsp;
-  <%= link_to t(:new_bug), new_project_issue_path(@project) + '/bug' %>
-  &nbsp;&nbsp;
-  <%= link_to t(:new_suggestion), new_project_issue_path(@project) + '/suggestion' %>
-	</header>
+</article> 
+
+<div class="clear"></div>
+
+    
 
 
-		<div class="module_content">
-				<h1><%= @project.name %></h1>    
-			
-			<%= render_with_spacer 'issue', @issues.order('created_at DESC') %>
 
-		</div>
-</article>
+
+
+
  
 

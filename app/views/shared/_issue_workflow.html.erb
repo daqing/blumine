@@ -1,9 +1,7 @@
-<div class="bar bg-blue">
-  <strong><%= t('issue.workflow.current_state') %></strong>
-  <span class="radius-5 state state-<%= issue.current_state.name.to_s %>"><%= issue.current_state_name %></span>
-</div>
+<header><h3><%= t('issue.workflow.current_state') %> <span class="state state-<%= issue.current_state.name.to_s %>"><%= issue.current_state_name %></span></h3></header>
+
 <% keys = issue.current_state.events.keys %>
-<div class="row">
+<div class="module_content">
   <% if @issue.assigned_user.nil? %>
     <span class="quiet"><%= t(:assign_to_an_user_first) %></span>
   <% elsif current_user.can_change_state? issue %>

@@ -1,28 +1,43 @@
-<h2><%= t(:register) %></h2>
-<%= form_for @user do |f| %>
-  <%= render 'shared/error_messages', :obj => @user %>
-  <div class="field">
-    <%= f.label :name, t(:username) %>
-    <%= f.text_field :name %>
-  </div>
+<header>
+	<h3><%= t(:register) %></h3>
+</header>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
+	<%= form_for @user do |f| %>
 
-  <div class="field">
-    <%= f.label :password, t(:password) %>
-    <%= f.password_field :password %>
-  </div>
+		<div class="module_content"> 
 
-  <div class="field">
-    <%= f.label :password_confirmation, t(:password_confirmation) %>
-    <%= f.password_field :password_confirmation %>
-  </div>
+			<%= render 'shared/error_messages', :obj => @user %>  
+			
+			<fieldset>
+			  <%= f.label :name, t(:username) %>
+			  <%= f.text_field :name %>
+			</fieldset>
 
-  <%= f.submit t(:create_user) %>
-<% end %>
+			<fieldset>
+			  <%= f.label :email %>
+			  <%= f.text_field :email %>
+			</fieldset>
 
-<div class="margin-10">&nbsp;</div>
-<span class="quiet">&lt;&nbsp;</span><%= link_to t(:home), root_path, :class => :action %>
+			<fieldset>
+			  <%= f.label :password, t(:password) %>
+			  <%= f.password_field :password %>
+			</fieldset>
+
+			<fieldset>
+			  <%= f.label :password_confirmation, t(:password_confirmation) %>
+			  <%= f.password_field :password_confirmation %>
+			</fieldset>
+
+
+		</div>
+		<footer>
+			<div class="submit_link">
+				<span class="quiet">&lt;&lt;</span>
+				<%= link_to t(:signin), root_path %>
+				<%= f.submit t(:create_user),:class=>:alt_btn %> 
+			</div>
+
+		</footer>	
+	  
+		<% end %>
+

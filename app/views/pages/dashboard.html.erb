@@ -3,20 +3,22 @@
 
 <article class="activities_box module width_3_quarter">
 
-	<div class="module_content">      
+	<div class="module_content">
+		<div id="feed_box">   
+			
+	  		<%= render 'activities/form' %>
 
-  		<%= render 'activities/form' %>
+			<%= render :partial => 'activities/activity', :collection => Activity.limit(10) %> 
+			
+		</div>      
 
-		<%= render :partial => 'activities/activity', :collection => Activity.limit(10) %> 
 
 	</div>
 
 </article>
-<!-- end of post stutas-->
 
 <article class="module width_quarter">
 
-	<header><h3><%= t(:people) %></h3></header>
 
 	<div class="module_content">
 

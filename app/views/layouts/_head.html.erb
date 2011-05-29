@@ -1,6 +1,5 @@
 <head>
   <title><%= @title + ' - ' if @title %>BluMine</title>
-  <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 
   <!--[if lt IE 8]>
@@ -11,8 +10,13 @@
   <%= stylesheet_link_tag "hack/ie", :media => "screen, projection" %>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->  
-	
-
+  
+  
   <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag ("hideshow.js") %>  
+  <%= javascript_include_tag ("jquery.tablesorter.min.js") %>
+  <%= javascript_include_tag ("jquery.equalHeight.js") %>
+ 
   <%= yield :head_hook %>
 </head>

@@ -1,29 +1,31 @@
-<div class="row">
-  <span class="span-8">
-    <span class="tiptip" title="<%= Issue.state_name(issue.current_state.name) %>">
-      <%= image_tag "state_#{issue.current_state.name.to_s}.png", :align => :absmiddle, :height => 16, :width => 16 %>
-    </span>
-    <%= issue_title_link(issue) %>
-  </span>
-  <span class="quiet small span-2"><%= link_to issue.user.name, issue.user, :class => :plain %></span>
-  <span class="small span-3">
-    <% if issue.assigned_user %>
+<div class="issue_item ui-corner-all">
+	<span class="tiptip" title="<%= Issue.state_name(issue.current_state.name) %>">
+	<%= image_tag "state_#{issue.current_state.name.to_s}.png", :align => :absmiddle, :height => 16, :width => 16 %>
+	</span>
+
+    <%= issue_title_link(issue) %>        
+
+ 	<% comment_count = issue.comments.count %>
+	    <% if comment_count > 0 %>
+	      <%= link_to issue_path(issue) + '#comments' do %>
+	        <%= image_tag 'comments.png', :align => :absmiddle, :width => 16, :height => 16 %>
+	        <%= comment_count %>
+	      <% end %>
+	    <% end %>
+
+	<% if issue.assigned_user %>
       <span class="tiptip" title="<%= t('issue.assignment.assigned_to') + issue.assigned_user.name %>">
         <%= image_tag 'key_small.png', :align => :absmiddle, :height => 12, :width => 12 %>
         <%= link_to issue.assigned_user.name, issue.assigned_user, :class => :plain %>
       </span>
     <% end %>
-  </span>
 
-  <span class="small quiet span-2" style="margin-left: 5px;">
-    <% comment_count = issue.comments.count %>
-    <% if comment_count > 0 %>
-      <%= link_to issue_path(issue) + '#comments' do %>
-        <%= image_tag 'comments.png', :align => :absmiddle, :width => 16, :height => 16 %>
-        <%= comment_count %>
-      <% end %>
-    <% end %>
-  </span>
-  <span class="quiet small"><%= time_ago_in_words(issue.created_at) + t(:ago) %></span>
-  <div class="clear"></div>
-</div>
+	<%= link_to issue.user.name, issue.user, :class => :plain %> 
+
+	<span class="date"><%= time_ago_in_words(issue.created_at) + t(:ago) %></span>
+</div>      
+		     
+
+
+
+

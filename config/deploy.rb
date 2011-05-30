@@ -38,16 +38,20 @@ task :echo, :roles => :web do
   run "echo `hostname`"
 end
 
+def get_branch
+  ENV['branch'] || ENV['br']
+end
+
 namespace :blumine do
   desc "deploy blumine"
   task :deploy do
     puts '** Pushing code to GitHub...'
-    `git push`
+    `git push origin #{get_branch}`
   end
 
   desc "update code from git repo"
   task :update_code do
-    run "cd ~/repo/blumine && git pull"
+    run "cd ~/repo/blumine && git checkout #{get_branch} && git pull origin #{get_branch}:#{get_branch}"
   end
 
   desc "install gems"
@@ -109,6 +113,13 @@ namespace :blumine do
     run <<-CMD
       cd ~/repo/blumine/log/ &&
       RAILS_ENV=production rails runner "#{ENV['cmd']}"
+    CMD
+  end
+
+  desc "switch git branches"
+  task :git_checkout do
+    run <<-CMD
+      cd ~/repo/blumine/ && git checkout #{get_branch}
     CMD
   end
 end

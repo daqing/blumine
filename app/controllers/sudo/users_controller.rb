@@ -8,7 +8,7 @@ class Sudo::UsersController < ApplicationController
 
 
   def index
-    @users = User.all.paginate(:page => params[:page])
+    @users = User.order('created_at DESC').page(params[:page])
   end
 
   def destroy
@@ -23,5 +23,4 @@ class Sudo::UsersController < ApplicationController
       end
     end
   end
-
 end

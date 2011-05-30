@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :must_not_logged_in, :only => [:new, :create]
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def new

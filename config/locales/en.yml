@@ -93,7 +93,7 @@ en:
     label:
       task: Task
       bug: Bug
-      suggestion: Suggestion
+      idea: Idea
 
   image:
     upload: Upload Images
@@ -141,7 +141,10 @@ en:
 
   activity:
     create_project: created a project
-    create_issue: created an issue
+    create_issue:
+      idea: added idea
+      task: created task
+      bug: reported bug
     in_project: in project %{url}
     assigned_issue_to: assigned %{issue_url} to %{user_url}
     changed_issue_state_as: changed %{issue_url}'s state to %{state}
@@ -150,7 +153,7 @@ en:
   no_items_right_now: No data to display
   new_task: New Task
   new_bug: Submit Bug
-  new_suggestion: New Suggestion
+  new_idea: Submit Idea
 
   issue_label: Labels
 
@@ -168,6 +171,13 @@ en:
   team: Team
   profile: Profile
   all_members: Members
+
+  project:
+    ideas: Ideas
+    tasks: Tasks
+    bugs: Bugs
+    docs: Docs
+    milestones: Milestones
 
   views:
     pagination:

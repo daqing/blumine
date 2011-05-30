@@ -3,17 +3,17 @@
 
   <% case activity.event_name %>
   <% when 'create_project' %>
-    <%= image_tag 'folder.png', :align => :absmiddle, :width => 16, :height => 16 %>
+    <%= icon 'folder' %>
   <% when 'create_issue' %>
-    <%= image_tag 'pencil.png', :align => :absmiddle, :width => 16, :height => 16 %>
+    <%= icon activity.data['label'] %>
   <% when 'create_comment' %>
-    <%= image_tag 'comments.png', :align => :absmiddle, :width => 16, :height => 16 %>
+    <%= icon 'comments' %>
   <% when 'change_issue_state' %>
-    <%= image_tag 'gear.png', :align => :absmiddle, :width => 16, :height => 16 %>
+    <%= icon 'gear' %>
   <% when 'assign_issue' %>
-    <%= image_tag 'key.png', :align => :absmiddle, :width => 16, :height => 16 %>
+    <%= icon 'key' %>
   <% when 'chat' %>
-    <%= image_tag 'chat.png', :align => :absmiddle, :width => 16, :height => 16 %>
+    <%= icon 'chat' %>
   <% end %>
 
   <%=raw format_activity(activity) %>

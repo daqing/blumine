@@ -7,6 +7,10 @@ module ApplicationHelper
     image_tag url, options
   end
 
+  def icon(name)
+    image_tag "#{name}.png", :height => 16, :width => 16, :align => :absmiddle
+  end
+
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_session && current_session.record
@@ -94,11 +98,7 @@ module ApplicationHelper
   end
 
   def issue_title_link(issue, *css_class)
-    if issue.label.blank?
-      title = issue.title
-    else
-      title = "[#{t("issue.label.#{issue.label}")}] #{issue.title}"
-    end
+    title = issue.title
 
     max_length = 15
     if title.mb_chars.length > max_length
@@ -119,10 +119,11 @@ module ApplicationHelper
                                 :class => 'plain'
                                )
                        )
+        locale_str = "activity.create_issue.#{activity.data['label']}"
         if I18n.locale == :zh
-          "#{project_url}#{t('activity.create_issue')} #{issue_url}"
+          "#{project_url}#{t(locale_str)} #{issue_url}"
         else
-          "#{t('activity.create_issue')} #{issue_url} #{project_url}"
+          "#{t(locale_str)} #{issue_url} #{project_url}"
         end
       when 'assign_issue'
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)

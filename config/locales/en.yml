@@ -109,7 +109,7 @@ en:
     no_issue_found: Nothing found
 
   account: Account
-  account_settings: Account setting
+  account_settings: Settings
   default_locale: Locale
 
   role:
@@ -167,3 +167,4 @@ en:
 
   team: Team
   profile: Profile
+  all_members: Members

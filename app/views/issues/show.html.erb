@@ -34,15 +34,6 @@
   <%= render 'shared/issue_assignment', :issue => @issue %>
 </article>
 
-<% if @issue.milestone %>
-  <article class="module width_quarter">
-    <header><h3><%= t(:milestone) %></h3></header>
-    <div class="module_content">
-      <%= link_to @issue.milestone.name, project_path(@issue.project) + '#milestones' %>
-    </div>
-  </article>
-<% end %>
-
 <% if current_user.can_manage_todo? @issue %>
   <% content_for :on_ready_hook do %>
       $("input[type=checkbox]").live('change', function() {
@@ -96,5 +87,14 @@
     </div>
   </div>
 </div>
+
+<% if @issue.milestone %>
+  <article class="module width_quarter">
+    <header><h3><%= t(:milestone) %></h3></header>
+    <div class="module_content">
+      <%= link_to @issue.milestone.name, project_path(@issue.project) + '#milestones' %>
+    </div>
+  </article>
+<% end %>
 
 <div class="spacer clear"></div>

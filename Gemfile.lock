@@ -57,6 +57,8 @@ GEM
     jquery-rails (0.2.7)
       rails (~> 3.0)
       thor (~> 0.14.4)
+    kaminari (0.12.4)
+      rails (>= 3.0.0)
     linecache (0.43)
     mail (2.2.19)
       activesupport (>= 2.3.6)
@@ -107,7 +109,6 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.27)
-    will_paginate (3.0.pre)
     workflow (0.8.0)
 
 PLATFORMS
@@ -123,11 +124,11 @@ DEPENDENCIES
   carrierwave
   ferret
   jquery-rails (>= 0.2.6)
+  kaminari
   rails (= 3.0.7)
   redcarpet
   rmmseg-cpp
   ruby-debug
   sqlite3
   thin
-  will_paginate
   workflow

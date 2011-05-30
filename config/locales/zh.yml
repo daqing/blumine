@@ -170,3 +170,11 @@ zh:
   team: 团队
   profile: 账号
   all_members: 所有成员
+
+  views:
+    pagination:
+      first: 首页
+      previous: 上页
+      next: 下页
+      truncate: ...
+      last: 末页

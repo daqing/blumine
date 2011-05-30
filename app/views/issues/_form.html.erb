@@ -5,32 +5,35 @@
 <% end %>
 
 <%= form_for [@project, @issue] do |f| %>
-<div class="module_content">
+  <div class="module_content">
+    <%= render 'shared/error_messages', :obj => @issue %>
+    <fieldset>
+      <%= f.label :title, t(:title) %>
+      <%= f.text_field :title %>
+    </fieldset> 
 
-  	<%= render 'shared/error_messages', :obj => @issue %>
+    <fieldset>
+      <%= f.label :milestone, t(:milestone) %>
+      <%= f.select :milestone_id, options_for_select(
+        @project.milestones.collect { |m| [m.name, m.id] }.unshift([t(:empty_option), 0]),
+        @issue.milestone ? @issue.milestone.id : 0
+      ) %>
+    </fieldset> 
 
-  	<fieldset>
-		<%= f.label :title, t(:title) %>
-	    <%= f.text_field :title %>
-	</fieldset> 
+    <fieldset>
+      <iframe name="upload_image" src="<%= new_image_path %>"></iframe>
+    </fieldset>   
 
-  	<fieldset>
-		<iframe name="upload_image" src="<%= new_image_path %>"></iframe>
-	</fieldset>   
+    <fieldset>
+      <%= f.label :content, t(:content) %>
+      <%= render :partial => 'shared/editor', :locals => {:name => 'issue[content]', :content => @issue.content} %>  
+    </fieldset>   
 
-  	<fieldset>
-	    <%= f.label :content, t(:content) %>
-	    <%= render :partial => 'shared/editor', :locals => {:name => 'issue[content]', :content => @issue.content} %>  
-	</fieldset>   
-
-  	<%= f.hidden_field :label, :value => @label %>
-
-</div>
-<footer>
-	<div class="submit_link">
-		<%= f.submit t(:save), :class => :alt_btn %>
-		</div>
-</footer>
+    <%= f.hidden_field :label, :value => @label %>
+  </div>
+  <footer>
+    <div class="submit_link">
+      <%= f.submit t(:save), :class => :alt_btn %>
+    </div>
+  </footer>
 <% end %>
-
-

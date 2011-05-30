@@ -40,9 +40,7 @@ class UsersControllerTest < ActionController::TestCase
     assert assigns(:user)
     assert assigns(:title)
 
-    assert_select "h1.silver"
-    assert_select "div.row"
-    assert_select ".b-box div.bar"
+    assert_select '.module header h3'
   end
 
   test "should redirect to login path when not logged in" do

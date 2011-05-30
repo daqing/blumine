@@ -38,7 +38,7 @@ class ProjectsControllerTest < ActionController::TestCase
     assert assigns(:projects)
     assert assigns(:title)
 
-    assert_select "h1.silver"
+    assert_select '.module header h3'
   end
 
   test "should redirect to login path if get index" do

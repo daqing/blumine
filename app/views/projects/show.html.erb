@@ -1,18 +1,14 @@
 <article class="module width_full">
   <header>
     <h3 class="tabs_involved">
-      <%= icon 'idea' %>
-      <%= t('project.ideas') %>
+      <%= icon 'milestone' %>
+      <%= t('project.milestones') %>
     </h3>
   </header>
+  <a name="milestones" href=""></a>
   <div class="module_content">
-    <%= render @project.issues.where(['label = ?', 'idea']).limit(10) %>
+    <%= render @project.milestones %>
   </div>
-  <footer>
-    <ul class="actions">
-       <li><%= link_to t(:new_idea), new_project_issue_path(@project) + '/idea', :class => :btn %></li>
-    </ul>
-  </footer>
 </article>
 
 <article class="module width_full">
@@ -22,6 +18,7 @@
       <%= t('project.tasks') %>
     </h3>
   </header>
+  <a name="tasks" href=""></a>
   <div class="module_content">
     <%= render @project.issues.where(['label = ?', 'task']).limit(10) %>
   </div>
@@ -39,6 +36,7 @@
       <%= t('project.bugs') %>
     </h3>
   </header>
+  <a name="bugs" href=""></a>
   <div class="module_content">
     <%= render @project.issues.where(['label = ?', 'bug']).limit(10) %>
   </div>
@@ -52,26 +50,33 @@
 <article class="module width_full">
   <header>
     <h3 class="tabs_involved">
-      <%= icon 'doc' %>
-      <%= t('project.docs') %>
+      <%= icon 'idea' %>
+      <%= t('project.ideas') %>
     </h3>
   </header>
+  <a name="ideas" href=""></a>
   <div class="module_content">
-    <p><%= t(:no_items_right_now) %></p>
+    <%= render @project.issues.where(['label = ?', 'idea']).limit(10) %>
   </div>
+  <footer>
+    <ul class="actions">
+       <li><%= link_to t(:new_idea), new_project_issue_path(@project) + '/idea', :class => :btn %></li>
+    </ul>
+  </footer>
 </article>
 
 <article class="module width_full">
   <header>
     <h3 class="tabs_involved">
-      <%= icon 'milestone' %>
-      <%= t('project.milestones') %>
+      <%= icon 'doc' %>
+      <%= t('project.docs') %>
     </h3>
   </header>
-
+  <a name="docs" href=""></a>
   <div class="module_content">
-    <%= render @project.milestones %>
+    <p><%= t(:no_items_right_now) %></p>
   </div>
 </article>
+
 
 <div class="clear"></div>

@@ -70,6 +70,7 @@ class IssuesControllerTest < ActionController::TestCase
     issue = Issue.new(:title => "foobar")
     issue.project = projects(:blumine)
     issue.user = users(:daqing)
+    issue.label = 'task'
 
     assert issue.save
     assert_equal issue.content, issue.default_content
@@ -159,7 +160,7 @@ class IssuesControllerTest < ActionController::TestCase
 
   private
     def create_issue
-      post :create, :project_id => @project.id, :issue => {:title => "test", :content => "foobar"}
+      post :create, :project_id => @project.id, :issue => {:title => "test", :content => "foobar", :label => 'idea'}
     end
 
     def assign_issue

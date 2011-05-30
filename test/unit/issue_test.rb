@@ -5,7 +5,7 @@ class IssueTest < ActiveSupport::TestCase
     @issue = Issue.new
   end
 
-  test "title and content are required" do
+  test "required fields" do
     assert ! @issue.save
 
     @issue.title = "foobar"
@@ -17,6 +17,9 @@ class IssueTest < ActiveSupport::TestCase
     @issue.project_id = 1
     @issue.user_id = 1
 
+    assert ! @issue.save
+
+    @issue.label = 'idea'
     assert @issue.save
   end
 

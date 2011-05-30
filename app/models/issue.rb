@@ -63,8 +63,11 @@ class Issue < ActiveRecord::Base
 
   before_validation :set_default_content
 
+  attr_protected :label
+
   validates :title, :content, :presence => true
   validates :user_id, :project_id, :presence => true
+  validates :label, :presence => true, :on => :create
 
   def self.all_states
     [:open, :working_on, :paused, :finished, :closed, :reopened]

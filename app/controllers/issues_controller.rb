@@ -54,6 +54,7 @@ class IssuesController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @issue = @project.issues.new(params[:issue])
+    @issue.label = params[:issue][:label]
     @issue.user = current_user 
     if @issue.save
       Activity.create!(:user_id => current_user.id,

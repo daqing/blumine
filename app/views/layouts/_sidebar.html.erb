@@ -11,13 +11,13 @@
     <li class="icn_categories"><a href="#">All Task</a></li>
     <li class="icn_tags"><a href="#">Task Label</a></li>
   </ul>
+  -->
 
   <h3><%= t(:team) %></h3>
   <ul class="toggle">
-    <li class="icn_add_user"><a href="#">Add New menber</a></li>
-    <li class="icn_view_users"><a href="#">View team menber</a></li>
+    <li class="icn_view_users"><%= link_to t(:all_members), users_path %></li>
+    <!--<li class="icn_add_user"><a href="#">Add New menber</a></li>-->
   </ul>
-  -->
 
   <h3><%= link_to t(:projects), projects_path, :class => :top %></h3>
   <ul class="toggle">

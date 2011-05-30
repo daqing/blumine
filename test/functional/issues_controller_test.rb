@@ -52,13 +52,12 @@ class IssuesControllerTest < ActionController::TestCase
     assert assigns(:todo_item)
     assert assigns(:title)
 
-    assert_select "h2.title"
-    assert_select "span.tip"
+    assert_select ".module header h3"
     assert_select "#todo_list_box"
     assert_select "div#issue_comments"
     assert_select "div#add_comment_form"
-    assert_select "div#issue_workflow_box"
-    assert_select "div#issue_assignment"
+    assert_select "article#issue_workflow_box"
+    assert_select "article#issue_assignment"
   end
 
   test "should change workflow state" do
@@ -150,7 +149,7 @@ class IssuesControllerTest < ActionController::TestCase
     get :search, :keyword => 'foo'
 
     assert_response :success
-    assert_select 'h1.silver'
+    assert_select '.module header h3'
   end
 
   test "should get autocomplete" do

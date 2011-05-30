@@ -311,3 +311,4 @@ blockquote { font-weight:normal; background: url('../images/bg_blockquote.png') 
 span.current { font-style: italic; }
 span.quiet { color: #999; }
 span.small { font-size: smaller; margin-left: 10px; }
+.hide { display: none; }

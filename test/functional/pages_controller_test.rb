@@ -15,8 +15,7 @@ class PagesControllerTest < ActionController::TestCase
     log_in(:daqing)
     get :index
     assert_response :success
-    assert_select "h1.silver"
-    assert_select "#sidebar div.bar"
+    assert_select "form.new_activity"
   end
 
   test "root path should be routed to index action" do
@@ -27,7 +26,6 @@ class PagesControllerTest < ActionController::TestCase
     log_in(:daqing)
     get :index
     assert_equal 1, css_select('input#search').size
-    assert_equal 1, css_select('div#shortcut').size
   end
 
   test "user logged out should not see the search & shortcut bar" do
@@ -45,6 +43,6 @@ class PagesControllerTest < ActionController::TestCase
     log_in(:daqing)
     get :stats
     assert_response :success
-    assert_select 'h1.silver'
+    assert_select '.module header h3'
   end
 end

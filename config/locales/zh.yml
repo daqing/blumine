@@ -94,7 +94,7 @@ zh:
     label:
       task: 任务
       bug: 错误 
-      suggestion: 建议
+      idea: 想法
 
   image:
     upload: 上传图片
@@ -142,7 +142,11 @@ zh:
 
   activity:
     create_project: 创建了新项目
-    create_issue: 创建了新任务
+    create_issue:
+      idea: 添加了想法
+      task: 创建了任务
+      bug: 报告了错误
+
     in_project: 在项目 %{url} 中
     assigned_issue_to: 把 %{issue_url} 分配给了 %{user_url}
     changed_issue_state_as: 把 %{issue_url} 的状态修改为 %{state}
@@ -151,7 +155,7 @@ zh:
   no_items_right_now: 暂时没有任何数据
   new_task: 创建任务
   new_bug: 报告错误
-  new_suggestion: 提交建议
+  new_idea: 添加想法
 
   issue_label: 类型
 
@@ -170,6 +174,13 @@ zh:
   team: 团队
   profile: 账号
   all_members: 所有成员
+
+  project:
+    ideas: 想法
+    tasks: 任务
+    bugs: 错误
+    docs: 文档
+    milestones: 里程碑
 
   views:
     pagination:

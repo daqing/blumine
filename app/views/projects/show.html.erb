@@ -1,36 +1,77 @@
 <article class="module width_full">
-	<header>
-		<h3 class="tabs_involved"><%= @project.name %></h3>
-	</header>
+  <header>
+    <h3 class="tabs_involved">
+      <%= icon 'idea' %>
+      <%= t('project.ideas') %>
+    </h3>
+  </header>
+  <div class="module_content">
+    <%= render @project.issues.where(['label = ?', 'idea']).limit(10) %>
+  </div>
+  <footer>
+    <ul class="actions">
+       <li><%= link_to t(:new_idea), new_project_issue_path(@project) + '/idea', :class => :btn %></li>
+    </ul>
+  </footer>
+</article>
 
-	<div class="module_content">
-		<% [:open, :working_on, :paused, :finished, :closed, :reopened].each do |state_sym| %>
-	      <div style="display:inline-block; padding:0 0 15px 0" <%= "filtered" if state_sym.to_s == @issue_state %>">
-	        <span class="state state-<%= state_sym.to_s %>"><%= Issue.state_name(state_sym) %> <span><%= @project.issues.send("only_#{state_sym.to_s}").count %></span></span>
-	      </div> 
-	  <% end %>
-
-		<%= render @project.issues.order('created_at DESC') %>
-	</div>
-	
-	<footer>
-		<ul class="actions">
- 			<li><%= link_to t(:new_task), new_project_issue_path(@project) + '/task',:class => :btn  %></li> 
- 			<li><%= link_to t(:new_bug), new_project_issue_path(@project) + '/bug',:class => :btn  %></li>
- 			<li><%= link_to t(:new_suggestion), new_project_issue_path(@project) + '/suggestion',:class => :btn  %></li>
-		</ul>
-	</footer>
-</article> 
-
-<!--
 <article class="module width_full">
-	<header><h3><%= t(:issue_label) %></h3></header>
-		<div class="module_content">
-			<% ['task', 'bug', 'suggestion'].each do |label| %>
-		      <div style="display:inline-block; padding:0 0 15px 0" <%= 'filtered' if label == @label %> clickable="<%= project_path(@project) %>/label/<%= label %>"><%= t("issue.label.#{label}") %></div>
-		  <% end %>
-		</div>
-</article> 
--->
+  <header>
+    <h3 class="tabs_involved">
+      <%= icon 'task' %>
+      <%= t('project.tasks') %>
+    </h3>
+  </header>
+  <div class="module_content">
+    <%= render @project.issues.where(['label = ?', 'task']).limit(10) %>
+  </div>
+  <footer>
+    <ul class="actions">
+       <li><%= link_to t(:new_task), new_project_issue_path(@project) + '/task', :class => :btn %></li>
+    </ul>
+  </footer>
+</article>
+
+<article class="module width_full">
+  <header>
+    <h3 class="tabs_involved">
+      <%= icon 'bug' %>
+      <%= t('project.bugs') %>
+    </h3>
+  </header>
+  <div class="module_content">
+    <%= render @project.issues.where(['label = ?', 'bug']).limit(10) %>
+  </div>
+  <footer>
+    <ul class="actions">
+       <li><%= link_to t(:new_bug), new_project_issue_path(@project) + '/bug', :class => :btn %></li>
+    </ul>
+  </footer>
+</article>
+
+<article class="module width_full">
+  <header>
+    <h3 class="tabs_involved">
+      <%= icon 'doc' %>
+      <%= t('project.docs') %>
+    </h3>
+  </header>
+  <div class="module_content">
+    <p><%= t(:no_items_right_now) %></p>
+  </div>
+</article>
+
+<article class="module width_full">
+  <header>
+    <h3 class="tabs_involved">
+      <%= icon 'milestone' %>
+      <%= t('project.milestones') %>
+    </h3>
+  </header>
+
+  <div class="module_content">
+    <%= render @project.milestones %>
+  </div>
+</article>
 
 <div class="clear"></div>

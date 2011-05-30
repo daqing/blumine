@@ -62,7 +62,7 @@ class IssuesController < ApplicationController
                        :target_id => @issue.id,
                        :related_id => @project.id,
                        :related_type => 'Project',
-                       :data => {:title => @issue.title, :related_name => @project.name}
+                       :data => {:title => @issue.title, :related_name => @project.name, :label => @issue.label}
                       )
       redirect_to @issue
     else

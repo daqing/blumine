@@ -175,6 +175,8 @@ zh:
   profile: 账号
   all_members: 所有成员
 
+  access_denied: 您没有权限访问此页面
+
   project:
     ideas: 想法
     tasks: 任务

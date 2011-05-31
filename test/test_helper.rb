@@ -15,12 +15,21 @@ class ActiveSupport::TestCase
 
   def log_in(user_sym)
     activate_authlogic
-    UserSession.create(users(user_sym))
+    @user = users(user_sym)
+    UserSession.create(@user)
+    load_ability(@user)
   end
 
   def log_out
     activate_authlogic
     UserSession.find.destroy
+  end
+
+  def relog_in(user_sym)
+    log_out
+    @current_ability = nil
+    @user = nil
+    log_in(user_sym)
   end
 
   def register_as_foobar
@@ -39,6 +48,10 @@ class ActiveSupport::TestCase
         klass.send("format_feed_#{key}", nil, nil, nil)
       end
     end
+  end
+
+  def load_ability(user)
+    @ability = Ability.new(user)
   end
 
 end

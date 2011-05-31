@@ -3,10 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
   before_filter :count_unread_teamtalk
+  before_filter :add_initial_breadcrumbs
 
   protect_from_forgery
-
-  before_filter :add_initial_breadcrumbs
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = t(:access_denied)
+    redirect_to root_path
+  end
 
   private
     def add_initial_breadcrumbs

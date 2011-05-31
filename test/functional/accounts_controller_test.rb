@@ -28,4 +28,11 @@ class AccountsControllerTest < ActionController::TestCase
 
     assert_equal new_locale, current_user.locale
   end
+
+  test "role can not be updated via form" do
+    relog_in(:two)
+    assert current_user.role == 'Developer'
+    post :update, :user => {:role => 'Developer'}
+    assert current_user.role == 'Developer'
+  end
 end

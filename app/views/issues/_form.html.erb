@@ -10,7 +10,17 @@
     <fieldset>
       <%= f.label :title, t(:title) %>
       <%= f.text_field :title %>
-    </fieldset> 
+    </fieldset>
+
+    <fieldset>
+      <%= f.label :content, t(:content) %>
+      <%= render :partial => 'shared/editor', :locals => {:name => 'issue[content]', :content => @issue.content} %>
+    </fieldset>
+
+    <!-- TODO: Use flash plugin to upload files -->
+    <fieldset>
+      <iframe name="upload_image" src="<%= new_image_path %>"></iframe>
+    </fieldset>
 
     <fieldset>
       <%= f.label :milestone, t(:milestone) %>
@@ -18,16 +28,7 @@
         @project.milestones.collect { |m| [m.name, m.id] }.unshift([t(:empty_option), 0]),
         @issue.milestone ? @issue.milestone.id : 0
       ) %>
-    </fieldset> 
-
-    <fieldset>
-      <iframe name="upload_image" src="<%= new_image_path %>"></iframe>
-    </fieldset>   
-
-    <fieldset>
-      <%= f.label :content, t(:content) %>
-      <%= render :partial => 'shared/editor', :locals => {:name => 'issue[content]', :content => @issue.content} %>  
-    </fieldset>   
+    </fieldset>
 
     <%= f.hidden_field :label, :value => @label %>
   </div>

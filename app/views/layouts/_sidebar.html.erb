@@ -19,11 +19,11 @@
     <!--<li class="icn_add_user"><a href="#">Add New menber</a></li>-->
   </ul>
 
-  <h3><%= link_to t(:projects), projects_path, :class => :top %></h3>
+  <h3><%= t(:projects) %><%= link_to new_project_path do icon('add') end %></h3>
   <ul class="toggle">
     <% Project.all.each do |p| %>
       <li class="icn_tags" clickable="<%= project_path(p) %>"><%= link_to p.name, p %></li>
-        <% end %>
+    <% end %>
   </ul>
 
   <!--

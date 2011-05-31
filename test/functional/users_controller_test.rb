@@ -54,4 +54,5 @@ class UsersControllerTest < ActionController::TestCase
       delete :destroy, :id => users(:daqing).id
     end
   end
+
 end

@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def root?
-    self.id == 1
+    self.id == 1 || self.role == 'root'
   end
 
   def can_assign_issue?(issue)

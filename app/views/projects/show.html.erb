@@ -24,7 +24,7 @@
   </div>
   <footer>
     <ul class="actions">
-       <li><%= link_to t(:new_task), new_project_issue_path(@project) + '/task', :class => :btn %></li>
+      <li><%= link_to new_project_issue_path(@project) + '/task', :class => :btn do icon('add') + t(:new_task) end %></li>
     </ul>
   </footer>
 </article>
@@ -42,7 +42,7 @@
   </div>
   <footer>
     <ul class="actions">
-       <li><%= link_to t(:new_bug), new_project_issue_path(@project) + '/bug', :class => :btn %></li>
+      <li><%= link_to new_project_issue_path(@project) + '/bug', :class => :btn do icon('add') + t(:new_bug) end %></li>
     </ul>
   </footer>
 </article>
@@ -60,7 +60,7 @@
   </div>
   <footer>
     <ul class="actions">
-       <li><%= link_to t(:new_idea), new_project_issue_path(@project) + '/idea', :class => :btn %></li>
+      <li><%= link_to new_project_issue_path(@project) + '/idea', :class => :btn do icon('add') + t(:new_idea) end %></li>
     </ul>
   </footer>
 </article>
@@ -77,6 +77,5 @@
     <p><%= t(:no_items_right_now) %></p>
   </div>
 </article>
-
 
 <div class="clear"></div>

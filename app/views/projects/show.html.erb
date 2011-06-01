@@ -7,7 +7,7 @@
   </header>
   <a name="milestones" href=""></a>
   <div class="module_content">
-    <%= render @project.milestones, :can_delete => current_user.root?, :project => @project %>
+    <%= render @project.milestones, :is_root => current_user.root?, :project => @project %>
   </div>
   <footer>
     <ul class="actions">

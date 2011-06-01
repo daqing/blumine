@@ -1,5 +1,8 @@
 <h4 class="bg_highlight" style="padding:3px;">
   <%= milestone.name %><span class="quiet small">(<%= milestone.due_date %>)</span>
-  <%= link_to t(:delete), project_milestone_path(project, milestone), :class => :hide, :method => :delete, :confirm => t(:delete_confirm) if can_delete %>
+  <% if is_root %>
+    <%= link_to t(:edit), edit_project_milestone_path(project, milestone), :class => :hide %>
+    <%= link_to t(:delete), project_milestone_path(project, milestone), :class => :hide, :method => :delete, :confirm => t(:delete_confirm) %>
+  <% end %>
 </h4>
 <%= render milestone.issues %>

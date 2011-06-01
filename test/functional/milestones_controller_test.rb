@@ -22,7 +22,7 @@ class MilestonesControllerTest < ActionController::TestCase
     assert_select 'form.new_milestone'
   end
 
-  test "should get create" do
+  test "should create milestone" do
     assert_difference('Milestone.count') do
       post :create, :project_id => @project.id, :milestone => {:name => 'foobar', :due_date => '2010-05-22'}
     end
@@ -30,16 +30,57 @@ class MilestonesControllerTest < ActionController::TestCase
     assert_redirected_to project_path(assigns(:project))
   end
 
+  test "root can get edit" do
+    edit_milestone
+    assert_response :success
+    assert_select 'form.edit_milestone'
+  end
+
+  test "other users cannot get edit" do
+    relog_in(:two)
+    edit_milestone
+    assert flash[:error]
+    assert_redirected_to root_path
+  end
+
+  test "root can update milestone" do
+    new_name = 'foobar'
+    update_milestone(new_name)
+    assert_redirected_to @project
+    assert_equal new_name, assigns(:milestone).name
+  end
+
+  test "others cannot update milestone" do
+    relog_in(:two)
+    new_name = 'foobar'
+    update_milestone(new_name)
+    assert flash[:error]
+    assert_redirected_to root_path
+  end
+
   test "root can delete milestone" do
     assert_difference('Milestone.count', -1) do
-      post :destroy, :id => @milestone.id, :project_id => @project.id
+      destroy_milestone
     end
     assert_redirected_to @project
   end
 
   test "other users cannot delete milestone" do
     relog_in(:two)
-    post :destroy, :id => @milestone.id, :project_id => @project.id
+    destroy_milestone
     assert flash[:error]
   end
+
+  private
+    def edit_milestone
+      get :edit, :id => @milestone.id, :project_id => @project.id
+    end
+
+    def update_milestone(new_name)
+      post :update, :id => @milestone.id, :project_id => @project.id, :milestone => {:name => new_name}
+    end
+
+    def destroy_milestone
+      post :destroy, :id => @milestone.id, :project_id => @project.id
+    end
 end

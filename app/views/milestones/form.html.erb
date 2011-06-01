@@ -7,7 +7,7 @@
 <% end %>
 
 <article class="module width_3_quarter">
-  <header><h3><%= t(:create_milestone) %></h3></header>
+  <header><h3><%= t(@action_name) %></h3></header>
   <div class="module_content">
     <%= form_for [@project, @milestone] do |f| %>
       <%= render 'shared/error_messages', :obj => f.object %>

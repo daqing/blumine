@@ -23,7 +23,6 @@ daqing:
   salt: <%= salt = Authlogic::Random.hex_token %>
   encrypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("foobar" + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>
-  role: root
 
 two:
   name: two
@@ -31,5 +30,4 @@ two:
   salt: <%= salt = Authlogic::Random.hex_token %>
   encrypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("foobar" + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>
-  role: Developer
 

@@ -171,8 +171,6 @@ en:
   team: Team
   profile: Profile
   all_members: Members
-  
-  access_denied: You are not authorized to access this page.
 
   project:
     ideas: Ideas

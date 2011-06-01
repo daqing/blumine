@@ -23,14 +23,6 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_redirected_to project_path(assigns(:project))
   end
 
-  test "only root can create project" do
-    relog_in(:two)
-    assert ! current_user.root?
-    get :new
-    assert flash[:error]
-    assert_redirected_to root_path
-  end
-
   test "should get show" do
     get :show, :id => projects(:blumine).id
     assert_response :success

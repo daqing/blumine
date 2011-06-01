@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
   before_filter :must_login_first
-  authorize_resource
 
   def index
     @projects = Project.all

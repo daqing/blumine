@@ -17,7 +17,6 @@ gem 'rmmseg-cpp'
 gem 'ferret'
 gem 'capistrano'
 gem 'kaminari'
-gem 'cancan'
 
 # Use unicorn as the web server
 # gem 'unicorn'

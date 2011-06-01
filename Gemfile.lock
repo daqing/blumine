@@ -37,7 +37,6 @@ GEM
     breadcrumbs (0.1.6)
       i18n
     builder (2.1.2)
-    cancan (1.6.5)
     capistrano (2.5.21)
       highline
       net-scp (>= 1.0.0)
@@ -121,7 +120,6 @@ DEPENDENCIES
   annotate-models
   authlogic
   breadcrumbs
-  cancan
   capistrano
   carrierwave
   ferret

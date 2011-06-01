@@ -23,6 +23,11 @@ class ActiveSupport::TestCase
     UserSession.find.destroy
   end
 
+  def relog_in(user_sym)
+    log_out
+    log_in(user_sym)
+  end
+
   def register_as_foobar
     post "/users", :user => {:name => "foobar",
       :email => "foobar@demo.com", :password => "help",

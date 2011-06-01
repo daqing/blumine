@@ -77,7 +77,7 @@ class CommentsControllerTest < ActionController::TestCase
     end
 
     def assert_no_priviledge
-      assert flash[:notice]
+      assert flash[:error]
       assert_redirected_to root_path
     end
 

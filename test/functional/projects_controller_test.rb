@@ -60,7 +60,7 @@ class ProjectsControllerTest < ActionController::TestCase
     end
   end
 
-  test "only root can delete projects" do
+  test "root can delete projects" do
     assert_difference('Project.count', -1) do
       post :destroy, :id => projects(:blumine).id
     end

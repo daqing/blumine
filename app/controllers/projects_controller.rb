@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :must_login_first
+  before_filter :root_required, :only => :destroy
 
   def index
     @projects = Project.all
@@ -42,11 +43,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    unless current_user.root?
-      flash[:error] = t(:access_denied)
-      redirect_to root_path and return
-    end
-
     @project = Project.find(params[:id])
     if @project.destroy
       redirect_to root_path

@@ -1,6 +1,6 @@
 <article class="module width_full">
-	<header><h3><%= t("new_#{@label}") %></h3></header>
-		<%= render 'form' %>
+	<header><h3><%= icon(@label) + t("new_#{@label}") %></h3></header>
+	<%= render 'form' %>
 </article>
 
 <div class="spacer"></div>   

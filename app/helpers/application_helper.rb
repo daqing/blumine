@@ -53,8 +53,12 @@ module ApplicationHelper
     redirect_to_root_when_no_permission unless creator_of? obj
   end
 
+  def root_required
+    redirect_to_root_when_no_permission unless current_user.root?
+  end
+
   def redirect_to_root_when_no_permission
-    flash[:notice] = t('permission.no_permission')
+    flash[:error] = t('access_denied')
     redirect_to root_path
   end
 

@@ -13,12 +13,13 @@
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
+<% today = Date.today %>
 one:
-  project_id: 1
-  name: MyString
-  due_date: 2011-05-20
+  project: blumine
+  name: beta release
+  due_date: <%= (today + 20).to_s %>
 
 two:
-  project_id: 1
-  name: MyString
-  due_date: 2011-05-20
+  project: blumine
+  name: 1.0
+  due_date: <%= (today + 99).to_s %>

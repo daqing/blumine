@@ -6,18 +6,22 @@
   $("#milestone_due_date").datepicker();
 <% end %>
 
-<h1><%= t(:create_milestone) %></h1>
-<%= form_for [@project, @milestone] do |f| %>
-  <%= render 'shared/error_messages', :obj => f.object %>
-  <div class="field">
-    <%= f.label :name, t(:name) %>
-    <%= f.text_field :name %>
-  </div>
+<article class="module width_3_quarter">
+  <header><h3><%= t(:create_milestone) %></h3></header>
+  <div class="module_content">
+    <%= form_for [@project, @milestone] do |f| %>
+      <%= render 'shared/error_messages', :obj => f.object %>
+      <fieldset>
+        <%= f.label :name, t(:name) %>
+        <%= f.text_field :name %>
+      </fieldset>
 
-  <div class="field">
-    <%= f.label :due_date, t(:due_date) %>
-    <%= f.text_field :due_date %>
-  </div>
+      <fieldset>
+        <%= f.label :due_date, t(:due_date) %>
+        <%= f.text_field :due_date %>
+      </fieldset>
 
-  <%= f.submit t(:save) %>
-<% end %>
+      <%= f.submit t(:save) %>
+    <% end %>
+  </div>
+</article>

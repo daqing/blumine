@@ -111,7 +111,7 @@ class IssuesControllerTest < ActionController::TestCase
 
     @issue.close!
     get :edit, :id => @issue.id
-    assert flash[:notice]
+    assert flash[:error]
     assert_redirected_to root_path
   end
 

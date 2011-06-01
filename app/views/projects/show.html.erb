@@ -7,8 +7,13 @@
   </header>
   <a name="milestones" href=""></a>
   <div class="module_content">
-    <%= render @project.milestones %>
+    <%= render @project.milestones, :can_delete => current_user.root?, :project => @project %>
   </div>
+  <footer>
+    <ul class="actions">
+      <li><%= link_to new_project_milestone_path(@project), :class => :btn do icon('add') + t(:new_milestone) end %></li>
+    </ul>
+  </footer>
 </article>
 
 <article class="module width_full">

@@ -60,6 +60,20 @@ class ProjectsControllerTest < ActionController::TestCase
     end
   end
 
+  test "only root can delete projects" do
+    assert_difference('Project.count', -1) do
+      post :destroy, :id => projects(:blumine).id
+    end
+    assert_redirected_to root_path
+  end
+
+  test "other users cannot delete project" do
+    log_out
+    log_in(:two)
+    post :destroy, :id => projects(:blumine).id
+    assert flash[:error]
+  end
+
   private
     def create_project
       post :create, :project => {:name => "demo project"}

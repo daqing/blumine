@@ -42,6 +42,17 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    unless current_user.root?
+      flash[:error] = t(:access_denied)
+      redirect_to root_path and return
+    end
+
+    @project = Project.find(params[:id])
+    if @project.destroy
+      redirect_to root_path
+    else
+      render :text => 'ERROR', :status => 500
+    end
   end
 
 end

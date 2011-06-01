@@ -17,10 +17,10 @@ class Sudo::UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.destroy
-        format.html { redirect_to sudo_path, :success => success_do(:delete_user) }
+        format.html { redirect_to sudo_users_path, :success => success_do(:delete_user) }
         format.js
       else
-        format.html { redirect_to sudo_path, :notice => failed(:delete_user) }
+        format.html { redirect_to sudo_users_path, :notice => failed(:delete_user) }
         format.js { render :text => :error, :status => 500 }
       end
     end

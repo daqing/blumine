@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   has_many :issue_assignments, :dependent => :destroy
   has_many :assigned_issues, :through => :issue_assignments, :source => :issue, :order => 'position ASC'
 
-  attr_protected :encrypted_password, :salt, :persistence_token
+  attr_protected :encrypted_password, :salt, :persistence_token, :role
 
   validates :name, :email, :presence => true
   validates :email, :uniqueness => true
@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def root?
-    self.id == 1
+    self.id == 1 || self.role == 'root'
   end
 
   def can_assign_issue?(issue)

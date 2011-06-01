@@ -1,8 +1,4 @@
 Blumine::Application.routes.draw do
-  get "milestones/new"
-
-  get "milestones/create"
-
   get 'register' => 'users#new'
   get '/search/:keyword' => 'issues#search'
   get 'rebuild_index' => 'issues#rebuild_index'
@@ -25,6 +21,9 @@ Blumine::Application.routes.draw do
     end
     resources :milestones
   end
+
+  get "milestones/new"
+  post "milestones/create"
 
   resources :issues do
     resources :comments

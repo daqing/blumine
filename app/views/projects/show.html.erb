@@ -78,4 +78,8 @@
   </div>
 </article>
 
+<% if current_user.root? %>
+  <h4 class="alert_error"><%= link_to t(:delete), @project, :method => :delete, :confirm => t(:delete_confirm) %></h4>
+<% end %>
+
 <div class="clear"></div>

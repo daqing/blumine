@@ -4,18 +4,5 @@
   <td class="email"><%= user.email %></td>
   <td><%= l(user.created_at, :format => :short) %></td>
   <td><%= l(user.updated_at, :format => :short) %></td>
-  <td>
-    <%= link_to t(:delete), sudo_user_path(user), :method => :delete, :remote => true, :confirm => t(:delete_confirm) %>
-  </td>
-  <td>
-    <ul class="projects">
-      <% user.involved_projects.each do |p| %>
-        <li><%= link_to p.name, p %></li>
-      <% end %>
-    </ul>
-    <%= form_for :user, :url => involve_in_sudo_user_path(user), :remote => true do |f| %>
-      <%= select_tag :project_id, options_for_select(Project.all.collect { |p| [p.name, p.id] }) %>
-      <%= f.submit t(:add) %>
-    <% end %>
-  </td>
+  <td><%= link_to t(:delete), sudo_user_path(user), :method => :delete, :remote => true, :confirm => t(:delete_confirm) %></td>
 </tr>

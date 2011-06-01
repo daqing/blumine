@@ -16,9 +16,6 @@ class Project < ActiveRecord::Base
   has_many :issues, :dependent => :destroy
   has_many :milestones, :dependent => :destroy
 
-  has_many :project_users, :dependent => :destroy
-  has_many :members, :through => :project_users, :source => :user
-
   validates :name, :user_id, :presence => true
 end
 

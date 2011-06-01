@@ -5,6 +5,7 @@ ssh_options[:keys] = [File.join(ENV['HOME'], '.ec2', 'gsg-keypair.pem')]
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
 # # Load RVM's capistrano plugin.    
+require "rvm"
 require "rvm/capistrano"
 
 # set :rvm_ruby_string, '1.9.2'

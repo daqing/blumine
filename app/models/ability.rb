@@ -28,6 +28,10 @@ class Ability
     user ||= User.new
     if user.root?
       can :manage, :all
+    else
+      can :show, Project do |project|
+        project.members.member? user
+      end
     end
   end
 end

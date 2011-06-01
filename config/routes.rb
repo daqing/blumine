@@ -54,7 +54,11 @@ Blumine::Application.routes.draw do
   resources :images, :only => [:new, :create, :destroy]
 
   namespace 'sudo' do
-    resources :users
+    resources :users do
+      member do
+        post :involve_in
+      end
+    end
   end
 
   root :to => "pages#index"

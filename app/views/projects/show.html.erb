@@ -1,4 +1,4 @@
-<article class="module width_full">
+<article class="module width_3_quarter">
   <header>
     <h3 class="tabs_involved">
       <%= icon 'milestone' %>
@@ -11,7 +11,21 @@
   </div>
 </article>
 
-<article class="module width_full">
+<article class="module width_quarter">
+  <header><h3><%= t(:project_members) %></h3></header>
+  <div class="module_content">
+    <%= render @project.members %>
+  </div>
+  <% if can? :add, ProjectUser %>
+    <footer>
+      <ul class="actions">
+        <li><%= link_to '#', :class => :btn do icon('add') + t(:add) end %></li>
+      </ul>
+    </footer>
+  <% end %>
+</article>
+
+<article class="module width_3_quarter">
   <header>
     <h3 class="tabs_involved">
       <%= icon 'task' %>
@@ -29,7 +43,7 @@
   </footer>
 </article>
 
-<article class="module width_full">
+<article class="module width_3_quarter">
   <header>
     <h3 class="tabs_involved">
       <%= icon 'bug' %>
@@ -47,7 +61,7 @@
   </footer>
 </article>
 
-<article class="module width_full">
+<article class="module width_3_quarter">
   <header>
     <h3 class="tabs_involved">
       <%= icon 'idea' %>
@@ -65,7 +79,7 @@
   </footer>
 </article>
 
-<article class="module width_full">
+<article class="module width_3_quarter">
   <header>
     <h3 class="tabs_involved">
       <%= icon 'doc' %>

@@ -37,6 +37,9 @@ class User < ActiveRecord::Base
   has_many :issue_assignments, :dependent => :destroy
   has_many :assigned_issues, :through => :issue_assignments, :source => :issue, :order => 'position ASC'
 
+  has_many :project_users, :dependent => :destroy
+  has_many :involved_projects, :through => :project_users, :source => :project
+
   attr_protected :encrypted_password, :salt, :persistence_token
 
   validates :name, :email, :presence => true

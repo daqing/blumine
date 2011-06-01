@@ -3,12 +3,20 @@ class Sudo::UsersController < ApplicationController
 
   before_filter :must_login_first
   before_filter do |c|
-    redirect_to root_path, :notice => t('permission.no_permission') unless current_user.root?
+    unless current_user.root?
+      flash[:error] = t('permission.no_permission')
+      redirect_to root_path
+    end
   end
-
 
   def index
     @users = User.order('created_at DESC').page(params[:page])
+  end
+
+  def involve_in
+    @user = User.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @project.members << @user
   end
 
   def destroy

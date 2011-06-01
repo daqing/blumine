@@ -27,7 +27,9 @@
   </h3>
   <ul class="toggle">
     <% Project.all.each do |p| %>
-      <li class="icn_tags" clickable="<%= project_path(p) %>"><%= link_to p.name, p %></li>
+      <% if can? :show, p %>
+        <li class="icn_tags" clickable="<%= project_path(p) %>"><%= link_to p.name, p %></li>
+      <% end %>
     <% end %>
   </ul>
 

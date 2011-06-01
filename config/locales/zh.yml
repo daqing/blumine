@@ -183,6 +183,8 @@ zh:
     bugs: 错误
     docs: 文档
     milestones: 里程碑
+  
+  project_members: 项目成员
 
   views:
     pagination:

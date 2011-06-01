@@ -181,6 +181,8 @@ en:
     docs: Docs
     milestones: Milestones
 
+  project_members: Project Members
+
   views:
     pagination:
       truncate: "..."

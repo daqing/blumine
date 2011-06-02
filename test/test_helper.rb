@@ -46,4 +46,9 @@ class ActiveSupport::TestCase
     end
   end
 
+  def assert_no_permission
+    assert flash[:error]
+    assert_redirected_to root_path
+  end
+
 end

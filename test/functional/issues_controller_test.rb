@@ -111,8 +111,7 @@ class IssuesControllerTest < ActionController::TestCase
 
     @issue.close!
     get :edit, :id => @issue.id
-    assert flash[:error]
-    assert_redirected_to root_path
+    assert_no_permission
   end
 
   test "should be assigned to an user" do

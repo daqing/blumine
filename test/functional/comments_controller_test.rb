@@ -56,13 +56,13 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "only user who creates it can edit or destroy comment" do
     get :edit, :id => comments(:two).id
-    assert_no_priviledge
+    assert_no_permission
 
     post :update, :id => comments(:two).id, :comment => {:content => comments(:need_fix).content}
-    assert_no_priviledge
+    assert_no_permission
 
     delete :destroy, :id => comments(:two).id
-    assert_no_priviledge
+    assert_no_permission
   end
 
   test "should create activity after a comment is created" do
@@ -75,10 +75,4 @@ class CommentsControllerTest < ActionController::TestCase
     def create_comment
       post :create, :issue_id => @issue.id, :comment => {:content => "foobar"}
     end
-
-    def assert_no_priviledge
-      assert flash[:error]
-      assert_redirected_to root_path
-    end
-
 end

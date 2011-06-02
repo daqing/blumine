@@ -39,8 +39,7 @@ class MilestonesControllerTest < ActionController::TestCase
   test "other users cannot get edit" do
     relog_in(:two)
     edit_milestone
-    assert flash[:error]
-    assert_redirected_to root_path
+    assert_no_permission
   end
 
   test "root can update milestone" do
@@ -54,8 +53,7 @@ class MilestonesControllerTest < ActionController::TestCase
     relog_in(:two)
     new_name = 'foobar'
     update_milestone(new_name)
-    assert flash[:error]
-    assert_redirected_to root_path
+    assert_no_permission
   end
 
   test "root can delete milestone" do
@@ -68,7 +66,7 @@ class MilestonesControllerTest < ActionController::TestCase
   test "other users cannot delete milestone" do
     relog_in(:two)
     destroy_milestone
-    assert flash[:error]
+    assert_no_permission
   end
 
   private

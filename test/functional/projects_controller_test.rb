@@ -71,7 +71,7 @@ class ProjectsControllerTest < ActionController::TestCase
     log_out
     log_in(:two)
     post :destroy, :id => projects(:blumine).id
-    assert flash[:error]
+    assert_no_permission
   end
 
   private

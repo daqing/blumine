@@ -172,6 +172,8 @@ en:
   profile: Profile
   all_members: Members
 
+  access_denied: Access Denied
+
   project:
     ideas: Ideas
     tasks: Tasks

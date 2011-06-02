@@ -57,14 +57,13 @@ class IssuesController < ApplicationController
     @issue.label = params[:issue][:label]
     @issue.user = current_user 
     if @issue.save
-      Activity.create!(:user_id => current_user.id,
-                       :event_name => 'create_issue',
-                       :target_type => 'Issue',
-                       :target_id => @issue.id,
-                       :related_id => @project.id,
-                       :related_type => 'Project',
-                       :data => {:title => @issue.title, :related_name => @project.name, :label => @issue.label}
-                      )
+      Activity.create!(
+        :user_id => current_user.id,
+        :project_id => params[:project_id],
+        :event_name => 'create_issue',
+        :target_id => @issue.id,
+        :data => { :title => @issue.title, :project_name => @project.name, :label => @issue.label }
+      )
       redirect_to @issue
     else
       render :new
@@ -106,12 +105,13 @@ class IssuesController < ApplicationController
       if @issue.respond_to? event_action
         begin
           @issue.send(event_action)
-          Activity.create!(:user_id => current_user.id,
-                           :event_name => 'change_issue_state',
-                           :target_id => @issue.id,
-                           :target_type => 'Issue',
-                           :data => {:current_state => @issue.current_state.name, :issue_title => @issue.title}
-                          )
+          Activity.create!(
+            :user_id => current_user.id,
+            :project_id => @issue.project.id,
+            :event_name => 'change_issue_state',
+            :target_id => @issue.id,
+            :data => {:current_state => @issue.current_state.name, :issue_title => @issue.title}
+          )
           format.html { redirect_to [@issue.project, @issue] }
           format.js { render :layout => false }
         rescue
@@ -128,14 +128,17 @@ class IssuesController < ApplicationController
   def assign_to
     user = User.find(params[:user_id])
     @issue.assigned_user = user
-    Activity.create!(:user_id => current_user.id,
-                     :event_name => 'assign_issue',
-                     :target_id => @issue.id,
-                     :target_type => 'Issue',
-                     :related_id => params[:user_id],
-                     :related_type => 'User', 
-                     :data => {:issue_title => @issue.title, :related_name => user.name}
-                    )
+    Activity.create!(
+      :user_id => current_user.id,
+      :project_id => @issue.project.id,
+      :event_name => 'assign_issue',
+      :target_id => @issue.id,
+      :data => {
+        :issue_title => @issue.title,
+        :assigned_id => params[:user_id],
+        :assigned_name => user.name
+      }
+    )
 
     respond_to do |format|
         format.html { redirect_to @issue }

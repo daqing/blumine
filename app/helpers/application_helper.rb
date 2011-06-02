@@ -114,13 +114,13 @@ module ApplicationHelper
 
   def format_activity(activity)
     case activity.event_name
-      when 'create_project': "#{t('activity.create_project')} #{link_to activity.data['name'], url_for(:controller => :projects, :action => :show, :id => activity.target_id)}"
+      when 'create_project'
+        "#{t('activity.create_project')} #{link_to activity.data['name'], url_for(:controller => :projects, :action => :show, :id => activity.project_id)}"
       when 'create_issue'
         issue_url = link_to activity.data['title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         project_url = t('activity.in_project', :url =>
-                        link_to(activity.data['related_name'],
-                                url_for(:controller => :projects, :action => :show, :id => activity.related_id),
-                                :class => 'plain'
+                        link_to(activity.data['project_name'],
+                                url_for(:controller => :projects, :action => :show, :id => activity.project_id)
                                )
                        )
         locale_str = "activity.create_issue.#{activity.data['label']}"
@@ -131,7 +131,7 @@ module ApplicationHelper
         end
       when 'assign_issue'
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
-        user_url = link_to activity.data['related_name'], url_for(:controller => :users, :action => :show, :id => activity.related_id)
+        user_url = link_to activity.data['assigned_name'], url_for(:controller => :users, :action => :show, :id => activity.data['assigned_id'])
         t('activity.assigned_issue_to', {:issue_url => issue_url, :user_url => user_url})
       when 'change_issue_state'
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
@@ -141,7 +141,7 @@ module ApplicationHelper
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         t('activity.commented_on_issue', :issue_url => issue_url) + "<blockquote>&gt;&nbsp;#{h(activity.data['comment_body'])}</blockquote>"
       when 'chat'
-        %(<span style="color: green;">#{h(activity.data)}</span>)
+        h(activity.data)
     end
   end
 end

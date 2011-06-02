@@ -10,18 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110520083521) do
+ActiveRecord::Schema.define(:version => 20110602082645) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
     t.string   "event_name"
-    t.string   "target_type"
     t.integer  "target_id"
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "related_id"
-    t.string   "related_type"
+    t.integer  "project_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -62,6 +60,13 @@ ActiveRecord::Schema.define(:version => 20110520083521) do
     t.integer  "project_id"
     t.string   "name"
     t.date     "due_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_users", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

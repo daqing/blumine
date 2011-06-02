@@ -23,12 +23,12 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.new(params[:project])
     if @project.save
-      Activity.create!(:user_id => current_user.id,
-                     :event_name => 'create_project',
-                     :target_type => 'Project',
-                     :target_id => @project.id,
-                     :data => {:name => @project.name}
-                    )
+      Activity.create!(
+        :user_id => current_user.id,
+        :event_name => 'create_project',
+        :project_id => @project.id,
+        :data => {:name => @project.name}
+      )
       redirect_to @project
     else
       render :new

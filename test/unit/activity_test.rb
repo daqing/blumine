@@ -9,12 +9,6 @@ class ActivityTest < ActiveSupport::TestCase
     assert !activity.save
 
     activity.event_name = 'created_project'
-    assert !activity.save
-
-    activity.target_id = 1
-    assert !activity.save
-
-    activity.target_type = 'project'
     assert activity.save
   end
 

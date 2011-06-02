@@ -13,18 +13,18 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         mb_chars = @comment.content.mb_chars
-        Activity.create!(:user_id => current_user.id,
-                         :event_name => 'create_comment',
-                         :target_id => @issue.id,
-                         :target_type => 'Issue',
-                         :related_id => @issue.project.id,
-                         :related_type => 'Project',
-                         :data => {
-                           :project_name => @issue.project.name,
-                           :issue_title => @issue.title,
-                           :comment_body => mb_chars.length > 20 ? "#{mb_chars[0..20]}..." : @comment.content
-                         }
-                        )
+        Activity.create!(
+          :user_id => current_user.id,
+          :project_id => @issue.project.id,
+          :event_name => 'create_comment',
+          :target_id => @issue.id,
+          :data => {
+            :project_name => @issue.project.name,
+            :issue_title => @issue.title,
+            :comment_body => mb_chars.length > 20 ? "#{mb_chars[0..20]}..." : @comment.content
+          }
+        )
+        
         format.html { redirect_to @issue }
         format.js
       else

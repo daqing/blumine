@@ -46,5 +46,8 @@ module Blumine
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password, :password_confirmation]
 
+    # Add additional load paths for your own custom dirs
+    config.autoload_paths << "#{config.root}/app/middleware"
+
   end
 end

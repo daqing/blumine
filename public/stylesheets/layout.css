@@ -313,3 +313,7 @@ span.quiet { color: #999; }
 span.small { font-size: smaller; margin-left: 10px; }
 .hide { display: none; }
 img[align=absmiddle] { margin-top: -3px; margin-right: 2px; }
+p img {
+  max-width: 400px;
+  height: auto;
+}

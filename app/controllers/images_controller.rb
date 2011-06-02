@@ -10,10 +10,8 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
-        format.html { render 'create', :layout => 'clean' }
         format.js
       else
-        format.html { redirect_to root_path }
         format.js { render :text => "ERROR", :status => 500 }
       end
     end

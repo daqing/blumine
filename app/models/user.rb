@@ -63,24 +63,4 @@ class User < ActiveRecord::Base
   def root?
     self.id == 1 || self.role == 'root'
   end
-
-  # def can_assign_issue?(issue)
-  #   self.is_project_manager? || issue.user == self
-  # end
-
-  # def can_change_state?(issue)
-  #   (not issue.assigned_user.nil?) and (self.is_project_manager? || issue.assigned_user == self)
-  # end
-
-  # def can_manage_todo?(issue)
-  #   (not issue.closed?) and (issue.assigned_user == self || issue.user == self)
-  # end
-
-  # def can_manage_issue?(issue)
-  #   (not issue.closed?) and issue.user == self
-  # end
-
-  # def can_manage_comment?(comment)
-  #   (not comment.issue.closed?) and comment.user == self
-  # end
 end

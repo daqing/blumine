@@ -52,24 +52,27 @@ class TodoItemsControllerTest < ActionController::TestCase
     assert assigns(:todo_item)
     assert_redirected_to assigns(:todo_item).issue
   end
-
-  test "test todo item permissions" do
-    @issue.user = users(:two)
-    @issue.assigned_user = users(:two)
-    @issue.save
-    create_todo_item
-    assert_response 403
-
-    @issue.user = users(:daqing)
-    @issue.save
-    create_todo_item
-    assert_response :redirect
-
-    @issue.user = users(:two)
-    @issue.assigned_user = users(:daqing)
-    @issue.save
-    create_todo_item
-    assert_response :redirect
+  
+  test "should sort todo items" do
+    relog_in(:two)
+    issue = issues(:two)
+    issue.assigned_user = users(:two)
+    todo_ids = []
+    3.times { todo_ids << issue.todo_items.create!(:content => 'foo').id }
+    
+    xhr :post, :sort, :todo => todo_ids
+    assert_response :success
+  end
+  
+  test "others cannot sort todo items" do
+    relog_in(:nana)
+    
+    issue = issues(:two)
+    issue.assigned_user = users(:two)
+    todo_ids = []
+    3.times { todo_ids << issue.todo_items.create!(:content => 'foo').id }
+    xhr :post, :sort, :todo => todo_ids
+    assert_no_permission
   end
 
   private

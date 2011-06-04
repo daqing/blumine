@@ -2,7 +2,7 @@ class IssuesController < ApplicationController
   before_filter :must_login_first
   before_filter :find_issue, :only => [:show, :edit, :update, :destroy, :change_state, :assign_to]
   before_filter :only => [:edit, :update, :destroy] do |c|
-    redirect_to_root_when_no_permission unless current_user.can_manage_issue? @issue
+    authorize! :manage, @issue
   end
 
   def index
@@ -100,6 +100,7 @@ class IssuesController < ApplicationController
   end
 
   def change_state
+    authorize! :change_state, @issue
     event_action = "#{params[:event]}!"
     respond_to do |format|
       if @issue.respond_to? event_action
@@ -126,6 +127,7 @@ class IssuesController < ApplicationController
   end
 
   def assign_to
+    authorize! :assign, @issue
     user = User.find(params[:user_id])
     @issue.assigned_user = user
     Activity.create!(

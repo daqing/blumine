@@ -100,17 +100,23 @@ class IssuesControllerTest < ActionController::TestCase
   end
 
   test "only creator can edit, update or destroy issue when issue is not closed" do
-    get :edit, :id => issues(:two).id
-    assert_redirected_to root_path
-
-    post :update, :id => issues(:two).id, :issue => {:content => issues(:bug_report).content}
-    assert_redirected_to root_path
-
-    delete :destroy, :id => issues(:two).id
-    assert_redirected_to root_path
-
-    @issue.close!
-    get :edit, :id => @issue.id
+    issue_two = issues(:two)
+    relog_in(:two)
+    get :edit, :id => issue_two.id
+    assert_response :success
+    
+    issue_two.close!
+    get :edit, :id => issue_two.id
+    assert_no_permission
+    
+    relog_in(:nana)
+    get :edit, :id => issue_two.id
+    assert_no_permission
+    
+    post :update, :id => issue_two.id, :issue => {:title => 'foobar'}
+    assert_no_permission
+    
+    get :destroy, :id => issue_two.id
     assert_no_permission
   end
 
@@ -119,6 +125,20 @@ class IssuesControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal assigns(:issue).assigned_user, users(:daqing)
+  end
+  
+  test "should not change issue's workflow" do
+    @issue.assigned_user = nil
+    relog_in(:two)
+    close_issue
+    assert_no_permission
+  end
+  
+  test "normal user cannot assign issue" do
+    relog_in(:two)
+    
+    assign_issue
+    assert_no_permission
   end
 
   test "only root can rebuild indexes" do

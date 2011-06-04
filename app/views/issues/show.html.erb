@@ -16,7 +16,7 @@
 
     <%=raw parse_markdown @issue.content %>
 
-    <% if current_user.can_manage_todo? @issue %>
+    <% if can? :manage_todo, @issue %>
       <div id="todo_list_box">
         <%= render 'manage_todo_list', :issue => @issue, :todo_item => @todo_item %>
       </div>
@@ -34,7 +34,7 @@
   <%= render 'shared/issue_assignment', :issue => @issue %>
 </article>
 
-<% if current_user.can_manage_todo? @issue %>
+<% if can? :manage_todo, @issue %>
   <% content_for :on_ready_hook do %>
       $("input[type=checkbox]").live('change', function() {
           var item_id = $(this).attr('data-id');

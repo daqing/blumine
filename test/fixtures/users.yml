@@ -29,6 +29,15 @@ two:
   name: two
   email: two@demo.com
   salt: <%= salt = Authlogic::Random.hex_token %>
-  encrypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("foobar" + salt) %>
+  encrypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("two" + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>
+  role: Developer
+
+nana:
+  name: nana
+  email: nana@demo.com
+  salt: <%= salt = Authlogic::Random.hex_token %>
+  encrypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("nana" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+  role: Developer
 

@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_filter :must_login_first
   before_filter :find_comment, :except => :create
   before_filter :only => [:edit, :update, :destroy] do |c|
-    redirect_to_root_when_no_permission unless current_user.can_manage_comment? @comment
+    authorize! :manage, @comment
   end
 
   def create

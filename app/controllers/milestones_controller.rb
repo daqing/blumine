@@ -3,6 +3,7 @@ class MilestonesController < ApplicationController
   before_filter :find_project
   before_filter :find_milestone, :only => [:edit, :update, :destroy]
   before_filter :root_required, :only => [:edit, :update, :destroy]
+  authorize_resource
 
   def new
     @milestone = @project.milestones.new

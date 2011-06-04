@@ -85,13 +85,14 @@ class UserTest < ActiveSupport::TestCase
   test "only assinged user can manage todo items" do
     two = users(:two)
     @issue.assigned_user = @user
-    assert ! two.can_manage_todo?(@issue)
+    ability = Ability.new(two)
+    assert ability.cannot? :manage_todo, @issue
 
     @issue.assigned_user = two
-    assert two.can_manage_todo?(@issue)
+    assert ability.can? :manage_todo, @issue
 
     @issue.close!
-    assert ! two.can_manage_todo?(@issue)
+    assert ability.cannot? :manage_todo, @issue
   end
 
   test "only issue creator can manage issue when issue's not closed" do

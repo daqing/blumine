@@ -14,6 +14,10 @@ class Ability
       can :change_state, Issue do |issue|
         (not issue.assigned_user.nil?) and (issue.assigned_user == user or user.is_project_manager?)
       end
+      
+      can :manage_todo, Issue do |issue|
+        (not issue.closed?) and (issue.assigned_user == user or issue.user == user)
+      end
     end
     
     # Define abilities for the passed in user here. For example:

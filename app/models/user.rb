@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
   #   (not issue.closed?) and issue.user == self
   # end
 
-  def can_manage_comment?(comment)
-    (not comment.issue.closed?) and comment.user == self
-  end
+  # def can_manage_comment?(comment)
+  #   (not comment.issue.closed?) and comment.user == self
+  # end
 end

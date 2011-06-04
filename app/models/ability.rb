@@ -22,6 +22,10 @@ class Ability
       can :manage, Issue do |issue|
         (not issue.closed?) and issue.user == user
       end
+      
+      can :manage, Comment do |comment|
+        (not comment.issue.closed?) and comment.user == user
+      end
     end
     
     # Define abilities for the passed in user here. For example:

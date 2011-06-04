@@ -112,13 +112,17 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "only creator can manage comments when the related issue is not closed" do
-    comment = comments(:need_fix)
+    comment = comments(:two)
+    ability = Ability.new(users(:two))
     issue = comment.issue
     issue.work_on!
-    assert @user.can_manage_comment?(comment)
+    assert ability.can? :manage, comment
+    
+    a2 = Ability.new(users(:nana))
+    assert a2.cannot? :manage, comment
 
     issue.mark_finished!
     issue.close!
-    assert ! @user.can_manage_comment?(comment)
+    assert ability.cannot? :manage, comment
   end
 end

@@ -55,6 +55,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "only user who creates it can edit or destroy comment" do
+    relog_in(:nana)
     get :edit, :id => comments(:two).id
     assert_no_permission
 

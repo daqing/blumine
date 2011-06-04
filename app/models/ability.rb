@@ -18,6 +18,10 @@ class Ability
       can :manage_todo, Issue do |issue|
         (not issue.closed?) and (issue.assigned_user == user or issue.user == user)
       end
+      
+      can :manage, Issue do |issue|
+        (not issue.closed?) and issue.user == user
+      end
     end
     
     # Define abilities for the passed in user here. For example:

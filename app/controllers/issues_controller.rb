@@ -26,7 +26,7 @@ class IssuesController < ApplicationController
 
   def show
     breadcrumbs.add @issue.project.name, project_path(@issue.project)
-    breadcrumbs.add "#issue-#{@issue.id}", issue_path(@issue)
+    breadcrumbs.add '#' + "#{@issue.label}-#{@issue.id}", issue_path(@issue)
 
     @comment = @issue.comments.new
     @todo_item = @issue.todo_items.new
@@ -49,6 +49,9 @@ class IssuesController < ApplicationController
     @issue = @project.issues.new
     @title = t('issue.create')
     @label = params[:label]
+    
+    breadcrumbs.add @issue.project.name, project_path(@issue.project)
+    breadcrumbs.add t("new_#{@label}")
   end
 
   def create
@@ -73,6 +76,10 @@ class IssuesController < ApplicationController
   def edit
     @project = @issue.project
     @title = t('issue.edit')
+    
+    breadcrumbs.add @issue.project.name, project_path(@issue.project)
+    breadcrumbs.add '#' + "#{@issue.label}-#{@issue.id}", issue_path(@issue)
+    breadcrumbs.add t(:edit)
   end
 
   def update

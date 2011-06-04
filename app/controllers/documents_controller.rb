@@ -7,6 +7,9 @@ class DocumentsController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @document = @project.documents.new
+    
+    breadcrumbs.add @project.name, project_path(@project)
+    breadcrumbs.add t(:new_document)
   end
   
   def create
@@ -28,9 +31,14 @@ class DocumentsController < ApplicationController
   end
   
   def show
+    breadcrumbs.add @project.name, project_path(@project)
+    breadcrumbs.add "#doc-#{@document.id}", project_document_path(@project, @document)
   end
   
   def edit
+    breadcrumbs.add @project.name, project_path(@project)
+    breadcrumbs.add "#doc-#{@document.id}", project_document_path(@project, @document)
+    breadcrumbs.add t(:edit)
   end
   
   def update

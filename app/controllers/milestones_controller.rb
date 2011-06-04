@@ -6,7 +6,11 @@ class MilestonesController < ApplicationController
 
   def new
     @milestone = @project.milestones.new
-    @action_name = :create_milestone
+    @heading_name = t(:create_milestone)
+    
+    breadcrumbs.add @project.name, project_path(@project)
+    breadcrumbs.add t(:create_milestone)
+    
     render 'form'
   end
 
@@ -20,7 +24,7 @@ class MilestonesController < ApplicationController
   end
 
   def edit
-    @action_name = :edit_milestone
+    @heading_name = t(:edit_milestone)
     render 'form'
   end
 

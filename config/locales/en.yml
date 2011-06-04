@@ -154,6 +154,8 @@ en:
   new_task: New Task
   new_bug: Submit Bug
   new_idea: Submit Idea
+  new_document: Add Document
+  edit_document: Edit Document
 
   issue_label: Labels
 

@@ -121,6 +121,13 @@ class IssuesControllerTest < ActionController::TestCase
     assert_equal assigns(:issue).assigned_user, users(:daqing)
   end
   
+  test "should not change issue's workflow" do
+    @issue.assigned_user = nil
+    relog_in(:two)
+    close_issue
+    assert_no_permission
+  end
+  
   test "normal user cannot assign issue" do
     relog_in(:two)
     

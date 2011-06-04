@@ -8,7 +8,11 @@ class Ability
       can :manage, :all
     else
       can :assign, Issue do |issue|
-        issue.user == user || user.is_project_manager?
+        issue.user == user or user.is_project_manager?
+      end
+      
+      can :change_state, Issue do |issue|
+        (not issue.assigned_user.nil?) and (issue.assigned_user == user or user.is_project_manager?)
       end
     end
     

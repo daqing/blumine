@@ -54,10 +54,17 @@ class UserTest < ActiveSupport::TestCase
 
   test "should not change state before the issue is assigned" do
     @issue.assigned_user = nil
-    assert ! @user.can_change_state?(@issue)
+    
+    ability = Ability.new(@user)
+    # only root can change issue state even if the issue has not been assigned
+    assert ability.can? :change_state, @issue
 
-    @user.role = 'ProjectManager'
-    assert ! @user.can_change_state?(@issue)
+    two = users(:two)
+    a2 = Ability.new(two)
+    assert a2.cannot? :change_state, @issue
+    
+    two.role = 'ProjectManager'
+    assert a2.cannot? :change_state, @issue
   end
 
   test "only creator of an issue, PM or assigned user can change issue state after the issue is assigned" do
@@ -65,13 +72,14 @@ class UserTest < ActiveSupport::TestCase
 
     another = users(:two)
     another.role = 'ProjectManager'
-    assert another.can_change_state?(@issue)
+    ability = Ability.new(another)
+    assert ability.can? :change_state, @issue
 
     another.role = 'Developer'
-    assert ! another.can_change_state?(@issue)
+    assert ability.cannot? :change_state, @issue
 
     @issue.assigned_user = another
-    assert another.can_change_state?(@issue)
+    assert ability.can? :change_state, @issue
   end
 
   test "only assinged user can manage todo items" do

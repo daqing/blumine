@@ -100,6 +100,7 @@ class IssuesController < ApplicationController
   end
 
   def change_state
+    authorize! :change_state, @issue
     event_action = "#{params[:event]}!"
     respond_to do |format|
       if @issue.respond_to? event_action

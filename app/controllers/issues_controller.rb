@@ -65,7 +65,7 @@ class IssuesController < ApplicationController
         :project_id => params[:project_id],
         :event_name => 'create_issue',
         :target_id => @issue.id,
-        :data => { :title => @issue.title, :project_name => @project.name, :label => @issue.label }
+        :data => { :title => @issue.short_title, :project_name => @project.name, :label => @issue.label }
       )
       redirect_to @issue
     else

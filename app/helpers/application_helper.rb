@@ -100,16 +100,9 @@ module ApplicationHelper
   def failed_do(action_sym)
     I18n.t(action_sym) + I18n.t('action.failed')
   end
-
+  
   def issue_title_link(issue, *css_class)
-    title = issue.title
-
-    max_length = 15
-    if title.mb_chars.length > max_length
-      link_to "#{title.mb_chars[0..max_length].to_s}...", issue, :title => title, :class => css_class
-    else
-      link_to title, issue, :class => css_class
-    end
+    link_to issue.short_title, issue, :title => issue.title, :class => css_class
   end
 
   def format_activity(activity)

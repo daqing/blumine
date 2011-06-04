@@ -72,6 +72,16 @@ class Issue < ActiveRecord::Base
   def self.all_states
     [:open, :working_on, :paused, :finished, :closed, :reopened]
   end
+  
+  MAX_DISPLAY_LENGTH = 15
+  
+  def short_title
+    short_title = self.title
+    if self.title.mb_chars.length > MAX_DISPLAY_LENGTH
+      short_title = self.title.mb_chars[0..MAX_DISPLAY_LENGTH].to_s + '...'
+    end
+    short_title
+  end
 
   def self.state_name(state_sym)
     I18n.t("issue.state.#{state_sym.to_s}")

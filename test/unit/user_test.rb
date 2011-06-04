@@ -40,14 +40,16 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "only creator of an issue or PM can assign issues" do
-    assert @user.can_assign_issue?(@issue)
+    ability = Ability.new(@user)
+    assert ability.can? :assign, @issue
 
     another = users(:two)
     another.role = 'ProjectManager'
-    assert another.can_assign_issue?(@issue)
+    a2 = Ability.new(another)
+    assert a2.can? :assign, @issue
 
     another.role = 'Developer'
-    assert ! another.can_assign_issue?(@issue)
+    assert a2.cannot? :assign, @issue
   end
 
   test "should not change state before the issue is assigned" do

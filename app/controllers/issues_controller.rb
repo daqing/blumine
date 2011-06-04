@@ -126,6 +126,7 @@ class IssuesController < ApplicationController
   end
 
   def assign_to
+    authorize! :assign, @issue
     user = User.find(params[:user_id])
     @issue.assigned_user = user
     Activity.create!(

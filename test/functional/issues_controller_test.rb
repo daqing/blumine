@@ -120,6 +120,13 @@ class IssuesControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal assigns(:issue).assigned_user, users(:daqing)
   end
+  
+  test "normal user cannot assign issue" do
+    relog_in(:two)
+    
+    assign_issue
+    assert_no_permission
+  end
 
   test "only root can rebuild indexes" do
     get :rebuild_index

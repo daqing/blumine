@@ -64,9 +64,9 @@ class User < ActiveRecord::Base
     self.id == 1 || self.role == 'root'
   end
 
-  def can_assign_issue?(issue)
-    self.is_project_manager? || issue.user == self
-  end
+  # def can_assign_issue?(issue)
+  #   self.is_project_manager? || issue.user == self
+  # end
 
   def can_change_state?(issue)
     (not issue.assigned_user.nil?) and (self.is_project_manager? || issue.assigned_user == self)

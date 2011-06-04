@@ -1,12 +1,15 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
-
-  before_filter :set_locale
-  before_filter :count_unread_teamtalk
-
+  
   protect_from_forgery
 
+  before_filter :set_locale
+  # before_filter :count_unread_teamtalk
   before_filter :add_initial_breadcrumbs
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to_root_when_no_permission
+  end
 
   private
     def add_initial_breadcrumbs

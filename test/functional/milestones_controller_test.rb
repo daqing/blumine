@@ -79,6 +79,6 @@ class MilestonesControllerTest < ActionController::TestCase
     end
 
     def destroy_milestone
-      post :destroy, :id => @milestone.id, :project_id => @project.id
+      delete :destroy, :id => @milestone.id, :project_id => @project.id
     end
 end

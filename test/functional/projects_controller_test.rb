@@ -62,7 +62,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
   test "root can delete projects" do
     assert_difference('Project.count', -1) do
-      post :destroy, :id => projects(:blumine).id
+      delete :destroy, :id => projects(:blumine).id
     end
     assert_redirected_to root_path
   end
@@ -70,7 +70,7 @@ class ProjectsControllerTest < ActionController::TestCase
   test "other users cannot delete project" do
     log_out
     log_in(:two)
-    post :destroy, :id => projects(:blumine).id
+    delete :destroy, :id => projects(:blumine).id
     assert_no_permission
   end
 

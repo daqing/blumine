@@ -52,6 +52,7 @@ class TodoItemsController < ApplicationController
   end
 
   def sort
+    authorize! :manage_todo, TodoItem.find(params[:todo].first).issue
     params[:todo].each_with_index do |id, pos|
       TodoItem.update_all(['position=?', pos + 1], ['id=?', id])
     end

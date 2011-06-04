@@ -1,0 +1,14 @@
+<%= form_for [@project, @document] do |f| %>
+  <%= render 'shared/error_messages', :obj => f.object %>
+  <fieldset>
+    <%= f.label :title, t(:title) %>
+    <%= f.text_field :title %>
+  </fieldset>
+  
+  <fieldset>
+    <%= f.label :content, t(:content) %>
+    <%= render :partial => 'shared/editor',
+      :locals => {:name => 'document[content]', :content => @document.content} %>
+  </fieldset>
+  <%= f.submit t(:save), :class => :btn %>
+<% end %>

@@ -79,8 +79,12 @@
   </header>
   <a name="docs" href=""></a>
   <div class="module_content">
-    <p><%= t(:no_items_right_now) %></p>
+    <%= render @project.documents, :project => @project %>
   </div>
+  <footer>
+    <ul class="actions">
+      <li><%= link_to new_project_document_path(@project), :class => :btn do icon('add') + t(:new_document) end %></li>
+  </footer>
 </article>
 
 <% if current_user.root? %>

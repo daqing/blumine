@@ -1,0 +1,4 @@
+<div class="issue_item ui-corner-all">
+  <%= link_to document.title, project_document_path(project, document) %>
+  <span class="date"><%= time_ago_in_words(document.created_at) + t(:ago) %></span>
+</div>

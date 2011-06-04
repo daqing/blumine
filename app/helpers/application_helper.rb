@@ -140,6 +140,14 @@ module ApplicationHelper
       when 'create_comment'
         issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         t('activity.commented_on_issue', :issue_url => issue_url) + "<blockquote>&gt;&nbsp;#{h(activity.data['comment_body'])}</blockquote>"
+      when 'create_document'
+        project_url = t('activity.in_project', :url =>
+                        link_to(activity.data['project_name'],
+                                url_for(:controller => :projects, :action => :show, :id => activity.project_id)
+                               )
+                       )
+        document_url = link_to activity.data['document_title'], url_for(:controller => :documents, :action => :show, :id => activity.target_id, :project_id => activity.project_id)
+        project_url + t('activity.create_document', :document_url => document_url)
       when 'chat'
         h(activity.data)
     end

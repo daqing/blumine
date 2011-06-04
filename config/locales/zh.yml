@@ -151,11 +151,15 @@ zh:
     assigned_issue_to: 把 %{issue_url} 分配给了 %{user_url}
     changed_issue_state_as: 把 %{issue_url} 的状态修改为 %{state}
     commented_on_issue: "评论了 %{issue_url}:"
+    create_document: 创建了文档 %{document_url}
 
   no_items_right_now: 暂时没有任何数据
   new_task: 创建任务
   new_bug: 报告错误
   new_idea: 添加想法
+  new_document: 新建文档
+  
+  edit_document: 编辑文档
 
   issue_label: 类型
 
@@ -178,6 +182,8 @@ zh:
   access_denied: 您没有权限来执行此操作
   upload_image: 上传图片
 
+  destroy_failed: 删除失败
+  
   project:
     ideas: 想法
     tasks: 任务

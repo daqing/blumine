@@ -101,8 +101,17 @@ module ApplicationHelper
     I18n.t(action_sym) + I18n.t('action.failed')
   end
   
+  def short_title(title)
+    max_length = 15
+    if title.mb_chars.length > max_length
+      title = title.mb_chars[0..max_length].to_s + '...'
+    end
+    title
+  end
+
   def issue_title_link(issue, *css_class)
-    link_to issue.short_title, issue, :title => issue.title, :class => css_class
+    title = issue.title
+    link_to short_title(title), issue, :title => title, :class => css_class
   end
 
   def format_activity(activity)
@@ -110,7 +119,7 @@ module ApplicationHelper
       when 'create_project'
         "#{t('activity.create_project')} #{link_to activity.data['name'], url_for(:controller => :projects, :action => :show, :id => activity.project_id)}"
       when 'create_issue'
-        issue_url = link_to activity.data['title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
+        issue_url = link_to short_title(activity.data['title']), url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         project_url = t('activity.in_project', :url =>
                         link_to(activity.data['project_name'],
                                 url_for(:controller => :projects, :action => :show, :id => activity.project_id)
@@ -123,15 +132,15 @@ module ApplicationHelper
           "#{t(locale_str)} #{issue_url} #{project_url}"
         end
       when 'assign_issue'
-        issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
+        issue_url = link_to short_title(activity.data['issue_title']), url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         user_url = link_to activity.data['assigned_name'], url_for(:controller => :users, :action => :show, :id => activity.data['assigned_id'])
         t('activity.assigned_issue_to', {:issue_url => issue_url, :user_url => user_url})
       when 'change_issue_state'
-        issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
+        issue_url = link_to short_title(activity.data['issue_title']), url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         current_state = activity.data['current_state']
         t('activity.changed_issue_state_as', {:issue_url => issue_url, :state => %(<span class="state state-#{current_state}">#{Issue.state_name(current_state)}</span>)})
       when 'create_comment'
-        issue_url = link_to activity.data['issue_title'], url_for(:controller => :issues, :action => :show, :id => activity.target_id)
+        issue_url = link_to short_title(activity.data['issue_title']), url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         t('activity.commented_on_issue', :issue_url => issue_url) + "<blockquote>&gt;&nbsp;#{h(activity.data['comment_body'])}</blockquote>"
       when 'create_document'
         project_url = t('activity.in_project', :url =>
@@ -139,7 +148,7 @@ module ApplicationHelper
                                 url_for(:controller => :projects, :action => :show, :id => activity.project_id)
                                )
                        )
-        document_url = link_to activity.data['document_title'], url_for(:controller => :documents, :action => :show, :id => activity.target_id, :project_id => activity.project_id)
+        document_url = link_to short_title(activity.data['document_title']), url_for(:controller => :documents, :action => :show, :id => activity.target_id, :project_id => activity.project_id)
         project_url + t('activity.create_document', :document_url => document_url)
       when 'chat'
         h(activity.data)

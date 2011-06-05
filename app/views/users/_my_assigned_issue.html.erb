@@ -1,6 +1,5 @@
-<div class="row assigned_issue sortable" id="issue_<%= my_assigned_issue.id %>">
+<div class="row assigned_issue draggable" id="issue_<%= my_assigned_issue.id %>" data-id="<%= my_assigned_issue.id %>">
   <span class="drag_handle"><%= image_tag 'cursor_drag_arrow.png', :width => 16, :height => 16, :align => :absmiddle %></span>
   <%= issue_title_link(my_assigned_issue) %>
-  <span class="state state-<%= my_assigned_issue.current_state.name.to_s %>"><%= my_assigned_issue.current_state_name %></span>
 </div>
 

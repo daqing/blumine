@@ -154,6 +154,16 @@ class IssuesController < ApplicationController
         format.js
     end
   end
+  
+  def planning
+    @issue = Issue.find(params[:id])
+    if @issue.update_attributes(:planned_date => Date.parse(params[:date]))
+      render :json => {:success => true}
+    else
+      render :json => {:success => false}
+    end
+      
+  end
 
   def search
     @result = []

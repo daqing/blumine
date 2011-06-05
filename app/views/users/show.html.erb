@@ -47,7 +47,7 @@
           $.post('/issues/' + issue_id + '/planning', {date: ''}, function(response) {
             if (response['success']) {
               $("#my_assigned_issues").append(ui.draggable);
-              ui.draggable.attr('style', '');
+              ui.draggable.attr('style', 'position: relative;');
             }
           }, 'json');
         }

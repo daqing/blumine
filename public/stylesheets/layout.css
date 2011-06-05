@@ -317,3 +317,7 @@ p img {
   max-width: 400px;
   height: auto;
 }
+table.calendar { width: 100%; padding: 0;}
+table.calendar td { padding: 30px 20px; border: 1px solid #EEE; color: black; text-align: right;}
+table.calendar td.past_month, table.calendar td.next_month { color: #999;}
+table.calendar td.today { color: green; font-weight: bold;}

@@ -183,6 +183,7 @@ zh:
   upload_image: 上传图片
 
   destroy_failed: 删除失败
+  cancel_planning: 取消
   
   project:
     ideas: 想法

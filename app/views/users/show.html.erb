@@ -22,7 +22,7 @@
     </table>
     <% if @my_profile %>
     <% content_for :on_ready_hook do %>
-      $(".draggable").draggable();
+      $(".draggable").draggable({revert: 'invalid'});
       $("table.calendar td").droppable({
         drop: function(event, ui) {
           var col = $(this);
@@ -40,6 +40,18 @@
         },
         accept: '.draggable'
       });
+      
+      $(".cancel_planning").droppable({
+        drop: function(event, ui) {
+          var issue_id = ui.draggable.attr('data-id');
+          $.post('/issues/' + issue_id + '/planning', {date: ''}, function(response) {
+            if (response['success']) {
+              $("#my_assigned_issues").append(ui.draggable);
+              ui.draggable.attr('style', '');
+            }
+          }, 'json');
+        }
+      });
     <% end %>
   <% end %>
   </div>
@@ -50,44 +62,41 @@
     <h3><%= @my_profile ? t(:my_assigned_issues) : t('issue.issues_assigned_to', :username => @user.name) %></h3>
   </header>
   <div class="module_content">
-    <div id="calendar">
-      <% today = Date.today %>
-      <% this_month = today.month %>
-      <% beginning = today.beginning_of_week.yesterday %>
-      <table border="0" class="calendar" cellspacing="0">
-        <tr>
-          <caption><%= t('date.month_names')[this_month] %></caption>
-        </tr>
-        <tr>
-          <% (0..6).each do |i| %>
-            <th><%= t('date.abbr_day_names')[i] %></th>
-          <% end %>
-        </tr>
-        <% next_day = beginning.next %>
-        <% 2.times do %>
-        <tr>
-          <% (0..6).each do %>
-            <% class_name = [] %>
-            <% if next_day.month != this_month %>
-              <% class_name << 'other_month' %>
-            <% end %>
-            <% if next_day == today %>
-              <% class_name << 'today' %>
-            <% end %>
-            <td class="<%= class_name.join(' ') %>" data-value="<%= next_day.to_s('%Y%M%d') %>">
-              <%= next_day.day %>
-            </td>
-            <% next_day = next_day.next %>
-          <% end %>
-        </tr>
+    <% today = Date.today %>
+    <% this_month = today.month %>
+    <% beginning = today.beginning_of_week.yesterday %>
+    <table border="0" class="calendar" cellspacing="0">
+      <tr>
+        <caption><%= t('date.month_names')[this_month] %></caption>
+      </tr>
+      <tr>
+        <% (0..6).each do |i| %>
+          <th><%= t('date.abbr_day_names')[i] %></th>
         <% end %>
-      </table>
-    </div>
-    <div class="spacer"></div>
-    <div id="my_assigned_issues" title="<%= t(:drag_issue_to_sort_priority) %>">
-      <%= render :partial => 'my_assigned_issue',
-        :collection => @user.assigned_issues.except_closed
-      %>
+      </tr>
+      <% next_day = beginning.next %>
+      <% 2.times do %>
+      <tr>
+        <% (0..6).each do %>
+          <% class_name = '' %>
+          <% if next_day.month != this_month %>
+            <% class_name = 'other_month' %>
+          <% end %>
+          <% if next_day == today %>
+            <% class_name = 'today' %>
+          <% end %>
+          <td class="<%= class_name %>" data-value="<%= next_day.to_s('%Y%M%d') %>">
+            <span class="day"><%= next_day.day %></span>
+            <%= render :partial => 'my_assigned_issue', :collection => @planned_issues[next_day] %>
+          </td>
+          <% next_day = next_day.next %>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+    <div class="cancel_planning"><%= t(:cancel_planning) %></div>
+    <div id="my_assigned_issues">
+      <%= render :partial => 'my_assigned_issue', :collection => @unplanned_issues %>
     </div>
   </div>
 </article>

@@ -157,7 +157,9 @@ class IssuesController < ApplicationController
   
   def planning
     @issue = Issue.find(params[:id])
-    if @issue.update_attributes(:planned_date => Date.parse(params[:date]))
+    @new_date = params[:date].blank? ? '' : Date.parse(params[:date])
+      
+    if @issue.update_attributes(:planned_date => @new_date)
       render :json => {:success => true}
     else
       render :json => {:success => false}

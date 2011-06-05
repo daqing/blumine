@@ -34,5 +34,21 @@ class UsersController < ApplicationController
       @title = @user.name
       breadcrumbs.add @user.name
     end
+    
+    assigned_issues = @user.assigned_issues.except_closed
+    @planned_issues = {}
+    @unplanned_issues = []
+    assigned_issues.each do |issue|
+      unless issue.planned_date.blank?
+        date = issue.planned_date
+        if @planned_issues[date]
+          @planned_issues[date] << issue
+        else
+          @planned_issues[date] = [issue]
+        end
+      else
+        @unplanned_issues << issue
+      end
+    end
   end
 end

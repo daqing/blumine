@@ -317,3 +317,9 @@ p img {
   max-width: 400px;
   height: auto;
 }
+table.calendar { width: 100%; padding: 0;}
+table.calendar td { width: 100px; height: 60px;border: 1px solid #EEE; color: black; text-align: right;}
+table.calendar td.other_month { color: #999;}
+table.calendar td.today { color: green; font-weight: bold;}
+.cancel_planning { height: 20px; border: 1px dashed #CCC; margin: 10px 0; text-align: center;padding: 3px 0;}
+.draggable {width: 100px;}

@@ -1,10 +1,10 @@
 <article class="module width_full">
-	<header>
-		<h3><%= t(:account_details) %></h3>
-	</header>
+  <header>
+    <h3><%= t(:account_details) %></h3>
+  </header>
 
-	<div class="module_content">
-		<table>
+  <div class="module_content">
+    <table>
         <tr>
           <td><%= t(:date_joined) %></td>
           <td><%= time_ago_in_words(@user.created_at) + t(:ago) %></td>
@@ -20,33 +20,94 @@
         </tr>
         <% end %>
     </table>
-	  <% if @my_profile %>
-	  <% content_for :on_ready_hook do %>
-	    $.make_sortable('my_assigned_issues', '<%= assigned_issues_sort_path %>');
-	  <% end %>
-	<% end %>
-	</div>
+    <% if @my_profile %>
+    <% content_for :on_ready_hook do %>
+      $(".draggable").draggable({revert: 'invalid'});
+      $("table.calendar td").droppable({
+        drop: function(event, ui) {
+          var col = $(this);
+          
+          var issue_id = ui.draggable.attr('data-id');
+          var date = col.attr('data-value');
+
+          $.post('/issues/' + issue_id + '/planning', {date: date}, function(response) {
+            if (response['success']) {
+              col.effect('highlight');
+            } else {
+              col.css('backgroundColor', 'red');
+            }
+          }, 'json');
+        },
+        accept: '.draggable'
+      });
+      
+      $(".cancel_planning").droppable({
+        drop: function(event, ui) {
+          var issue_id = ui.draggable.attr('data-id');
+          $.post('/issues/' + issue_id + '/planning', {date: ''}, function(response) {
+            if (response['success']) {
+              $("#my_assigned_issues").append(ui.draggable);
+              ui.draggable.attr('style', '');
+            }
+          }, 'json');
+        }
+      });
+    <% end %>
+  <% end %>
+  </div>
 </article>
 
 <article class="module width_full">
-	<header>
-		<h3><%= @my_profile ? t(:my_assigned_issues) : t('issue.issues_assigned_to', :username => @user.name) %></h3>
-	</header>
-	<div class="module_content">
-		<div id="my_assigned_issues" title="<%= t(:drag_issue_to_sort_priority) %>">
-		  <%= render :partial => 'my_assigned_issue',
-		    :collection => @user.assigned_issues.except_closed
-		  %>
-		</div>
-	</div>
+  <header>
+    <h3><%= @my_profile ? t(:my_assigned_issues) : t('issue.issues_assigned_to', :username => @user.name) %></h3>
+  </header>
+  <div class="module_content">
+    <% today = Date.today %>
+    <% this_month = today.month %>
+    <% beginning = today.beginning_of_week.yesterday %>
+    <table border="0" class="calendar" cellspacing="0">
+      <tr>
+        <caption><%= t('date.month_names')[this_month] %></caption>
+      </tr>
+      <tr>
+        <% (0..6).each do |i| %>
+          <th><%= t('date.abbr_day_names')[i] %></th>
+        <% end %>
+      </tr>
+      <% next_day = beginning.next %>
+      <% 2.times do %>
+      <tr>
+        <% (0..6).each do %>
+          <% class_name = '' %>
+          <% if next_day.month != this_month %>
+            <% class_name = 'other_month' %>
+          <% end %>
+          <% if next_day == today %>
+            <% class_name = 'today' %>
+          <% end %>
+          <td class="<%= class_name %>" data-value="<%= next_day.to_s('%Y%M%d') %>">
+            <span class="day"><%= next_day.day %></span>
+            <%= render :partial => 'my_assigned_issue', :collection => @planned_issues[next_day] %>
+          </td>
+          <% next_day = next_day.next %>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+    <div class="cancel_planning"><%= t(:cancel_planning) %></div>
+    <div id="my_assigned_issues">
+      <%= render :partial => 'my_assigned_issue', :collection => @unplanned_issues %>
+    </div>
+  </div>
 </article>
 
 <article class="module width_full">
-	<header>
-		<h3><%= t(:recently_created_issues) %></h3>
-	</header>
+  <header>
+    <h3><%= t(:recently_created_issues) %></h3>
+  </header>
 
-	<div class="module_content">
-		<%= render :partial => 'issues/issue', :collection => @user.issues.order('created_at DESC').limit(5), :as => :issue %>
-	</div>
+  <div class="module_content">
+    <%= render :partial => 'issues/issue',
+      :collection => @user.issues.order('created_at DESC').limit(5), :as => :issue %>
+  </div>
 </article>

@@ -94,7 +94,9 @@
       </tr>
       <% end %>
     </table>
+    <% if @my_profile %>
     <div class="cancel_planning"><%= t(:cancel_planning) %></div>
+    <% end %>
     <div id="my_assigned_issues">
       <%= render :partial => 'my_assigned_issue', :collection => @unplanned_issues %>
     </div>

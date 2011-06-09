@@ -6,7 +6,7 @@
       By <%= link_to @issue.user.name, @issue.user, :class => "quiet" %>
       &nbsp;&middot;&nbsp;
       <span class="date"><%= time_ago_in_words(@issue.created_at) + t(:ago) %></span>
-      <% if creator_of?(@issue) %>
+      <% if can? :manage, @issue %>
         &nbsp;&middot;&nbsp;
         <%= link_to t(:edit), edit_issue_path(@issue), :class => :action %>
         &nbsp;&middot;&nbsp;

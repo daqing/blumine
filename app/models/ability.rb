@@ -32,6 +32,10 @@ class Ability
       can :manage, Document do |doc|
         doc.user == user
       end
+
+      can :manage_milestone, Project do |project|
+        project.user == user
+      end
     end
     
     # Define abilities for the passed in user here. For example:

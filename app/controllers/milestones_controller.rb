@@ -2,8 +2,9 @@ class MilestonesController < ApplicationController
   before_filter :must_login_first
   before_filter :find_project
   before_filter :find_milestone, :only => [:edit, :update, :destroy]
-  before_filter :root_required, :only => [:edit, :update, :destroy]
-  authorize_resource
+  before_filter :only => [:new, :create, :edit, :update, :destroy] do |c|
+    redirect_to_root_when_no_permission unless can? :manage_milestone, @project
+  end
 
   def new
     @milestone = @project.milestones.new

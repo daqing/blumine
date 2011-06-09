@@ -9,10 +9,10 @@ class MilestonesControllerTest < ActionController::TestCase
 
   test "login required" do
     log_out
-    get :new
+    get :new, :project_id => @project.id
     assert_response :redirect
 
-    post :create
+    post :create, :project_id => @project.id, :milestone => {:name => 'foo'}
     assert_response :redirect
   end
 
@@ -56,7 +56,7 @@ class MilestonesControllerTest < ActionController::TestCase
     assert_no_permission
   end
 
-  test "root can delete milestone" do
+  test "root or creator can delete milestone" do
     assert_difference('Milestone.count', -1) do
       destroy_milestone
     end

@@ -9,7 +9,7 @@
   <div class="module_content">
     <%= render @project.milestones, :project => @project %>
   </div>
-  <% if can? :manage, Milestone %>
+  <% if can? :manage_milestone, @project %>
     <footer>
       <ul class="actions">
         <li><%= link_to new_project_milestone_path(@project),

@@ -1,14 +1,4 @@
-class Sudo::UsersController < ApplicationController
-  layout 'sudo'
-
-  before_filter :must_login_first
-  before_filter do |c|
-    unless current_user.root?
-      flash[:error] = t('permission.no_permission')
-      redirect_to root_path
-    end
-  end
-
+class Sudo::UsersController < SuperuserController
   def index
     @users = User.order('created_at DESC').page(params[:page])
   end

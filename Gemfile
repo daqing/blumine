@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7'
+gem 'rails', '3.0.9'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -18,6 +18,8 @@ gem 'ferret'
 gem 'capistrano'
 gem 'kaminari'
 gem 'cancan'
+gem 'rake'
+gem 'require_relative'
 
 # Use unicorn as the web server
 # gem 'unicorn'

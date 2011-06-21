@@ -20,6 +20,8 @@ gem 'kaminari'
 gem 'cancan'
 gem 'rake'
 gem 'require_relative'
+gem 'ansi'
+gem 'turn'
 
 # Use unicorn as the web server
 # gem 'unicorn'

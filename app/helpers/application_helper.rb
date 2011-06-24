@@ -154,4 +154,15 @@ module ApplicationHelper
         h(activity.data)
     end
   end
+
+  def target_url_after_login
+    project_count = Project.count
+    if project_count == 0
+      new_project_path
+    elsif project_count == 1
+      project_path(Project.first)
+    elsif project_count > 1
+      projects_path
+    end
+  end
 end

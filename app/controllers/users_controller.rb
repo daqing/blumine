@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_path
+      redirect_to target_url_after_login
     else
       render :new, :layout => 'focus'
     end

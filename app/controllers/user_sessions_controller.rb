@@ -7,8 +7,9 @@ class UserSessionsController < ApplicationController
 
     respond_to do |format|
       if @user_session.save
-        format.html { redirect_back_or root_path }
-        format.xml  { render :xml => @user_session, :status => :created, :location => root_path }
+        target_url = target_url_after_login
+        format.html { redirect_back_or target_url}
+        format.xml  { render :xml => @user_session, :status => :created, :location => target_url}
       else
         format.html { render :new, :layout => 'focus' }
         format.xml  { render :xml => @user_session.errors, :status => :unprocessable_entity }

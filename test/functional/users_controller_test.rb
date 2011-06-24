@@ -29,7 +29,7 @@ class UsersControllerTest < ActionController::TestCase
         :password => "foobar", :password_confirmation => "foobar"}
     end
 
-    assert_redirected_to root_path
+    assert_response :redirect
   end
 
   test "should get show" do

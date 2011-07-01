@@ -13,14 +13,22 @@ class IssuesController < ApplicationController
       @issue_state = :all
     end
 
-    @title = @project.name
-    breadcrumbs.add @project.name, project_path(@project)
-    breadcrumbs.add 'Issues', project_issues_path(@project)
-
     if @issue_state == :all
       @issues = @project.issues.except_closed
     else
       @issues = @project.issues.send("only_#{@issue_state}")
+    end
+
+    respond_to do |f|
+      f.html {
+        @title = @project.name
+        breadcrumbs.add @project.name, project_path(@project)
+        breadcrumbs.add 'Issues', project_issues_path(@project)
+      }
+
+      f.json {
+        render :json => {:issues => @issues}
+      }
     end
   end
 

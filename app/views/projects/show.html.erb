@@ -1,98 +1,85 @@
-<article class="module width_full">
-  <header>
-    <h3 class="tabs_involved">
-      <%= icon 'milestone' %>
-      <%= t('project.milestones') %>
-    </h3>
-  </header>
-  <a name="milestones" href=""></a>
-  <div class="module_content">
-    <%= render @project.milestones, :project => @project %>
-  </div>
-  <% if can? :manage_milestone, @project %>
-    <footer>
-      <ul class="actions">
-        <li><%= link_to new_project_milestone_path(@project),
-          :class => :btn do icon('add') + t(:new_milestone) end %>
-        </li>
-      </ul>
-    </footer>
-  <% end %>
-</article>
-
-<article class="module width_full">
-  <header>
-    <h3 class="tabs_involved">
-      <%= icon 'task' %>
-      <%= t('project.tasks') %>
-    </h3>
-  </header>
-  <a name="tasks" href=""></a>
-  <div class="module_content">
-    <%= render @project.issues.where(['label = ?', 'task']).limit(10) %>
-  </div>
-  <footer>
-    <ul class="actions">
-      <li><%= link_to new_project_issue_path(@project) + '/task', :class => :btn do icon('add') + t(:new_task) end %></li>
-    </ul>
-  </footer>
-</article>
-
-<article class="module width_full">
-  <header>
-    <h3 class="tabs_involved">
-      <%= icon 'bug' %>
-      <%= t('project.bugs') %>
-    </h3>
-  </header>
-  <a name="bugs" href=""></a>
-  <div class="module_content">
-    <%= render @project.issues.where(['label = ?', 'bug']).limit(10) %>
-  </div>
-  <footer>
-    <ul class="actions">
-      <li><%= link_to new_project_issue_path(@project) + '/bug', :class => :btn do icon('add') + t(:new_bug) end %></li>
-    </ul>
-  </footer>
-</article>
-
-<article class="module width_full">
-  <header>
-    <h3 class="tabs_involved">
-      <%= icon 'idea' %>
-      <%= t('project.ideas') %>
-    </h3>
-  </header>
-  <a name="ideas" href=""></a>
-  <div class="module_content">
-    <%= render @project.issues.where(['label = ?', 'idea']).limit(10) %>
-  </div>
-  <footer>
-    <ul class="actions">
-      <li><%= link_to new_project_issue_path(@project) + '/idea', :class => :btn do icon('add') + t(:new_idea) end %></li>
-    </ul>
-  </footer>
-</article>
-
-<article class="module width_full">
-  <header>
-    <h3 class="tabs_involved">
-      <%= icon 'doc' %>
-      <%= t('project.docs') %>
-    </h3>
-  </header>
-  <a name="docs" href=""></a>
-  <div class="module_content">
-    <%= render @project.documents, :project => @project %>
-  </div>
-  <footer>
-    <ul class="actions">
-      <li><%= link_to new_project_document_path(@project), :class => :btn do icon('add') + t(:new_document) end %></li>
-  </footer>
-</article>
-
-<% if current_user.root? %>
-  <h4 class="alert_error"><%= link_to t(:delete), @project, :method => :delete, :confirm => t(:delete_confirm) %></h4>
+<% content_for :head_hook do %>
+  <%= javascript_include_tag 'jquery_tools' %>
+  <%= javascript_include_tag 'mustache' %>
 <% end %>
 
-<div class="clear"></div>
+<% content_for :on_ready_hook do %>
+  var project_path = "/projects/<%= @project.id %>/";
+  $(".forms").scrollable();
+  var api = $(".forms").data("scrollable");
+  $(".navi").children().each(function(i, el) {
+    $(el).click(function() {
+      api.seekTo(i);
+      return false;
+    });
+  });
+
+  var updateContent = function(module) {
+    return function(data) {
+      console.log(data);
+      var tpl = $("#mustache_" + module).html();
+      $("#content_area").html(Mustache.to_html(tpl, data));
+    }
+  }
+
+  $(".modules a").click(function() {
+    var module = $(this).attr('data-module');
+    var url = project_path + module + '.json';
+    $.get(url, {}, updateContent(module), 'json');
+    return false;
+  });
+<% end %>
+
+<div class="span-4">
+  <h1><%= @project.name %></h1>
+</div>
+
+<div class="span-10 last">
+  <div class="navi">
+    <a href="#">创建会话</a>
+    <a href="#">新建任务</a>
+    <a href="#">添加文档</a>
+  </div>
+  <div class="forms">
+    <div class="items">
+      <div>
+        <%= form_for [@project, @project.activities.new] do |f| %>
+          <%= f.text_field :data %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+      <div>
+        <%= form_for [@project, @project.issues.new] do |f| %>
+          <%= f.text_field :title %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+      <div>
+        <%= form_for [@project, @project.documents.new] do |f| %>
+          <%= f.text_field :title %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<hr/>
+<div class="span-4 clear">
+  <ul class="modules">
+    <li><%= link_to '会话', '#', 'data-module' => 'conversations' %></li>
+    <li><%= link_to '任务', '#', 'data-module' => 'issues' %></li>
+    <li><%= link_to '文档', '#', 'data-module' => 'documents' %></li>
+  </ul>
+</div>
+
+<div class="span-10 last" id="content_area">
+  <%= render @project.activities %>
+</div>
+
+<div class="hidden" id="mustache_issues">
+ {{#issues}}
+  {{#issue}}
+    <a href="/issues/{{id}}/">{{title}}</a>
+  {{/issue}}
+ {{/issues}}
+</div>

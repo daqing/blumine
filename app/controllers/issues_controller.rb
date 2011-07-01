@@ -108,10 +108,10 @@ class IssuesController < ApplicationController
 
   def change_state
     authorize! :change_state, @issue
-    event_action = "#{params[:event]}!"
     respond_to do |format|
-      if @issue.respond_to? event_action
+      if @issue.current_state.events.keys.member? params[:event].to_sym
         begin
+          event_action = "#{params[:event]}!"
           @issue.send(event_action)
           Activity.create!(
             :user_id => current_user.id,

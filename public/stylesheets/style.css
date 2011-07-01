@@ -1,46 +1,62 @@
-/*************************************
-   WELCOME TO THE CUSTOM STYLESHEET
---------------------------------------
-              style.css
-        BlueTrip CSS Framework
-    Put your custom styles in here.
-***************************************/
-
-/**************************************/
 /*           COLOR SCHEME             */
-/**************************************
-- black		#000
-- white		#fff
--           #
--           #
--           #
-***************************************/
 
-
-/**************************************/
 /*              GLOBALS               */
-/**************************************/
+html, body {
+  margin: 0;
+  padding: 0;
+}
 
+.right { float: right; }
+.hidden { display: none; }
 
-/**************************************/
+.activity { margin-bottom: 10px; border: 1px solid #CCC; padding: 10px;}
+
+.forms {
+  position: relative;
+  overflow: hidden;
+  width: 260px;
+  height: 90px;
+}
+
+.forms .items {
+  width: 20000em;
+  position: absolute;
+}
+
+.forms .items div {
+  float: left;
+  width: 260px;
+}
+
 /*              HEADER                */
-/**************************************/
+#header {
+  height: 30px;
+  padding-top: 10px;
+  border-bottom: 1px dotted #CCC;
+}
 
-
-
-/**************************************/
 /*             NAVIGATION             */
-/**************************************/
+ul#nav {
+  margin: 0;
+}
 
+ul#nav li {
+  display: inline;
+  list-style: none;
+  margin-left: 0;
+  margin-right: 0.85em;
+}
 
+ul#nav li a:link, ul#nav li a:visited {
+  color: #36C;
+  text-decoration: none;
+}
 
-/**************************************/
+ul#nav li a:hover {
+  text-decoration: underline;
+}
+
 /*            MAIN CONTENT            */
-/**************************************/
 
-
-
-/**************************************/
 /*               FOOTER               */
-/**************************************/
-
+#footer { border-top: 1px solid #CCC; padding-top: 5px; margin-top: 20px; }

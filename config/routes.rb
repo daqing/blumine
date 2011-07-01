@@ -19,7 +19,7 @@ Blumine::Application.routes.draw do
         get 'label/:label', :action => 'view_by_label'
       end
     end
-    resources :milestones, :documents
+    resources :milestones, :documents, :activities
   end
 
   get "milestones/new"

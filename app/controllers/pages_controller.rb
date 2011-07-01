@@ -6,11 +6,10 @@ class PagesController < ApplicationController
       @title = t(:dashboard)
       @user = current_user
       users_working_on
-      render 'dashboard', :layout => 'application'
+      render 'dashboard'
     else
       @title = t(:home)
       @user_session = UserSession.new
-      render 'user_sessions/new', :layout => 'focus'
     end
   end
 

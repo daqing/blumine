@@ -16,84 +16,80 @@
     <%= yield :head_hook %>
   </head>
 <body>
-  <div id="header">
-    <p>BluMine</p>
-  </div>
+  <% if current_user %>
+    <div id="header">
+      <div class="container">
+        <ul id="nav">
+          <li><%= link_to t(:all_projects), projects_path %></li>
+          <li><%= link_to current_user.name, current_user %></li>
+          <li><%= link_to t(:account_settings), account_path %></li>
+          <li><%= link_to t(:log_out), logout_path %></li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
   <div class="container" id="main">
     <%= yield %>
-    <div id="footer">
-      <p><strong>Copyright &copy; <%= Time.now.year %> Project BluMine</strong></p>
-      <p>
-        <%= link_to t(:get_source_code), 'http://github.com/daqing/blumine/' %> | <%= link_to t(:blog), 'http://blog.xdaqing.com' %> | 
-        <% User::AVAILABLE_LANGUAGES.keys.each do |key| %>
-            <% if I18n.locale == key %>
-              <span class="current"><%= User::AVAILABLE_LANGUAGES[key] %></span>
-            <% else %>
-              <%= link_to User::AVAILABLE_LANGUAGES[key], "?locale=#{key.to_s}", :class => :action %>
-            <% end %>
-          <% end %>
-      </p>
+
+    <div id="footer" class="clear">
+      &copy; <%= Time.now.year %> <%= link_to 'Project BluMine', 'https://github.com/daqing/blumine/' %>
     </div>
   </div>
 
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $.make_sortable = function(id, url) {
-        var obj = $("#" + id);
-        obj.sortable({
-           axis: 'y',
-           dropOnEmpty: false,
-           cursor: 'crosshair',
-           items: '.sortable',
-           opacity: 0.6,
-           scroll: true,
-           handle: '.drag_handle',
-           update: function(event, ui) {
-              $.post(url, $("#" + id).sortable('serialize'), function(result) {}, 'script');
-           }
-        });
-      }
-
-      var default_search_tip = "<%= t(:search_issues) %>";
-      $("#search").click(function() {
-          if ($(this).val() == default_search_tip) {
-              $(this).val('').focus();
-          }
-        }).blur(function() {
-          if ($(this).val().length == 0) {
-              $(this).val(default_search_tip);
-          }
-        }).keydown(function(event) {
-          if (event.keyCode == 13) {
-            location.href = '/search/' + $(this).val();
-            return false;
-          }
-      });
-
-      $(".bg_highlight").live('mouseenter', function() { $(this).css('backgroundColor', '#FFC'); $(this).children('.hide').addClass('show').removeClass('hide');})
-        .live('mouseleave', function() { $(this).css('backgroundColor', '#FFF'); $(this).children('.show').addClass('hide').removeClass('show'); });
-
-      $("div[clickable], li[clickable]").mouseover(function() { $(this).css('cursor', 'pointer'); }).click(function() {
-        location.href = $(this).attr('clickable');
-      });
-
-      $("div.row").live('hover', function(ev) {
-        if (ev.type == "mouseenter") {
-          $(this).find('a[data-method=delete]').removeClass('hide');
-        } else if (ev.type == "mouseleave") {
-          $(this).find('a[data-method=delete]').addClass('hide');
-        }
-      });
-
-      <%= yield :on_ready_hook %>
-
-      $("a.facebox").live('click', function() {
-          $(this).facebox()
+  <% if current_user %>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $.make_sortable = function(id, url) {
+          var obj = $("#" + id);
+          obj.sortable({
+             axis: 'y',
+             dropOnEmpty: false,
+             cursor: 'crosshair',
+             items: '.sortable',
+             opacity: 0.6,
+             scroll: true,
+             handle: '.drag_handle',
+             update: function(event, ui) {
+                $.post(url, $("#" + id).sortable('serialize'), function(result) {}, 'script');
+             }
           });
-      $(".tiptip").tipTip({defaultPosition: 'bottom'});
-    });
-  </script>
+        }
+
+        var default_search_tip = "<%= t(:search_issues) %>";
+        $("#search").click(function() {
+            if ($(this).val() == default_search_tip) {
+                $(this).val('').focus();
+            }
+          }).blur(function() {
+            if ($(this).val().length == 0) {
+                $(this).val(default_search_tip);
+            }
+          }).keydown(function(event) {
+            if (event.keyCode == 13) {
+              location.href = '/search/' + $(this).val();
+              return false;
+            }
+        });
+
+        $(".bg_highlight").live('mouseenter', function() { $(this).css('backgroundColor', '#FFC'); $(this).children('.hide').addClass('show').removeClass('hide');})
+          .live('mouseleave', function() { $(this).css('backgroundColor', '#FFF'); $(this).children('.show').addClass('hide').removeClass('show'); });
+
+        $("div[clickable], li[clickable]").mouseover(function() { $(this).css('cursor', 'pointer'); }).click(function() {
+          location.href = $(this).attr('clickable');
+        });
+
+        $("div.row").live('hover', function(ev) {
+          if (ev.type == "mouseenter") {
+            $(this).find('a[data-method=delete]').removeClass('hide');
+          } else if (ev.type == "mouseleave") {
+            $(this).find('a[data-method=delete]').addClass('hide');
+          }
+        });
+
+        <%= yield :on_ready_hook %>
+      });
+    </script>
+  <% end %>
 </body>
 </html>
-

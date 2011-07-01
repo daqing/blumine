@@ -1,8 +1,15 @@
 class DocumentsController < ApplicationController
   before_filter :must_login_first
   before_filter :find_project
-  before_filter :find_document, :except => [:new, :create]
+  before_filter :find_document, :except => [:new, :create, :index]
   authorize_resource
+
+  def index
+    respond_to do |f|
+      f.html
+      f.json { render :json => @project.documents }
+    end
+  end
   
   def new
     @project = Project.find(params[:project_id])

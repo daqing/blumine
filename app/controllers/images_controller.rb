@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   def new
     @image = Image.new
     
-    render 'new', :layout => 'clean'
+    render 'new', :layout => false
   end
 
   def create

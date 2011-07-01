@@ -10,8 +10,6 @@ class UsersController < ApplicationController
     @user = User.new
     @title = t(:register)
     breadcrumbs.add t(:register), register_path
-    
-    render :layout => 'focus'
   end
 
   def create
@@ -19,7 +17,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to target_url_after_login
     else
-      render :new, :layout => 'focus'
+      render :new
     end
   end
 

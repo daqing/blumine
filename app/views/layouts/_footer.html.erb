@@ -1,16 +1,5 @@
 <footer>
 	<hr />
-	<p><strong>Copyright &copy; <%= Time.now.year %> Project BluMine</strong></p>
-	<p>
-		<%= link_to t(:get_source_code), 'http://github.com/daqing/blumine/' %> | <%= link_to t(:blog), 'http://blog.xdaqing.com' %> | 
-		<% User::AVAILABLE_LANGUAGES.keys.each do |key| %>
-	      <% if I18n.locale == key %>
-	        <span class="current"><%= User::AVAILABLE_LANGUAGES[key] %></span>
-	      <% else %>
-	        <%= link_to User::AVAILABLE_LANGUAGES[key], "?locale=#{key.to_s}", :class => :action %>
-	      <% end %>
-	    <% end %>
-	</p>				
 	<!--
 	<p>Theme by <a href="http://www.medialoot.com">MediaLoot</a></p>
   -->

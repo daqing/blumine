@@ -7,17 +7,8 @@ class IssuesController < ApplicationController
 
   def index
     @project = Project.find(params[:project_id])
-    if params[:state]
-      @issue_state = Issue.valid_state?(params[:state].to_sym) ? params[:state] : :all
-    else
-      @issue_state = :all
-    end
-
-    if @issue_state == :all
-      @issues = @project.issues.except_closed
-    else
-      @issues = @project.issues.send("only_#{@issue_state}")
-    end
+    @milestones = @project.milestones
+    @no_milestones = @project.issues.where('milestone_id = 0')
 
     respond_to do |f|
       f.html {
@@ -27,7 +18,7 @@ class IssuesController < ApplicationController
       }
 
       f.json {
-        render :json => {:issues => @issues}
+        render :json => {:ok => :test}
       }
     end
   end

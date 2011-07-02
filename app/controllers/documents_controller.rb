@@ -5,6 +5,7 @@ class DocumentsController < ApplicationController
   authorize_resource
 
   def index
+    @documents = @project.documents
     respond_to do |f|
       f.html
       f.json { render :json => @project.documents }

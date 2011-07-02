@@ -1,28 +1,19 @@
-<% content_for :sidebar do %>
-  <div class="b-box">
-    <div class="bar bg-gray"><%= t(:issue_label) %></div>
-    <% ['task', 'bug', 'suggestion'].each do |label| %>
-      <div class="row bg_highlight quiet" <%= 'filtered' if label == @label %> clickable="<%= project_issues_path(@project) %>/label/<%= label %>"><%= t("issue.label.#{label}") %></div>
-    <% end %>
-  </div>
+<% content_for :content_area do %>
+  <% @milestones.each do |m| %>
+    <div class="milestone">
+      <h3><%= m.name %></h3>
+      <ul>
+        <%= render m.issues %>
+      </ul>
+    </div>
+  <% end %>
 
-  <div class="b-box" title="<%= t(:click_to_filter_issues) %>">
-    <div class="bar bg-gray"><%= t(:issue_state) %></div>
-    <% Issue.all_states.each do |state_sym| %>
-      <div class="row bg_highlight" <%= "filtered" if state_sym.to_s == @issue_state %> clickable="<%= project_issues_path(@project) %>/filter/<%= state_sym.to_s %>">
-        <span class="quiet span-2"><%= @project.issues.send("only_#{state_sym.to_s}").count %></span>
-        <span class="state state-<%= state_sym.to_s %>"><%= Issue.state_name(state_sym) %></span>
-      </div>
-    <% end %>
+  <div class="milestone">
+    <h3>默认列表</h3>
+    <ul>
+      <%= render @no_milestones %>
+    </ul>
   </div>
 <% end %>
 
-<span>
-  <%= link_to t(:new_task), new_project_issue_path(@project) + '/task' %>
-  &nbsp;&nbsp;
-  <%= link_to t(:new_bug), new_project_issue_path(@project) + '/bug' %>
-  &nbsp;&nbsp;
-  <%= link_to t(:new_suggestion), new_project_issue_path(@project) + '/suggestion' %>
-</span>
-<%= render 'shared/line_spacer' %>
-<%= render_with_spacer 'issue', @issues.order('created_at DESC') %>
+<%= render 'shared/project_page' %>

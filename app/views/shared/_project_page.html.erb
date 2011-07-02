@@ -1,0 +1,11 @@
+<div class="span-4 clear">
+  <h1><%= link_to @project.name, @project %></h1>
+  <ul class="modules">
+    <li><%= link_to '任务', project_issues_path(@project) %></li>
+    <li><%= link_to '文档', project_documents_path(@project) %></li>
+  </ul>
+</div>
+
+<div class="span-10 last" id="content_area">
+  <%= yield :content_area %>
+</div>

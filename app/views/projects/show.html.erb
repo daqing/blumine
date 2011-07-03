@@ -1,6 +1,6 @@
 <% content_for :content_area do %>
   <h3>会话</h3>
-  <%= form_for [@project, @conversation] do |f| %>
+  <%= form_for [@project, @conversation], :html => {:multipart => true}, :remote => true do |f| %>
     <% @conversation.replies.build %>
     <% f.fields_for :replies do |reply_form| %>
       <%= render 'replies/fields', :f => reply_form %>
@@ -9,7 +9,7 @@
   <% end %>
 
   <div class="conversations">
-    <%= render @project.conversations, :project => @project %>
+    <%= render @project.conversations.order('updated_at DESC'), :project => @project %>
   </div>
 <% end %>
 

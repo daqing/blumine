@@ -4,9 +4,14 @@ class ConversationsController < ApplicationController
     @conversation = @project.conversations.build(params[:conversation])
     @conversation.user = current_user
 
-    result = @conversation.save
-    flash[:error] = 'failed' unless result
-
-    redirect_to @project
+    respond_to do |f|
+      if @conversation.save
+        f.html { redirect_to @project }
+        f.js
+      else
+        f.html { redirect_to @project, :error => 'save failed' }
+        f.js { render :text => :error, :status => 500 }
+      end
+    end
   end
 end

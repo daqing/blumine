@@ -1,0 +1,24 @@
+# == Schema Information
+# Schema version: 20110703080201
+#
+# Table name: document_sections
+#
+#  id          :integer         not null, primary key
+#  document_id :integer
+#  title       :string(255)
+#  content     :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  document_id: 1
+  title: MyString
+  content: MyText
+
+two:
+  document_id: 1
+  title: MyString
+  content: MyText

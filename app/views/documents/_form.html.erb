@@ -1,14 +1,19 @@
 <%= form_for [@project, @document] do |f| %>
   <%= render 'shared/error_messages', :obj => f.object %>
-  <fieldset>
-    <%= f.label :title, t(:title) %>
-    <%= f.text_field :title %>
-  </fieldset>
-  
-  <fieldset>
-    <%= f.label :content, t(:content) %>
-    <%= render :partial => 'shared/editor',
-      :locals => {:name => 'document[content]', :content => @document.content} %>
-  </fieldset>
+  <%= f.label :title, t(:title) %>
+  <%= f.text_field :title %>
+  <% f.object.document_sections.build %>
+  <%= f.fields_for :document_sections do |section_form| %>
+    <div class="section" style="padding: 10px 10px 0 0;">
+      <div>
+        <%= section_form.label :title, '段落标题' %><br/>
+        <%= section_form.text_field :title %>
+      </div>
+      <div>
+        <%= section_form.label :content, '内容' %><br/>
+        <%= section_form.text_area :content %>
+      </div>
+    </div>
+  <% end %>
   <%= f.submit t(:save), :class => :alt_btn %>
 <% end %>

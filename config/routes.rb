@@ -19,9 +19,12 @@ Blumine::Application.routes.draw do
         get 'label/:label', :action => 'view_by_label'
       end
     end
-    resources :milestones, :documents, :activities
+    resources :milestones, :activities
     resources :conversations do
       resources :replies
+    end
+    resources :documents do
+      resources :document_sections
     end
   end
 

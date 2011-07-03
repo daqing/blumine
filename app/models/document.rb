@@ -15,6 +15,9 @@
 class Document < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
-  
-  validates :title, :content, :project_id, :user_id, :presence => true
+
+  has_many :document_sections
+  accepts_nested_attributes_for :document_sections
+
+  validates :title, :project_id, :user_id, :presence => true
 end

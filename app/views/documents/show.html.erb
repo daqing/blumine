@@ -1,20 +1,14 @@
-<article class="module width_full">
-  <header>
-    <h3 class="tabs_involved">
-      <%= icon 'doc' %>
-      <%= @document.title %>
-    </h3>
-  </header>
-  <div class="module_content">
-    <%=raw parse_markdown(@document.content) %>
-  </div>
-  <% if can? :manage, @document %>
-  <footer>
-    <ul class="actions">
-      <li><%= link_to t(:edit), edit_project_document_path(@project, @document), :class => :btn %></li>
-      <li><%= link_to t(:delete), project_document_path(@project, @document),
-        :method => :delete, :confirm => t(:delete_confirm), :class => :btn %></li>
-    </ul>
-  </footer>
+<h2><%= @document.title %></h2>
+<div class="document_sections">
+  <%= render @document.document_sections %>
+</div>
+
+<% if can? :manage, @document %>
+  <%= form_for [@project, @document, @document.document_sections.new], :remote => true do |f| %>
+    <div>
+      <%= f.text_field :title %><br/>
+      <%= f.text_area :content %>
+    </div>
+    <%= f.submit %>
   <% end %>
-</article>
+<% end %>

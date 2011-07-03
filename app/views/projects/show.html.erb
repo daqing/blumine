@@ -1,5 +1,16 @@
 <% content_for :content_area do %>
   <h3>会话</h3>
+  <%= form_for [@project, @conversation] do |f| %>
+    <% @conversation.replies.build %>
+    <% f.fields_for :replies do |reply_form| %>
+      <%= render 'replies/fields', :f => reply_form %>
+    <% end %>
+    <%= f.submit %>
+  <% end %>
+
+  <div class="conversations">
+    <%= render @project.conversations, :project => @project %>
+  </div>
 <% end %>
 
 <%= render 'shared/project_page' %>

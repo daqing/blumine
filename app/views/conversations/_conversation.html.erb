@@ -1,0 +1,11 @@
+<div class="conversation">
+  <p><%= conversation.user.name %></p>
+  <div class="replies">
+    <%= render conversation.replies %>
+  </div>
+  <% reply = conversation.replies.build %>
+  <%= form_for [project, conversation, reply], :html => {:multipart => true} do |f| %>
+    <%= render 'replies/fields', :f => f %>
+    <%= f.submit %>
+  <% end %>
+</div>

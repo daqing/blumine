@@ -1,0 +1,30 @@
+# == Schema Information
+# Schema version: 20110703034007
+#
+# Table name: uploads
+#
+#  id           :integer         not null, primary key
+#  project_id   :integer
+#  reply_id     :integer
+#  asset        :string(255)
+#  file_size    :integer
+#  content_type :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project_id: 1
+  reply_id: 1
+  asset: MyString
+  file_size: 1
+  content_type: MyString
+
+two:
+  project_id: 1
+  reply_id: 1
+  asset: MyString
+  file_size: 1
+  content_type: MyString

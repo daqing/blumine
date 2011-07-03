@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110605071315) do
+ActiveRecord::Schema.define(:version => 20110703034007) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(:version => 20110605071315) do
     t.integer  "issue_id"
     t.integer  "user_id"
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conversations", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -88,6 +95,14 @@ ActiveRecord::Schema.define(:version => 20110605071315) do
     t.datetime "updated_at"
   end
 
+  create_table "replies", :force => true do |t|
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "todo_items", :force => true do |t|
     t.integer  "issue_id"
     t.text     "content"
@@ -95,6 +110,16 @@ ActiveRecord::Schema.define(:version => 20110605071315) do
     t.datetime "updated_at"
     t.string   "workflow_state"
     t.integer  "position"
+  end
+
+  create_table "uploads", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "reply_id"
+    t.string   "asset"
+    t.integer  "file_size"
+    t.string   "content_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

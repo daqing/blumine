@@ -57,6 +57,12 @@ ul#nav li a:hover {
 }
 
 /*            MAIN CONTENT            */
+.conversation {
+  background-color: #EFEFEF;
+  border: 1px solid #CCC;
+  padding: 5px;
+  margin-bottom: 20px;
+}
 
 /*               FOOTER               */
 #footer { border-top: 1px solid #CCC; padding-top: 5px; margin-top: 20px; }

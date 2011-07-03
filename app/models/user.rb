@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   has_many :issues, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :activities, :dependent => :destroy
+  has_many :conversations, :dependent => :destroy
 
   has_many :issue_assignments, :dependent => :destroy
   has_many :assigned_issues, :through => :issue_assignments, :source => :issue, :order => 'position ASC'

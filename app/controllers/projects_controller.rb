@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @conversation = @project.conversations.new
     @title = @project.name
     breadcrumbs.add @project.name, project_path(@project)
   end

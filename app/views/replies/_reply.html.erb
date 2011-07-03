@@ -1,0 +1,7 @@
+<div class="reply">
+  <span><%= reply.content %></span>
+  <% if reply.uploads.any? %>
+    <%= render reply.uploads %>
+  <% end %>
+</div>
+

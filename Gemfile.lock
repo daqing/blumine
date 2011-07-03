@@ -102,6 +102,7 @@ GEM
     rdoc (3.8)
     redcarpet (1.17.2)
     require_relative (1.0.2)
+    rmagick (2.13.1)
     rmmseg-cpp (0.2.7)
     ruby-debug (0.10.4)
       columnize (>= 0.1)
@@ -137,9 +138,11 @@ DEPENDENCIES
   ferret
   jquery-rails (>= 0.2.6)
   kaminari
+  mime-types
   rails (= 3.0.9)
   redcarpet
   require_relative
+  rmagick
   rmmseg-cpp
   ruby-debug
   sqlite3

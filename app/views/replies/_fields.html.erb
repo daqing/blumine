@@ -1,0 +1,7 @@
+<%= f.text_field :content %>
+<div class="extra">
+  <% f.object.uploads.build %>
+  <%= f.fields_for :uploads do |upload_form| %>
+    <%= upload_form.file_field :asset %>
+  <% end %>
+</div>

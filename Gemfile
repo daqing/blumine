@@ -24,6 +24,8 @@ gem 'require_relative'
 gem 'ansi'
 gem 'turn'
 
+gem 'haml'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

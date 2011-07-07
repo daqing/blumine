@@ -1,0 +1,6 @@
+.row.assigned_issue.draggable{:id => "issue_#{my_assigned_issue.id}",  :data => {:id => my_assigned_issue.id}}
+  - if @my_profile
+    %span.drag_handle
+      = icon 'cursor_drag_arrow'
+  = issue_title_link(my_assigned_issue)
+

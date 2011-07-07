@@ -1,0 +1,5 @@
+.issue
+  %span{:title => Issue.state_name(issue.current_state.name)}
+    = image_tag "state_#{issue.current_state.name.to_s}.png", :align => :absmiddle, :height => 16, :width => 16
+  = issue_title_link(issue)
+  %span.date= time_ago_in_words(issue.created_at) + t(:ago)

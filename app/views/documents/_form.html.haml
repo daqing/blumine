@@ -1,0 +1,18 @@
+= form_for [@project, @document] do |f|
+  = render 'shared/error_messages', :obj => f.object
+  = f.label :title, t(:title)
+  %br/
+  = f.text_field :title
+  - f.object.document_sections.build if f.object.new_record?
+  = f.fields_for :document_sections do |section_form|
+    .section
+      %div
+        = section_form.label :title, '段落标题'
+        %br/
+        = section_form.text_field :title
+
+      %div
+        = section_form.label :content, '内容'
+        %br/
+        = section_form.text_area :content
+  = f.submit t(:save), :class => :alt_btn

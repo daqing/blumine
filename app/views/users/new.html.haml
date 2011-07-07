@@ -1,0 +1,24 @@
+%h3= t(:register)
+
+= form_for @user do |f|
+  = render 'shared/error_messages', :obj => @user
+  %fieldset
+    .row
+      = f.label :name, t(:username)
+      %br/
+      = f.text_field :name
+    .row
+      = f.label :email
+      %br/
+      = f.text_field :email
+    .row
+      = f.label :password, t(:password)
+      %br/
+      = f.password_field :password
+    .row
+      = f.label :password_confirmation, t(:password_confirmation)
+      %br/
+      = f.password_field :password_confirmation
+  = f.submit t(:create_user), :class=>:alt_btn
+
+= link_to t(:log_in), root_path

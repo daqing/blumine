@@ -1,0 +1,13 @@
+- content_for :content_area do
+  - @milestones.each do |m|
+    .milestone
+      %h3= m.name
+      %ul
+        = render m.issues
+
+  .milestone
+    %h3 默认列表
+    %ul
+      = render @no_milestones
+
+= render 'shared/project_page'

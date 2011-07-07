@@ -1,0 +1,8 @@
+.conversation
+  %p= "#{conversation.user.name}开始了新会话"
+  .replies
+    = render conversation.replies
+  - reply = conversation.replies.build
+  = form_for [project, conversation, reply], :html => {:multipart => true} do |f|
+    = render 'replies/fields', :f => f
+    = f.submit

@@ -1,0 +1,79 @@
+%h3= t(:account_details)
+
+%table
+  %tr
+    %td= t(:date_joined)
+    %td= time_ago_in_words(@user.created_at) + t(:ago)
+  %tr
+    %td= t(:default_locale)
+    %td= User::AVAILABLE_LANGUAGES[@user.locale ? @user.locale.to_sym : I18n.default_locale]
+  - if @user.role
+    %tr
+      %td= t('role.name')
+      %td= render 'shared/role', :role => @user.role_name
+- if @my_profile
+  - content_for :on_ready_hook do
+    :plain
+      $(".draggable").draggable({revert: 'invalid'});
+      $("table.calendar td").droppable({
+        drop: function(event, ui) {
+          var col = $(this);
+
+          var issue_id = ui.draggable.attr('data-id');
+          var date = col.attr('data-value');
+
+          $.post('/issues/' + issue_id + '/planning', {date: date}, function(response) {
+            if (response['success']) {
+              col.effect('highlight');
+            } else {
+              col.css('backgroundColor', 'red');
+            }
+          }, 'json');
+        },
+        accept: '.draggable'
+      });
+
+      $(".cancel_planning").droppable({
+        drop: function(event, ui) {
+          var issue_id = ui.draggable.attr('data-id');
+          $.post('/issues/' + issue_id + '/planning', {date: ''}, function(response) {
+            if (response['success']) {
+              $("#my_assigned_issues").append(ui.draggable);
+              ui.draggable.attr('style', 'position: relative;');
+            }
+          }, 'json');
+        }
+      });
+
+%h3= @my_profile ? t(:my_assigned_issues) : t('issue.issues_assigned_to', :username => @user.name)
+- today = Date.today
+- this_month = today.month
+- beginning = today.beginning_of_week.yesterday
+%table.calendar{:border => 0, :cellspacing => 0}
+  %tr
+    %caption= t('date.month_names')[this_month]
+  %tr
+    - (0..6).each do |i|
+      %th= t('date.abbr_day_names')[i]
+  - next_day = beginning.next
+  - 2.times do
+    %tr
+      - (0..6).each do
+        - class_name = ''
+        - if next_day.month != this_month
+          - class_name = 'other_month'
+        - if next_day == today
+          - class_name = 'today'
+        %td{:class => class_name,  :data => {:value => next_day.to_s('%Y%M%d')}}
+          %span.day= next_day.day
+          = render :partial => 'my_assigned_issue', :collection => @planned_issues[next_day]
+        - next_day = next_day.next
+
+- if @my_profile
+  .cancel_planning= t(:cancel_planning)
+
+#my_assigned_issues
+  = render :partial => 'my_assigned_issue', :collection => @unplanned_issues
+
+%h3= t(:recently_created_issues)
+= render :partial => 'issues/issue', :collection => @user.issues.order('created_at DESC').limit(5), :as => :issue

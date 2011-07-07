@@ -1,7 +1,0 @@
-<% [:success, :warning, :error, :info].each do |type| %>
-  <% if flash[type] %>
-    <h4 class="alert_<%= type.to_s %>"><%= flash[type] %></h4>
-  <% end %>
-<% end %>  
-
-

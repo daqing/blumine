@@ -1,0 +1,5 @@
+#feed_box
+  = render 'activities/form'
+  = render :partial => 'activities/activity', :collection => Activity.limit(10)
+
+= render :partial => 'users/user_working_on', :collection => @users_working_on.keys, :as => :user

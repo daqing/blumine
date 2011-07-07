@@ -1,0 +1,83 @@
+!!!
+%html
+  %head
+    %title= "#{@title + ' - ' if @title}BluMine"
+    = csrf_meta_tag
+
+    = stylesheet_link_tag 'screen', :media => 'screen, projection'
+    = stylesheet_link_tag 'print', :media => 'print'
+    /[if IE]
+      = stylesheet_link_tag 'ie', :media => 'screen, projection'
+    = stylesheet_link_tag 'style', :media => 'screen, projection'
+
+    = javascript_include_tag :defaults
+    = yield :head_hook
+
+  %body
+    - if current_user
+      #header
+        .container
+          %ul#nav
+            %li= link_to t(:all_projects), projects_path
+            %li= link_to current_user.name, current_user
+            %li= link_to t(:account_settings), account_path
+            %li= link_to t(:log_out), logout_path
+
+    #main.container
+      = yield
+
+      #footer.clear
+        &copy; #{Time.now.year} #{link_to 'Project BluMine', 'https://github.com/daqing/blumine/'}
+
+    - if current_user
+      :javascript
+        $(document).ready(function() {
+          $.make_sortable = function(id, url) {
+            var obj = $("#" + id);
+            obj.sortable({
+               axis: 'y',
+               dropOnEmpty: false,
+               cursor: 'crosshair',
+               items: '.sortable',
+               opacity: 0.6,
+               scroll: true,
+               handle: '.drag_handle',
+               update: function(event, ui) {
+                  $.post(url, $("#" + id).sortable('serialize'), function(result) {}, 'script');
+               }
+            });
+          }
+
+          var default_search_tip = "<%= t(:search_issues) %>";
+          $("#search").click(function() {
+              if ($(this).val() == default_search_tip) {
+                  $(this).val('').focus();
+              }
+            }).blur(function() {
+              if ($(this).val().length == 0) {
+                  $(this).val(default_search_tip);
+              }
+            }).keydown(function(event) {
+              if (event.keyCode == 13) {
+                location.href = '/search/' + $(this).val();
+                return false;
+              }
+          });
+
+          $(".bg_highlight").live('mouseenter', function() { $(this).css('backgroundColor', '#FFC'); $(this).children('.hide').addClass('show').removeClass('hide');})
+            .live('mouseleave', function() { $(this).css('backgroundColor', '#FFF'); $(this).children('.show').addClass('hide').removeClass('show'); });
+
+          $("div[clickable], li[clickable]").mouseover(function() { $(this).css('cursor', 'pointer'); }).click(function() {
+            location.href = $(this).attr('clickable');
+          });
+
+          $("div.row").live('hover', function(ev) {
+            if (ev.type == "mouseenter") {
+              $(this).find('a[data-method=delete]').removeClass('hide');
+            } else if (ev.type == "mouseleave") {
+              $(this).find('a[data-method=delete]').addClass('hide');
+            }
+          });
+
+          <%= yield :on_ready_hook %>
+        });

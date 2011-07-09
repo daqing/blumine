@@ -1,0 +1,12 @@
+%div{:class => "todo_item bg_highlight #{'sortable' if manage}", :id => "todo_#{todo_item.id}"}
+  = render 'shared/drag_handle' if manage
+  - if todo_item.done?
+    <input type="checkbox" checked="true" data-id="#{todo_item.id}" #{'disabled=true' unless manage}/>
+    %span.todo_done
+      = todo_item.content
+  - else
+    <input type="checkbox" data-id="#{todo_item.id}" #{'disabled=true' unless manage} />
+    %span.todo_new
+      = todo_item.content
+  = link_to t(:delete), todo_item, :method => :delete, :remote => true, :confirm => t(:delete_confirm) if manage
+

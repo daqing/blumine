@@ -1,0 +1,19 @@
+- content_for :head_hook do
+  = javascript_include_tag "jquery.ui.datepicker-zh-CN.js"
+
+- content_for :on_ready_hook do
+  :plain
+    $("#milestone_due_date").datepicker();
+
+%h3= @heading_name
+= form_for [@project, @milestone] do |f|
+  = render 'shared/error_messages', :obj => f.object
+  .row
+    = f.label :name, t(:name)
+    = f.text_field :name
+
+  .row
+    = f.label :due_date, t(:due_date)
+    = f.text_field :due_date
+
+  = f.submit t(:save), :class => :alt_btn

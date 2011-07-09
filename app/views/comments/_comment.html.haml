@@ -1,0 +1,12 @@
+%div{:id => "comment_#{comment.id}"}
+  .comment_item
+  %span.author= link_to comment.user.name, comment.user
+  %span.date= time_ago_in_words(comment.created_at) + t(:ago)
+  - if can? :manage, comment
+    = link_to t(:edit), edit_comment_path(comment), :class => 'action facebox'
+    &nbsp;&middot;&nbsp;
+    = link_to t(:delete), comment, :method => :delete, :remote => true, :confirm => t(:delete_confirm), :class => :action
+
+  .content
+    =raw parse_markdown comment.content
+

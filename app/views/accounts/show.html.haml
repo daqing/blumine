@@ -1,0 +1,24 @@
+%h3= t(:account_settings)
+
+= form_for current_user, :url => account_path do |f|
+  = render 'shared/error_messages', :obj => f.object
+  %fieldset
+    .row
+      = f.label :name, t(:username)
+      %br/
+      = current_user.name
+    .row
+      = f.label :email, t(:email)
+      %br/
+      = current_user.email
+    .row
+      = f.label :locale, t(:default_locale)
+      %br/
+      = f.select :locale, options_for_select({"English" => "en", "中文" => "zh"}, current_user.locale)
+    .row
+      = f.label :role, t('role.name')
+      %br/
+      = f.select :role, options_for_select(User::ROLES.collect {|role| [t("role.#{role}"), role] },
+        current_user.role)
+  = f.submit t(:save)
+

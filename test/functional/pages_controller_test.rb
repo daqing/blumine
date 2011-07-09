@@ -7,15 +7,12 @@ class PagesControllerTest < ActionController::TestCase
 
     assert assigns(:title)
     assert assigns(:user_session)
-
-    assert_select "form.new_user_session"
   end
 
   test "user logged in should see dashboard" do
     log_in(:daqing)
     get :index
     assert_response :success
-    assert_select "form.new_activity"
   end
 
   test "root path should be routed to index action" do
@@ -37,6 +34,5 @@ class PagesControllerTest < ActionController::TestCase
     log_in(:daqing)
     get :stats
     assert_response :success
-    assert_select '.module header h3'
   end
 end

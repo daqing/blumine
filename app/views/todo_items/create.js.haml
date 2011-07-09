@@ -1,0 +1,3 @@
+:plain
+  $("#add_todo_form").before("#{escape_javascript(render(@todo_item, :manage => true))}")
+  $("#todo_item_content").val('')

@@ -1,0 +1,6 @@
+:plain
+  $("#issue_workflow_box").html("#{escape_javascript(render('shared/issue_workflow', :issue => @issue))}")
+
+- if @issue.closed? or @issue.reopened?
+  location.reload()
+

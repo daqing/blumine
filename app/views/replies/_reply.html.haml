@@ -1,0 +1,5 @@
+.reply
+  %span= reply.content
+  - if reply.uploads.any?
+    = render reply.uploads
+

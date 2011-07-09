@@ -1,0 +1,7 @@
+= form_for @project do |f|
+  = render 'shared/error_messages', :obj => @project
+  = f.label :name, t(:project_name)
+  = f.text_field :name
+
+  = f.submit t(:create_project)
+

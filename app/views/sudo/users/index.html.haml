@@ -1,0 +1,12 @@
+%h3 User Manager
+%table{:cellspacing => 0}
+  %thead
+    %tr
+      <th width="20">ID</th>
+      <th width="80">#{t(:username)}</th>
+      <th width="50">E-mail</th>
+      <th width="100">#{t(:created_at)}</th>
+      <th width="100">#{t(:updated_at)}</th>
+      <th>#{t(:operations)}</th>
+    = render @users
+= paginate @users %>

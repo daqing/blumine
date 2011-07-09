@@ -1,0 +1,71 @@
+%h3= icon(@issue.label) + @issue.title
+
+.tip
+  = link_to @issue.user.name, @issue.user, :class => "quiet"
+  &nbsp;&middot;&nbsp;
+  %span.date= time_ago_in_words(@issue.created_at) + t(:ago)
+  - if can? :manage, @issue
+    &nbsp;&middot;&nbsp;
+    = link_to t(:edit), edit_issue_path(@issue), :class => :action
+    &nbsp;&middot;&nbsp;
+    = link_to t(:delete), @issue, :method => :delete, :class => :action, :confirm => t(:delete_confirm)
+
+=raw parse_markdown @issue.content
+
+- if can? :manage_todo, @issue
+  #todo_list_box
+    = render 'manage_todo_list', :issue => @issue, :todo_item => @todo_item
+  - else
+    = render 'view_todo_list', :issue => @issue
+
+#issue_workflow_box
+  = render 'shared/issue_workflow', :issue => @issue
+
+#issue_assignment
+  = render 'shared/issue_assignment', :issue => @issue
+
+- if can? :manage_todo, @issue
+  - content_for :on_ready_hook do
+    :plain
+      $("input[type=checkbox]").live('change', function() {
+          var item_id = $(this).attr('data-id');
+          var input = $(this);
+          if (input.is(":checked")) {
+            // from 'unchecked' to 'checked', mark item as done
+            // TODO: The event is hardcoded! should be automatically set from todo_item state
+            $.post('/todo_items/' + item_id + '/change_state', {event: "finish"}, function() {
+              input.next().removeClass('todo_new').addClass('todo_done');
+              var target = $("#todo_" + item_id);
+              target.hide();
+              $("#todo_done").append(target);
+              target.slideDown();
+            });
+          } else {
+            // uncheck this item, mark as 'new'
+            $.post('/todo_items/' + item_id + '/change_state', {event: "undo"}, function() {
+              input.next().removeClass('todo_done').addClass('todo_new');
+              var target = $("#todo_" + item_id);
+              target.hide();
+              $("#add_todo_form").before(target);
+              target.slideDown();
+            });
+          }
+      });
+      $.make_sortable('todo_list_box', '/todo_items/sort');
+
+%h3= t('issue.discussions')
+%a{:name => 'comments'}
+
+- unless @issue.closed? and @issue.comments.empty?
+  #issue_comments
+    = render @issue.comments
+
+%div{:class => "#{'hide' if @issue.closed?}", :id => 'add_comment_form'}
+  = form_for [@issue, @comment], :remote => true do |f|
+    = f.text_area :content, :style => "height: 10em"
+    %br/
+    = f.submit t('issue.create_comment')
+
+- if @issue.milestone
+  %h3= t(:milestone)
+  = link_to @issue.milestone.name, project_path(@issue.project) + '#milestones'

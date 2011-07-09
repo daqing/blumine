@@ -1,6 +1,0 @@
-<h3><%= t('image.upload') %></h3>
-<%= form_for @image, :html => { :multipart => true } do |f| %>
-  <%= f.file_field :file %><br />
-  <%= f.submit t(:upload) %>
-<% end %>
-

@@ -1,0 +1,6 @@
+%h3= t('image.upload')
+= form_for @image, :html => { :multipart => true } do |f|
+  = f.file_field :file
+  %br/
+  = f.submit t(:upload)
+

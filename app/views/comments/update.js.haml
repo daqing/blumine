@@ -1,0 +1,4 @@
+$.facebox.close()
+$("#comment_#{@comment.id} .content").html("
+!= escape_javascript(parse_markdown(@comment.content))
+")

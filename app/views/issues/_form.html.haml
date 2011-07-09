@@ -1,0 +1,52 @@
+- content_for :head_hook do
+  = javascript_include_tag 'uploadify.swfobject.js'
+  = javascript_include_tag 'uploadify.214.js'
+
+- content_for :on_ready_hook do
+  - session_key_name = Rails.application.config.session_options[:key]
+  :plain
+    $('#image_upload').uploadify({
+      uploader: '/uploadify.swf',
+      script: '<%= images_path %>',
+      cancelImg: '/images/cancel_upload.png',
+      fileDataName: 'image[file]',
+      fileExt: '*.png,*.jpeg, *.jpg, *.gif',
+      sizeLimit: <%= 10.megabytes %>,
+      width: 150,
+      height: 25,
+      onComplete: function(a, b, c, response) {
+        eval(response);
+      },
+      scriptData: {
+        '_http_accept': 'application/javascript',
+        '_method': 'POST',
+        '<%= session_key_name %>': encodeURIComponent('<%= u cookies[session_key_name] %>'),
+        'authenticity_token': encodeURIComponent('<%= u form_authenticity_token %>')
+      },
+      auto: true
+    });
+
+    $("#uploaded_images img").live('click', function() {
+      var image_url = $(this).attr('src');
+      $.GollumEditor.replaceSelection("![](" + image_url + ")");
+    });
+
+= form_for [@project, @issue] do |f|
+  = render 'shared/error_messages', :obj => @issue
+  .row
+    = f.label :title, t(:title)
+    = f.text_field :title
+
+  .row
+    = f.label :content, t(:content)
+    = render :partial => 'shared/editor', :locals => {:name => 'issue[content]', :content => @issue.content}
+
+  = file_field_tag :image_upload, :name => 'image[file]'
+  #uploaded_images
+
+  .row
+    = f.label :milestone, t(:milestone)
+    = f.select :milestone_id, options_for_select( @project.milestones.collect { |m| [m.name, m.id] }.unshift([t(:empty_option), 0]), @issue.milestone ? @issue.milestone.id : 0)
+
+  = f.hidden_field :label, :value => @label
+  = f.submit t(:save), :class => :alt_btn

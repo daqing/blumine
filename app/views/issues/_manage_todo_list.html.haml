@@ -1,0 +1,11 @@
+%h4= t(:todo)
+
+= render issue.todo_items.where(:workflow_state => :open), :manage => true
+
+#add_todo_form
+  = form_for [issue, todo_item], :remote => true do |f|
+    = f.text_field :content
+    %br/
+    = f.submit t(:add)
+
+= render issue.todo_items.where(:workflow_state => :done), :manage => true

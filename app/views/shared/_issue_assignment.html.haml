@@ -1,0 +1,17 @@
+%h3
+  - if @issue.assigned_user
+    %strong= t('issue.assignment.assigned_to')
+    - if @issue.assigned_user == current_user
+      = link_to t(:me), current_user
+    - else
+      = link_to @issue.assigned_user.name, @issue.assigned_user
+  - else
+    %span.quiet= t('issue.assignment.not_assigned')
+
+- if can? :assign, @issue
+  = form_for :issue_assignment, :url => assign_to_issue_path(@issue), :remote => true do |f|
+    = t('issue.assignment.assign_to')
+    = select_tag :user_id, options_for_select(User.all.collect do |user| (user == current_user) ? [t(:me), user.id] : [user.name, user.id] end)
+    = f.submit t(:save)
+- else
+  %span.quiet= t('permission.cannot_assign_issue')

@@ -1,0 +1,11 @@
+- if issue.todo_items.any?
+  #todo_list_box
+  = t(:todo)
+
+  - open_todos = issue.todo_items.where(:workflow_state => :open)
+  = render open_todos, :manage => false
+
+  - todos_done = issue.todo_items.where(:workflow_state => :done)
+  - if todos_done.any?
+    #todo_done
+      = render todos_done, :manage => false

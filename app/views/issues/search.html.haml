@@ -1,0 +1,6 @@
+%h3= t('search.results')
+- if @result.any?
+  = render :partial => 'issues/issue', :collection => @result
+- else
+  .row
+    = t('search.no_issue_found')

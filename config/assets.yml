@@ -1,0 +1,10 @@
+embed_assets: off
+
+javascripts:
+  uploadify:
+    - public/javascripts/uploadify.214.js
+    - public/javascripts/uploadify.swfobject.js
+
+stylesheets:
+  application:
+    - public/stylesheets/application.css

@@ -24,6 +24,7 @@ gem 'require_relative'
 gem 'ansi'
 gem 'turn'
 
+gem 'jammit'
 gem 'haml'
 gem 'sass'
 

@@ -25,6 +25,7 @@ gem 'ansi'
 gem 'turn'
 
 gem 'haml'
+gem 'sass'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -1,0 +1,85 @@
+@import shared
+@import base
+@import layout
+@import forms
+@import icons
+
+@import project_panel
+@import project_menu
+@import projects
+@import threads
+@import activities
+@import comments
+@import conversations
+@import tasks
+@import pages
+@import users
+@import banner
+
+@import uploads
+@import actions_menu
+@import sidebar
+@import watch_list
+@import overlays
+@import autocomplete
+@import first_steps
+
+@import keyboard
+
+.navigation
+  display: none
+
+// overriding a default style
+#column .nav_links .conversations
+  margin: 0
+
+div.column_wrap h2
+  text-transform: none
+  font-weight: bold
+
+.activity .upload_list .upload_file span
+  display: inline-block
+  height: 16px
+  max-width: 400px
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+// 付费升级计划
+.header
+  .upgrade
+    font-size: 12px
+    background-position: 3px 5px
+    background-repeat: no-repeat
+    background-image: url(/famfamfam/star.png)
+    height: 20px
+    display: inline-block
+    margin:
+      top: 4px
+      left: 40px
+    padding:
+      top:  6px
+      left: 25px
+    color: #333
+
+.activity_block a, .starter a, .thread_title a, .before a
+  color: #333
+
+.text_actions
+  float: right
+  font-size: 12px
+  color: rgb(200,200,200)
+  margin: 0
+  a.add_button, a.new_task_list_link, a.new_task_list_template
+    text-decoration: none
+  a
+    text-decoration: underline
+
+.top_notice
+  font-size: 12px 
+  padding: 2px
+  background: #ffd
+  border-bottom: #dd5 1px solid
+  text-align: center
+  a.button
+    margin: 10px

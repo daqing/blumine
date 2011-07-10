@@ -1,0 +1,639 @@
+.inline {
+  display: inline; }
+
+.errors_for {
+  font-size: 12px;
+  color: #550000;
+  font-weight: bold; }
+
+label.error {
+  margin-bottom: 3px; }
+
+span.error {
+  color: red;
+  font-variant: italic; }
+
+form {
+  margin: 0px; }
+  form p {
+    margin: 10px 0;
+    font-size: 12px; }
+  form h3 {
+    margin-top: 5px;
+    font-size: 16px; }
+  form .option_fields label, form .text_field label, form .text_area label, form .select label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 5px; }
+    form .option_fields label em, form .option_fields label i, form .text_field label em, form .text_field label i, form .text_area label em, form .text_area label i, form .select label em, form .select label i {
+      margin-left: 10px;
+      font-size: 10px;
+      font-weight: normal;
+      font-style: normal;
+      color: #999999; }
+  form .text_field, form .text_area {
+    margin-bottom: 10px; }
+    form .text_field input, form .text_field textarea, form .text_area input, form .text_area textarea {
+      font-size: 16px;
+      padding: 5px;
+      border: none; }
+    form .text_field textarea, form .text_area textarea {
+      width: 538px; }
+    form .text_field .label, form .text_area .label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px; }
+      form .text_field .label label, form .text_area .label label {
+        display: inline;
+        font-weight: bold; }
+      form .text_field .label .description, form .text_area .label .description {
+        display: inline;
+        margin-left: 5px;
+        font-size: 10px;
+        color: #969696; }
+  form .select label {
+    float: left;
+    padding-right: 10px; }
+  form .date_fields {
+    margin-bottom: 10px; }
+    form .date_fields .pick_date {
+      margin-right: 20px; }
+  form .submit {
+    font-size: 12px; }
+  form .errorExplanation {
+    display: block;
+    padding: 0px;
+      padding-left: 10px;
+    font-size: 12px;
+    border: 2px #b43232 solid;
+    background: #ffc8c8;
+    margin-bottom: 20px; }
+    form .errorExplanation h2, form .errorExplanation p {
+      display: none; }
+    form .errorExplanation ul {
+      padding-left: 20px; }
+  form .field_with_errors input {
+    background: #ffe6e6;
+    border: 1px #c86464 solid; }
+  form .form_error {
+    border: 1px red solid;
+    background: #ffc8c8; }
+  form .text_actions {
+    text-decoration: underline; }
+
+form.app_form {
+  background: #ffffdc;
+  border: 1px solid #c8c878;
+  padding: 20px;
+  margin-bottom: 15px; }
+
+#header_wrap {
+  width: 1140px;
+  margin: 0;
+  background-color: #f1f1f1; }
+  #header_wrap:after {
+    content: " ";
+    visibility: hidden;
+    height: 0;
+    font-size: 0;
+    display: block;
+    clear: both; }
+  * html #header_wrap {
+    height: 1px; }
+  *:first-child + html #header_wrap {
+    overflow: hidden; }
+
+div.header {
+  width: 1140px;
+  margin: 0;
+  height: 50px; }
+  div.header h1 {
+    margin: 0;
+    width: 134px;
+    height: 36px;
+    padding-right: 100px;
+    float: left; }
+    div.header h1 a {
+      display: block;
+      width: 134px;
+      height: 36px; }
+      div.header h1 a img {
+        display: none; }
+  div.header #user_utilities {
+    float: left;
+    margin-top: 15px;
+    padding: 0;
+    text-align: right; }
+    div.header #user_utilities .global_navigation {
+      padding: 0;
+      margin-right: 10px;
+      margin-top: 10px;
+      text-align: right;
+      list-style-type: none;
+      font-size: 12px; }
+      div.header #user_utilities .global_navigation li {
+        display: inline-block; }
+        div.header #user_utilities .global_navigation li a {
+          color: #333333;
+          padding: 5px; }
+
+.trash_icon {
+  background-image: url("/images/_sprites_16px.png");
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+  .trash_icon:hover {
+    background-image: url("/images/_sprites_16px.png");
+    background-position: 0px -16px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    _height: 16px;
+    width: 16px;
+    height: 16px; }
+
+.edit_icon {
+  background-image: url("/images/_sprites_16px.png");
+  background-position: -16px 0px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+  .edit_icon:hover {
+    background-image: url("/images/_sprites_16px.png");
+    background-position: -16px -16px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    _height: 16px;
+    width: 16px;
+    height: 16px; }
+
+.attach_icon {
+  background-image: url("/images/_sprites_16px.png");
+  background-position: -128px 0px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+  .attach_icon:hover {
+    background-image: url("/images/_sprites_16px.png");
+    background-position: -128px -16px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    _height: 16px;
+    width: 16px;
+    height: 16px; }
+
+.add_hours_icon {
+  background-image: url("/images/_sprites_16px.png");
+  background-position: -112px 0px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+  .add_hours_icon:hover {
+    background-image: url("/images/_sprites_16px.png");
+    background-position: -112px -16px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    _height: 16px;
+    width: 16px;
+    height: 16px; }
+
+.comment_icon {
+  background-image: url("/images/_sprites_16px.png");
+  background-position: -48px 0px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+  .comment_icon:hover {
+    background-image: url("/images/_sprites_16px.png");
+    background-position: -48px -16px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    _height: 16px;
+    width: 16px;
+    height: 16px; }
+
+.task_icon {
+  background-image: url("/images/_sprites_16px.png");
+  background-position: -64px 0px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+  .task_icon:hover {
+    background-image: url("/images/_sprites_16px.png");
+    background-position: -64px -16px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    _height: 16px;
+    width: 16px;
+    height: 16px; }
+
+.page_icon {
+  background-image: url("/images/_sprites_16px.png");
+  background-position: -96px 0px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+  .page_icon:hover {
+    background-image: url("/images/_sprites_16px.png");
+    background-position: -96px -16px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    _height: 16px;
+    width: 16px;
+    height: 16px; }
+
+.style_icon {
+  background-image: url("/images/_sprites_16px.png");
+  background-position: -160px 0px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+  .style_icon:hover {
+    background-image: url("/images/_sprites_16px.png");
+    background-position: -160px -16px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    _height: 16px;
+    width: 16px;
+    height: 16px; }
+
+.static_tick_icon {
+  display: inline-block;
+  background-image: url("/images/_sprites_16px.png");
+  background-position: -64px -16px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+
+.static_cross_icon {
+  display: inline-block;
+  background-image: url("/images/_sprites_16px.png");
+  background-position: 0px -16px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+
+.left_arrow_icon {
+  background-image: url("/images/_sprites_16px.png");
+  background-position: -176px 3px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+  .left_arrow_icon:hover {
+    background-image: url("/images/_sprites_16px.png");
+    background-position: -176px -13px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    _height: 16px;
+    width: 16px;
+    height: 16px; }
+
+.loading_icon {
+  background-image: url("/images/loading.gif");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+
+.add_watchers {
+  background-image: url("/famfamfam/user_go.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+
+.private_switch, .lock_icon, .is_private_state {
+  background-image: url("/famfamfam/lock.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+
+.is_public_state {
+  background-image: url("/famfamfam/lock_open.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+
+.google_docs_icon {
+  background-image: url("/images/google_docs/icon_6_document.gif");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  _height: 16px;
+  width: 16px;
+  height: 16px; }
+
+html {
+  margin: 0px;
+  padding: 0px; }
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font: normal 14px "Lucida Grande", Arial, Helvetica, sans-serif; }
+
+h1, h2, h3, h4 {
+  font-family: Helvetica, Arial;
+  font-size: 15px;
+  margin: 0px; }
+
+p {
+  margin: 10px 0px;
+  line-height: 1.7em; }
+
+a {
+  color: blue;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+
+img {
+  display: block;
+  border: 0px; }
+
+br {
+  clear: both; }
+
+div.clear {
+  clear: both; }
+div.header {
+  display: none; }
+div.navigation {
+  width: 900px;
+  margin: 0px auto; }
+  div.navigation ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: auto; }
+  div.navigation li {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0; }
+    div.navigation li a {
+      font-family: "Lucida Sans", "Lucida Grande", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      display: block;
+      float: left;
+      color: #3d3d3d;
+      text-decoration: none;
+      padding: 8px 16px 7px;
+      border-bottom: none;
+      background: transparent url(/images/nav_divider.gif) no-repeat top right; }
+      div.navigation li a:hover {
+        color: white;
+        background: #41b5c1;
+        border-bottom: 1px solid #41b5c1; }
+    div.navigation li.selected a {
+      color: white;
+      background: #0b0b0a;
+      border-bottom: 1px solid #0b0b0a; }
+    div.navigation li.right_side {
+      float: right; }
+      div.navigation li.right_side a {
+        padding-left: 50px;
+        padding-right: 50px; }
+
+h1 {
+  color: #111111;
+  font-family: Georgia, sans-serif;
+  font-size: 270%;
+  font-weight: normal;
+  margin: 0 0 15px 0; }
+
+h2 {
+  font-family: Helvetica, Arial, Verdana, sans-serif;
+  font-size: 195%;
+  margin: 0 0 15px 0;
+  font-weight: bold; }
+
+h3 {
+  margin-top: 10px;
+  margin: 30px 0 15px 0; }
+
+.new_session p.right_link, .create_session p.right_link {
+  float: right;
+  padding-right: 100px; }
+
+.flash_box {
+  display: block;
+  margin: 15px 0;
+  float: none; }
+
+form {
+  margin: 20px 0; }
+
+.time_zone {
+  margin-top: 10px; }
+
+div.wrapper {
+  width: 900px;
+  margin: 0px auto;
+  padding-top: 30px; }
+div.content {
+  float: left;
+  width: 570px;
+  padding-bottom: 25px; }
+div.sidebar, div.content_single {
+  padding-bottom: 25px; }
+div.wrapper a {
+  text-decoration: none;
+  border-bottom: 1px dotted #ddddff;
+  color: #0000c8; }
+div.column {
+  float: right;
+  width: 320px; }
+div.box {
+  padding: 10px;
+  font-size: 12px;
+  margin: 20px 0;
+  border: 1px solid #dbd6d1;
+  background-color: #efedeb; }
+  div.box p {
+    margin: 5px 0; }
+  div.box h2 {
+    font-size: 18px;
+    margin-bottom: 2px; }
+div.footer {
+  border-top: solid 1px #dcdcdc;
+  clear: both;
+  color: #777777;
+  width: 900px;
+  margin: 0px auto;
+  padding: 3px 0px 15px 0px; }
+  div.footer p {
+    font-size: 12px;
+    margin: 0px;
+    text-align: right; }
+    div.footer p.copyright {
+      float: left; }
+  div.footer a {
+    color: #777777; }
+
+form .text_field label {
+  font-weight: normal; }
+
+.new_users form, .create_users form {
+  width: 500px;
+  margin: 0px;
+  font-size: 12px; }
+  .new_users form div, .create_users form div {
+    display: inline-block; }
+  .new_users form p, .create_users form p {
+    margin: 10px 0;
+    font-size: 12px; }
+  .new_users form .text_field input, .create_users form .text_field input {
+    width: 236px;
+    font-size: 16px;
+    padding: 5px;
+    border-top: solid 1px #c4c4c4;
+    border-left: solid 1px #e9e9e9;
+    border-bottom: solid 1px #e9e9e9;
+    border-right: solid 1px #c4c4c4; }
+  .new_users form .text_field, .new_users form .select, .new_users form .check_box, .create_users form .text_field, .create_users form .select, .create_users form .check_box {
+    margin-bottom: 10px; }
+    .new_users form .text_field label, .new_users form .select label, .new_users form .check_box label, .create_users form .text_field label, .create_users form .select label, .create_users form .check_box label {
+      display: inline-block;
+      font-size: 12px;
+      padding-bottom: 5px;
+      text-align: right;
+      display: inline-block;
+      width: 150px;
+      margin-right: 20px;
+      font-weight: normal; }
+  .new_users form .result_icon, .create_users form .result_icon {
+    margin-left: 10px; }
+  .new_users form .field_with_errors, .create_users form .field_with_errors {
+    display: inline-block; }
+    .new_users form .field_with_errors input, .create_users form .field_with_errors input {
+      background: #ffe6e6;
+      border: 1px #c86464 solid; }
+  .new_users form .text_field .field_note, .new_users form .text_field .errors_for, .new_users form .select .field_note, .new_users form .select .errors_for, .create_users form .text_field .field_note, .create_users form .text_field .errors_for, .create_users form .select .field_note, .create_users form .select .errors_for {
+    font-size: 10px;
+    padding-left: 180px; }
+  .new_users form .text_field .field_note, .new_users form .select .field_note, .create_users form .text_field .field_note, .create_users form .select .field_note {
+    color: #555555; }
+  .new_users form .text_field .errors_for, .new_users form .select .errors_for, .create_users form .text_field .errors_for, .create_users form .select .errors_for {
+    display: block; }
+  .new_users form .check_box, .create_users form .check_box {
+    padding-left: 145px; }
+    .new_users form .check_box label, .create_users form .check_box label {
+      display: inline;
+      margin-left: 15px; }
+  .new_users form .errors_for, .create_users form .errors_for {
+    display: block;
+    color: #a0a0a0;
+    padding-left: 180px; }
+    .new_users form .errors_for.weak, .create_users form .errors_for.weak {
+      color: #646400; }
+    .new_users form .errors_for.average, .create_users form .errors_for.average {
+      color: #323232; }
+    .new_users form .errors_for.strong, .create_users form .errors_for.strong {
+      color: #009600; }
+  .new_users form .field_with_errors .errors_for, .create_users form .field_with_errors .errors_for {
+    color: #a0a0a0; }
+  .new_users form fieldset, .create_users form fieldset {
+    border: none;
+    border-top: 1px solid #cccccc;
+    margin-top: 25px;
+    padding-top: 15px; }
+    .new_users form fieldset legend, .create_users form fieldset legend {
+      margin-left: 30px;
+      padding: 0 15px;
+      font-weight: bold; }
+  .new_users form fieldset.account p, .create_users form fieldset.account p {
+    color: #555555;
+    font-size: 10px;
+    margin: 5px 0 15px 90px; }
+  .new_users form .submit, .create_users form .submit {
+    display: block;
+    margin: 20px 0;
+    padding-left: 180px; }
+    .new_users form .submit p, .create_users form .submit p {
+      color: #555555;
+      margin-top: 10px; }

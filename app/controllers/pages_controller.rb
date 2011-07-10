@@ -10,6 +10,7 @@ class PagesController < ApplicationController
     else
       @title = t(:home)
       @user_session = UserSession.new
+      render :layout => 'sessions'
     end
   end
 

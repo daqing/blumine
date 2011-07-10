@@ -14,19 +14,13 @@
     = yield :head_hook
 
   %body
-    = render 'shared/keyboard'
+    / render 'shared/keyboard'
     - show_flash
     #header_wrap
       = render 'shared/header'
-      = render 'shared/project_panel'
       = yield :header_wrap
     #container.container
       .wrapper
-        .column_wrap
-          #column.column
-            = render 'shared/navigation'
-            .view_sidebar
-              = yield :column
         .content_wrap
           #content.content= yield
       = render 'shared/footer'

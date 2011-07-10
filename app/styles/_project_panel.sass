@@ -1,0 +1,76 @@
+#project_panel_wrap
+  width: 1140px
+  padding-bottom: 10px
+  .project_panel
+    .project_panel_item_team_members
+      height: 160px
+      .people_list
+        h2
+          display: none
+        .invite_people
+          float: right
+          margin-top: 0
+          a
+            display: block
+            padding: 62px 26px
+            background-color: #eee
+            border: 3px dotted #ddd
+            +rounded(10px)
+        .list
+          .person
+            float: left
+            background-color: #eee
+            width: 144px
+            height: 144px
+            .more
+              display: none
+      
+  #project_logo
+    float: left
+  #slider_control
+    padding-left: 50%
+    a
+      display: inline-block
+      width: 8px
+      height: 8px
+      +rounded(8px)
+      background: #ddd
+      text-indent: -999em
+      text-align: center
+
+#project_logo
+  .details
+    text-align: center
+    padding-top: 10px
+    a
+      color: #ffffff
+
+.mosaic-block
+  float: left
+  position: relative
+  overflow: hidden
+  width: 144px
+  height: 144px
+  background: url(/mosaic/progress.gif) no-repeat center center
+
+.mosaic-overlay
+  display: none
+  z-index: 5
+  position: absolute
+  width: 100%
+  height: 100%
+  background: #111
+
+.mosaic-backdrop
+  display: none
+  position: absolute
+  top: 0
+  height: 100%
+  width: 100%
+  background: #fafafa
+
+.bar .mosaic-overlay
+  bottom: -35px
+  height: 35px
+  background: rgba(0,0,0,0.8)
+  

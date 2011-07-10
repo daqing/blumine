@@ -1,4 +1,13 @@
 module ApplicationHelper
+  # types: success, error, notice
+  def show_flash
+    flash.each do |type, message|
+      unless message.blank?
+        haml_tag :p, h(message.html_safe), :class => "flash flash-#{type}"
+      end
+    end
+  end
+
   def gravatar_for(email, options = {})
     options = {:alt => 'avatar', :class => 'avatar', :size => 80}.merge! options
     id = Digest::MD5::hexdigest email.strip.downcase

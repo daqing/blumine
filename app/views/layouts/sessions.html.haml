@@ -1,0 +1,21 @@
+!!!
+%html{ :xmlns => "http://www.w3.org/1999/xhtml", 'xml:lang'=>"en", :lang=>"en" }
+  %head
+    %meta{ 'http-equiv' => "content-type", :content => "text/html;charset=utf-8" }
+    = csrf_meta_tag
+    %link{ :rel => "shortcut icon", :href => "/favicon.ico" }
+    %title BluMine
+    = stylesheet_link_tag 'sessions'
+
+  %body
+    .container
+      .wrapper
+        .content
+          - show_flash
+          = yield
+        .column
+          #sidebar
+            = yield :column
+      .footer
+        %p.copyright Copyright &copy; 2011 BluMine.
+

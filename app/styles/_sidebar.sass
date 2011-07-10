@@ -1,0 +1,107 @@
+.nav_links, .more_links
+  padding: 0
+  margin: 0
+    bottom: 20px
+
+  .el
+    display: inline-block
+    width: 180px
+    padding-left: 10px
+    position: relative
+    span
+      position: absolute
+      right: 5px
+      top: 4px
+      background-color: lighten($navbar, 30)
+      padding: 2px 4px
+      font-size: 12px
+      +rounded(3px)
+      &.clickable
+        padding: 0
+        margin: 0
+        &:hover
+          background-color: #333
+          a
+            color: white
+        a
+          padding: 2px 4px
+    &.late_tasks span
+      font-weight: bold
+      color: red
+    &.selected, &.children-selected, &.selected:hover, &.children-selected:hover
+      background: $navbar
+    &:hover
+      background: lighten($navbar, 90)
+    &.expanded
+      a
+        font-weight: bold
+
+  .contained
+    .el
+      width: 180px
+      font-size: 12px
+      a
+        padding-left: 30px
+    .contained
+      .el
+        width: 154px
+        padding-left: 36px
+
+  .space
+    height: 20px
+
+  a
+    padding: 10px
+    display: block
+    color: #333
+    padding-left: 28px
+    background-position: 3px 4px
+    background-repeat: no-repeat
+    &:hover
+      text-decoration: none
+    &:active
+      font-weight: bold
+    &.more
+      color: #777
+    // &.home
+    //   background-image: url(/famfamfam/house.png)
+    // &.add
+    //   background-image: url(/famfamfam/add.png)
+    // &.recent_activity
+    //   background-image: url(/famfamfam/newspaper.png)
+    // &.conversations
+    //   background-image: url(/famfamfam/comment.png)
+    // &.today
+    //   background-image: url(/famfamfam/weather_sun.png)
+    // &.tasks
+    //   background-image: url(/famfamfam/tick.png)
+    // &.time
+    //   background-image: url(/famfamfam/time.png)
+    // &.pages
+    //   background-image: url(/famfamfam/layout_content.png)
+    // &.files
+    //   background-image: url(/famfamfam/folder.png)
+    // &.people
+    //   background-image: url(/famfamfam/group.png)
+    // &.chat
+    //   background-image: url(/famfamfam/emoticon_smile.png)
+    // &.contacts
+    //   background-image: url(/famfamfam/report_user.png)
+    // &.recent_activities
+    //   background-image: url(/famfamfam/user_comment.png)
+    // &.advanced
+    //   background-image: url(/famfamfam/pill.png)
+    // &.feeds
+    //   background-image: url(/famfamfam/feed.png)
+    // &.calendar
+    //   background-image: url(/famfamfam/date.png)
+    // &.settings
+    //   background-image: url(/famfamfam/cog.png)
+    // &.collapsed_mode, &.expanded_mode
+    //   background-image: url(/famfamfam/layers.png)   
+    &.loading
+      background-image: url(/images/loading.gif)
+
+.more_links
+  margin-left: -15px
+

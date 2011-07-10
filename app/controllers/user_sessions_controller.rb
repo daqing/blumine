@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
         format.html { redirect_back_or target_url}
         format.xml  { render :xml => @user_session, :status => :created, :location => target_url}
       else
-        format.html { render :new }
+        format.html { render 'pages/index', :layout => 'sessions' }
         format.xml  { render :xml => @user_session.errors, :status => :unprocessable_entity }
       end
     end

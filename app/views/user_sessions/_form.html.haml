@@ -1,13 +1,11 @@
 = form_for @user_session do |f|
-  %fieldset
-    %legend= t(:log_in)
-    .row
-      = f.label :email
-      %br/
-      = f.text_field :email
-    .row
-      = f.label :password, t(:password)
-      %br/
-      = f.password_field :password
-    = f.submit t(:log_in)
+  .login.text_field
+    = f.label :email
+    %br/
+    = f.text_field :email
+  .password.text_field
+    = f.label :password, t(:password)
+    %br/
+    = f.password_field :password
+  = f.submit t(:log_in)
 

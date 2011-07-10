@@ -1,0 +1,105 @@
+/* iPad Portrait/Browser
+@media only screen and (min-width: 768px) and (max-width: 991px)
+
+/* Mobile/Browser
+@media only screen and (max-width: 767px)
+
+/* Mobile Landscape/Browser
+@media only screen and (min-width: 480px) and (max-width: 767px)
+
+/* Anything smaller than standard 960
+@media only screen and (max-width: 959px)
+
+/* iPad Portrait Only
+@media only screen and (min-width: 768px) and (max-width: 991px) and (max-device-width: 1000px)
+
+/* Mobile Only
+@media only screen and (max-width: 767px) and (max-device-width: 1000px)
+
+/* Mobile Landscape Only
+@media only screen and (min-width: 480px) and (max-width: 767px) and (max-device-width: 1000px)  
+
+html, body
+  margin: 0px
+  padding: 0px
+  background-image: url(/images/bg.png)
+  
+div.wrapper
+  clear: both
+  background: white
+  +clearing
+
+div.container
+  width: 1140px
+  margin: 0px
+
+div.content_wrap
+  float: right
+  width: 900px
+  padding: 10px
+
+div.column_wrap
+  float: left
+  width: 180px
+  font-size: 12px
+  div.column
+    padding: 10px
+      left: 0
+    select
+      max-width: 280px
+    .view_sidebar
+      margin-left: 15px
+
+@import header
+@import navigation
+
+$error: lighten(desaturate(red, 50%), 15)
+$success: lighten(desaturate(green, 80%), 30%)
+
+p.flash
+  font:
+    size: 14px
+    weight: bold
+  margin: .3em 0
+  padding: .3em 1em
+  +rounded(4px)
+  background: #aaa
+  border: 1px solid #aaa
+  text-shadow: rgba(black, .3) 1px 1px 1px 
+
+p.flash-error
+  background: $error
+  border-color: $error - 20
+  color: white        
+
+p.flash-success
+  background: $success
+  border-color: $success - 20
+  color: white          
+
+p.flash-notice
+  background: $highlight
+  color: darken($highlight, 65%)
+  border-color: $highlight - 20
+  text-shadow: none
+
+#footer
+  font-size: 12px
+  background: white
+  .support
+    list-style: none
+    float: right
+    margin: 0
+    padding: 0
+    text-align: right
+    li
+      display: inline
+      margin-left: 1em
+
+#splash
+  position: absolute
+  top: 10px
+  width: 100%
+  text-align: center
+  background-color: white
+

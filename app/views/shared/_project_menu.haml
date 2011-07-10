@@ -1,0 +1,23 @@
+%nav#project_menu
+  %ul
+    %li
+      %a.recent_activity.icon.selected.ajax{:href => project_path(@project)} 
+        Recent activity
+    %li
+      %a.conversations.icon.ajax{:href => project_conversations_path(@project)}
+        Conversations 
+    %li
+      %a.tasks.icon.ajax{:href => project_issues_path(@project)}
+        Tasks
+    %li
+      %a.pages.icon.ajax{:href => project_documents_path(@project)}
+        Pages
+    %li
+      %a.files.icon.ajax{:href => '#'}
+        Files
+    %li
+      %a.people.icon.ajax{:href => '#'} 
+        People
+    %li
+      %a.settings.icon.ajax{:href => edit_project_path(@project)} 
+        Settings

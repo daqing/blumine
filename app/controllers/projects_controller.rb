@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
     @title = t(:all_projects)
 
     breadcrumbs.add t(:all_projects), projects_path
+    render :layout => 'single_column'
   end
 
   def show

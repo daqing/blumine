@@ -1,0 +1,7 @@
+.header
+  %h1 Logo
+  #user_utilities
+    %ol.global_navigation
+      %li= link_to t(:all_projects), projects_path
+      %li= link_to t(:account_settings), account_path 
+      %li= link_to t(:log_out), logout_path

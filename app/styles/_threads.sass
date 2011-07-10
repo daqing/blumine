@@ -1,0 +1,258 @@
+#activities
+  .thread.selected
+    .comment_header
+      border-left-color: $navbar
+
+  .comment_header, .activity 
+    cursor: pointer
+    border:
+      top: 1px solid #eee
+    &:hover
+      border-left-color: #000
+
+#activities.collapsed
+  .thread
+  .thread.collapsed
+    background: none
+    margin: 0
+
+.thread
+  .thread_title
+    font-size: 12px
+    color: #999
+    margin: 4px 0 8px
+  .task_summary
+    font-size: 11px
+    color: #333
+    display: inline-block
+    span.assigned_date, span.assigned_to
+      display: none
+    &.due_on
+      span.assigned_date
+        display: inline-block
+    &.assigned
+      span.assigned_to
+        display: inline-block
+    &.status_notopen
+      span.assigned_to
+        display: none
+    &.overdue
+      span.assigned_date
+        color: red
+  .comments
+    margin-left: 150px
+    border-left: 4px solid $comments_left_border
+  .comment_header
+    .info
+      position: absolute
+      top: 30px
+      right: 5px
+      .comment_count
+        display: none
+        text-align: center
+        span
+          font-size: 60px
+          font-style: italic
+          color: #eee
+    .block
+      padding-left: 150px
+      margin-top: -30px
+      a
+        font-weight: bold
+        text-decoration: none
+        &:hover
+          background: $link_hover
+      p
+        margin: 4px 0 8px
+        &.excerpt
+          display: none
+          color: #999
+          overflow: hidden
+          height: 14px
+          font-size: 11px
+          margin-top: 8px
+          margin-bottom: 0
+      .lock_icon
+        position: relative
+        top: 2px
+        display: none
+        margin-right: 10px
+  span.time
+    position: relative
+    float: right
+    padding: 4px 4px 0 0
+    font-size: 11px
+    color: #ccc
+    display: none
+  .more_comments
+    display: block
+    font-size: 12px
+    background-color: #ffe
+    a
+      color: #333
+      display: block
+      padding: 10px 10px 10px 44px
+      height: 16px
+  form.new_comment
+    border-left: 4px solid #eee
+    background-color: $comments_bkg
+    margin: 0 0 10px 150px
+    padding: 2px 0 5px 6px
+
+.thread.collapsed
+  span.time
+    display: inline-block
+  .comments, form
+    display: none
+  p.excerpt, .comment_count
+    display: block !important
+
+.thread.private
+  .comment_header
+    .block
+      .lock_icon
+        display: inline-block
+
+.expand_comment
+  a
+    position: absolute
+    bottom: 20px
+    right: -11px
+    font-size: 12px
+    color: #333
+    padding: 4px 10px
+    -webkit-box-shadow: -2px 2px 2px #777
+    &:hover
+      text-decoration: none
+      background-color: lighten($navbar, 10)
+  span
+    position: absolute
+    bottom: 10px
+    right: -10px
+    font-size: 0px
+    line-height: 0%
+    width: 0px
+    border-top: 10px solid $navbar
+    border-right: 10px solid transparent
+    font-weight: bold
+    font-size: 10px
+
+
+.add_watchers_box, .private_options
+  margin-left: 45px
+  padding: 5px 0 20px
+  max-height: 200px
+  overflow-y: auto
+
+.private_options
+  max-height: 300px
+  .option
+    label
+      display: inline-block
+      font-weight: normal
+  .private_users
+    display: block
+    margin: 10px 0
+    padding-left: 22px
+    .private_user
+      display: inline-block
+      label
+        width: 170px
+        white-space: nowrap
+        overflow-x: hidden
+        display: inline-block
+        text-overflow: ellipsis
+        font-weight: normal
+      input
+        margin-right: 10px
+    .private_all
+      label
+        width: 170px
+        white-space: nowrap
+        overflow-x: hidden
+        display: inline-block
+        text-overflow: ellipsis
+        font-weight: bold
+      input
+        margin-right: 10px
+
+.add_watchers_box
+  p
+    font-size: 11px
+    font-weight: bold
+  .watcher
+    display: inline-block
+    width: 140px
+    margin: 2px 0
+    a
+      font-size: 12px
+      color: black
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
+      border-bottom: 1px dashed #ccc
+      &:hover
+        color: $link_hover
+        text-decoration: none
+
+
+.avatar_wrap
+  position: relative
+  overflow: hidden
+  .avatar
+    position: absolute
+    top: -50%
+    left: -50%
+  .caption
+    color: #ffffff
+    text-align: center
+    position: absolute
+    bottom: 0
+    background: #000
+    line-height: 1
+    padding: 2px 0
+    opacity: .7
+    width: 100%
+    /* For IE 5-7
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70)
+    /* For IE 8
+    -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"
+
+
+.more_actions
+  position: relative
+  float: right
+  top: -50px
+  right: 0
+  ul
+    background: #f1f1f1
+    margin: 0
+    padding: 0
+    +rounded(3px)
+    +clearing
+    li
+      float: left
+      list-style: none
+      margin: 0
+      cursor: pointer
+      a
+        opacity: 0.05
+        padding: 5px
+        background-position: 50%
+        &:hover
+          opacity: 0.8
+          background-repeat: no-repeat
+        &.collapsed_mode
+          opacity: 0.3
+          background-image: url(/my_icons/collapsed_mode.png)
+        &.expanded_mode 
+          opacity: 0.3
+          background-image: url(/my_icons/expanded_mode.png)
+        &.feeds
+          background-image: url(/my_icons/feeds.png)
+        &.calendar
+          background-image: url(/my_icons/calendar.png)
+              
+    
+    
+    

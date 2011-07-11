@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110503080934
+# Schema version: 20110711004636
 #
 # Table name: users
 #
@@ -13,6 +13,9 @@
 #  persistence_token  :string(255)
 #  locale             :string(255)
 #  role               :string(255)
+#  phone              :string(255)
+#  address            :string(255)
+#  im                 :string(255)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

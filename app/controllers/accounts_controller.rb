@@ -3,6 +3,7 @@ class AccountsController < ApplicationController
 
   def show
     breadcrumbs.add t(:account_settings)
+    render :layout => 'single_column'
   end
 
   def update

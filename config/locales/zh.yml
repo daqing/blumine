@@ -191,6 +191,11 @@ zh:
     bugs: 错误
     docs: 文档
     milestones: 里程碑
+  
+  profile:
+    phone: 手机号码
+    im: 聊天工具
+    address: 联系地址
 
   views:
     pagination:

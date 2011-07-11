@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110503080934
+# Schema version: 20110711012256
 #
 # Table name: users
 #
@@ -13,6 +13,10 @@
 #  persistence_token  :string(255)
 #  locale             :string(255)
 #  role               :string(255)
+#  phone              :string(255)
+#  address            :string(255)
+#  im                 :string(255)
+#  avatar             :string(255)
 #
 
 require 'digest'
@@ -26,6 +30,14 @@ class User < ActiveRecord::Base
     c.ignore_blank_passwords = true
   end
 
+  AVATAR_SIZE = {
+    :micro => [24, 24],
+    :thumb => [48, 48],
+    :profile => [256, 256]
+  }
+
+  mount_uploader :avatar, ImageUploader
+
   ROLES = %w(ProjectManager Developer Designer SystemAdministrator Marketer)
   AVAILABLE_LANGUAGES = {:zh => '中文', :en => 'English'}
 
@@ -38,6 +50,7 @@ class User < ActiveRecord::Base
   has_many :issue_assignments, :dependent => :destroy
   has_many :assigned_issues, :through => :issue_assignments, :source => :issue, :order => 'position ASC'
 
+  attr_accessible :avatar
   attr_protected :encrypted_password, :salt, :persistence_token, :role
 
   validates :name, :email, :presence => true

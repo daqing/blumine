@@ -1,11 +1,10 @@
 # encoding: utf-8
 
-require 'digest'
-
 class ImageUploader < CarrierWave::Uploader::Base
+  include UploaderHelper
 
   # Include RMagick or ImageScience support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
@@ -31,23 +30,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :scale => [50, 50]
-  # end
+  User::AVATAR_SIZE.each do |v, size|
+    version v do
+      process :resize_to_fill => size
+    end
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-
-  # Override the filename of the uploaded files:
-  def filename
-    if original_filename
-      ext = File.extname(original_filename)
-      new_name = Digest::SHA1.hexdigest(File.basename(original_filename, ext))[5..10]
-      "#{new_name}#{ext}"
-    end
-  end
-
 end

@@ -8,6 +8,15 @@ module ApplicationHelper
     end
   end
 
+  def avatar(user, options = {})
+    if user.avatar?
+      options[:version] ||= :micro
+      image_tag user.avatar.url(options[:version])
+    else
+      gravatar_for(user.email, options)
+    end
+  end
+
   def gravatar_for(email, options = {})
     options = {:alt => 'avatar', :class => 'avatar', :size => 80}.merge! options
     id = Digest::MD5::hexdigest email.strip.downcase

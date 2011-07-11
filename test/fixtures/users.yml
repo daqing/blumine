@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110711004636
+# Schema version: 20110711012256
 #
 # Table name: users
 #
@@ -16,6 +16,7 @@
 #  phone              :string(255)
 #  address            :string(255)
 #  im                 :string(255)
+#  avatar             :string(255)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

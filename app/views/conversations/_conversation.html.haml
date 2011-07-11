@@ -1,4 +1,5 @@
 .conversation
+  = avatar(conversation.user)
   %p= "#{conversation.user.name}开始了新会话"
   .replies
     = render conversation.replies

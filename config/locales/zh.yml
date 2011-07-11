@@ -197,6 +197,10 @@ zh:
     im: 聊天工具
     address: 联系地址
 
+  auth:
+    password: 新密码
+    password_confirmation: 确认新密码
+
   views:
     pagination:
       first: 首页

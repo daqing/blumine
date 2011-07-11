@@ -17,5 +17,12 @@
     %br/
     = f.select :role, options_for_select(User::ROLES.collect {|role| [t("role.#{role}"), role] },
       current_user.role)
+  %h3 修改密码
+  .row
+    = f.label :password, t('auth.password')
+    = password_field :user, :password
+  .row
+    = f.label :password_confirmation, t('auth.password_confirmation')
+    = password_field :user, :password_confirmation
   = f.submit t(:save)
 

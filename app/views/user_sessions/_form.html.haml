@@ -1,4 +1,5 @@
 = form_for @user_session do |f|
+  = render 'shared/error_messages', :obj => f.object
   .login.text_field
     = f.label :email
     %br/

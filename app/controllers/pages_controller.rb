@@ -6,7 +6,7 @@ class PagesController < ApplicationController
       @title = t(:dashboard)
       @user = current_user
       users_working_on
-      render 'dashboard'
+      render 'dashboard', :layout => 'single_column'
     else
       @title = t(:home)
       @user_session = UserSession.new
@@ -19,6 +19,7 @@ class PagesController < ApplicationController
     @title = t(:stats)
 
     users_working_on
+    render :layout => 'single_column'
   end
 
   private

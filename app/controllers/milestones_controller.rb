@@ -5,6 +5,7 @@ class MilestonesController < ApplicationController
   before_filter :only => [:new, :create, :edit, :update, :destroy] do |c|
     redirect_to_root_when_no_permission unless can? :manage_milestone, @project
   end
+  layout 'single_column'
 
   def new
     @milestone = @project.milestones.new

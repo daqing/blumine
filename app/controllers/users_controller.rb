@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @user = User.new
     @title = t(:register)
     breadcrumbs.add t(:register), register_path
+    render :layout => 'sessions'
   end
 
   def create
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
       @title = @user.name
       breadcrumbs.add @user.name
     end
-    
+
     assigned_issues = @user.assigned_issues.except_closed
     @planned_issues = {}
     @unplanned_issues = []
@@ -48,5 +49,7 @@ class UsersController < ApplicationController
         @unplanned_issues << issue
       end
     end
+
+    render :layout => 'single_column'
   end
 end

@@ -2,6 +2,7 @@ class DocumentsController < ApplicationController
   before_filter :must_login_first
   before_filter :find_project
   before_filter :find_document, :except => [:new, :create, :index]
+  layout 'single_column'
   authorize_resource
 
   def index

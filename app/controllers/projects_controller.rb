@@ -2,6 +2,8 @@ class ProjectsController < ApplicationController
   before_filter :must_login_first
   before_filter :root_required, :only => :destroy
 
+  layout 'single_column'
+
   def index
     @projects = Project.all
     @title = t(:all_projects)
@@ -15,6 +17,8 @@ class ProjectsController < ApplicationController
     @conversation = @project.conversations.new
     @title = @project.name
     breadcrumbs.add @project.name, project_path(@project)
+
+    render :layout => 'application'
   end
 
   def new

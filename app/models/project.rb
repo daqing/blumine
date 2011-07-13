@@ -20,9 +20,9 @@ class Project < ActiveRecord::Base
   has_many :documents, :dependent => :destroy
   has_many :conversations, :dependent => :destroy
 
-  validates :name, :user_id, :presence => true
-
-  attr_accessible :logo
+  attr_accessible :name, :logo
   mount_uploader :logo, ImageUploader
+
+  validates :name, :user_id, :presence => true
 end
 

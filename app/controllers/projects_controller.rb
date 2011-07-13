@@ -20,6 +20,8 @@ class ProjectsController < ApplicationController
   def new
     @project = current_user.projects.new
     @title = t(:new_project)
+
+    render :layout => 'single_column'
   end
 
   def create
@@ -33,12 +35,12 @@ class ProjectsController < ApplicationController
       )
       redirect_to @project
     else
-      render :new
+      render :new, :layout => 'single_column'
     end
   end
 
   def edit
-    @title = t(:edit_project)
+    @title = t('projects.edit.edit_project')
     @project = Project.find(params[:id])
     @conversation = @project.conversations.new
   end

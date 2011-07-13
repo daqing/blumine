@@ -184,13 +184,18 @@ zh:
 
   destroy_failed: 删除失败
   cancel_planning: 取消
-  
+
   project:
     ideas: 想法
     tasks: 任务
     bugs: 错误
     docs: 文档
     milestones: 里程碑
+
+  projects:
+    edit:
+      edit_project: 项目设置
+      destroy_project: 删除此项目
   
   profile:
     phone: 手机号码

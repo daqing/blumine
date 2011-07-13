@@ -12,3 +12,7 @@
     = f.file_field :logo
   = f.submit
 
+.error
+  - if can? :manage, @project
+    = link_to t('.destroy_project'), @project, :method => :delete, :confirm => t(:delete_confirm)
+

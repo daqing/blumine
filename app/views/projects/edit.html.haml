@@ -1,0 +1,18 @@
+= form_for @project, :html => {:multipart => true} do |f|
+  .text_field
+    = f.label :name, t('name')
+    = f.text_field :name
+  .field
+    - if @project.logo?
+      = image_tag @project.logo.medium.url
+    - else
+      = image_tag @project.logo.medium.default_url
+  .file_field
+    = f.label :logo
+    = f.file_field :logo
+  = f.submit
+
+.error
+  - if can? :manage, @project
+    = link_to t('.destroy_project'), @project, :method => :delete, :confirm => t(:delete_confirm)
+

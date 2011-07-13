@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110415124331
+# Schema version: 20110713034854
 #
 # Table name: projects
 #
@@ -8,6 +8,7 @@
 #  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  logo       :string(255)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

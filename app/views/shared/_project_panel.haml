@@ -1,4 +1,10 @@
 #project_panel_wrap
+  .column_wrap
+    #project_logo
+      - if @project.logo?
+        = image_tag @project.logo.medium.url
+      - else
+        = image_tag @project.logo.medium.default_url
   .content_wrap
     = render 'shared/project_menu'
     = form_for [@project, @conversation], :html => {:multipart => true}, :remote => true do |f|

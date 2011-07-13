@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   AVATAR_SIZE = {
     :micro => [24, 24],
     :thumb => [48, 48],
+    :medium => [144, 144],
     :profile => [256, 256]
   }
 

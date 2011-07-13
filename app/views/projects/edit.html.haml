@@ -1,7 +1,14 @@
-= form_for @project do |f|
+= form_for @project, :html => {:multipart => true} do |f|
   .text_field
     = f.label :name, t('name')
-    %br/
     = f.text_field :name
+  .field
+    - if @project.logo?
+      = image_tag @project.logo.medium.url
+    - else
+      = image_tag @project.logo.medium.default_url
+  .file_field
+    = f.label :logo
+    = f.file_field :logo
   = f.submit
 

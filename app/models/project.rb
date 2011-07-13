@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110415124331
+# Schema version: 20110713034854
 #
 # Table name: projects
 #
@@ -8,6 +8,7 @@
 #  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  logo       :string(255)
 #
 
 class Project < ActiveRecord::Base
@@ -20,5 +21,8 @@ class Project < ActiveRecord::Base
   has_many :conversations, :dependent => :destroy
 
   validates :name, :user_id, :presence => true
+
+  attr_accessible :logo
+  mount_uploader :logo, ImageUploader
 end
 

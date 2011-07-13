@@ -1,0 +1,7 @@
+= form_for @project do |f|
+  .text_field
+    = f.label :name, t('name')
+    %br/
+    = f.text_field :name
+  = f.submit
+

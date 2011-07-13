@@ -39,9 +39,19 @@ class ProjectsController < ApplicationController
 
   def edit
     @title = t(:edit_project)
+    @project = Project.find(params[:id])
+    @conversation = @project.conversations.new
   end
 
   def update
+    @project = Project.find(params[:id])
+    if @project.update_attributes(params[:project])
+      flash[:success] = success_do(:update)
+    else
+      flash[:error] = failed_do(:update)
+    end
+
+    redirect_to edit_project_path(@project)
   end
 
   def destroy

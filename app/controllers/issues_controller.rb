@@ -4,6 +4,7 @@ class IssuesController < ApplicationController
   before_filter :only => [:edit, :update, :destroy] do |c|
     authorize! :manage, @issue
   end
+  layout 'single_column'
 
   def index
     @project = Project.find(params[:project_id])

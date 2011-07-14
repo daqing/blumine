@@ -1,0 +1,6 @@
+%h2 团队会话
+.create_bar
+  = link_to new_project_conversation_path(@project), :class => :add_button do '创建新话题' end
+
+#conversations
+  = render @conversations

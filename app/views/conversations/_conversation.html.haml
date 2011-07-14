@@ -1,9 +1,18 @@
 .conversation
-  = avatar(conversation.user)
-  %p= "#{conversation.user.name}开始了新会话"
-  .replies
-    = render conversation.replies
-  - reply = conversation.replies.build
-  = form_for [project, conversation, reply], :html => {:multipart => true} do |f|
-    = render 'replies/fields', :f => f
-    = f.submit
+  .comment
+    .info= link_to '', conversation.user, :class => :thumb_avatar, :style => "background: url(#{avatar_url(conversation.user, :version => :thumb)})"
+    .block
+      .body
+        .title
+          = link_to "#{conversation.user.name}开始了新会话", project_conversation_path(@project, conversation)
+          %span= "#{conversation.replies.count}条评论"
+        - first_reply = conversation.replies.first
+        .textilized=raw parse_markdown(first_reply.content)
+        - if first_reply.uploads.any?
+          .upload_images
+            - first_reply.uploads.each do |up|
+              .upload_thumbnail{:id => "upload_#{up.id}"}
+                = link_to up.asset.url, :class => :link_to_upload, :rel => :facebox do
+                  = image_tag up.asset.url
+        %p.go_to_thred= link_to 'Read More', project_conversation_path(@project, conversation)
+    .clear

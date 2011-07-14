@@ -3,7 +3,7 @@
 
 - content_for :on_ready_hook do
   :plain
-    $("#new_conversation").ajaxForm({dataType: 'script', clearForm: true, iframe: true, data: {xhr: true}});
+    $("#new_conversation").ajaxForm({dataType: 'script', resetForm: true, iframe: true, data: {xhr: true}});
 
 %h2 团队会话
 .create_bar

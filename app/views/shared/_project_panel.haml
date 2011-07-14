@@ -11,4 +11,5 @@
       - @conversation.replies.build
       = f.fields_for :replies do |reply_form|
         = render 'replies/fields', :f => reply_form
-      = f.submit
+      .submit
+        = f.submit

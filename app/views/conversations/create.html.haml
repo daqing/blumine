@@ -1,0 +1,3 @@
+%textarea
+  :plain
+    $("#conversations").prepend("#{escape_javascript render(@conversation, :project => @project)}")

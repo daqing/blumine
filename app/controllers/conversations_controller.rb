@@ -12,7 +12,7 @@ class ConversationsController < ApplicationController
 
     respond_to do |f|
       if @conversation.save
-        f.html { redirect_to @project }
+        f.html { render 'create.html.haml', :layout => false }
         f.js
       else
         f.html { redirect_to @project, :error => 'save failed' }

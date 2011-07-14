@@ -140,8 +140,6 @@ module ApplicationHelper
 
   def format_activity(activity)
     case activity.event_name
-      when 'create_project'
-        "#{t('activity.create_project')} #{link_to activity.data['name'], url_for(:controller => :projects, :action => :show, :id => activity.project_id)}"
       when 'create_issue'
         issue_url = link_to short_title(activity.data['title']), url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         project_url = t('activity.in_project', :url =>

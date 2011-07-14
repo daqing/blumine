@@ -52,8 +52,8 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
-  test "should create activity after a project is created" do
-    assert_difference('Activity.count') do
+  test "should now create activity after a project is created" do
+    assert_no_difference('Activity.count') do
       create_project
     end
   end

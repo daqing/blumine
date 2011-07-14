@@ -1,2 +1,8 @@
-.conversations
-  = render @project.conversations.order('updated_at DESC'), :project => @project
+%h2 最近动态
+.more_actions
+  %ul
+    %li.el{:style => 'display:none'}= link_to 'view thread collapsed', '#', :class => 'collapsed_mode icon'
+    %li.el= link_to 'view thread expanded', '#', :class => 'expanded_mode icon'
+    %li= link_to 'subscribe to feeds', '#', :class => 'feeds icon'
+#activities.collapsed
+  = render @project.activities.limit(10)

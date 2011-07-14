@@ -141,10 +141,7 @@ en:
 
   activity:
     create_project: created a project
-    create_issue:
-      idea: added idea
-      task: created task
-      bug: reported bug
+    create_issue: created task
     in_project: in project %{url}
     assigned_issue_to: assigned %{issue_url} to %{user_url}
     changed_issue_state_as: changed %{issue_url}'s state to %{state}

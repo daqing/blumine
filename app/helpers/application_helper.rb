@@ -8,25 +8,31 @@ module ApplicationHelper
     end
   end
 
-  def avatar(user, options = {})
+  def avatar_tag(user, options={})
+    image_tag avatar_url(user, options)
+  end
+
+  def avatar_url(user, options = {})
     if user.avatar?
       options[:version] ||= :micro
-      image_tag user.avatar.url(options[:version])
+      user.avatar.url(options[:version])
     else
-      gravatar_for(user.email, options)
+      gravatar_url(user.email, options)
     end
   end
 
-  def gravatar_for(email, options = {})
+  def gravatar_url(email, options = {})
     options = {:alt => 'avatar', :class => 'avatar', :size => 80}.merge! options
     id = Digest::MD5::hexdigest email.strip.downcase
-    url = 'http://www.gravatar.com/avatar/' + id + '.jpg?s=' + options[:size].to_s
-    options.delete :size
-    image_tag url, options
+    'http://www.gravatar.com/avatar/' + id + '.jpg?s=' + options[:size].to_s
   end
 
   def icon(name)
     image_tag "#{name}.png", :height => 16, :width => 16, :align => :absmiddle
+  end
+
+  def my_icon(name, options={})
+    image_tag "/my_icons/#{name}.png", options
   end
 
   def current_user
@@ -134,8 +140,6 @@ module ApplicationHelper
 
   def format_activity(activity)
     case activity.event_name
-      when 'create_project'
-        "#{t('activity.create_project')} #{link_to activity.data['name'], url_for(:controller => :projects, :action => :show, :id => activity.project_id)}"
       when 'create_issue'
         issue_url = link_to short_title(activity.data['title']), url_for(:controller => :issues, :action => :show, :id => activity.target_id)
         project_url = t('activity.in_project', :url =>
@@ -143,7 +147,7 @@ module ApplicationHelper
                                 url_for(:controller => :projects, :action => :show, :id => activity.project_id)
                                )
                        )
-        locale_str = "activity.create_issue.#{activity.data['label']}"
+        locale_str = "activity.create_issue"
         if I18n.locale == :zh
           "#{project_url}#{t(locale_str)} #{issue_url}"
         else

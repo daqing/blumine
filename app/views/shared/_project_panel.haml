@@ -9,6 +9,6 @@
     = render 'shared/project_menu'
     = form_for [@project, @conversation], :html => {:multipart => true}, :remote => true do |f|
       - @conversation.replies.build
-      - f.fields_for :replies do |reply_form|
+      = f.fields_for :replies do |reply_form|
         = render 'replies/fields', :f => reply_form
       = f.submit

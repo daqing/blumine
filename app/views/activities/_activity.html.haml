@@ -1,20 +1,10 @@
-.activity
-  %span= activity.user.name
-  %span.right
-    - case activity.event_name
-    - when 'create_project'
-      = icon 'folder'
+%div{:class => "activity #{activity.event_name}"}
+  = link_to '', activity.user, :class => :micro_avatar, :style => "background: url(#{avatar_url(activity.user)}) no-repeat"
+  - case activity.event_name
     - when 'create_issue'
-      = icon 'task'
-    - when 'create_comment'
-      = icon 'comments'
-    - when 'change_issue_state'
-      = icon 'gear'
-    - when 'assign_issue'
-      = icon 'key'
-    - when 'chat'
-      = icon 'chat'
-    - when 'create_document'
-      = icon 'doc'
+      = my_icon :tasks, :style => 'padding: 4px; opacity: 0.2;'
+  .activity_block
+    .date= time_ago_in_words(activity.created_at) + t(:ago)
+    = link_to activity.user.name, activity.user
+    =raw format_activity(activity)
 
-  =raw format_activity(activity)

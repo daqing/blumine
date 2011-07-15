@@ -12,6 +12,13 @@ class ConversationsController < ApplicationController
 
     respond_to do |f|
       if @conversation.save
+        # Send Notifications
+        regex = /@[a-zA-Z0-9._-]+/
+        names = @conversation.replies.first.content.scan(regex)
+        names.each do |name|
+          user = User.find_by_name(name[1..name.size])
+          NotificationMailer.notify_user(user, @conversation).deliver if user
+        end
         f.html { render 'create.html.haml', :layout => false }
         f.js
       else

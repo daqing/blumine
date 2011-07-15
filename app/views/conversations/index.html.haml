@@ -1,13 +1,28 @@
-- content_for :head_hook do
-  = javascript_include_tag 'jquery.form.js'
-
-- content_for :on_ready_hook do
-  :plain
-    $("#new_conversation").ajaxForm({dataType: 'script', resetForm: true, iframe: true, data: {xhr: true}});
-
 %h2 团队会话
 .create_bar
   = link_to new_project_conversation_path(@project), :class => :add_button do '创建新话题' end
 
-#conversations
-  = render @conversations
+- if @conversations.any?
+  #conversations
+    = render @conversations
+- else
+  #conversations
+  #primer
+    .box
+      %h2= link_to '在此项目中创建第一个话题', new_project_conversation_path(@project)
+      %p
+        使用话题作为一个集中的方式讨论决定和同步您的团队。
+        每个话题是一系列的评论，用于代替成堆的邮件。
+      %ul
+        %li
+          %b 分享文件
+          评论也可以包含附件
+        %li
+          %b 加深印象
+          任何评论都可以使用文本样式进行格式化
+      %p
+        话题是一个很好的方式，用于分享设计, 决定会议日期或者报告新闻动态。
+        %br/
+        因为话题是线程式的，它很容易回溯了解到某个文件已经发布，每个成员说过的内容。
+        %br/
+        在Teambox中，协作也是汇报的过程.

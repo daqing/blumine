@@ -3,6 +3,7 @@
   :plain
     var names = #{user_names.to_json};
     $(".textarea textarea").autocomplete({source: names});
+    $("#new_conversation").ajaxForm({dataType: 'script', resetForm: true, iframe: true, data: {xhr: true}});
 
 #project_panel_wrap
   .column_wrap

@@ -1,0 +1,8 @@
+%textarea
+  - if @conversation.replies.count == 1
+    :plain
+      $("#primer").hide();
+  :plain
+    $("#conversations").prepend("#{escape_javascript render(@conversation, :project => @project)}")
+
+

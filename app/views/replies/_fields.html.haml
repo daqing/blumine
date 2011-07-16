@@ -1,5 +1,16 @@
-= f.text_field :content
+.field.text_area
+  = link_to '', '#', :class => 'micro_avatar my_avatar', :style => "background: url(#{avatar_url(current_user)})"
+  .textarea
+    = f.text_area :content, :cols => 40, :rows => 20, :autocomplete => :off, :placeholder => '您在做什么？分享想法，链接，更新。', :style => 'height: 1.4em'
 .extra
   - f.object.uploads.build
   = f.fields_for :uploads do |upload_form|
-    = upload_form.file_field :asset
+    .upload_area
+      %p 选择文件
+      = upload_form.file_field :asset
+    .actions{:style => 'display: none'}
+      .attach
+        .hoverbox
+          = link_to '附件', '#uploads', :class => 'attach_icon hoverable'
+          .arrow
+          .panel Attach a file

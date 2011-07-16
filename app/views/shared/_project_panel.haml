@@ -1,3 +1,10 @@
+- content_for :on_ready_hook do
+  - user_names = User.limit(10).collect { |user| "@#{user.name}" }
+  :plain
+    var names = #{user_names.to_json};
+    $(".textarea textarea").autocomplete({source: names});
+    $("#new_conversation").ajaxForm({dataType: 'script', resetForm: true, iframe: true, data: {xhr: true}});
+
 #project_panel_wrap
   .column_wrap
     #project_logo
@@ -7,8 +14,9 @@
         = image_tag @project.logo.medium.default_url
   .content_wrap
     = render 'shared/project_menu'
-    = form_for [@project, @conversation], :html => {:multipart => true}, :remote => true do |f|
+    = form_for [@project, @conversation], :html => {:multipart => true} do |f|
       - @conversation.replies.build
       = f.fields_for :replies do |reply_form|
         = render 'replies/fields', :f => reply_form
-      = f.submit
+      .submit
+        = f.submit

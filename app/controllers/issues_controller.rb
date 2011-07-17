@@ -7,7 +7,6 @@ class IssuesController < ApplicationController
 
   def index
     @project = Project.find(params[:project_id])
-    @conversation = @project.conversations.new
     @milestones = @project.milestones
     @default_issues = @project.issues.where('milestone_id = 0')
 
@@ -29,7 +28,6 @@ class IssuesController < ApplicationController
     breadcrumbs.add '#' + "#{@issue.label}-#{@issue.id}", issue_path(@issue)
 
     @project = @issue.project
-    @conversation = @project.conversations.new
 
     @comment = @issue.comments.new
     @todo_item = @issue.todo_items.new
@@ -49,7 +47,6 @@ class IssuesController < ApplicationController
 
   def new
     @project = Project.find(params[:project_id])
-    @conversation = @project.conversations.new
     @issue = @project.issues.new
     @title = t('issue.create')
     @label = params[:label]
@@ -60,7 +57,6 @@ class IssuesController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    @conversation = @project.conversations.new
     @issue = @project.issues.new(params[:issue])
     @issue.user = current_user 
     if @issue.save
@@ -78,9 +74,9 @@ class IssuesController < ApplicationController
   end
 
   def edit
-    @conversation = @project.conversations.new
+    @project = @issue.project
     @title = t('issue.edit')
-    
+
     breadcrumbs.add @issue.project.name, project_path(@issue.project)
     breadcrumbs.add '#' + "#{@issue.label}-#{@issue.id}", issue_path(@issue)
     breadcrumbs.add t(:edit)
@@ -176,6 +172,7 @@ class IssuesController < ApplicationController
     Issue.search_with_ferret(%(title|content:'#{params[:keyword]}')) do |index, id, score|
       @result << Issue.find(index[id][:id])
     end
+    render :layout => 'single_column'
   end
 
   def rebuild_index

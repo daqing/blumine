@@ -17,9 +17,6 @@ class IssueTest < ActiveSupport::TestCase
     @issue.project_id = 1
     @issue.user_id = 1
 
-    assert ! @issue.save
-
-    @issue.label = 'idea'
     assert @issue.save
   end
 

@@ -1,5 +1,11 @@
-.issue
-  %span{:title => Issue.state_name(issue.current_state.name)}
-    = image_tag "state_#{issue.current_state.name.to_s}.png", :align => :absmiddle, :height => 16, :width => 16
-  = issue_title_link(issue)
-  %span.date= time_ago_in_words(issue.created_at) + t(:ago)
+.task
+  .taskStatus
+    %span.task_status.task_counter= issue.comments.count
+  .taskName
+    = link_to issue.title, issue, :class => :name
+    - if issue.planned_date
+      %span.assigned_date= issue.planned_date
+    - if issue.assigned_user
+      %span.assigned_user
+        = link_to issue.assigned_user.name, issue.assigned_user
+  .clear

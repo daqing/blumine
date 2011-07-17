@@ -4,12 +4,12 @@ class IssuesController < ApplicationController
   before_filter :only => [:edit, :update, :destroy] do |c|
     authorize! :manage, @issue
   end
-  layout 'single_column'
 
   def index
     @project = Project.find(params[:project_id])
+    @conversation = @project.conversations.new
     @milestones = @project.milestones
-    @no_milestones = @project.issues.where('milestone_id = 0')
+    @default_issues = @project.issues.where('milestone_id = 0')
 
     respond_to do |f|
       f.html {
@@ -27,6 +27,9 @@ class IssuesController < ApplicationController
   def show
     breadcrumbs.add @issue.project.name, project_path(@issue.project)
     breadcrumbs.add '#' + "#{@issue.label}-#{@issue.id}", issue_path(@issue)
+
+    @project = @issue.project
+    @conversation = @project.conversations.new
 
     @comment = @issue.comments.new
     @todo_item = @issue.todo_items.new
@@ -46,6 +49,7 @@ class IssuesController < ApplicationController
 
   def new
     @project = Project.find(params[:project_id])
+    @conversation = @project.conversations.new
     @issue = @project.issues.new
     @title = t('issue.create')
     @label = params[:label]
@@ -56,8 +60,8 @@ class IssuesController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
+    @conversation = @project.conversations.new
     @issue = @project.issues.new(params[:issue])
-    @issue.label = params[:issue][:label]
     @issue.user = current_user 
     if @issue.save
       Activity.create!(
@@ -74,7 +78,7 @@ class IssuesController < ApplicationController
   end
 
   def edit
-    @project = @issue.project
+    @conversation = @project.conversations.new
     @title = t('issue.edit')
     
     breadcrumbs.add @issue.project.name, project_path(@issue.project)

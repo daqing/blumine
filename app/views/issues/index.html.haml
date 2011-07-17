@@ -1,13 +1,12 @@
-- content_for :content_area do
-  - @milestones.each do |m|
-    .milestone
-      %h3= m.name
-      %ul
-        = render m.issues
+.task_header
+  %p.text_actions
+    = link_to new_project_milestone_path(@project), :class => 'new_task_list_link' do '<span>创建任务列表</span>' end
+  %h2 任务列表
 
-  .milestone
-    %h3 默认列表
-    %ul
-      = render @no_milestones
+.filters
+  %strong Filter tasks:
+  %input#filter_tasks_by_name{:placeholder => 'By name...', :type => :search}
 
-= render 'shared/project_page'
+#task_lists
+  = render @milestones, :project => @project
+

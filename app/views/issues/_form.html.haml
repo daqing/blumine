@@ -46,7 +46,7 @@
 
   .row
     = f.label :milestone, t(:milestone)
-    = f.select :milestone_id, options_for_select( @project.milestones.collect { |m| [m.name, m.id] }.unshift([t(:empty_option), 0]), @issue.milestone ? @issue.milestone.id : 0)
+    = f.select :milestone_id, options_for_select( @project.milestones.collect { |m| [m.name, m.id] }.unshift([t(:empty_option), 0]), @issue.milestone ? @issue.milestone.id : params[:milestone_id])
 
   = f.hidden_field :label, :value => @label
   = f.submit t(:save), :class => :alt_btn

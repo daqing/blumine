@@ -19,7 +19,11 @@ Blumine::Application.routes.draw do
         get 'label/:label', :action => 'view_by_label'
       end
     end
-    resources :milestones, :activities
+    resources :milestones do
+      resources :issues
+    end
+
+    resources :activities
     resources :conversations do
       resources :replies
     end
@@ -27,9 +31,6 @@ Blumine::Application.routes.draw do
       resources :document_sections
     end
   end
-
-  get "milestones/new"
-  post "milestones/create"
 
   resources :issues do
     resources :comments

@@ -1,9 +1,13 @@
-%h4
-  = milestone.name
-  %span.quiet.small= milestone.due_date
-  - if can? :manage, milestone
-    = link_to t(:edit), edit_project_milestone_path(project, milestone), :class => :hide
-    = link_to t(:delete), project_milestone_path(project, milestone), :class => :hide,
-      :method => :delete, :confirm => t(:delete_confirm)
-
-= render milestone.issues
+.task_list_container{:id => "task_list_#{milestone.id}"}
+  .task_list
+    .head
+      .actions_menu
+        %span.actiondate= milestone.due_date
+        .extra
+          = link_to '编辑列表', edit_project_milestone_path(project, milestone)
+          = link_to '删除列表', project_milestone_path(project, milestone), :method => :delete, :confirm => t(:delete_confirm)
+      = link_to milestone.name, project_milestone_path(project, milestone)
+    .tasks.open
+      = render milestone.issues
+    .new_task
+      = link_to '添加任务', new_project_milestone_issue_path(project, milestone)

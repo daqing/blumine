@@ -1,1 +1,8 @@
-= image_tag upload.asset.url
+- if upload.content_type.start_with? 'image'
+  = image_tag upload.asset.url
+- else
+  .upload_file
+    - url = upload.asset.url
+    - file_name = File.basename(url)
+    %span.filename= link_to file_name, url
+    %span.size= number_to_human_size(upload.file_size)

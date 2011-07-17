@@ -19,6 +19,7 @@ class Project < ActiveRecord::Base
   has_many :activities, :dependent => :destroy
   has_many :documents, :dependent => :destroy
   has_many :conversations, :dependent => :destroy
+  has_many :uploads
 
   attr_accessible :name, :logo
   mount_uploader :logo, ImageUploader

@@ -23,7 +23,7 @@ Blumine::Application.routes.draw do
       resources :issues
     end
 
-    resources :activities
+    resources :activities, :uploads
     resources :conversations do
       resources :replies
     end

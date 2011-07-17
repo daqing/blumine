@@ -14,9 +14,10 @@
         = image_tag @project.logo.medium.default_url
   .content_wrap
     = render 'shared/project_menu'
-    = form_for [@project, @conversation], :html => {:multipart => true} do |f|
-      - @conversation.replies.build
+    - new_conversation = @project.conversations.build
+    = form_for [@project, new_conversation], :html => {:multipart => true} do |f|
+      - new_conversation.replies.build
       = f.fields_for :replies do |reply_form|
-        = render 'replies/fields', :f => reply_form
+        = render 'replies/fields', :f => reply_form, :project => @project
       .submit
         = f.submit

@@ -9,10 +9,6 @@
         - first_reply = conversation.replies.first
         .textilized=raw parse_markdown(first_reply.content)
         - if first_reply.uploads.any?
-          .upload_images
-            - first_reply.uploads.each do |up|
-              .upload_thumbnail{:id => "upload_#{up.id}"}
-                = link_to up.asset.url, :class => :link_to_upload, :rel => :facebox do
-                  = image_tag up.asset.url
+          = render first_reply.uploads
         %p.go_to_thred= link_to 'Read More', project_conversation_path(@project, conversation)
     .clear

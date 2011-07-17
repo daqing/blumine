@@ -51,6 +51,9 @@ class User < ActiveRecord::Base
   has_many :issue_assignments, :dependent => :destroy
   has_many :assigned_issues, :through => :issue_assignments, :source => :issue, :order => 'position ASC'
 
+  has_many :project_members, :dependent => :destroy
+  has_many :joined_project, :through => :project_members, :source => :project
+
   attr_accessible :avatar
   attr_protected :encrypted_password, :salt, :persistence_token, :role
 

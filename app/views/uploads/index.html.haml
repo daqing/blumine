@@ -4,8 +4,9 @@
   - @uploads.each do |upload|
     .upload
       .header
-        .icon= upload.content_type
         - url = upload.asset.url
         - base_name = File.basename(url)
+        .size= upload.content_type
         .file= link_to base_name, url
         .size= upload.file_size
+        .author= upload.user.name

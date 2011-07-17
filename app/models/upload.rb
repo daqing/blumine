@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110703034007
+# Schema version: 20110717082415
 #
 # Table name: uploads
 #
@@ -11,10 +11,12 @@
 #  content_type :string(255)
 #  created_at   :datetime
 #  updated_at   :datetime
+#  user_id      :integer
 #
 
 class Upload < ActiveRecord::Base
   belongs_to :project
+  belongs_to :user
   belongs_to :reply
 
   mount_uploader :asset, AssetUploader

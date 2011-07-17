@@ -3,11 +3,12 @@
   .textarea
     = f.text_area :content, :cols => 40, :rows => 20, :autocomplete => :off, :placeholder => '您在做什么？分享想法，链接，更新。', :style => 'height: 1.4em'
 .extra
-  - f.object.uploads.build(:project_id => project.id)
+  - f.object.uploads.build(:project_id => project.id, :user_id => current_user.id)
   = f.fields_for :uploads do |upload_form|
     .upload_area
       %p 选择文件
       = upload_form.hidden_field :project_id
+      = upload_form.hidden_field :user_id
       = upload_form.file_field :asset
     .actions{:style => 'display: none'}
       .attach

@@ -1,0 +1,7 @@
+.person
+  = link_to '', member, :class => :thumb_avatar, :style => "background: url(#{avatar_url(member, :version => :thumb)}) no-repeat"
+  .name
+    %h2
+      = link_to member.name, member
+      @#{member.name}
+      %p= time_ago_in_words(member.updated_at) + t(:ago)

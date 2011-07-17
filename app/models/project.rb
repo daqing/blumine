@@ -21,6 +21,9 @@ class Project < ActiveRecord::Base
   has_many :conversations, :dependent => :destroy
   has_many :uploads
 
+  has_many :project_members, :dependent => :destroy
+  has_many :members, :through => :project_members, :source => :user
+
   attr_accessible :name, :logo
   mount_uploader :logo, ImageUploader
 

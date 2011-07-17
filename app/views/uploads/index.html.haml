@@ -1,0 +1,11 @@
+.text_actions= link_to '上传文件', new_project_upload_path(@project)
+%h2 文件
+.uploads
+  - @uploads.each do |upload|
+    .upload
+      .header
+        .icon= upload.content_type
+        - url = upload.asset.url
+        - base_name = File.basename(url)
+        .file= link_to base_name, url
+        .size= upload.file_size

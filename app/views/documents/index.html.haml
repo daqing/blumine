@@ -1,8 +1,5 @@
-- content_for :content_area do
-  %h3 项目文档
-  = link_to '新建文档', new_project_document_path(@project)
+.text_actions= link_to '新建文档', new_project_document_path(@project)
+%h2 文档
 
-  .documents
-    = render @documents, :project => @project
-
-= render 'shared/project_page'
+#pages
+  = render @documents, :project => @project

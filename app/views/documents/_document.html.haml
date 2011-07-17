@@ -1,3 +1,6 @@
-.document
-  = link_to document.title, project_document_path(project, document)
-  %span.date= time_ago_in_words(document.created_at) + t(:ago)
+.page
+  %h3= link_to document.title, [project, document]
+  %ul
+    - document.document_sections.each do |section|
+      %li= section.title
+

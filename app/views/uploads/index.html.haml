@@ -8,5 +8,5 @@
         - base_name = File.basename(url)
         .size= upload.content_type
         .file= link_to base_name, url
-        .size= upload.file_size
+        .size= number_to_human_size(upload.file_size)
         .author= upload.user.name

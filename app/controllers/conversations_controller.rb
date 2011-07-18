@@ -9,6 +9,12 @@ class ConversationsController < ApplicationController
   def create
     @conversation = @project.conversations.build(params[:conversation])
     @conversation.user = current_user
+    @conversation.replies.first.uploads.each do |upload|
+      if upload.asset
+        upload.user = current_user
+        upload.project = @project
+      end
+    end
 
     respond_to do |f|
       if @conversation.save

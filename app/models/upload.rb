@@ -21,8 +21,9 @@ class Upload < ActiveRecord::Base
 
   mount_uploader :asset, AssetUploader
 
-  before_save :set_asset_info
+  validates :project_id, :user_id, :asset, :presence => true
 
+  before_save :set_asset_info
   private
     def set_asset_info
       self.content_type = asset.file.content_type

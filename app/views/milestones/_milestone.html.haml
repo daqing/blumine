@@ -1,12 +1,18 @@
 .task_list_container{:id => "task_list_#{milestone.id}"}
   .task_list
-    .head
+    .head.bg_highlight
       .actions_menu
-        %span.actiondate= milestone.due_date
-        .extra
-          = link_to '编辑列表', edit_project_milestone_path(project, milestone)
-          = link_to '删除列表', project_milestone_path(project, milestone), :method => :delete, :confirm => t(:delete_confirm)
+        - if milestone.start_date and milestone.due_date
+          %span.actiondate= "#{milestone.start_date} - #{milestone.due_date}"
+        - elsif milestone.start_date
+          %span.actiondate= "开始于#{milestone.start_date}"
+        - else milestone.due_date
+          %span.actiondate= "结束于#{milestone.due_date}"
+
       = link_to milestone.name, project_milestone_path(project, milestone)
+      .hide
+        = link_to '编辑列表', edit_project_milestone_path(project, milestone)
+        = link_to '删除列表', project_milestone_path(project, milestone), :method => :delete, :confirm => t(:delete_confirm)
     .tasks.open
       = render milestone.issues
     .new_task

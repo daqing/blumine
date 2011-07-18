@@ -166,7 +166,8 @@ zh:
   milestones: 任务列表
   new_milestone: 添加任务列表
   name: 名称
-  due_date: 发布日期
+  start_date: 开始日期
+  due_date: 结束日期
   create_milestone: 创建新的任务列表
   view_all_issues: 查看全部
   empty_option: '<未选择>'

@@ -3,17 +3,24 @@
 
 - content_for :on_ready_hook do
   :plain
+    $("#milestone_start_date").datepicker();
     $("#milestone_due_date").datepicker();
 
-%h3= @heading_name
 = form_for [@project, @milestone] do |f|
   = render 'shared/error_messages', :obj => f.object
-  .row
-    = f.label :name, t(:name)
-    = f.text_field :name
+  %h3= @heading_name
+  %p 任务列表为您的项目定义一个里程碑。在任务列表中，您可以创建任务并分配任务给项目成员。
+  #traditional_task_list_form
+    .name.text_field
+      = f.label :name, t(:name)
+      = f.text_field :name, :autofocus => :autofocus
 
-  .row
-    = f.label :due_date, t(:due_date)
-    = f.text_field :due_date
+    .pick_date
+      = f.label :start_date, t(:start_date)
+      = f.text_field :start_date
 
-  = f.submit t(:save), :class => :alt_btn
+    .pick_date
+      = f.label :due_date, t(:due_date)
+      = f.text_field :due_date
+  .submit
+    = f.submit t(:save), :class => :alt_btn

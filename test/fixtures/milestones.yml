@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110520082002
+# Schema version: 20110717130007
 #
 # Table name: milestones
 #
@@ -9,6 +9,7 @@
 #  due_date   :date
 #  created_at :datetime
 #  updated_at :datetime
+#  start_date :date
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

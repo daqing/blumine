@@ -162,12 +162,13 @@ zh:
   project_progress: 项目进度
   project_feed: 项目动态
 
-  milestone: 里程碑
-  milestones: 里程碑
-  new_milestone: 添加里程碑
+  milestone: 任务列表
+  milestones: 任务列表
+  new_milestone: 添加任务列表
   name: 名称
-  due_date: 发布日期
-  create_milestone: 创建新的里程碑
+  start_date: 开始日期
+  due_date: 结束日期
+  create_milestone: 创建新的任务列表
   view_all_issues: 查看全部
   empty_option: '<未选择>'
 
@@ -186,7 +187,7 @@ zh:
     tasks: 任务
     bugs: 错误
     docs: 文档
-    milestones: 里程碑
+    milestones: 任务列表
 
   projects:
     edit:

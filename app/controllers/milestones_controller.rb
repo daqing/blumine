@@ -20,7 +20,7 @@ class MilestonesController < ApplicationController
   def create
     @milestone = @project.milestones.build(params[:milestone])
     if @milestone.save
-      redirect_to @project
+      redirect_to project_issues_path(@project)
     else
       render :new
     end
@@ -33,7 +33,7 @@ class MilestonesController < ApplicationController
 
   def update
     if @milestone.update_attributes(params[:milestone])
-      redirect_to @project
+      redirect_to project_issues_path(@project)
     else
       render :text => 'ERROR', :status => 500
     end
@@ -41,7 +41,7 @@ class MilestonesController < ApplicationController
 
   def destroy
     if @milestone.destroy
-      redirect_to @project
+      redirect_to project_issues_path(@project)
     else
       render :text => 'ERROR', :status => 500
     end

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110520082002
+# Schema version: 20110717130007
 #
 # Table name: milestones
 #
@@ -9,6 +9,7 @@
 #  due_date   :date
 #  created_at :datetime
 #  updated_at :datetime
+#  start_date :date
 #
 
 class Milestone < ActiveRecord::Base
@@ -16,5 +17,5 @@ class Milestone < ActiveRecord::Base
 
   has_many :issues
 
-  validates :project_id, :name, :due_date, :presence => true
+  validates :project_id, :name, :presence => true
 end

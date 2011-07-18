@@ -8,7 +8,6 @@ class IssuesController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @milestones = @project.milestones
-    @default_issues = @project.issues.where('milestone_id = 0')
 
     respond_to do |f|
       f.html {

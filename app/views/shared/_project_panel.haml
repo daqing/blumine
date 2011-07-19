@@ -8,6 +8,13 @@
       $(".upload_area").toggle();
       return false;
     });
+    (function() {
+      var template = '<input type="file" name="conversation[replies_attributes][0][uploads_attributes][{{number}}][asset]" class="fresh" />';
+      $(".upload_area input.fresh").live('change', function() {
+        $(this).removeClass('fresh');
+        $(".upload_area").append(template.replace('{{number}}', $(".upload_area input").size()));
+      });
+    })();
 
 #project_panel_wrap
   .column_wrap

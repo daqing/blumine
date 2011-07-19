@@ -7,6 +7,6 @@
   = f.fields_for :uploads do |upload_form|
     .upload_area
       %p 选择文件
-      = upload_form.file_field :asset
+      = upload_form.file_field :asset, :class => :fresh
     .actions
       = link_to '添加附件', '#uploads', :class => 'attachment_icon'

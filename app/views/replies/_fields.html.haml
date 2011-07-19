@@ -8,9 +8,5 @@
     .upload_area
       %p 选择文件
       = upload_form.file_field :asset
-    .actions{:style => 'display: none'}
-      .attach
-        .hoverbox
-          = link_to '附件', '#uploads', :class => 'attach_icon hoverable'
-          .arrow
-          .panel Attach a file
+    .actions
+      = link_to '添加附件', '#uploads', :class => 'attachment_icon'

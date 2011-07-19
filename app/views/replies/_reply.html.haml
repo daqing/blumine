@@ -1,5 +1,18 @@
 .reply
-  %span= reply.content
-  - if reply.uploads.any?
-    = render reply.uploads
+  .info
+    = link_to '', reply.user, :style => "background: url(#{avatar_url(reply.user, :version => :micro)}) no-repeat"
+  .block
+    .actions_menu
+      %span.actiondate= reply.created_at
+      .extra
+        = link_to t(:edit), edit_reply_path(reply)
+        = link_to t(:delete), reply, :method => :delete, :confirm => t(:delete_confirm)
+    .body.textilized
+      .before
+        = link_to reply.user.name, reply.user
+      %p= reply.content
+    - if reply.uploads.any?
+      .upload_images
+        = render reply.uploads
+  .clear
 

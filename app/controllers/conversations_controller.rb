@@ -24,9 +24,16 @@ class ConversationsController < ApplicationController
         # Send Notifications
         regex = /@[a-zA-Z0-9._-]+/
         names = @conversation.replies.first.content.scan(regex)
-        names.each do |name|
-          user = User.find_by_name(name[1..name.size])
-          NotificationMailer.notify_user(user, @conversation).deliver if user
+        if names.member? '@all'
+          # notify all members
+          @project.members.each do |user|
+            NotificationMailer.notify_user(user, @conversation).deliver
+          end
+        else
+          names.each do |name|
+            user = User.find_by_name(name[1..name.size])
+            NotificationMailer.notify_user(user, @conversation).deliver if user
+          end
         end
         f.html { render 'create.html.haml', :layout => false }
         f.js

@@ -9,7 +9,8 @@ class ConversationsController < ApplicationController
   def create
     @conversation = @project.conversations.build(params[:conversation])
     @conversation.user = current_user
-    @conversation.replies.first.uploads.each do |upload|
+    first_reply = @conversation.replies.first
+    first_reply.uploads.each do |upload|
       if upload.asset
         upload.user = current_user
         upload.project = @project
@@ -18,6 +19,8 @@ class ConversationsController < ApplicationController
 
     respond_to do |f|
       if @conversation.save
+        first_reply.user = current_user
+        first_reply.save
         # Send Notifications
         regex = /@[a-zA-Z0-9._-]+/
         names = @conversation.replies.first.content.scan(regex)
@@ -32,6 +35,10 @@ class ConversationsController < ApplicationController
         f.js { render :text => :error, :status => 500 }
       end
     end
+  end
+
+  def show
+    @conversation = @project.conversations.find(params[:id])
   end
 
   private

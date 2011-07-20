@@ -4,6 +4,17 @@
     var names = #{user_names.to_json};
     $(".textarea textarea").autocomplete({source: names});
     $("#new_conversation").ajaxForm({dataType: 'script', resetForm: true, iframe: true, data: {xhr: true}});
+    $("a.attachment_icon").click(function() {
+      $(".upload_area").toggle();
+      return false;
+    });
+    (function() {
+      var template = '<input type="file" name="conversation[replies_attributes][0][uploads_attributes][{{number}}][asset]" class="fresh" />';
+      $(".upload_area input.fresh").live('change', function() {
+        $(this).removeClass('fresh');
+        $(".upload_area").append(template.replace('{{number}}', $(".upload_area input").size()));
+      });
+    })();
 
 #project_panel_wrap
   .column_wrap

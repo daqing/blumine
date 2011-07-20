@@ -172,8 +172,8 @@ module ApplicationHelper
                        )
         document_url = link_to short_title(activity.data['document_title']), url_for(:controller => :documents, :action => :show, :id => activity.target_id, :project_id => activity.project_id)
         project_url + t('activity.create_document', :document_url => document_url)
-      when 'chat'
-        h(activity.data)
+      when 'create_milestone'
+        "创建了任务列表: #{link_to activity.data['name'], activity.data['url']}"
     end
   end
 

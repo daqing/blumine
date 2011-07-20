@@ -3,6 +3,9 @@
     :plain
       $("#primer").hide();
   :plain
-    $("#conversations").prepend("#{escape_javascript render(@conversation, :project => @project)}")
+    $("#conversations").prepend("#{escape_javascript render(@conversation, :project => @project)}");
+    $(".upload_area").hide();
+    $(".upload_area input:first").addClass('fresh').val('');
+    $(".upload_area input:not(:first)").remove();
 
 

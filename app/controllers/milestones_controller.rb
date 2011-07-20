@@ -19,6 +19,16 @@ class MilestonesController < ApplicationController
   def create
     @milestone = @project.milestones.build(params[:milestone])
     if @milestone.save
+      # create activity
+      begin
+        Activity.create!(:user_id => current_user.id,
+                         :event_name => 'create_milestone',
+                         :target_id => @milestone.id,
+                         :data => {:name => @milestone.name, :url => project_milestone_path(@project, @milestone)},
+                         :project_id => @project.id
+                        )
+      rescue
+      end
       redirect_to project_issues_path(@project)
     else
       render :new

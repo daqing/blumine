@@ -1,15 +1,16 @@
 # == Schema Information
-# Schema version: 20110604071850
+# Schema version: 20110720022526
 #
 # Table name: documents
 #
-#  id         :integer         not null, primary key
-#  project_id :integer
-#  user_id    :integer
-#  title      :string(255)
-#  content    :text
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer         not null, primary key
+#  project_id  :integer
+#  user_id     :integer
+#  title       :string(255)
+#  content     :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  description :string(255)
 #
 
 class Document < ActiveRecord::Base

@@ -1,5 +1,6 @@
 .page
   %h3= link_to document.title, [project, document]
+  %p= document.description
   %ul
     - document.document_sections.each do |section|
       %li= section.title

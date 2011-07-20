@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110703034007
+# Schema version: 20110719035845
 #
 # Table name: conversations
 #
@@ -8,6 +8,7 @@
 #  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  title      :string(255)
 #
 
 class Conversation < ActiveRecord::Base

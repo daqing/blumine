@@ -16,7 +16,7 @@
     = javascript_include_tag 'jquery.form.js'
     = yield :head_hook
 
-  %body
+  %body{:class => "controller_#{params[:controller]} #{params[:action]}_#{params[:controller]} #{Rails.env}"}
     / render 'shared/keyboard'
     - show_flash
     #header_wrap

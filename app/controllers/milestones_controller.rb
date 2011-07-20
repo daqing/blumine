@@ -1,7 +1,7 @@
 class MilestonesController < ApplicationController
   before_filter :must_login_first
   before_filter :find_project
-  before_filter :find_milestone, :only => [:edit, :update, :destroy]
+  before_filter :find_milestone, :only => [:edit, :show, :update, :destroy]
   before_filter :only => [:new, :create, :edit, :update, :destroy] do |c|
     redirect_to_root_when_no_permission unless can? :manage_milestone, @project
   end
@@ -33,6 +33,9 @@ class MilestonesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
   end
 
   def edit

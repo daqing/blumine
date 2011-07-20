@@ -1,5 +1,5 @@
 - content_for :on_ready_hook do
-  - user_names = User.limit(10).collect { |user| "@#{user.name}" }
+  - user_names = @project.members.collect { |user| "@#{user.name}" }.unshift('@all')
   :plain
     var names = #{user_names.to_json};
     $(".textarea textarea").autocomplete({source: names});

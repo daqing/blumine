@@ -1,8 +1,27 @@
 - content_for :on_ready_hook do
-  - user_names = User.limit(10).collect { |user| "@#{user.name}" }
+  - user_names = @project.members.collect { |user| "@#{user.name}" }.unshift('@all')
   :plain
     var names = #{user_names.to_json};
-    $(".textarea textarea").autocomplete({source: names});
+    var textarea = $(".textarea textarea");
+    var at_position = -1;
+    var set_new_value = function(event, ui) {
+      new_content = textarea.val().substr(0, at_position) + ui.item.value;
+      textarea.val(new_content);
+      return false;
+    };
+
+    textarea.autocomplete({source: names, delay: 0, select: set_new_value, focus: function(){ return false; }});
+    textarea.keypress(function(ev) {
+      if (ev.keyCode == 64) { // user entered '@'
+        at_position = textarea.val().length;
+      }
+
+      if (at_position >= 0) {
+        setTimeout(function() {
+          textarea.autocomplete('search', textarea.val().substring(at_position));
+        }, 300);
+      }
+    });
     $("#new_conversation").ajaxForm({dataType: 'script', resetForm: true, iframe: true, data: {xhr: true}});
     $("a.attachment_icon").click(function() {
       $(".upload_area").toggle();

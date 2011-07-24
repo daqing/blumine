@@ -1,4 +1,5 @@
 class NotificationMailer < ActionMailer::Base
+  helper :application
   default :from => "hello@blumine.org"
 
   def notify_user(user, conversation)

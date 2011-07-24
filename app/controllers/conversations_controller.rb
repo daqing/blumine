@@ -10,6 +10,7 @@ class ConversationsController < ApplicationController
     @conversation = @project.conversations.build(params[:conversation])
     @conversation.user = current_user
     first_reply = @conversation.replies.first
+    first_reply.user = current_user
     first_reply.uploads.each do |upload|
       if upload.asset
         upload.user = current_user
@@ -19,8 +20,6 @@ class ConversationsController < ApplicationController
 
     respond_to do |f|
       if @conversation.save
-        first_reply.user = current_user
-        first_reply.save
         # Send Notifications
         regex = /@[a-zA-Z0-9._-]+/
         names = @conversation.replies.first.content.scan(regex)

@@ -1,11 +1,22 @@
+- content_for :head_hook do
+  = javascript_include_tag 'jquery.isotope.min.js'
+
+- content_for :on_ready_hook do
+  :plain
+    $("select").change(function() {
+      var filter_val = $(this).val();
+      $(".tasks").isotope({filter: filter_val, layoutMode: 'straightDown', itemSelector: '.task'});
+    });
 .task_header
   %p.text_actions
     = link_to new_project_milestone_path(@project), :class => 'new_task_list_link' do '<span>创建任务列表</span>' end
   %h2 任务列表
 
 .filters
-  %strong Filter tasks:
-  %input#filter_tasks_by_name{:placeholder => 'By name...', :type => :search}
+  %strong 筛选任务:
+  = select_tag "filter[user]", options_for_select([['所有任务', '*'], ['分配给我的', 'mine']])
+  = select_tag "filter[date]", options_for_select([['全部时间', '*'], ['今天', 'today']])
+
 
 #task_lists
   = render @milestones, :project => @project if @milestones.any?

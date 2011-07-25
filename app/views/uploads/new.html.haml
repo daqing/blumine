@@ -1,0 +1,8 @@
+= form_for [@project, @upload], :html => {:multipart => true} do |f|
+  = render 'shared/error_messages', :obj => f.object
+  .file
+    = f.label :asset, t('.asset')
+    = f.file_field :asset
+  .submit
+    = f.submit
+%p 文件不应超过1G

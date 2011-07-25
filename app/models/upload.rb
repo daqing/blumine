@@ -25,6 +25,10 @@ class Upload < ActiveRecord::Base
   mount_uploader :asset, AssetUploader
   before_save :set_asset_info
 
+  def image?
+    self.content_type && self.content_type.include?('image')
+  end
+
   private
     def set_asset_info
       self.content_type = asset.file.content_type

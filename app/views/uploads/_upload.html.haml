@@ -1,5 +1,4 @@
-- content_type = upload.content_type
-- if content_type && content_type.start_with?('image')
+- if upload.image?
   = image_tag upload.asset.thumb.url
 - else
   .upload_file

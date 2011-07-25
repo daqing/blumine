@@ -1,11 +1,24 @@
+- content_for :on_ready_hook do
+  :plain
+    $(".reply_attachment_icon").click(function() {
+      $(".reply_upload_area").toggle();
+      return false;
+    });
+
+    (function() {
+      var template = '<input name="reply[uploads_attributes][{{number}}][asset]" type="file" class="fresh" />';
+      $(".reply_upload_area input.fresh").live('change', function() {
+        $(this).removeClass('fresh');
+        $(".reply_upload_area").append(template.replace('{{number}}', $(".reply_upload_area input").size()));
+      });
+    })();
+
 .conversation_header
   .text_actions
     = link_to t(:edit), edit_project_conversation_path(@project, @conversation)
     或者
     = link_to t(:delete), [@project, @conversation], :method => :delete, :confirm => t(:delete_confirm)
   %h2
-.watching#watching
-  %a{:href => '#'} 取消关注
 .thread
   .comment.comment_header
     .info
@@ -22,7 +35,7 @@
   .comments
     = render @conversation.replies
   - new_reply = @conversation.replies.new
-  = form_for [@project, @conversation, new_reply] do |f|
+  = form_for [@project, @conversation, new_reply], :html => {:multipart => true} do |f|
     .field.text_area
       = link_to '', current_user, :style => "background: url(#{avatar_url(current_user, :version => :micro)}) no-repeat"
       .textarea
@@ -30,8 +43,9 @@
     .extra
       .reply_upload_area
         %p 选择文件
-        = f.fields_for :uploads do |upload_form|
-          = upload_form.file_field :asset
+        - f.object.uploads.build
+        = f.fields_for :uploads do |upload_fields|
+          = upload_fields.file_field :asset, :class => :fresh
       .actions
         .attach
           %span Attach:

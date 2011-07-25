@@ -1,11 +1,32 @@
+- content_for :head_hook do
+  = javascript_include_tag 'jquery.isotope.min.js'
+
+- content_for :on_ready_hook do
+  :plain
+    $("select").change(function() {
+      var filter_val = "." + $(this).val();
+      $(".tasks").isotope({filter: filter_val, layoutMode: 'straightDown', itemSelector: '.task'});
+    });
 .task_header
   %p.text_actions
     = link_to new_project_milestone_path(@project), :class => 'new_task_list_link' do '<span>创建任务列表</span>' end
   %h2 任务列表
 
 .filters
-  %strong Filter tasks:
-  %input#filter_tasks_by_name{:placeholder => 'By name...', :type => :search}
+  %strong 筛选任务:
+  %select
+    - t('issue.assign_filters').each do |filter|
+      %option{:value => filter}= t("issue.assign_filter_name.#{filter}")
+    %option{:value => :divider, :disabled => :disabled} -----
+    %option{:value => @project.user.name}= @project.user.name
+    - @project.members.each do |member|
+      %option{:value => member.name}= member.name
+  %select
+    - t('issue.time_filters').each do |filter|
+      %option{:value => filter}= t("issue.time_filter_name.#{filter}")
+    %option{:value => :divider, :disabled => :disabled} -----
+    - t('issue.more_time_filters').each do |filter|
+      %option{:value => filter}= t("issue.time_filter_name.#{filter}")
 
 #task_lists
   = render @milestones, :project => @project if @milestones.any?

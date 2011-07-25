@@ -193,4 +193,31 @@ module ApplicationHelper
       projects_path
     end
   end
+
+  def issue_filter_classes(issue)
+    classes = ['task']
+    if issue.assigned_user.nil?
+      classes << 'not_assigned'
+    else
+      classes << issue.assigned_user.name
+    end
+
+    today = Date.today
+    planned_date = issue.planned_date
+    if planned_date.nil?
+      classes << 'not_planned'
+    else
+      if planned_date < today
+        classes << 'overdue'
+      elsif planned_date.today?
+        classes << 'today'
+      elsif planned_date.yesterday.today?
+        classes << 'tomorrow'
+      end
+
+      classes << 'this_week' if planned_date.cweek == today.cweek
+      classes << 'this_month' if planned_date.month == today.month
+    end
+    classes.join(' ')
+  end
 end

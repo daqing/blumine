@@ -93,8 +93,22 @@ zh:
     issues_assigned_to: 分配给%{username}的任务
     label:
       task: 任务
-      bug: 错误 
+      bug: 错误
       idea: 想法
+    assign_filters: [task, not_assigned]
+    assign_filter_name:
+      task: 所有任务
+      not_assigned: 未分配
+    time_filters: [task, overdue, not_planned]
+    more_time_filters: [today, tomorrow, this_week, this_month]
+    time_filter_name:
+      task: 所有时间
+      overdue: 过期任务
+      not_planned: 尚未安排
+      today: 今天
+      tomorrow: 明天
+      this_week: 本周
+      this_month: 本月
 
   image:
     upload: 上传图片
@@ -212,6 +226,6 @@ zh:
       next: 下页
       truncate: ...
       last: 末页
-  
+
   error:
     save_failed: 保存失败

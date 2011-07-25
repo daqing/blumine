@@ -4,7 +4,7 @@
 - content_for :on_ready_hook do
   :plain
     $("select").change(function() {
-      var filter_val = $(this).val();
+      var filter_val = "." + $(this).val();
       $(".tasks").isotope({filter: filter_val, layoutMode: 'straightDown', itemSelector: '.task'});
     });
 .task_header
@@ -14,9 +14,19 @@
 
 .filters
   %strong 筛选任务:
-  = select_tag "filter[user]", options_for_select([['所有任务', '*'], ['分配给我的', 'mine']])
-  = select_tag "filter[date]", options_for_select([['全部时间', '*'], ['今天', 'today']])
-
+  %select
+    - t('issue.assign_filters').each do |filter|
+      %option{:value => filter}= t("issue.assign_filter_name.#{filter}")
+    %option{:value => :divider, :disabled => :disabled} -----
+    %option{:value => @project.user.name}= @project.user.name
+    - @project.members.each do |member|
+      %option{:value => member.name}= member.name
+  %select
+    - t('issue.time_filters').each do |filter|
+      %option{:value => filter}= t("issue.time_filter_name.#{filter}")
+    %option{:value => :divider, :disabled => :disabled} -----
+    - t('issue.more_time_filters').each do |filter|
+      %option{:value => filter}= t("issue.time_filter_name.#{filter}")
 
 #task_lists
   = render @milestones, :project => @project if @milestones.any?

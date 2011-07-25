@@ -7,7 +7,7 @@ class RepliesController < ApplicationController
 
     respond_to do |f|
       if @reply.save
-        f.html { redirect_to @project }
+        f.html { redirect_to [@project, @conversation] }
         f.js
       else
         f.html { redirect_to @project, :error => 'save failed'}

@@ -210,3 +210,6 @@ zh:
       next: 下页
       truncate: ...
       last: 末页
+  
+  error:
+    save_failed: 保存失败

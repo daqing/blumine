@@ -4,7 +4,7 @@ class AssetUploader < CarrierWave::Uploader::Base
   include UploaderHelper
 
   # Include RMagick or ImageScience support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
@@ -26,9 +26,9 @@ class AssetUploader < CarrierWave::Uploader::Base
   # process :scale_image => [800, 800]
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :create_thumb => [64, 64]
-  # end
+  version :thumb, :if => :image? do
+    process :resize_to_fit => [128, 128]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -41,5 +41,10 @@ class AssetUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  protected
+    def image?(new_file)
+      new_file.content_type.include? 'image'
+    end
 
 end

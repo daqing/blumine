@@ -19,11 +19,12 @@ class Upload < ActiveRecord::Base
   belongs_to :user
   belongs_to :reply
 
-  mount_uploader :asset, AssetUploader
-
+  attr_accessible :asset
   validates :project_id, :user_id, :asset, :presence => true
 
+  mount_uploader :asset, AssetUploader
   before_save :set_asset_info
+
   private
     def set_asset_info
       self.content_type = asset.file.content_type

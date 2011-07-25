@@ -12,7 +12,11 @@ class RepliesController < ApplicationController
 
     respond_to do |f|
       if @reply.save
-        f.html { redirect_to [@project, @conversation] }
+        if params[:xhr]
+          f.html { render :layout => false }
+        else
+          f.html { redirect_to [@project, @conversation] }
+        end
         f.js
       else
         f.html {

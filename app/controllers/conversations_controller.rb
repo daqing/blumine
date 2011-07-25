@@ -34,7 +34,11 @@ class ConversationsController < ApplicationController
             NotificationMailer.notify_user(user, @conversation).deliver if user
           end
         end
-        f.html { render 'create.html.haml', :layout => false }
+        if params[:xhr]
+          f.html { render :layout => false }
+        else
+          f.html { redirect_to [@project, @conversation] }
+        end
         f.js
       else
         f.html { redirect_to @project, :error => 'save failed' }

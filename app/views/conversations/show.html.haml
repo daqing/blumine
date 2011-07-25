@@ -13,6 +13,7 @@
       });
     })();
 
+    $("#new_reply").ajaxForm({dataType: 'script', resetForm: true, iframe:true, data:{xhr: true}});
 .conversation_header
   .text_actions
     = link_to t(:edit), edit_project_conversation_path(@project, @conversation)
@@ -32,7 +33,7 @@
           = link_to @project.name, @project
         project
     .clear
-  .comments
+  .comments#comments
     = render @conversation.replies
   - new_reply = @conversation.replies.new
   = form_for [@project, @conversation, new_reply], :html => {:multipart => true} do |f|

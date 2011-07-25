@@ -32,7 +32,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   User::AVATAR_SIZE.each do |v, size|
     version v do
-      process :resize_to_fill => size
+      process :resize_to_fit => size
     end
   end
 

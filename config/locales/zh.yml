@@ -193,7 +193,9 @@ zh:
     edit:
       edit_project: 项目设置
       destroy_project: 删除此项目
-  
+  uploads:
+    new:
+      asset: 选择文件
   profile:
     phone: 手机号码
     im: 聊天工具

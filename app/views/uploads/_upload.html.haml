@@ -1,5 +1,5 @@
-- if upload.content_type.start_with? 'image'
-  = image_tag upload.asset.url
+- if upload.image?
+  = image_tag upload.asset.thumb.url
 - else
   .upload_file
     - url = upload.asset.url

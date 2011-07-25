@@ -174,6 +174,12 @@ module ApplicationHelper
         project_url + t('activity.create_document', :document_url => document_url)
       when 'create_milestone'
         "创建了任务列表: #{link_to activity.data['name'], activity.data['url']}"
+      when 'create_upload'
+        if activity.data['thumb']
+          %(上传了图片: #{link_to activity.data['name'], activity.data['url']}<blockquote>#{image_tag activity.data['thumb']}</blockquote>)
+        else
+          %(上传了文件: #{link_to activity.data['name'], activity.data['url']})
+        end
     end
   end
 

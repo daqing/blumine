@@ -1,11 +1,11 @@
-.page_slot
+.page_slot.sortable{:id => "document_section_#{document_section.id}"}
   .note
     %p.actions
       %span
         = link_to '', edit_document_section_path(document_section), :class => :edit_icon, :remote => true
         = link_to '', document_section, :class => 'widget_delete trash_icon', :method => :delete, :confirm => t(:delete_confirm), :remote => true
     %p.actions.handle
-      %span= icon('cursor_drag_arrow', :slot_handle)
+      %span= icon('cursor_drag_arrow', :drag_handle)
     %h3= document_section.title
     .textilized
       %p= document_section.content

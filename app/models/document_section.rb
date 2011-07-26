@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110703080201
+# Schema version: 20110726032013
 #
 # Table name: document_sections
 #
@@ -9,7 +9,12 @@
 #  content     :text
 #  created_at  :datetime
 #  updated_at  :datetime
+#  position    :integer
 #
 
 class DocumentSection < ActiveRecord::Base
+  acts_as_list
+  default_scope :order => 'position ASC'
+
+  validates :document_id, :title, :content, :presence => true
 end

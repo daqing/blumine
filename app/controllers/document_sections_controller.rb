@@ -14,4 +14,14 @@ class DocumentSectionsController < ApplicationController
       end
     end
   end
+
+  def sort
+    params[:document_section].each_with_index do |id, pos|
+      DocumentSection.update_all(['position=?', pos + 1], ['id=?', id])
+    end
+
+    respond_to do |format|
+      format.js { head :ok }
+    end
+  end
 end

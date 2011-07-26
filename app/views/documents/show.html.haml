@@ -14,6 +14,7 @@
     form.bind('ajax:complete', function() {
       $(this)[0].reset();
     });
+    $.make_sortable('slots', "#{sort_document_sections_path}");
 .page_header
   .text_actions
     = link_to t(:edit), edit_project_document_path(@project, @document)

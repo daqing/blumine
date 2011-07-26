@@ -27,7 +27,7 @@ class MilestonesControllerTest < ActionController::TestCase
       post :create, :project_id => @project.id, :milestone => {:name => 'foobar', :due_date => '2010-05-22'}
     end
     assert assigns(:project)
-    assert_redirected_to project_path(assigns(:project))
+    assert_redirected_to project_issues_path(assigns(:project))
   end
 
   test "root can get edit" do
@@ -45,7 +45,7 @@ class MilestonesControllerTest < ActionController::TestCase
   test "root can update milestone" do
     new_name = 'foobar'
     update_milestone(new_name)
-    assert_redirected_to @project
+    assert_redirected_to project_issues_path(@project)
     assert_equal new_name, assigns(:milestone).name
   end
 
@@ -60,7 +60,7 @@ class MilestonesControllerTest < ActionController::TestCase
     assert_difference('Milestone.count', -1) do
       destroy_milestone
     end
-    assert_redirected_to @project
+    assert_redirected_to project_issues_path(@project)
   end
 
   test "other users cannot delete milestone" do

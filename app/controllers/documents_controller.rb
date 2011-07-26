@@ -11,15 +11,15 @@ class DocumentsController < ApplicationController
       f.json { render :json => @project.documents }
     end
   end
-  
+
   def new
     @project = Project.find(params[:project_id])
     @document = @project.documents.new
-    
+
     breadcrumbs.add @project.name, project_path(@project)
     breadcrumbs.add t(:new_document)
   end
-  
+
   def create
     @project = Project.find(params[:project_id])
     @document = @project.documents.build(params[:document])
@@ -37,18 +37,18 @@ class DocumentsController < ApplicationController
       render :new
     end
   end
-  
+
   def show
     breadcrumbs.add @project.name, project_path(@project)
     breadcrumbs.add "#doc-#{@document.id}", project_document_path(@project, @document)
   end
-  
+
   def edit
     breadcrumbs.add @project.name, project_path(@project)
     breadcrumbs.add "#doc-#{@document.id}", project_document_path(@project, @document)
     breadcrumbs.add t(:edit)
   end
-  
+
   def update
     if @document.update_attributes(params[:document])
       redirect_to [@project, @document]
@@ -56,7 +56,7 @@ class DocumentsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     if @document.destroy
       redirect_to @project
@@ -65,13 +65,8 @@ class DocumentsController < ApplicationController
       redirect_to root_path
     end
   end
-  
+
   private
-    def find_project
-      @project = Project.find(params[:project_id])      
-      @conversation = @project.conversations.new
-    end
-    
     def find_document
       @document = @project.documents.find(params[:id])
     end

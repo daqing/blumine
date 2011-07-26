@@ -50,9 +50,4 @@ class ConversationsController < ApplicationController
   def show
     @conversation = @project.conversations.find(params[:id])
   end
-
-  private
-    def find_project
-      @project = Project.find(params[:project_id])
-    end
 end

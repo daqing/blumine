@@ -9,10 +9,10 @@ class MilestonesController < ApplicationController
   def new
     @milestone = @project.milestones.new
     @heading_name = t(:create_milestone)
-    
+
     breadcrumbs.add @project.name, project_path(@project)
     breadcrumbs.add t(:create_milestone)
-    
+
     render 'form'
   end
 
@@ -60,10 +60,6 @@ class MilestonesController < ApplicationController
   end
 
   private
-    def find_project
-      @project = Project.find(params[:project_id])
-    end
-
     def find_milestone
       @milestone = @project.milestones.find(params[:id])
     end

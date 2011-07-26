@@ -1,2 +1,3 @@
 :plain
-  $("#pageInsertItems").after("#{escape_javascript render(@document_section)}")
+  $("#slots").append("#{escape_javascript render(@document_section)}")
+  $("#document_section_#{@document_section.id}").effect('highlight');

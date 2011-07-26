@@ -14,7 +14,7 @@
 
 class DocumentSection < ActiveRecord::Base
   acts_as_list
-  default_scope :order => 'position ASC'
+  default_scope :order => 'position ASC, id DESC'
 
   validates :document_id, :title, :content, :presence => true
 end

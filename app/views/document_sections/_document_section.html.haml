@@ -1,3 +1,11 @@
-.document_section
-  %h3= document_section.title
-  %p= document_section.content
+.page_slot
+  .note
+    %p.actions
+      %span
+        = link_to '', edit_document_section_path(document_section), :class => :edit_icon, :remote => true
+        = link_to '', document_section, :class => 'widget_delete trash_icon', :method => :delete, :confirm => t(:delete_confirm), :remote => true
+    %p.actions.handle
+      %span= icon('cursor_drag_arrow', :slot_handle)
+    %h3= document_section.title
+    .textilized
+      %p= document_section.content

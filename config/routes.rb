@@ -10,7 +10,7 @@ Blumine::Application.routes.draw do
   post '/assigned_issues/sort' => 'issue_assignments#sort'
   
   resources :activities, :only => :create
-  resources :users, :comments, :replies
+  resources :users, :comments, :replies, :document_sections
   resources :projects do
     resources :issues do
       collection do
@@ -28,7 +28,7 @@ Blumine::Application.routes.draw do
       resources :replies
     end
     resources :documents do
-      resources :document_sections
+      resources :sections, :controller => 'document_sections'
     end
 
     resources :members, :controller => :project_members

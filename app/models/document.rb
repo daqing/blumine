@@ -17,7 +17,7 @@ class Document < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
 
-  has_many :document_sections
+  has_many :document_sections, :dependent => :destroy
   accepts_nested_attributes_for :document_sections
 
   validates :title, :project_id, :user_id, :presence => true

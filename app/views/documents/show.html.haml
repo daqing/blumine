@@ -1,3 +1,19 @@
+- content_for :on_ready_hook do
+  :plain
+    var form = $("#new_document_section");
+    $("#add_section").click(function() {
+      form.show('slow');
+      return false;
+    });
+
+    $(".cancel_form").click(function() {
+      form.hide('slow');
+      form[0].reset();
+      return false;
+    });
+    form.bind('ajax:complete', function() {
+      $(this)[0].reset();
+    });
 .page_header
   .text_actions
     = link_to t(:edit), edit_project_document_path(@project, @document)
@@ -6,5 +22,23 @@
   .description= @document.description
 
 .buttons#buttons
-  = link_to [@project, @document, @document_section], :class => 'add_button note_button' do %(<span>段落</span>) end
+  = link_to '#add_section', :class => 'add_button note_button', :id => :add_section do %(<span>段落</span>) end
+
+.pageSlots
+  #slots
+    #pageInsertItems
+      #pageForms
+        - section = @document.document_sections.new
+        = form_for section, :url => project_document_sections_path(@project, @document), :html => {:style => 'display: none;'}, :remote => true do |f|
+          .name.text_field
+            = f.label :title, t(:title)
+            = f.text_field :title
+          .body.text_area
+            = f.label :content, t(:content)
+            = f.text_area :content
+          .submit
+            = f.submit
+            或者
+            = link_to '取消', '#cancel', :class => 'cancel_form'
+    = render @document.document_sections
 

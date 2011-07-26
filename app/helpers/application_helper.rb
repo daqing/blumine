@@ -27,8 +27,8 @@ module ApplicationHelper
     'http://www.gravatar.com/avatar/' + id + '.jpg?s=' + options[:size].to_s
   end
 
-  def icon(name)
-    image_tag "#{name}.png", :height => 16, :width => 16, :align => :absmiddle
+  def icon(name, class_name='')
+    image_tag "#{name}.png", :height => 16, :width => 16, :align => :absmiddle, :class => class_name
   end
 
   def my_icon(name, options={})

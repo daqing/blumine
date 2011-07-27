@@ -29,17 +29,9 @@
   #slots
     #pageInsertItems
       #pageForms
-        - section = @document.document_sections.new
-        = form_for section, :url => project_document_sections_path(@project, @document), :html => {:style => 'display: none;'}, :remote => true do |f|
-          .name.text_field
-            = f.label :title, t(:title)
-            = f.text_field :title
-          .body.text_area
-            = f.label :content, t(:content)
-            = f.text_area :content
-          .submit
-            = f.submit
-            或者
-            = link_to '取消', '#cancel', :class => 'cancel_form'
+        = render 'document_sections/form', :document => @document, :project => @project, :section => @document.document_sections.new, :display => 'none'
     = render @document.document_sections
+  #pageInsert{:style => 'display: none;'}
+    %p#PIB 在这里添加段落
+  .page_slot.pageFooter.InsertBefore#page_slot_footer{:slot => -1}
 

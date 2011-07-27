@@ -33,7 +33,7 @@ Blumine::Application.routes.draw do
       resources :replies
     end
     resources :documents do
-      resources :sections, :controller => 'document_sections'
+      resources :document_sections
     end
 
     resources :members, :controller => :project_members

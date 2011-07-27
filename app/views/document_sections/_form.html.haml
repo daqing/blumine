@@ -1,0 +1,11 @@
+= form_for [project, document, section], :html => {:style => "display: #{display};"}, :remote => true do |f|
+  .name.text_field
+    = f.label :title, t(:title)
+    = f.text_field :title
+  .body.text_area
+    = f.label :content, t(:content)
+    = f.text_area :content
+  .submit
+    = f.submit
+    或者
+    = link_to '取消', '#cancel', :class => 'cancel_form'

@@ -1,3 +1,2 @@
-:plain
-  $("#slots").append("#{escape_javascript render(@document_section)}")
-  $("#document_section_#{@document_section.id}").effect('highlight');
+$("#slots").append("#{escape_javascript render(@document_section)}")
+$("#new_document_section").hide('slow')

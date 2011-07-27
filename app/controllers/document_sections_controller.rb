@@ -1,6 +1,7 @@
 class DocumentSectionsController < ApplicationController
+  before_filter :find_project, :only => :create
+
   def create
-    @project = Project.find(params[:project_id])
     @document = @project.documents.find(params[:document_id])
     @document_section = @document.document_sections.build(params[:document_section])
 
@@ -11,6 +12,39 @@ class DocumentSectionsController < ApplicationController
       else
         f.html { redirect_to [@project, @document] }
         f.js { render :text => :error, :status => 500 }
+      end
+    end
+  end
+
+  def edit
+    @document_section = DocumentSection.find(params[:id])
+    @document = @document_section.document
+    @project = @document.project
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update
+    @document_section = DocumentSection.find(params[:id])
+    respond_to do |format|
+      if @document_section.update_attributes(params[:document_section])
+        format.js
+      else
+        format.js { render :text => :error, :status => 406 }
+      end
+    end
+  end
+
+  def destroy
+    @document_section = DocumentSection.find(params[:id])
+
+    respond_to do |format|
+      if @document_section.destroy
+        format.js
+      else
+        format.js { render :text => :error, :status => 406 }
       end
     end
   end

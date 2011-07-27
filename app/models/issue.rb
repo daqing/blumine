@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110605071315
+# Schema version: 20110726032013
 #
 # Table name: issues
 #
@@ -61,6 +61,7 @@ class Issue < ActiveRecord::Base
 
   has_one :issue_assignment, :dependent => :destroy
   has_one :assigned_user, :through => :issue_assignment, :source => :user
+  has_one :conversation
 
   before_validation :set_default_content
 

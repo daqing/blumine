@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110719035845
+# Schema version: 20110727043210
 #
 # Table name: conversations
 #
@@ -9,6 +9,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  title      :string(255)
+#  issue_id   :integer
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

@@ -40,7 +40,7 @@ class IssuesController < ApplicationController
     @title = @project.name
     breadcrumbs.add t(:all_projects), projects_path
     breadcrumbs.add @project.name, project_path(@project)
-    
+
     render :index
   end
 
@@ -49,7 +49,7 @@ class IssuesController < ApplicationController
     @issue = @project.issues.new
     @title = t('issue.create')
     @label = params[:label]
-    
+
     breadcrumbs.add @issue.project.name, project_path(@issue.project)
     breadcrumbs.add t("new_#{@label}")
   end
@@ -57,8 +57,15 @@ class IssuesController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @issue = @project.issues.new(params[:issue])
-    @issue.user = current_user 
+    @issue.user = current_user
     if @issue.save
+      if params[:conversation_id]
+        # converted from conversation
+        c = Conversation.find(params[:issue][:conversation_id])
+        c.issue = @issue
+        c.save
+      end
+
       Activity.create!(
         :user_id => current_user.id,
         :project_id => params[:project_id],
@@ -153,17 +160,16 @@ class IssuesController < ApplicationController
         format.js
     end
   end
-  
+
   def planning
     @issue = Issue.find(params[:id])
     @new_date = params[:date].blank? ? '' : Date.parse(params[:date])
-      
+
     if @issue.update_attributes(:planned_date => @new_date)
       render :json => {:success => true}
     else
       render :json => {:success => false}
     end
-      
   end
 
   def search
@@ -196,7 +202,7 @@ class IssuesController < ApplicationController
 
   def autocomplete
     respond_to do |format|
-      format.js { 
+      format.js {
         result = []
         render :json => result and return if params[:term].nil? or params[:term].index('#') or params[:term] =~ /^issue/
 

@@ -14,6 +14,18 @@
     })();
 
     $("#new_reply").ajaxForm({dataType: 'script', resetForm: true, iframe:true, data:{xhr: true}});
+
+    $("#convert_to_task").click(function() {
+      $("#convert_form").show('slow');
+      return false;
+    });
+
+    $("#cancel_convert").click(function() {
+      var f = $("#convert_form");
+      f[0].reset();
+      f.hide('slow');
+      return false;
+    });
 .conversation_header
   .text_actions
     = link_to t(:edit), edit_project_conversation_path(@project, @conversation)
@@ -35,25 +47,44 @@
     .clear
   .comments#comments
     = render @conversation.replies
-  - new_reply = @conversation.replies.new
-  = form_for [@project, @conversation, new_reply], :html => {:multipart => true} do |f|
-    .field.text_area
-      = link_to '', current_user, :style => "background: url(#{avatar_url(current_user, :version => :micro)}) no-repeat"
-      .textarea
-        = f.text_area :content, :cols => 40, :rows => 20, :placeholder => '发送消息给其他成员'
-    .extra
-      .reply_upload_area
-        %p 选择文件
-        - f.object.uploads.build
-        = f.fields_for :uploads do |upload_fields|
-          = upload_fields.file_field :asset, :class => :fresh
-      .actions
-        .attach
-          %span Attach:
-          = link_to '添加附件', '#uploads', :class => 'reply_attachment_icon'
-        %span.convert_to_task
-          = link_to '转换为任务', '#convert_to_task'
-      .submit
-        = f.submit
 
+  - if @conversation.issue
+    %p
+      已转换成任务:
+      = link_to @conversation.issue.title, @conversation.issue
+  - else
+    - new_reply = @conversation.replies.new
+    = form_for [@project, @conversation, new_reply], :html => {:multipart => true} do |f|
+      .field.text_area
+        = link_to '', current_user, :style => "background: url(#{avatar_url(current_user, :version => :micro)}) no-repeat"
+        .textarea
+          = f.text_area :content, :cols => 40, :rows => 20, :placeholder => '发送消息给其他成员'
+      .extra
+        .reply_upload_area
+          %p 选择文件
+          - f.object.uploads.build
+          = f.fields_for :uploads do |upload_fields|
+            = upload_fields.file_field :asset, :class => :fresh
+        .actions
+          .attach
+            %span Attach:
+            = link_to '添加附件', '#uploads', :class => 'reply_attachment_icon'
+          %span.convert_to_task
+            = link_to '转换为任务', '#convert_to_task', :id => :convert_to_task
+        .submit
+          = f.submit
+
+    - @issue = @project.issues.new
+    = form_for [@project, @issue], :html => {:id => :convert_form, :class => :hide} do |f|
+      = hidden_field_tag :conversation_id, @conversation.id
+      .name.text_field
+        = f.label :title, t(:title)
+        = f.text_field :title
+      .select
+        = f.label :milestone_id, t(:milestone)
+        = f.select :milestone_id, options_for_select(@project.milestones.collect {|m| [m.name, m.id]})
+      .submit
+        = f.submit '转换为任务'
+        或者
+        = link_to '取消', '#cancel', :id => :cancel_convert
 

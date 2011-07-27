@@ -32,5 +32,8 @@
     = f.submit t('issue.create_comment')
 
 - if @issue.milestone
-  %h3= t(:milestone)
+  = t(:milestone)
   = link_to @issue.milestone.name, project_issues_path(@issue.project)
+
+- if @issue.conversation
+  %p= link_to '相关会话', [@issue.project, @issue.conversation]

@@ -7,6 +7,16 @@ class DocumentSectionsController < ApplicationController
 
     respond_to do |f|
       if @document_section.save
+        begin
+          # create activity
+          Activity.create!(:user_id => current_user.id,
+                           :event_name => 'create_document_section',
+                           :target_id => @document_section.id,
+                           :project_id => @project.id,
+                           :data => {:title => @document_section.title, :doc_title => @document.title,  :doc_url => project_document_path(@project, @document)}
+                          )
+        rescue
+        end
         f.html { redirect_to [@project, @document] }
         f.js
       else
@@ -28,8 +38,22 @@ class DocumentSectionsController < ApplicationController
 
   def update
     @document_section = DocumentSection.find(params[:id])
+    @document = @document_section.document
+    @project = @document.project
+
     respond_to do |format|
       if @document_section.update_attributes(params[:document_section])
+        begin
+          # create activity
+          Activity.create!(:user_id => current_user.id,
+                           :event_name => 'edit_document_section',
+                           :target_id => @document_section.id,
+                           :project_id => @document.project.id,
+                           :data => {:title => @document_section.title, :doc_title => @document.title,  :doc_url => project_document_path(@project, @document)}
+                          )
+        rescue
+        end
+
         format.js
       else
         format.js { render :text => :error, :status => 406 }

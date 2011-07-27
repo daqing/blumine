@@ -51,6 +51,17 @@ class DocumentsController < ApplicationController
 
   def update
     if @document.update_attributes(params[:document])
+      # create activity
+      begin
+        Activity.create!(:event_name => 'edit_document',
+                         :user_id => current_user.id,
+                         :project_id => @project.id,
+                         :target_id => @document.id,
+                         :data => {:title => @document.title, :url => project_document_path(@project, @document)}
+                        )
+      rescue
+      end
+
       redirect_to [@project, @document]
     else
       render :edit

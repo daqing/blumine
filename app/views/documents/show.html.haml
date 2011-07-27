@@ -1,11 +1,37 @@
-%h2= @document.title
-.document_sections
-  = render @document.document_sections
+- content_for :on_ready_hook do
+  :plain
+    var form = $("#new_document_section");
+    $("#add_section").click(function() {
+      form.show('slow');
+      return false;
+    });
 
-- if can? :manage, @document
-  = form_for [@project, @document, @document.document_sections.new], :remote => true do |f|
-    .row
-      = f.text_field :title
-      %br/
-      = f.text_area :content
-    = f.submit
+    $(".cancel_form").click(function() {
+      form.hide('slow');
+      form[0].reset();
+      return false;
+    });
+    form.bind('ajax:complete', function() {
+      $(this)[0].reset();
+    });
+    $.make_sortable('slots', "#{sort_document_sections_path}");
+.page_header
+  .text_actions
+    = link_to t(:edit), edit_project_document_path(@project, @document)
+    = link_to t(:delete), [@project, @document], :method => :delete, :confirm => t(:delete_confirm)
+  %h2= @document.title
+  .description= @document.description
+
+.buttons#buttons
+  = link_to '#add_section', :class => 'add_button note_button', :id => :add_section do %(<span>段落</span>) end
+
+.pageSlots
+  #slots
+    #pageInsertItems
+      #pageForms
+        = render 'document_sections/form', :document => @document, :project => @project, :section => @document.document_sections.new, :display => 'none'
+    = render @document.document_sections
+  #pageInsert{:style => 'display: none;'}
+    %p#PIB 在这里添加段落
+  .page_slot.pageFooter.InsertBefore#page_slot_footer{:slot => -1}
+

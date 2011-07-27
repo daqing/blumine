@@ -27,8 +27,8 @@ module ApplicationHelper
     'http://www.gravatar.com/avatar/' + id + '.jpg?s=' + options[:size].to_s
   end
 
-  def icon(name)
-    image_tag "#{name}.png", :height => 16, :width => 16, :align => :absmiddle
+  def icon(name, class_name='')
+    image_tag "#{name}.png", :height => 16, :width => 16, :align => :absmiddle, :class => class_name
   end
 
   def my_icon(name, options={})
@@ -180,6 +180,12 @@ module ApplicationHelper
         else
           %(上传了文件: #{link_to activity.data['name'], activity.data['url']})
         end
+      when 'edit_document'
+        %(编辑了文档: #{link_to activity.data['title'], activity.data['url']})
+      when 'create_document_section'
+        %(在文档#{link_to activity.data['doc_title'], activity.data['doc_url']}中添加了段落: #{activity.data['title']})
+      when 'edit_document_section'
+        %(编辑了文档#{link_to activity.data['doc_title'], activity.data['doc_url']}段落: #{activity.data['title']})
     end
   end
 

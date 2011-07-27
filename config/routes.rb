@@ -11,6 +11,11 @@ Blumine::Application.routes.draw do
   
   resources :activities, :only => :create
   resources :users, :comments, :replies
+  resources :document_sections do
+    collection do
+      post :sort
+    end
+  end
   resources :projects do
     resources :issues do
       collection do

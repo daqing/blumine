@@ -8,3 +8,4 @@ index/
 .DS_Store
 .cache_*
 application.css
+Gemfile.lock

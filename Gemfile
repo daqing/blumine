@@ -44,6 +44,6 @@ gem 'turn'
 group :development, :test do
   gem 'ruby-debug'
   gem 'RedCloth'
-  gem 'annotate-models'
+  gem 'annotate'
   gem 'thin'
 end

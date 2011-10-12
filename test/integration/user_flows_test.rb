@@ -21,7 +21,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
     assert_response :success
-    assert_equal "您已经成功退出。", flash[:notice]
+    assert flash[:notice]
 
     auth_as_foobar
     assert_response :redirect

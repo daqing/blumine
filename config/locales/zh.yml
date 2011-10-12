@@ -91,6 +91,7 @@ zh:
     user_is_working_on: 正在处理
     user_is_working_on_the_following: "正在处理下列任务:"
     issues_assigned_to: 分配给%{username}的任务
+    default_content: "记录在Todo里。"
     label:
       task: 任务
       bug: 错误 
@@ -184,6 +185,7 @@ zh:
 
   destroy_failed: 删除失败
   cancel_planning: 取消
+  must_login_first: "请先登录再继续操作"
   
   project:
     ideas: 想法

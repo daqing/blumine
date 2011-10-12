@@ -44,7 +44,7 @@ module ApplicationHelper
   def must_login_first
     if not current_user
       store_location
-      flash[:notice] = "请先登录再继续操作"
+      flash[:notice] = t(:must_login_first)
       redirect_to root_path
     end
   end

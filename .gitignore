@@ -7,3 +7,4 @@ public/uploads/
 index/
 .DS_Store
 .cache_*
+*.sh

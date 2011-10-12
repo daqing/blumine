@@ -90,6 +90,7 @@ en:
     user_is_working_on: " is working on "
     user_is_working_on_the_following: " is working on the following issues:"
     issues_assigned_to: "Issues Assigned to %{username}"
+    default_content: see TODOs
     label:
       task: Task
       bug: Bug
@@ -176,6 +177,7 @@ en:
 
   access_denied: Access Denied
   cancel_planning: Cancel Planning
+  must_login_first: Please login first to continue the operation
   project:
     ideas: Ideas
     tasks: Tasks

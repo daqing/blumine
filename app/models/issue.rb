@@ -88,7 +88,7 @@ class Issue < ActiveRecord::Base
   end
 
   def default_content
-    "记录在Todo里。"
+    I18n.t('issue.default_content')
   end
 
   class << self

@@ -22,8 +22,7 @@ class UserSessionsController < ApplicationController
     @user_session.destroy
 
     respond_to do |format|
-      format.html { redirect_to root_path, :notice => "您已经成功退出。" }
-
+      format.html { redirect_to root_path, :notice => success_do(:logout) }
       format.xml  { head :ok }
     end
   end

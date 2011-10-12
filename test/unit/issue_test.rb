@@ -22,19 +22,4 @@ class IssueTest < ActiveSupport::TestCase
     @issue.label = 'idea'
     assert @issue.save
   end
-
-  test "search issues" do
-    build_search_index
-    Issue.search_with_ferret(%(title:"bug")) do |index, id, score|
-      assert_equal index[id][:id], issues(:bug_report).id.to_s
-    end
-  end
-
-  def build_search_index
-    index = Issue.get_index
-    [:bug_report, :two].each do |key|
-      item = issues(key)
-      index << {:id => item.id, :title => item.title, :content => item.content}
-    end
-  end
 end

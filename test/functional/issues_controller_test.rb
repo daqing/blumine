@@ -141,12 +141,6 @@ class IssuesControllerTest < ActionController::TestCase
     assert_no_permission
   end
 
-  test "only root can rebuild indexes" do
-    get :rebuild_index
-
-    assert_redirected_to root_path
-  end
-
   test "should create activity after an issue created" do
     assert_difference('Activity.count') do
       create_issue
@@ -163,13 +157,6 @@ class IssuesControllerTest < ActionController::TestCase
     assert_difference('Activity.count') do
       close_issue 
     end
-  end
-
-  test "should search issues" do
-    get :search, :keyword => 'foo'
-
-    assert_response :success
-    assert_select '.module header h3'
   end
 
   test "should get autocomplete" do

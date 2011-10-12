@@ -16,9 +16,6 @@
 #  planned_date   :date
 #
 
-require 'rmmseg'
-require 'rmmseg/ferret'
-
 class Issue < ActiveRecord::Base
   include Workflow
 
@@ -84,29 +81,6 @@ class Issue < ActiveRecord::Base
 
   def self.valid_state?(state_sym)
     self.workflow_spec.states.keys.member? state_sym
-  end
-
-  def self.get_index_dir
-    File.join(Rails.root, 'index', Rails.env, self.to_s.downcase)
-  end
-
-  def self.search_with_ferret(query, &block)
-    index = get_index
-    index.search_each(query) { |id, score| block.call(index, id, score) if block_given? }
-  end
-
-  def self.rm_index_dir
-    index_dir = get_index_dir
-    FileUtils.rm_r index_dir if File.exists? index_dir
-  end
-
-  def self.rebuild_index!
-    rm_index_dir
-    index = get_index
-    all.each do |issue|
-      index << issue.to_index_hash
-    end
-    index.commit
   end
 
   def current_state_name

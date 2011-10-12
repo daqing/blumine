@@ -169,9 +169,6 @@ class IssuesController < ApplicationController
 
   def search
     @result = []
-    Issue.search_with_ferret(%(title|content:'#{params[:keyword]}')) do |index, id, score|
-      @result << Issue.find(index[id][:id])
-    end
   end
 
   def rebuild_index

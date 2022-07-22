@@ -36,7 +36,6 @@ GEM
     arel (2.0.10)
     authlogic (3.0.3)
       activerecord (>= 3.0.7)
-      activerecord (>= 3.0.7)
     breadcrumbs (0.1.6)
       i18n
     builder (2.1.2)
@@ -124,7 +123,7 @@ GEM
       polyglot (>= 0.3.1)
     turn (0.8.3)
       ansi
-    tzinfo (0.3.30)
+    tzinfo (0.3.61)
     workflow (0.8.1)
 
 PLATFORMS
